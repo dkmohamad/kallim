@@ -13,7 +13,8 @@ Each MP3 plays: **English phrase → pause → Arabic phrase → longer pause** 
 ## Setup
 
 ```bash
-pip install -r requirements.txt
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 cp .env.example .env
 # Edit .env with your API key and voice IDs
 ```
@@ -48,6 +49,27 @@ python generate.py --input phrases.txt --arabic-speed 0.8
 2. Another English phrase
    Another Arabic phrase
 ```
+
+## Anki Flashcard Deck
+
+Generate an Anki `.apkg` file with audio on both sides of each card.
+
+```bash
+# Generate full deck with audio (uses ElevenLabs API)
+python generate_anki.py
+
+# Single section only
+python generate_anki.py --section cafe_egyptian
+
+# Text-only cards, no audio (free, good for testing)
+python generate_anki.py --no-audio
+```
+
+Cards show English on the front (with English audio) and Arabic on the back (with Arabic audio, large RTL text). Each card is tagged by section for filtered study.
+
+Audio files are cached in `anki_audio/` so re-runs don't re-call the API.
+
+Import the generated `kallim_egyptian_arabic.apkg` into Anki.
 
 ## Output
 
