@@ -1,0 +1,8 @@
+.env
+output/
+anki_audio/
+__pycache__/
+*.pyc
+*.apkg
+generate.log
+.venv/

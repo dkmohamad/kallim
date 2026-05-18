@@ -1,0 +1,1089 @@
+# greetings_egyptian
+
+1. Hello / Peace be upon you
+   السلام عليكم
+
+2. And upon you peace
+   وعليكم السلام
+
+3. Good morning
+   صباح الخير
+
+4. Good morning (reply)
+   صباح النور
+
+5. Good evening
+   مساء الخير
+
+6. Good evening (reply)
+   مساء النور
+
+7. How are you? (to a man)
+   إزيك؟
+
+8. How are you? (to a woman)
+   إزيك؟
+
+9. I'm fine, thanks be to God
+   كويس، الحمد لله
+
+10. What's your name?
+    اسمك إيه؟
+
+11. My name is David
+    اسمي داوود
+
+12. Nice to meet you
+    تشرفنا
+
+13. Welcome
+    أهلاً وسهلاً
+
+14. Welcome (reply)
+    أهلاً بيك
+
+15. Where are you from?
+    إنت من فين؟
+
+16. I'm from England
+    أنا من إنجلترا
+
+17. My father is Iraqi
+    أبويا عراقي
+
+18. I speak a little Arabic
+    بتكلم عربي شوية
+
+19. I'm learning Arabic
+    بتعلم عربي
+
+20. Please speak slowly
+    اتكلم ببطء لو سمحت
+
+
+# smalltalk_egyptian
+
+1. Do you have family?
+   عندك عيلة؟
+
+2. Are you married?
+   إنت متجوز؟
+
+3. How many children do you have?
+   عندك كام ولد؟
+
+4. How old are you?
+   عندك كام سنة؟
+
+5. What work do you do?
+   بتشتغل إيه؟
+
+6. I work in computers
+   بشتغل في الكمبيوتر
+
+7. I like Egypt very much
+   بحب مصر أوي
+
+8. The weather is beautiful
+   الجو جميل
+
+9. The food here is delicious
+   الأكل هنا لذيذ أوي
+
+10. This is my first time in Egypt
+    ده أول مرة في مصر
+
+11. I'm here on holiday
+    أنا هنا في إجازة
+
+12. Egypt is very beautiful
+    مصر جميلة أوي
+
+13. The people here are very kind
+    الناس هنا طيبين أوي
+
+14. I'm very happy to be here
+    أنا مبسوط إني هنا
+
+15. God willing we will meet again
+    إن شاء الله نتقابل تاني
+
+16. Goodbye
+    مع السلامة
+
+
+# cafe_egyptian
+
+1. I have a reservation for two
+   عندي حجز لاتنين
+
+2. Can we sit outside?
+   ممكن نقعد برة؟
+
+3. Please / Come through / Here you go
+   اتفضل
+
+4. Of course
+   طبعاً
+
+5. What would you like to drink?
+   عايزين تشربوا إيه؟
+
+6. Can I see the menu first?
+   ممكن أشوف المنيو الأول؟
+
+7. Tea with milk, no sugar
+   شاي بلبن، بدون سكر
+
+8. Coffee with a little milk
+   قهوة بشوية لبن
+
+9. Without anything / Nothing at all
+   بدون ولا حاجة
+
+10. And the children?
+    والولاد؟
+
+11. Orange juice
+    عصير برتقال
+
+12. Sure / Right away
+    حاضر
+
+13. Would you like anything to eat?
+    عايزين تاكلوا حاجة؟
+
+14. Our cake is excellent
+    الكيك بتاعنا تحفة
+
+15. The sandwiches are good too
+    السندوتشات كمان كويسة
+
+16. I'll have the cake
+    هاخد الكيك
+
+17. She'll have the same as me
+    هي هتاخد زيي
+
+18. Yes, what can I do for you?
+    أيوه، أمر حضرتك؟
+
+19. Some water please
+    ممكن شوية مية؟
+
+20. That was really delicious
+    دي لذيذة أوي
+
+21. Did you enjoy the food?
+    الأكل عجبكم؟
+
+22. The atmosphere here is lovely
+    الأجواء هنا حلوة
+
+23. I'm really enjoying it
+    أنا بستمتع أوي
+
+24. The bill is 150 pounds
+    الحساب مية وخمسين جنيه
+
+25. Can I pay by card?
+    ممكن أدفع بكارت؟
+
+26. Sorry, cash only
+    آسف، كاش بس
+
+27. Keep the change
+    خلي الباقي
+
+28. We'll definitely be back
+    هنرجع أكيد
+
+
+# numbers_and_money_egyptian
+
+1. One
+   واحد
+
+2. Two
+   اتنين
+
+3. Three
+   تلاتة
+
+4. Four
+   أربعة
+
+5. Five
+   خمسة
+
+6. Six
+   ستة
+
+7. Seven
+   سبعة
+
+8. Eight
+   تمانية
+
+9. Nine
+   تسعة
+
+10. Ten
+    عشرة
+
+11. Twenty
+    عشرين
+
+12. Fifty
+    خمسين
+
+13. One hundred
+    مية
+
+14. How much does this cost?
+    بكام ده؟
+
+15. How much does it all cost?
+    بكام كله؟
+
+16. That's too expensive
+    ده غالي أوي
+
+17. Can you give me a better price?
+    تقدر تدي سعر أحسن؟
+
+18. What's the best price?
+    أحسن سعر إيه؟
+
+19. I'll give you fifty pounds
+    هدي خمسين جنيه
+
+20. Do you have change?
+    عندك فكة؟
+
+
+# bartering_egyptian
+
+--- Browsing ---
+
+1. VENDOR: Welcome, come in and look
+   أهلاً، تعال شوف
+
+2. VENDOR: What are you looking for?
+   بتدور على إيه؟
+
+3. YOU: I'm just looking
+   بس بتفرج
+
+4. VENDOR: Have a look, no problem
+   اتفرج، مفيش مشكلة
+
+5. YOU: How much is this?
+   بكام ده؟
+
+6. YOU: And this one?
+   وده؟
+
+7. VENDOR: This one is two hundred pounds
+   ده بميتين جنيه
+
+8. YOU: That's very expensive
+   ده غالي جداً
+
+9. VENDOR: No, this is a good price
+   لا، ده سعر كويس
+
+--- Negotiating ---
+
+10. YOU: Give me a good price and I'll buy it
+    ديني سعر كويس وهاخده
+
+11. VENDOR: What's your price?
+    قول سعرك
+
+12. YOU: I'll give you one hundred
+    هدي مية جنيه
+
+13. VENDOR: No, that's too low
+    لا، ده قليل أوي
+
+14. VENDOR: I'll give you a special price, one fifty
+    هديك سعر خاص، مية وخمسين
+
+15. YOU: I saw it cheaper over there
+    شفته أرخص هناك
+
+16. VENDOR: This is better quality
+    ده جودة أحسن
+
+17. YOU: My final offer is one hundred pounds
+    آخر كلام مية جنيه
+
+18. VENDOR: OK, agreed
+    تمام، ماشي
+
+19. YOU: OK let's agree on one fifty
+    يلا نتفق على مية وخمسين
+
+--- Checking the item ---
+
+20. YOU: Is this real leather?
+    ده جلد أصلي؟
+
+21. VENDOR: Yes, one hundred percent genuine
+    أيوه، مية في المية أصلي
+
+22. YOU: Do you have a smaller size?
+    عندك مقاس أصغر؟
+
+23. YOU: Do you have a bigger size?
+    عندك مقاس أكبر؟
+
+24. YOU: Do you have another colour?
+    عندك لون تاني؟
+
+25. VENDOR: I'll check for you
+    هشوفلك
+
+26. YOU: Can I try it?
+    ممكن أجرب؟
+
+27. YOU: This is broken
+    ده باظ
+
+28. VENDOR: I'll get you another one
+    هجيبلك واحد تاني
+
+--- Deciding ---
+
+29. YOU: OK I'll take it
+    تمام، هاخده
+
+30. YOU: I'll buy two, give me a discount
+    هاخد اتنين، ديني خصم
+
+31. VENDOR: OK, for two I'll give you a good price
+    تمام، للاتنين هديك سعر كويس
+
+32. YOU: I don't want it
+    مش عايزه
+
+33. YOU: I'll come back later
+    هرجع بعدين
+
+34. VENDOR: OK, you know where to find me
+    تمام، إنت عارف مكاني
+
+
+# taxis_egyptian
+
+--- Getting a taxi ---
+
+1. YOU: I want a taxi
+   عايز تاكسي
+
+2. DRIVER: Where are you going?
+   رايح فين؟
+
+3. YOU: How much to the hotel?
+   بكام للفندق؟
+
+4. YOU: How much to the market?
+   بكام للسوق؟
+
+5. YOU: How much to the airport?
+   بكام للمطار؟
+
+6. DRIVER: Fifty pounds
+   خمسين جنيه
+
+7. YOU: That's too expensive, I'll give you thirty
+   ده غالي أوي، هدي تلاتين
+
+8. DRIVER: No, forty is the lowest
+   لا، أربعين آخر حاجة
+
+9. YOU: OK agreed
+   تمام، اتفقنا
+
+--- In the taxi ---
+
+10. YOU: Please take me to this address
+    وديني على العنوان ده لو سمحت
+
+11. DRIVER: OK, I know it
+    تمام، أنا عارفه
+
+12. DRIVER: Where exactly?
+    فين بالظبط؟
+
+13. YOU: Turn right
+    لف يمين
+
+14. YOU: Turn left
+    لف شمال
+
+15. YOU: Go straight
+    على طول
+
+16. YOU: Stop here please
+    وقف هنا لو سمحت
+
+17. YOU: How long will it take?
+    هياخد قد إيه؟
+
+18. DRIVER: About twenty minutes
+    حوالي عشرين دقيقة
+
+19. DRIVER: There's a lot of traffic
+    في زحمة كتير
+
+20. YOU: I'm in a hurry
+    أنا مستعجل
+
+21. YOU: Please don't go so fast
+    متسرعش أوي لو سمحت
+
+--- Waiting and paying ---
+
+22. YOU: Can you wait for me?
+    تقدر تستناني؟
+
+23. DRIVER: How long?
+    قد إيه؟
+
+24. YOU: I'll be back in ten minutes
+    هرجع في عشر دقايق
+
+25. DRIVER: OK, I'll wait
+    تمام، هستنى
+
+26. YOU: Keep the change
+    خد الباقي
+
+27. DRIVER: Thank you, God bless you
+    شكراً، ربنا يخليك
+
+
+# directions_egyptian
+
+--- Asking for directions ---
+
+1. YOU: Excuse me, where is the hotel?
+   لو سمحت، فين الفندق؟
+
+2. YOU: Where is the market?
+   فين السوق؟
+
+3. YOU: Where is the beach?
+   فين الشاطئ؟
+
+4. YOU: Where is the pharmacy?
+   فين الصيدلية؟
+
+5. YOU: Where is the ATM?
+   فين الصراف الآلي؟
+
+6. YOU: Is it far?
+   ده بعيد؟
+
+7. LOCAL: No, it's close
+   لا، ده قريب
+
+8. LOCAL: Yes, it's a bit far
+   أيوه، ده بعيد شوية
+
+9. LOCAL: Go straight ahead
+   امشي على طول
+
+10. LOCAL: Then turn right
+    وبعدين لف يمين
+
+11. LOCAL: Then turn left
+    وبعدين لف شمال
+
+12. LOCAL: It's on the right
+    هتلاقيه على اليمين
+
+13. LOCAL: It's on the left
+    هتلاقيه على الشمال
+
+14. LOCAL: It's behind the hotel
+    ورا الفندق
+
+15. LOCAL: It's in front of the restaurant
+    قدام المطعم
+
+16. LOCAL: It's next to the mosque
+    جنب الجامع
+
+17. YOU: How many minutes on foot?
+    كام دقيقة مشي؟
+
+18. LOCAL: About five minutes
+    حوالي خمس دقايق
+
+19. LOCAL: You need a taxi, it's far
+    محتاج تاكسي، ده بعيد
+
+20. YOU: Can you show me on the map?
+    تقدر تورني على الخريطة؟
+
+21. LOCAL: Come, I'll show you the way
+    تعال، هوريك الطريق
+
+22. YOU: I'm lost
+    أنا تاهت
+
+23. LOCAL: Where do you want to go?
+    عايز تروح فين؟
+
+
+# restaurant_egyptian
+
+--- Arriving ---
+
+1. YOU: A table for two please
+   ترابيزة لاتنين لو سمحت
+
+2. STAFF: How many people?
+   كام واحد؟
+
+3. STAFF: Inside or outside?
+   جوة ولا برة؟
+
+4. YOU: Outside please
+   برة لو سمحت
+
+5. STAFF: Please, sit down
+   اتفضل، اقعد
+
+6. STAFF: Here's the menu
+   اتفضل، المنيو
+
+--- Ordering ---
+
+7. YOU: Can I have the menu?
+   ممكن المنيو؟
+
+8. STAFF: Are you ready to order?
+   حضرتك جاهز تطلب؟
+
+9. YOU: Not yet, give us a minute
+   لسة، دقيقة لو سمحت
+
+10. YOU: What do you recommend?
+    بتنصح بإيه؟
+
+11. STAFF: The grilled chicken is very good
+    الفراخ المشوية حلوة أوي
+
+12. STAFF: Today's special is kofta
+    طبق النهارده كفتة
+
+13. STAFF: Would you like anything to drink?
+    عايزين تشربوا حاجة؟
+
+14. YOU: My wife prefers vegetarian food
+    مراتي بتفضل أكل نباتي
+
+15. STAFF: We have salads and grilled vegetables
+    عندنا سلطات وخضار مشوي
+
+16. YOU: Do you have alcohol?
+    عندكم كحول؟
+
+17. STAFF: Yes, we have wine and beer
+    أيوه، عندنا نبيت وبيرة
+
+18. YOU: She'll have a glass of white wine
+    هي هتاخد كاس نبيت أبيض
+
+19. YOU: I'm allergic to nuts
+    عندي حساسية من المكسرات
+
+20. STAFF: No problem, we have plenty without nuts
+    مفيش مشكلة، عندنا كتير من غير مكسرات
+
+21. YOU: What is this dish?
+    الأكلة دي إيه؟
+
+22. STAFF: It's rice with grilled meat
+    دي رز مع لحمة مشوية
+
+23. YOU: I'll have the same as him
+    هاخد زيه
+
+24. STAFF: Anything else?
+    حاجة تاني؟
+
+25. YOU: That's everything, thanks
+    خلاص كده، شكراً
+
+--- Drinks and water ---
+
+26. YOU: Can I have some water please?
+    ممكن مية لو سمحت؟
+
+27. YOU: Bottled water please, not tap
+    مية معدنية لو سمحت، مش من الحنفية
+
+28. YOU: No ice please
+    من غير تلج لو سمحت
+
+29. STAFF: Large or small bottle?
+    إزازة كبيرة ولا صغيرة؟
+
+30. YOU: Large please
+    كبيرة لو سمحت
+
+--- During the meal ---
+
+31. STAFF: Is everything OK?
+    كله تمام؟
+
+32. YOU: This is delicious
+    ده لذيذ أوي
+
+33. STAFF: Thank you, glad you like it
+    شكراً، الحمد لله عجبكم
+
+34. YOU: It's a little cold, can you heat it up?
+    ده بارد شوية، تسخنه لو سمحت؟
+
+35. YOU: We didn't order this
+    إحنا مطلبناش ده
+
+36. STAFF: Sorry, I'll fix it right away
+    آسف، هصلحها حالاً
+
+37. YOU: Can I have another one of these?
+    ممكن واحد تاني من ده؟
+
+38. STAFF: Of course, right away
+    طبعاً، حالاً
+
+--- Paying ---
+
+39. YOU: Can I have the bill please?
+    الحساب لو سمحت
+
+40. STAFF: Here's the bill
+    اتفضل الحساب
+
+41. YOU: Is service included?
+    الخدمة داخلة؟
+
+42. STAFF: Yes, service is included
+    أيوه، الخدمة داخلة
+
+43. STAFF: No, service is not included
+    لا، الخدمة مش داخلة
+
+44. YOU: Can I pay by card?
+    ممكن أدفع بكارت؟
+
+45. STAFF: Sorry, cash only
+    آسف، كاش بس
+
+46. STAFF: Thank you, come back again
+    شكراً، أهلاً بيكم تاني
+
+
+# beach_and_vendors_egyptian
+
+--- Vendors approaching ---
+
+1. VENDOR: Want to buy something?
+   عايز تشتري حاجة؟
+
+2. VENDOR: I have good prices for you
+   عندي أسعار كويسة ليك
+
+3. YOU: No thank you
+   لا شكراً
+
+4. YOU: I don't want anything
+   مش عايز حاجة
+
+5. YOU: Maybe later
+   يمكن بعدين
+
+6. YOU: I already have one
+   عندي واحد خلاص
+
+7. VENDOR: Just have a look
+   بس شوف
+
+8. YOU: Please leave me alone
+   سيبني لو سمحت
+
+--- Setting up on the beach ---
+
+9. YOU: How much for a sunbed?
+   بكام الكرسي؟
+
+10. YOU: How much for an umbrella?
+    بكام الشمسية؟
+
+11. STAFF: Fifty pounds for both
+    خمسين جنيه للاتنين
+
+12. YOU: Is this beach private?
+    الشاطئ ده خاص؟
+
+13. STAFF: Yes, for hotel guests only
+    أيوه، لنزلاء الفندق بس
+
+14. STAFF: No, it's public
+    لا، ده عام
+
+--- Water activities ---
+
+15. YOU: Is it safe to swim here?
+    آمن أنزل أعوم هنا؟
+
+16. STAFF: Yes, the water is calm
+    أيوه، المية هادية
+
+17. STAFF: Be careful, there's a current
+    خلي بالك، في تيار
+
+18. YOU: How deep is the water?
+    المية عميقة قد إيه؟
+
+19. YOU: Is there a lifeguard?
+    في منقذ هنا؟
+
+20. YOU: Where can I hire a snorkel?
+    فين أستأجر عدة غطس؟
+
+21. STAFF: Over there by the reception
+    هناك عند الاستقبال
+
+22. YOU: Can I book a boat trip?
+    ممكن أحجز رحلة بالقارب؟
+
+23. STAFF: Yes, it leaves at ten
+    أيوه، بيمشي الساعة عشرة
+
+24. YOU: What time does it leave?
+    بيمشي إمتى؟
+
+25. YOU: I'd like some fresh juice please
+    عايز عصير طازج لو سمحت
+
+26. VENDOR: Mango or orange?
+    مانجو ولا برتقال؟
+
+
+# hotel_egyptian
+
+--- Checking in ---
+
+1. YOU: I have a reservation
+   عندي حجز
+
+2. STAFF: What's your name?
+   اسم حضرتك إيه؟
+
+3. YOU: My name is David
+   اسمي داوود
+
+4. STAFF: Welcome, here's your key
+   أهلاً بيك، اتفضل المفتاح
+
+5. STAFF: Your room is on the third floor
+   أوضتك في الدور التالت
+
+6. STAFF: The lift is over there
+   الأسانسير هناك
+
+7. YOU: Is breakfast included?
+   الفطار داخل؟
+
+8. STAFF: Yes, from seven to ten
+   أيوه، من سبعة لعشرة
+
+9. YOU: What time is breakfast?
+   الفطار إمتى؟
+
+--- During the stay ---
+
+10. YOU: Is there wifi?
+    في واي فاي؟
+
+11. STAFF: Yes, the password is on the card
+    أيوه، الباسورد على الكارت
+
+12. YOU: What is the wifi password?
+    باسورد الواي فاي إيه؟
+
+13. YOU: The air conditioning isn't working
+    التكييف مش شغال
+
+14. STAFF: I'll send someone to look at it
+    هبعتلك حد يبص عليه
+
+15. YOU: The hot water isn't working
+    المية السخنة مش شغالة
+
+16. STAFF: Sorry, we'll fix it right away
+    آسفين، هنصلحها حالاً
+
+17. YOU: Can I have more towels?
+    ممكن فوط زيادة؟
+
+18. YOU: Can I have extra pillows?
+    ممكن مخدات زيادة؟
+
+19. STAFF: Of course, I'll bring them now
+    طبعاً، هجيبهم دلوقتي
+
+20. YOU: Please clean the room
+    نضف الأوضة لو سمحت
+
+21. STAFF: What time suits you?
+    إمتى يناسبك؟
+
+22. YOU: Can I have a wake up call at seven?
+    ممكن توقظني الساعة سبعة؟
+
+23. STAFF: No problem
+    مفيش مشكلة
+
+--- Checking out ---
+
+24. YOU: What time is check out?
+    إمتى موعد المغادرة؟
+
+25. STAFF: Check out is at twelve
+    المغادرة الساعة اتناشر
+
+26. YOU: Can I have a late check out?
+    ممكن أتأخر في المغادرة؟
+
+27. STAFF: Yes, until two o'clock, no extra charge
+    أيوه، لحد الساعة اتنين، من غير فلوس زيادة
+
+28. STAFF: There's an extra charge of one hundred pounds
+    في فلوس زيادة مية جنيه
+
+29. YOU: Can I leave my bags here?
+    ممكن أسيب شنطتي هنا؟
+
+30. STAFF: Of course, we'll keep them at reception
+    طبعاً، هنسيبهم عند الاستقبال
+
+31. YOU: Thank you, the stay was wonderful
+    شكراً، الإقامة كانت حلوة أوي
+
+32. STAFF: Thank you, we hope to see you again
+    شكراً، نتمنى نشوفك تاني
+
+
+# sightseeing_egyptian
+
+--- Getting oriented ---
+
+1. YOU: We want to visit the old town
+   عايزين نزور البلد القديمة
+
+2. YOU: Where is the old market?
+   فين السوق القديم؟
+
+3. LOCAL: It's in the old town, I'll show you
+   في البلد القديمة، هوريك
+
+4. YOU: Is it open now?
+   مفتوح دلوقتي؟
+
+5. LOCAL: Yes, it's open every day
+   أيوه، مفتوح كل يوم
+
+6. YOU: What time does it close?
+   بيقفل إمتى؟
+
+7. LOCAL: At ten in the evening
+   الساعة عشرة بالليل
+
+--- Visiting the mosque ---
+
+8. YOU: Where is the mosque?
+   فين الجامع؟
+
+9. YOU: Can we go inside the mosque?
+   ممكن ندخل الجامع؟
+
+10. LOCAL: Yes, but you need to take off your shoes
+    أيوه، بس لازم تقلع الجزمة
+
+11. LOCAL: Women need to cover their hair
+    الستات لازم يغطوا شعرهم
+
+12. YOU: Do you have a headscarf we can borrow?
+    عندكم غطاء للرأس ممكن نستعيره؟
+
+13. LOCAL: Yes, here you go
+    أيوه، اتفضلي
+
+14. YOU: Is it OK to take photos inside?
+    ممكن نصور جوة؟
+
+15. LOCAL: Yes, no problem
+    أيوه، مفيش مشكلة
+
+16. LOCAL: No, sorry, photos are not allowed
+    لا، آسف، التصوير ممنوع
+
+17. YOU: This mosque is beautiful
+    الجامع ده جميل أوي
+
+--- Walking around / sites ---
+
+18. YOU: What is this place?
+    المكان ده إيه؟
+
+19. LOCAL: This is a very old church
+    دي كنيسة قديمة أوي
+
+20. YOU: How old is it?
+    عمرها قد إيه؟
+
+21. YOU: Can we go in?
+    ممكن ندخل؟
+
+22. LOCAL: Yes, the entrance is free
+    أيوه، الدخول مجاني
+
+23. LOCAL: There's an entrance fee, twenty pounds
+    في رسم دخول، عشرين جنيه
+
+24. YOU: Four tickets please, two adults and two children
+    أربع تذاكر لو سمحت، اتنين كبار واتنين أطفال
+
+25. LOCAL: Children under ten are free
+    الأطفال تحت عشر سنين ببلاش
+
+26. YOU: Is there a guide who speaks English?
+    في مرشد بيتكلم إنجليزي؟
+
+27. LOCAL: Yes, he's over there
+    أيوه، هناك
+
+28. YOU: We want to walk around the old town
+    عايزين نتمشى في البلد القديمة
+
+29. LOCAL: Be careful in the narrow streets
+    خلي بالك في الشوارع الضيقة
+
+30. YOU: Can you recommend a good place to sit and have tea?
+    تنصحنا بمكان كويس نقعد نشرب شاي؟
+
+31. LOCAL: There's a nice café around the corner
+    في قهوة حلوة على الناصية
+
+
+# boat_trips_egyptian
+
+--- Finding a trip ---
+
+1. YOU: We want to book a boat trip
+   عايزين نحجز رحلة بالمركب
+
+2. OPERATOR: Welcome, what kind of trip do you want?
+   أهلاً، عايزين رحلة إيه؟
+
+3. YOU: We want to go snorkelling
+   عايزين نروح غطس
+
+4. OPERATOR: We have a half day or full day trip
+   عندنا رحلة نص يوم أو يوم كامل
+
+5. YOU: How much is the half day trip?
+   بكام رحلة نص اليوم؟
+
+6. OPERATOR: Three hundred pounds per person
+   تلتمية جنيه للواحد
+
+7. YOU: That's expensive, we're a family of four
+   ده غالي، إحنا عيلة أربع أفراد
+
+8. OPERATOR: For a family I'll give you a special price
+   للعيلة هديكم سعر خاص
+
+9. YOU: What's the family price?
+   سعر العيلة كام؟
+
+10. OPERATOR: Eight hundred for all of you
+    تمنمية ليكم كلكم
+
+11. YOU: Can you do seven hundred?
+    ممكن سبعمية؟
+
+12. OPERATOR: OK, seven fifty and we have a deal
+    تمام، سبعمية وخمسين واتفقنا
+
+13. YOU: OK, agreed
+    تمام، اتفقنا
+
+--- Details ---
+
+14. YOU: What time does it leave?
+    بتمشي إمتى؟
+
+15. OPERATOR: At nine in the morning
+    الساعة تسعة الصبح
+
+16. YOU: What time do we get back?
+    هنرجع إمتى؟
+
+17. OPERATOR: Around three in the afternoon
+    حوالي تلاتة بعد الضهر
+
+18. YOU: Is lunch included?
+    الغداء داخل؟
+
+19. OPERATOR: Yes, fish and rice on the boat
+    أيوه، سمك ورز على المركب
+
+20. YOU: Is the snorkelling equipment included?
+    عدة الغطس داخلة؟
+
+21. OPERATOR: Yes, everything is included
+    أيوه، كل حاجة داخلة
+
+22. YOU: Are there life jackets for the children?
+    في جاكتات نجاة للأطفال؟
+
+23. OPERATOR: Yes, don't worry
+    أيوه، متقلقش
+
+24. YOU: Where do we meet you?
+    نقابلك فين؟
+
+25. OPERATOR: At the marina, I'll be there at half eight
+    عند المارينا، هكون هناك الساعة تمانية ونص
+
+--- On the boat ---
+
+26. OPERATOR: We're going to stop at three places
+    هنوقف في تلات أماكن
+
+27. YOU: Can the children swim here?
+    الأطفال يقدروا يعوموا هنا؟
+
+28. OPERATOR: Yes, the water is shallow and safe
+    أيوه، المية ضحلة وآمنة
+
+29. YOU: How long do we stay at each place?
+    هنقعد قد إيه في كل مكان؟
+
+30. OPERATOR: About forty-five minutes
+    حوالي خمسة وأربعين دقيقة
+
+31. YOU: This is amazing, the water is so clear
+    ده جميل أوي، المية صافية
+
+32. OPERATOR: Wait till you see the coral
+    استنى لما تشوف المرجان

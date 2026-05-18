@@ -1,0 +1,4 @@
+elevenlabs>=1.0.0
+genanki>=0.13.0
+pydub>=0.25.1
+python-dotenv>=1.0.0
