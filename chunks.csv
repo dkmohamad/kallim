@@ -1,0 +1,336 @@
+id,arabic,english,register,source,status,concept_tag
+0dc7e80b,السلام عليكم,Hello / Peace be upon you,egyptian,lesson,active,greetings
+d984ee6d,وعليكم السلام,And upon you peace,egyptian,lesson,active,greetings
+414b5835,صباح الخير,Good morning,egyptian,lesson,active,greetings
+b5493e06,صباح النور,Good morning (reply),egyptian,lesson,active,greetings
+b9ad361d,مساء الخير,Good evening,egyptian,lesson,active,greetings
+cf69f1cf,مساء النور,Good evening (reply),egyptian,lesson,active,greetings
+1a5eadb2,إزيك؟,How are you? (to a man),egyptian,lesson,active,greetings
+67441309,إزيك؟,How are you? (to a woman),egyptian,lesson,active,greetings
+a97f1e17,كويس، الحمد لله,"I'm fine, thanks be to God",egyptian,lesson,active,greetings
+913e08ca,اسمك إيه؟,What's your name?,egyptian,lesson,active,greetings
+54530d14,اسمي داوود,My name is David,egyptian,lesson,active,greetings
+cc5ae71e,تشرفنا,Nice to meet you,egyptian,lesson,active,greetings
+24083ab3,أهلاً وسهلاً,Welcome,egyptian,lesson,active,greetings
+34ae8e09,أهلاً بيك,Welcome (reply),egyptian,lesson,active,greetings
+4005bc81,إنت من فين؟,Where are you from?,egyptian,lesson,active,greetings
+79c5d3bc,أنا من إنجلترا,I'm from England,egyptian,lesson,active,greetings
+425b2a7e,أبويا عراقي,My father is Iraqi,egyptian,lesson,active,greetings
+fed92bd2,بتكلم عربي شوية,I speak a little Arabic,egyptian,lesson,active,greetings
+e3ee768f,بتعلم عربي,I'm learning Arabic,egyptian,lesson,active,greetings
+cce0e2b4,اتكلم ببطء لو سمحت,Please speak slowly,egyptian,lesson,active,greetings
+0916501f,عندك عيلة؟,Do you have family?,egyptian,lesson,active,smalltalk
+869866d8,إنت متجوز؟,Are you married?,egyptian,lesson,active,smalltalk
+a2d5c6e6,عندك كام ولد؟,How many children do you have?,egyptian,lesson,active,smalltalk
+bd6a1d52,عندك كام سنة؟,How old are you?,egyptian,lesson,active,smalltalk
+57966a8d,بتشتغل إيه؟,What work do you do?,egyptian,lesson,active,smalltalk
+0f7bbe67,بشتغل في الكمبيوتر,I work in computers,egyptian,lesson,active,smalltalk
+a22dfc22,بحب مصر أوي,I like Egypt very much,egyptian,lesson,active,smalltalk
+7e7af097,الجو جميل,The weather is beautiful,egyptian,lesson,active,smalltalk
+f0f1d18c,الأكل هنا لذيذ أوي,The food here is delicious,egyptian,lesson,active,smalltalk
+bc40fe15,ده أول مرة في مصر,This is my first time in Egypt,egyptian,lesson,active,smalltalk
+e788adff,أنا هنا في إجازة,I'm here on holiday,egyptian,lesson,active,smalltalk
+6466fdde,مصر جميلة أوي,Egypt is very beautiful,egyptian,lesson,active,smalltalk
+e400f031,الناس هنا طيبين أوي,The people here are very kind,egyptian,lesson,active,smalltalk
+dfd56081,أنا مبسوط إني هنا,I'm very happy to be here,egyptian,lesson,active,smalltalk
+1e532702,إن شاء الله نتقابل تاني,God willing we will meet again,egyptian,lesson,active,smalltalk
+a0ac96fe,مع السلامة,Goodbye,egyptian,lesson,active,smalltalk
+5655533c,عندي حجز لاتنين,I have a reservation for two,egyptian,lesson,active,cafe
+d436c023,ممكن نقعد برة؟,Can we sit outside?,egyptian,lesson,active,cafe
+0198f74f,اتفضل,Please / Come through / Here you go,egyptian,lesson,active,cafe
+154efb27,طبعاً,Of course,egyptian,lesson,active,cafe
+5fdfcfcc,عايزين تشربوا إيه؟,What would you like to drink?,egyptian,lesson,active,cafe
+18987cf1,ممكن أشوف المنيو الأول؟,Can I see the menu first?,egyptian,lesson,active,cafe
+9b6071bf,شاي بلبن، بدون سكر,"Tea with milk, no sugar",egyptian,lesson,active,cafe
+8432d5ba,قهوة بشوية لبن,Coffee with a little milk,egyptian,lesson,active,cafe
+f1adb3c7,بدون ولا حاجة,Without anything / Nothing at all,egyptian,lesson,active,cafe
+5e44ba3d,والولاد؟,And the children?,egyptian,lesson,active,cafe
+e9a050bb,عصير برتقال,Orange juice,egyptian,lesson,active,cafe
+4cf4f5b8,حاضر,Sure / Right away,egyptian,lesson,active,cafe
+b1c2ca9e,عايزين تاكلوا حاجة؟,Would you like anything to eat?,egyptian,lesson,active,cafe
+c6e388f2,الكيك بتاعنا تحفة,Our cake is excellent,egyptian,lesson,active,cafe
+feb87172,السندوتشات كمان كويسة,The sandwiches are good too,egyptian,lesson,active,cafe
+923639d8,هاخد الكيك,I'll have the cake,egyptian,lesson,active,cafe
+e7b7abc7,هي هتاخد زيي,She'll have the same as me,egyptian,lesson,active,cafe
+e671d4e6,أيوه، أمر حضرتك؟,"Yes, what can I do for you?",egyptian,lesson,active,cafe
+dec6d152,ممكن شوية مية؟,Some water please,egyptian,lesson,active,cafe
+3f55e0b7,دي لذيذة أوي,That was really delicious,egyptian,lesson,active,cafe
+36d2359b,الأكل عجبكم؟,Did you enjoy the food?,egyptian,lesson,active,cafe
+6850969b,الأجواء هنا حلوة,The atmosphere here is lovely,egyptian,lesson,active,cafe
+cfa7c7cc,أنا بستمتع أوي,I'm really enjoying it,egyptian,lesson,active,cafe
+78179dc8,الحساب مية وخمسين جنيه,The bill is 150 pounds,egyptian,lesson,active,cafe
+379d6ff1,ممكن أدفع بكارت؟,Can I pay by card?,egyptian,lesson,active,cafe
+05f166f1,آسف، كاش بس,"Sorry, cash only",egyptian,lesson,active,cafe
+75490afa,خلي الباقي,Keep the change,egyptian,lesson,active,cafe
+cbfedbf6,هنرجع أكيد,We'll definitely be back,egyptian,lesson,active,cafe
+867d94a9,واحد,One,egyptian,lesson,active,numbers_and_money
+7e870185,اتنين,Two,egyptian,lesson,active,numbers_and_money
+300b0daf,تلاتة,Three,egyptian,lesson,active,numbers_and_money
+28e464dc,أربعة,Four,egyptian,lesson,active,numbers_and_money
+0b4d3653,خمسة,Five,egyptian,lesson,active,numbers_and_money
+7af00546,ستة,Six,egyptian,lesson,active,numbers_and_money
+0e067d9d,سبعة,Seven,egyptian,lesson,active,numbers_and_money
+885c3071,تمانية,Eight,egyptian,lesson,active,numbers_and_money
+fa7813f9,تسعة,Nine,egyptian,lesson,active,numbers_and_money
+b8069305,عشرة,Ten,egyptian,lesson,active,numbers_and_money
+eea8f182,عشرين,Twenty,egyptian,lesson,active,numbers_and_money
+e80f4bb6,خمسين,Fifty,egyptian,lesson,active,numbers_and_money
+62d0986c,مية,One hundred,egyptian,lesson,active,numbers_and_money
+4badc4e9,بكام ده؟,How much does this cost?,egyptian,lesson,active,numbers_and_money
+3a8ae052,بكام كله؟,How much does it all cost?,egyptian,lesson,active,numbers_and_money
+8bf144ef,ده غالي أوي,That's too expensive,egyptian,lesson,active,numbers_and_money
+d2fbeba4,تقدر تدي سعر أحسن؟,Can you give me a better price?,egyptian,lesson,active,numbers_and_money
+ab6aa2e3,أحسن سعر إيه؟,What's the best price?,egyptian,lesson,active,numbers_and_money
+992be3aa,هدي خمسين جنيه,I'll give you fifty pounds,egyptian,lesson,active,numbers_and_money
+646312ac,عندك فكة؟,Do you have change?,egyptian,lesson,active,numbers_and_money
+7d68f58a,أهلاً، تعال شوف,"Welcome, come in and look",egyptian,lesson,active,bartering
+b02d39dd,بتدور على إيه؟,What are you looking for?,egyptian,lesson,active,bartering
+3b5d739c,بس بتفرج,I'm just looking,egyptian,lesson,active,bartering
+75ad9b66,اتفرج، مفيش مشكلة,"Have a look, no problem",egyptian,lesson,active,bartering
+cbeccc31,بكام ده؟,How much is this?,egyptian,lesson,active,bartering
+d06560c6,وده؟,And this one?,egyptian,lesson,active,bartering
+515d18fc,ده بميتين جنيه,This one is two hundred pounds,egyptian,lesson,active,bartering
+54ab0a45,ده غالي جداً,That's very expensive,egyptian,lesson,active,bartering
+ba2368ad,لا، ده سعر كويس,"No, this is a good price",egyptian,lesson,active,bartering
+de6201c3,ديني سعر كويس وهاخده,Give me a good price and I'll buy it,egyptian,lesson,active,bartering
+ee26952c,قول سعرك,What's your price?,egyptian,lesson,active,bartering
+f8be46b5,هدي مية جنيه,I'll give you one hundred,egyptian,lesson,active,bartering
+63d8c3c5,لا، ده قليل أوي,"No, that's too low",egyptian,lesson,active,bartering
+47e31933,هديك سعر خاص، مية وخمسين,"I'll give you a special price, one fifty",egyptian,lesson,active,bartering
+25a384f5,شفته أرخص هناك,I saw it cheaper over there,egyptian,lesson,active,bartering
+d0db8559,ده جودة أحسن,This is better quality,egyptian,lesson,active,bartering
+375a5c9f,آخر كلام مية جنيه,My final offer is one hundred pounds,egyptian,lesson,active,bartering
+34b68278,تمام، ماشي,"OK, agreed",egyptian,lesson,active,bartering
+fcf26a07,يلا نتفق على مية وخمسين,OK let's agree on one fifty,egyptian,lesson,active,bartering
+1fb0ad73,ده جلد أصلي؟,Is this real leather?,egyptian,lesson,active,bartering
+d74fba4e,أيوه، مية في المية أصلي,"Yes, one hundred percent genuine",egyptian,lesson,active,bartering
+12f6ecd5,عندك مقاس أصغر؟,Do you have a smaller size?,egyptian,lesson,active,bartering
+151c6d85,عندك مقاس أكبر؟,Do you have a bigger size?,egyptian,lesson,active,bartering
+27291b06,عندك لون تاني؟,Do you have another colour?,egyptian,lesson,active,bartering
+b01ca302,هشوفلك,I'll check for you,egyptian,lesson,active,bartering
+7733c98b,ممكن أجرب؟,Can I try it?,egyptian,lesson,active,bartering
+40043aa4,ده باظ,This is broken,egyptian,lesson,active,bartering
+e46ad581,هجيبلك واحد تاني,I'll get you another one,egyptian,lesson,active,bartering
+cee3e2e3,تمام، هاخده,OK I'll take it,egyptian,lesson,active,bartering
+f7e4c813,هاخد اتنين، ديني خصم,"I'll buy two, give me a discount",egyptian,lesson,active,bartering
+5d634ee7,تمام، للاتنين هديك سعر كويس,"OK, for two I'll give you a good price",egyptian,lesson,active,bartering
+5b308065,مش عايزه,I don't want it,egyptian,lesson,active,bartering
+3f6563f0,هرجع بعدين,I'll come back later,egyptian,lesson,active,bartering
+2c0b567e,تمام، إنت عارف مكاني,"OK, you know where to find me",egyptian,lesson,active,bartering
+9149e5a7,عايز تاكسي,I want a taxi,egyptian,lesson,active,taxis
+67c8aecc,رايح فين؟,Where are you going?,egyptian,lesson,active,taxis
+985ac074,بكام للفندق؟,How much to the hotel?,egyptian,lesson,active,taxis
+06d72372,بكام للسوق؟,How much to the market?,egyptian,lesson,active,taxis
+d9f07f30,بكام للمطار؟,How much to the airport?,egyptian,lesson,active,taxis
+a073818b,خمسين جنيه,Fifty pounds,egyptian,lesson,active,taxis
+ad28f914,ده غالي أوي، هدي تلاتين,"That's too expensive, I'll give you thirty",egyptian,lesson,active,taxis
+6a1bb3a7,لا، أربعين آخر حاجة,"No, forty is the lowest",egyptian,lesson,active,taxis
+b6b8ddea,تمام، اتفقنا,OK agreed,egyptian,lesson,active,taxis
+0f40721d,وديني على العنوان ده لو سمحت,Please take me to this address,egyptian,lesson,active,taxis
+3f65d251,تمام، أنا عارفه,"OK, I know it",egyptian,lesson,active,taxis
+1ed78b05,فين بالظبط؟,Where exactly?,egyptian,lesson,active,taxis
+723bba52,لف يمين,Turn right,egyptian,lesson,active,taxis
+e6d68d10,لف شمال,Turn left,egyptian,lesson,active,taxis
+a51751d4,على طول,Go straight,egyptian,lesson,active,taxis
+95f0a2c0,وقف هنا لو سمحت,Stop here please,egyptian,lesson,active,taxis
+9e7c6600,هياخد قد إيه؟,How long will it take?,egyptian,lesson,active,taxis
+56759f16,حوالي عشرين دقيقة,About twenty minutes,egyptian,lesson,active,taxis
+7f95b3c0,في زحمة كتير,There's a lot of traffic,egyptian,lesson,active,taxis
+b4a624df,أنا مستعجل,I'm in a hurry,egyptian,lesson,active,taxis
+0c336f47,متسرعش أوي لو سمحت,Please don't go so fast,egyptian,lesson,active,taxis
+7fb41084,تقدر تستناني؟,Can you wait for me?,egyptian,lesson,active,taxis
+46ccfe58,قد إيه؟,How long?,egyptian,lesson,active,taxis
+21afe7d7,هرجع في عشر دقايق,I'll be back in ten minutes,egyptian,lesson,active,taxis
+a40ae6b5,تمام، هستنى,"OK, I'll wait",egyptian,lesson,active,taxis
+65828c50,خد الباقي,Keep the change,egyptian,lesson,active,taxis
+e1825b7e,شكراً، ربنا يخليك,"Thank you, God bless you",egyptian,lesson,active,taxis
+d081a4a8,لو سمحت، فين الفندق؟,"Excuse me, where is the hotel?",egyptian,lesson,active,directions
+ca9ae36f,فين السوق؟,Where is the market?,egyptian,lesson,active,directions
+fb5fef60,فين الشاطئ؟,Where is the beach?,egyptian,lesson,active,directions
+2d7886e7,فين الصيدلية؟,Where is the pharmacy?,egyptian,lesson,active,directions
+da224374,فين الصراف الآلي؟,Where is the ATM?,egyptian,lesson,active,directions
+d28e1b5b,ده بعيد؟,Is it far?,egyptian,lesson,active,directions
+3bb86915,لا، ده قريب,"No, it's close",egyptian,lesson,active,directions
+b32f91f6,أيوه، ده بعيد شوية,"Yes, it's a bit far",egyptian,lesson,active,directions
+dcec82f6,امشي على طول,Go straight ahead,egyptian,lesson,active,directions
+9aa2a55b,وبعدين لف يمين,Then turn right,egyptian,lesson,active,directions
+a499cdb1,وبعدين لف شمال,Then turn left,egyptian,lesson,active,directions
+c22a2410,هتلاقيه على اليمين,It's on the right,egyptian,lesson,active,directions
+3d5662cb,هتلاقيه على الشمال,It's on the left,egyptian,lesson,active,directions
+9ebe6bff,ورا الفندق,It's behind the hotel,egyptian,lesson,active,directions
+27aea229,قدام المطعم,It's in front of the restaurant,egyptian,lesson,active,directions
+a734ed59,جنب الجامع,It's next to the mosque,egyptian,lesson,active,directions
+13d7692f,كام دقيقة مشي؟,How many minutes on foot?,egyptian,lesson,active,directions
+8807b621,حوالي خمس دقايق,About five minutes,egyptian,lesson,active,directions
+03b9c60d,محتاج تاكسي، ده بعيد,"You need a taxi, it's far",egyptian,lesson,active,directions
+89fe5c8e,تقدر تورني على الخريطة؟,Can you show me on the map?,egyptian,lesson,active,directions
+57c81020,تعال، هوريك الطريق,"Come, I'll show you the way",egyptian,lesson,active,directions
+df61dc36,أنا تاهت,I'm lost,egyptian,lesson,active,directions
+69604a34,عايز تروح فين؟,Where do you want to go?,egyptian,lesson,active,directions
+c0d9b161,ترابيزة لاتنين لو سمحت,A table for two please,egyptian,lesson,active,restaurant
+0012afb0,كام واحد؟,How many people?,egyptian,lesson,active,restaurant
+3a74e612,جوة ولا برة؟,Inside or outside?,egyptian,lesson,active,restaurant
+31a86279,برة لو سمحت,Outside please,egyptian,lesson,active,restaurant
+27314977,اتفضل، اقعد,"Please, sit down",egyptian,lesson,active,restaurant
+d6df070b,اتفضل، المنيو,Here's the menu,egyptian,lesson,active,restaurant
+312f51e8,ممكن المنيو؟,Can I have the menu?,egyptian,lesson,active,restaurant
+1718676c,حضرتك جاهز تطلب؟,Are you ready to order?,egyptian,lesson,active,restaurant
+0927be03,لسة، دقيقة لو سمحت,"Not yet, give us a minute",egyptian,lesson,active,restaurant
+18fbb6a5,بتنصح بإيه؟,What do you recommend?,egyptian,lesson,active,restaurant
+dbe949d1,الفراخ المشوية حلوة أوي,The grilled chicken is very good,egyptian,lesson,active,restaurant
+0cba7214,طبق النهارده كفتة,Today's special is kofta,egyptian,lesson,active,restaurant
+ea789138,عايزين تشربوا حاجة؟,Would you like anything to drink?,egyptian,lesson,active,restaurant
+5f9a7209,مراتي بتفضل أكل نباتي,My wife prefers vegetarian food,egyptian,lesson,active,restaurant
+0d488586,عندنا سلطات وخضار مشوي,We have salads and grilled vegetables,egyptian,lesson,active,restaurant
+b53e7023,عندكم كحول؟,Do you have alcohol?,egyptian,lesson,active,restaurant
+450b1f07,أيوه، عندنا نبيت وبيرة,"Yes, we have wine and beer",egyptian,lesson,active,restaurant
+541e31ce,هي هتاخد كاس نبيت أبيض,She'll have a glass of white wine,egyptian,lesson,active,restaurant
+5fcb4e0d,عندي حساسية من المكسرات,I'm allergic to nuts,egyptian,lesson,active,restaurant
+3d3e9003,مفيش مشكلة، عندنا كتير من غير مكسرات,"No problem, we have plenty without nuts",egyptian,lesson,active,restaurant
+eb93812c,الأكلة دي إيه؟,What is this dish?,egyptian,lesson,active,restaurant
+a465ec0e,دي رز مع لحمة مشوية,It's rice with grilled meat,egyptian,lesson,active,restaurant
+fe26f192,هاخد زيه,I'll have the same as him,egyptian,lesson,active,restaurant
+036e29e0,حاجة تاني؟,Anything else?,egyptian,lesson,active,restaurant
+474e6bf2,خلاص كده، شكراً,"That's everything, thanks",egyptian,lesson,active,restaurant
+91626264,ممكن مية لو سمحت؟,Can I have some water please?,egyptian,lesson,active,restaurant
+d5e55fb9,مية معدنية لو سمحت، مش من الحنفية,"Bottled water please, not tap",egyptian,lesson,active,restaurant
+7131632b,من غير تلج لو سمحت,No ice please,egyptian,lesson,active,restaurant
+c8937c6d,إزازة كبيرة ولا صغيرة؟,Large or small bottle?,egyptian,lesson,active,restaurant
+675c51b4,كبيرة لو سمحت,Large please,egyptian,lesson,active,restaurant
+b4adc65d,كله تمام؟,Is everything OK?,egyptian,lesson,active,restaurant
+a28d6950,ده لذيذ أوي,This is delicious,egyptian,lesson,active,restaurant
+5a028a45,شكراً، الحمد لله عجبكم,"Thank you, glad you like it",egyptian,lesson,active,restaurant
+258cc0ef,ده بارد شوية، تسخنه لو سمحت؟,"It's a little cold, can you heat it up?",egyptian,lesson,active,restaurant
+ab43fa42,إحنا مطلبناش ده,We didn't order this,egyptian,lesson,active,restaurant
+08954cbd,آسف، هصلحها حالاً,"Sorry, I'll fix it right away",egyptian,lesson,active,restaurant
+e1bead07,ممكن واحد تاني من ده؟,Can I have another one of these?,egyptian,lesson,active,restaurant
+abb11ebb,طبعاً، حالاً,"Of course, right away",egyptian,lesson,active,restaurant
+c7ad988e,الحساب لو سمحت,Can I have the bill please?,egyptian,lesson,active,restaurant
+6c30f7be,اتفضل الحساب,Here's the bill,egyptian,lesson,active,restaurant
+64380547,الخدمة داخلة؟,Is service included?,egyptian,lesson,active,restaurant
+3d91205d,أيوه، الخدمة داخلة,"Yes, service is included",egyptian,lesson,active,restaurant
+c723f8b1,لا، الخدمة مش داخلة,"No, service is not included",egyptian,lesson,active,restaurant
+34e44bfa,ممكن أدفع بكارت؟,Can I pay by card?,egyptian,lesson,active,restaurant
+4e1a536d,آسف، كاش بس,"Sorry, cash only",egyptian,lesson,active,restaurant
+00e59738,شكراً، أهلاً بيكم تاني,"Thank you, come back again",egyptian,lesson,active,restaurant
+95eb7d12,عايز تشتري حاجة؟,Want to buy something?,egyptian,lesson,active,beach_and_vendors
+65131cce,عندي أسعار كويسة ليك,I have good prices for you,egyptian,lesson,active,beach_and_vendors
+35b5e8c4,لا شكراً,No thank you,egyptian,lesson,active,beach_and_vendors
+152bb274,مش عايز حاجة,I don't want anything,egyptian,lesson,active,beach_and_vendors
+092ee7c4,يمكن بعدين,Maybe later,egyptian,lesson,active,beach_and_vendors
+8034e4de,عندي واحد خلاص,I already have one,egyptian,lesson,active,beach_and_vendors
+b84afe6f,بس شوف,Just have a look,egyptian,lesson,active,beach_and_vendors
+96bc307a,سيبني لو سمحت,Please leave me alone,egyptian,lesson,active,beach_and_vendors
+d50062c0,بكام الكرسي؟,How much for a sunbed?,egyptian,lesson,active,beach_and_vendors
+bbeca218,بكام الشمسية؟,How much for an umbrella?,egyptian,lesson,active,beach_and_vendors
+1210dfcc,خمسين جنيه للاتنين,Fifty pounds for both,egyptian,lesson,active,beach_and_vendors
+d2952495,الشاطئ ده خاص؟,Is this beach private?,egyptian,lesson,active,beach_and_vendors
+8e539758,أيوه، لنزلاء الفندق بس,"Yes, for hotel guests only",egyptian,lesson,active,beach_and_vendors
+cb959bc6,لا، ده عام,"No, it's public",egyptian,lesson,active,beach_and_vendors
+094bb5dd,آمن أنزل أعوم هنا؟,Is it safe to swim here?,egyptian,lesson,active,beach_and_vendors
+142a91ce,أيوه، المية هادية,"Yes, the water is calm",egyptian,lesson,active,beach_and_vendors
+dde4dbff,خلي بالك، في تيار,"Be careful, there's a current",egyptian,lesson,active,beach_and_vendors
+63ccfd51,المية عميقة قد إيه؟,How deep is the water?,egyptian,lesson,active,beach_and_vendors
+9b32f267,في منقذ هنا؟,Is there a lifeguard?,egyptian,lesson,active,beach_and_vendors
+c36dd73c,فين أستأجر عدة غطس؟,Where can I hire a snorkel?,egyptian,lesson,active,beach_and_vendors
+4781b20e,هناك عند الاستقبال,Over there by the reception,egyptian,lesson,active,beach_and_vendors
+39138d6c,ممكن أحجز رحلة بالقارب؟,Can I book a boat trip?,egyptian,lesson,active,beach_and_vendors
+90196f6b,أيوه، بيمشي الساعة عشرة,"Yes, it leaves at ten",egyptian,lesson,active,beach_and_vendors
+279320b4,بيمشي إمتى؟,What time does it leave?,egyptian,lesson,active,beach_and_vendors
+739585ef,عايز عصير طازج لو سمحت,I'd like some fresh juice please,egyptian,lesson,active,beach_and_vendors
+f3df94ef,مانجو ولا برتقال؟,Mango or orange?,egyptian,lesson,active,beach_and_vendors
+9cb10088,عندي حجز,I have a reservation,egyptian,lesson,active,hotel
+20626f0a,اسم حضرتك إيه؟,What's your name?,egyptian,lesson,active,hotel
+839db0a3,اسمي داوود,My name is David,egyptian,lesson,active,hotel
+e1857423,أهلاً بيك، اتفضل المفتاح,"Welcome, here's your key",egyptian,lesson,active,hotel
+6eaa2c58,أوضتك في الدور التالت,Your room is on the third floor,egyptian,lesson,active,hotel
+a31d06d0,الأسانسير هناك,The lift is over there,egyptian,lesson,active,hotel
+daafb3fb,الفطار داخل؟,Is breakfast included?,egyptian,lesson,active,hotel
+016d8802,أيوه، من سبعة لعشرة,"Yes, from seven to ten",egyptian,lesson,active,hotel
+2ac02894,الفطار إمتى؟,What time is breakfast?,egyptian,lesson,active,hotel
+10b8b081,في واي فاي؟,Is there wifi?,egyptian,lesson,active,hotel
+c2498364,أيوه، الباسورد على الكارت,"Yes, the password is on the card",egyptian,lesson,active,hotel
+57bfb0b0,باسورد الواي فاي إيه؟,What is the wifi password?,egyptian,lesson,active,hotel
+785cdbc4,التكييف مش شغال,The air conditioning isn't working,egyptian,lesson,active,hotel
+6026680e,هبعتلك حد يبص عليه,I'll send someone to look at it,egyptian,lesson,active,hotel
+fb2d1c90,المية السخنة مش شغالة,The hot water isn't working,egyptian,lesson,active,hotel
+9d40d06b,آسفين، هنصلحها حالاً,"Sorry, we'll fix it right away",egyptian,lesson,active,hotel
+7297c4a6,ممكن فوط زيادة؟,Can I have more towels?,egyptian,lesson,active,hotel
+333ae2b6,ممكن مخدات زيادة؟,Can I have extra pillows?,egyptian,lesson,active,hotel
+bff0f607,طبعاً، هجيبهم دلوقتي,"Of course, I'll bring them now",egyptian,lesson,active,hotel
+353f00ee,نضف الأوضة لو سمحت,Please clean the room,egyptian,lesson,active,hotel
+65426eca,إمتى يناسبك؟,What time suits you?,egyptian,lesson,active,hotel
+4c9356f6,ممكن توقظني الساعة سبعة؟,Can I have a wake up call at seven?,egyptian,lesson,active,hotel
+df80ad57,مفيش مشكلة,No problem,egyptian,lesson,active,hotel
+09bab8b1,إمتى موعد المغادرة؟,What time is check out?,egyptian,lesson,active,hotel
+0f4269bd,المغادرة الساعة اتناشر,Check out is at twelve,egyptian,lesson,active,hotel
+773e55e3,ممكن أتأخر في المغادرة؟,Can I have a late check out?,egyptian,lesson,active,hotel
+d7d3870e,أيوه، لحد الساعة اتنين، من غير فلوس زيادة,"Yes, until two o'clock, no extra charge",egyptian,lesson,active,hotel
+13047fc0,في فلوس زيادة مية جنيه,There's an extra charge of one hundred pounds,egyptian,lesson,active,hotel
+9cfe4a59,ممكن أسيب شنطتي هنا؟,Can I leave my bags here?,egyptian,lesson,active,hotel
+8c2ad71f,طبعاً، هنسيبهم عند الاستقبال,"Of course, we'll keep them at reception",egyptian,lesson,active,hotel
+5f9e966b,شكراً، الإقامة كانت حلوة أوي,"Thank you, the stay was wonderful",egyptian,lesson,active,hotel
+4f081bc5,شكراً، نتمنى نشوفك تاني,"Thank you, we hope to see you again",egyptian,lesson,active,hotel
+852763a5,عايزين نزور البلد القديمة,We want to visit the old town,egyptian,lesson,active,sightseeing
+71496069,فين السوق القديم؟,Where is the old market?,egyptian,lesson,active,sightseeing
+527f4e8f,في البلد القديمة، هوريك,"It's in the old town, I'll show you",egyptian,lesson,active,sightseeing
+103b2043,مفتوح دلوقتي؟,Is it open now?,egyptian,lesson,active,sightseeing
+fb0ab91b,أيوه، مفتوح كل يوم,"Yes, it's open every day",egyptian,lesson,active,sightseeing
+41ef64c8,بيقفل إمتى؟,What time does it close?,egyptian,lesson,active,sightseeing
+e0d917af,الساعة عشرة بالليل,At ten in the evening,egyptian,lesson,active,sightseeing
+eda3ea5b,فين الجامع؟,Where is the mosque?,egyptian,lesson,active,sightseeing
+e8e5e90e,ممكن ندخل الجامع؟,Can we go inside the mosque?,egyptian,lesson,active,sightseeing
+79552ea3,أيوه، بس لازم تقلع الجزمة,"Yes, but you need to take off your shoes",egyptian,lesson,active,sightseeing
+0e9e8c40,الستات لازم يغطوا شعرهم,Women need to cover their hair,egyptian,lesson,active,sightseeing
+8cbbec6d,عندكم غطاء للرأس ممكن نستعيره؟,Do you have a headscarf we can borrow?,egyptian,lesson,active,sightseeing
+0b4e0423,أيوه، اتفضلي,"Yes, here you go",egyptian,lesson,active,sightseeing
+ef111395,ممكن نصور جوة؟,Is it OK to take photos inside?,egyptian,lesson,active,sightseeing
+1e395dbb,أيوه، مفيش مشكلة,"Yes, no problem",egyptian,lesson,active,sightseeing
+e986b3a0,لا، آسف، التصوير ممنوع,"No, sorry, photos are not allowed",egyptian,lesson,active,sightseeing
+a273e9e3,الجامع ده جميل أوي,This mosque is beautiful,egyptian,lesson,active,sightseeing
+55549572,المكان ده إيه؟,What is this place?,egyptian,lesson,active,sightseeing
+01ec6af0,دي كنيسة قديمة أوي,This is a very old church,egyptian,lesson,active,sightseeing
+6a4ef4ca,عمرها قد إيه؟,How old is it?,egyptian,lesson,active,sightseeing
+7f539a8a,ممكن ندخل؟,Can we go in?,egyptian,lesson,active,sightseeing
+cfc6a84f,أيوه، الدخول مجاني,"Yes, the entrance is free",egyptian,lesson,active,sightseeing
+1626ad40,في رسم دخول، عشرين جنيه,"There's an entrance fee, twenty pounds",egyptian,lesson,active,sightseeing
+54400e1e,أربع تذاكر لو سمحت، اتنين كبار واتنين أطفال,"Four tickets please, two adults and two children",egyptian,lesson,active,sightseeing
+6cd25129,الأطفال تحت عشر سنين ببلاش,Children under ten are free,egyptian,lesson,active,sightseeing
+d26fe16b,في مرشد بيتكلم إنجليزي؟,Is there a guide who speaks English?,egyptian,lesson,active,sightseeing
+65be1368,أيوه، هناك,"Yes, he's over there",egyptian,lesson,active,sightseeing
+54bc8ea3,عايزين نتمشى في البلد القديمة,We want to walk around the old town,egyptian,lesson,active,sightseeing
+91f4b517,خلي بالك في الشوارع الضيقة,Be careful in the narrow streets,egyptian,lesson,active,sightseeing
+502c06ce,تنصحنا بمكان كويس نقعد نشرب شاي؟,Can you recommend a good place to sit and have tea?,egyptian,lesson,active,sightseeing
+c80b325d,في قهوة حلوة على الناصية,There's a nice café around the corner,egyptian,lesson,active,sightseeing
+111e0e7a,عايزين نحجز رحلة بالمركب,We want to book a boat trip,egyptian,lesson,active,boat_trips
+aa51f5a1,أهلاً، عايزين رحلة إيه؟,"Welcome, what kind of trip do you want?",egyptian,lesson,active,boat_trips
+deacbaf0,عايزين نروح غطس,We want to go snorkelling,egyptian,lesson,active,boat_trips
+e28df09e,عندنا رحلة نص يوم أو يوم كامل,We have a half day or full day trip,egyptian,lesson,active,boat_trips
+ef3bbd60,بكام رحلة نص اليوم؟,How much is the half day trip?,egyptian,lesson,active,boat_trips
+2c8d83a5,تلتمية جنيه للواحد,Three hundred pounds per person,egyptian,lesson,active,boat_trips
+d0f2db14,ده غالي، إحنا عيلة أربع أفراد,"That's expensive, we're a family of four",egyptian,lesson,active,boat_trips
+c08bfa54,للعيلة هديكم سعر خاص,For a family I'll give you a special price,egyptian,lesson,active,boat_trips
+039e48fe,سعر العيلة كام؟,What's the family price?,egyptian,lesson,active,boat_trips
+de072f1d,تمنمية ليكم كلكم,Eight hundred for all of you,egyptian,lesson,active,boat_trips
+531aea2e,ممكن سبعمية؟,Can you do seven hundred?,egyptian,lesson,active,boat_trips
+ddce8bf9,تمام، سبعمية وخمسين واتفقنا,"OK, seven fifty and we have a deal",egyptian,lesson,active,boat_trips
+4df0c73e,تمام، اتفقنا,"OK, agreed",egyptian,lesson,active,boat_trips
+2c82ff86,بتمشي إمتى؟,What time does it leave?,egyptian,lesson,active,boat_trips
+697b3afd,الساعة تسعة الصبح,At nine in the morning,egyptian,lesson,active,boat_trips
+aa5da688,هنرجع إمتى؟,What time do we get back?,egyptian,lesson,active,boat_trips
+d61756aa,حوالي تلاتة بعد الضهر,Around three in the afternoon,egyptian,lesson,active,boat_trips
+8482a33a,الغداء داخل؟,Is lunch included?,egyptian,lesson,active,boat_trips
+5443f5da,أيوه، سمك ورز على المركب,"Yes, fish and rice on the boat",egyptian,lesson,active,boat_trips
+c8fe353b,عدة الغطس داخلة؟,Is the snorkelling equipment included?,egyptian,lesson,active,boat_trips
+bfeed48c,أيوه، كل حاجة داخلة,"Yes, everything is included",egyptian,lesson,active,boat_trips
+d5839e11,في جاكتات نجاة للأطفال؟,Are there life jackets for the children?,egyptian,lesson,active,boat_trips
+087f308d,أيوه، متقلقش,"Yes, don't worry",egyptian,lesson,active,boat_trips
+78c4484c,نقابلك فين؟,Where do we meet you?,egyptian,lesson,active,boat_trips
+e63447f1,عند المارينا، هكون هناك الساعة تمانية ونص,"At the marina, I'll be there at half eight",egyptian,lesson,active,boat_trips
+cf658a59,هنوقف في تلات أماكن,We're going to stop at three places,egyptian,lesson,active,boat_trips
+8a648690,الأطفال يقدروا يعوموا هنا؟,Can the children swim here?,egyptian,lesson,active,boat_trips
+f33b8dc0,أيوه، المية ضحلة وآمنة,"Yes, the water is shallow and safe",egyptian,lesson,active,boat_trips
+5937ab0b,هنقعد قد إيه في كل مكان؟,How long do we stay at each place?,egyptian,lesson,active,boat_trips
+6e647de0,حوالي خمسة وأربعين دقيقة,About forty-five minutes,egyptian,lesson,active,boat_trips
+07c802d0,ده جميل أوي، المية صافية,"This is amazing, the water is so clear",egyptian,lesson,active,boat_trips
+e76f84f6,استنى لما تشوف المرجان,Wait till you see the coral,egyptian,lesson,active,boat_trips

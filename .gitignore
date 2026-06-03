@@ -1,8 +1,12 @@
 .env
 output/
-anki_audio/
+audio/
 __pycache__/
 *.pyc
 *.apkg
-generate.log
+*.egg-info/
 .venv/
+
+# Legacy
+anki_audio/
+generate.log
