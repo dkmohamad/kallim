@@ -52,19 +52,16 @@ Flat CSV (`chunks.csv`). One chunk per row. Columns:
 | `arabic`       | string   | The chunk, full tashkeel for MSA, natural form for dialect.   |
 | `english`      | string   | Gloss / translation.                                         |
 | `register`     | enum     | `msa` / `egyptian` / `iraqi`                                 |
-| `source`       | string   | Where it came from: `lesson` / `daily` / `reading` / free text |
-| `status`       | enum     | `draft` / `active` / `promoted` (promoted = pushed to Anki)  |
-| `concept_tag`  | string   | Optional. For cross-register pairs you want side by side.     |
+| `concept_tag`  | string   | Thematic grouping (e.g. `food`, `travel`, `greetings`).      |
 
 ### Example
 
 ```csv
-id,arabic,english,register,source,status,concept_tag
-7f3a1b2c,السلام عليكم,Peace be upon you,egyptian,lesson,promoted,greeting
-a9e4d8f1,وعليكم السلام,And upon you peace,egyptian,lesson,promoted,greeting
-2b8c6e03,ممكن أشوف المنيو الأول؟,Can I see the menu first?,egyptian,daily,active,
-d4f7e912,قهوة بشوية لبن,Coffee with a little milk,egyptian,daily,draft,
-8c1b3a5e,أَنَا أَتَعَلَّمُ اللُّغَةَ الْعَرَبِيَّةَ,I am learning Arabic,msa,lesson,active,
+id,arabic,english,register,concept_tag
+7f3a1b2c,السلام عليكم,Peace be upon you,egyptian,greetings
+a9e4d8f1,وعليكم السلام,And upon you peace,egyptian,greetings
+2b8c6e03,ممكن أشوف المنيو الأول؟,Can I see the menu first?,egyptian,cafe
+8c1b3a5e,أَنَا أَتَعَلَّمُ اللُّغَةَ الْعَرَبِيَّةَ,I am learning Arabic,msa,learning
 ```
 
 ### Why CSV
@@ -80,14 +77,13 @@ d4f7e912,قهوة بشوية لبن,Coffee with a little milk,egyptian,daily,dra
 The existing `phrases.txt` (300+ phrases across 12 sections) will be migrated
 to `chunks.csv`. The section names become the basis for `concept_tag` or can be
 embedded in the `id` prefix. Speaker labels (YOU:, STAFF:, etc.) are stripped
-during migration. All migrated rows start as `status=active`.
+during migration.
 
 ---
 
-## Single source of truth — no status in two places
+## Single source of truth
 
-The CSV owns **content**. Anki owns **"do I know it"** (scheduling state). The
-CSV's only status concern is whether a chunk has been promoted to Anki. Never
+The CSV owns **content**. Anki owns **scheduling state** ("do I know it"). Never
 store a learning score in the CSV — that recreates the original drift problem
 inside the solution.
 
@@ -160,7 +156,7 @@ Same chunks, one source, three downstream consumers:
 Long-form MP3s grouped by section/tag. Turn-taking, recall-then-confirm — active
 production. Correctly i+0 by design.
 
-- Generated from `chunks.csv` rows filtered by register/tag/status.
+- Generated from `chunks.csv` rows filtered by register/tag.
 - Output: `output/{section}.mp3` + `output/{section}.txt` transcript.
 
 ### 2. Anki cards with audio
@@ -213,6 +209,10 @@ kallim anki
 kallim anki --no-audio
 kallim anki --section cafe
 
+# Promote vocab words into chunks (generates example sentences via Claude)
+kallim promote
+kallim promote vocab.txt
+
 # List ElevenLabs voices
 kallim voices
 
@@ -225,6 +225,7 @@ kallim migrate
 ## Dependencies
 
 ```
+anthropic>=0.39.0       # Claude API for vocab promotion
 elevenlabs>=1.0.0       # TTS API client
 genanki>=0.13.0         # Anki deck generation
 pydub>=0.25.1           # Audio manipulation
@@ -240,6 +241,7 @@ System: `ffmpeg` (required by pydub for MP3 encoding).
 `.env` file:
 
 ```
+ANTHROPIC_API_KEY=...
 ELEVENLABS_API_KEY=...
 ELEVENLABS_VOICE_ENGLISH=...
 ELEVENLABS_VOICE_EGYPTIAN=...

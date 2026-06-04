@@ -31,8 +31,6 @@ class Chunk(NamedTuple):
     arabic: str
     english: str
     register: str
-    source: str
-    status: str
     concept_tag: str
 
 
@@ -241,8 +239,6 @@ def main() -> None:
     # Group by concept_tag
     sections: dict[str, list[Chunk]] = {}
     for chunk in chunks:
-        if chunk.status == "draft":
-            continue
         sections.setdefault(chunk.concept_tag, []).append(chunk)
 
     if args.section:

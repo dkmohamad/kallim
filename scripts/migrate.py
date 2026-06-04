@@ -18,7 +18,7 @@ SUB_HEADER = re.compile(r"^---\s+.+\s+---$")
 SECTION_HEADER = re.compile(r"^#\s+(.+)")
 NUMBERED_LINE = re.compile(r"^\d+\.\s+(.+)")
 
-COLUMNS = ["id", "arabic", "english", "register", "source", "status", "concept_tag"]
+COLUMNS = ["id", "arabic", "english", "register", "concept_tag"]
 
 
 class Chunk(NamedTuple):
@@ -28,8 +28,6 @@ class Chunk(NamedTuple):
     arabic: str
     english: str
     register: str
-    source: str
-    status: str
     concept_tag: str
 
 
@@ -87,8 +85,6 @@ def parse_phrases(path: Path) -> list[Chunk]:
                     arabic=arabic,
                     english=english,
                     register=register,
-                    source="lesson",
-                    status="active",
                     concept_tag=tag,
                 ))
             i += 1

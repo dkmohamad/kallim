@@ -109,9 +109,6 @@ def main() -> None:
         if not chunks:
             sys.exit(f"Error: section '{args.section}' not found")
 
-    # Filter out drafts
-    chunks = [c for c in chunks if c.status != "draft"]
-
     # Set up ElevenLabs client if generating audio
     client = None
     voice_map: dict[str, str] = {}
