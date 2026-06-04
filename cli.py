@@ -59,6 +59,15 @@ def main() -> None:
         "migrate", help="One-time migration: phrases.txt -> chunks.csv"
     )
 
+    # --- promote ---
+    promote = sub.add_parser(
+        "promote", help="Promote vocab words into chunks with example sentences"
+    )
+    promote.add_argument(
+        "input_file", nargs="?",
+        help="Path to vocab file (CSV or plain text). Defaults to vocab_pairs.csv.",
+    )
+
     # --- voices ---
     sub.add_parser(
         "voices", help="List available ElevenLabs voices"
@@ -88,6 +97,10 @@ def main() -> None:
     elif args.command == "migrate":
         from scripts.migrate import main as migrate_main
         migrate_main()
+
+    elif args.command == "promote":
+        from scripts.promote import main as promote_main
+        promote_main(getattr(args, "input_file", None))
 
     elif args.command == "voices":
         from scripts.generate import main as generate_main
