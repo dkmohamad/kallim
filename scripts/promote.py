@@ -95,6 +95,9 @@ def promote_batch(
             "in the specified register. The sentence should be something a "
             "learner might actually say or hear in daily life.\n"
             "2. An English translation of the sentence.\n\n"
+            "IMPORTANT: Write all Arabic text with full tashkeel "
+            "(vowel diacritics: fatḥa, kasra, ḍamma, sukūn, shadda, tanwīn). "
+            "This is essential for the learner to read correctly.\n\n"
             "Format each response as:\n"
             "N. arabic_sentence ||| english_translation\n\n"
             "Words:\n" + "\n".join(prompt_lines)
