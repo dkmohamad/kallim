@@ -81,6 +81,12 @@ id,arabic,english,register,concept_tag
 The vocab pipeline turns raw input (teacher chats, lesson notes) into
 structured phrase pairs in `chunks.csv`:
 
+0. **Transcribe** — if working from lesson recordings, transcribe first:
+   ```bash
+   ~/dev/scripts/transcribe/transcribe.sh --babel ~/recordings/lesson-dir/
+   ```
+   Uses the multilingual whisper model with auto language detection, handling
+   mixed Arabic/English audio. The output `.txt` file can be fed into step 1.
 1. **Extract** — read raw input and write `vocab_pairs.csv` (Arabic + English
    columns). Use the `/extract-vocab` skill or prepare the CSV manually.
 2. **Promote** — `kallim promote` generates example sentences for single words
