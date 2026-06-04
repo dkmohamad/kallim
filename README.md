@@ -10,6 +10,8 @@ decks, and transcripts from a structured vocabulary bank (`chunks.csv`).
 - **Anki decks** — Flashcards with audio. English on front, Arabic on back.
 - **Multi-register** — Supports Egyptian, MSA, and Iraqi Arabic with separate
   ElevenLabs voices per register.
+- **Immersive scenes** — Arranges a section's vocab into a natural dialogue,
+  generates conversational audio with ambient background (restaurant, cafe, etc.).
 
 ## Prerequisites
 
@@ -44,6 +46,15 @@ kallim anki
 # Text-only Anki cards (no API calls)
 kallim anki --no-audio
 
+# Generate an immersive dialogue scene
+kallim scene --section food --setting restaurant
+
+# Monologue instead of dialogue
+kallim scene --section travel --setting airport --monologue
+
+# Use a custom ambient audio file
+kallim scene --section cafe --setting cafe --ambient-file my_cafe.mp3
+
 # List available ElevenLabs voices
 kallim voices
 ```
@@ -56,16 +67,20 @@ from that run, flat:
 ```
 output/
 └── 20260603_141523/
-    ├── 01_greetings.mp3
+    ├── 01_greetings.mp3              # shadowing audio
     ├── 01_greetings.txt
     ├── 02_smalltalk.mp3
     ├── 02_smalltalk.txt
+    ├── scene_food_restaurant.mp3     # scene: dialogue + ambient mix
+    ├── scene_food_restaurant.json    # generated script (editable)
+    ├── scene_food_restaurant.txt     # human-readable transcript
     ├── kallim_arabic.apkg
     └── generate.log
 ```
 
-Per-chunk audio is cached separately in `audio/` (keyed by chunk ID). If a
-cache file is missing it gets regenerated on the next run.
+Per-chunk audio is cached separately in `audio/` (keyed by chunk ID). Ambient
+audio for scenes is cached in `audio/scenes/`. If a cache file is missing it
+gets regenerated on the next run.
 
 ## Data model
 
@@ -141,6 +156,7 @@ ELEVENLABS_VOICE_ENGLISH=...
 ELEVENLABS_VOICE_EGYPTIAN=...
 ELEVENLABS_VOICE_MSA=...
 ELEVENLABS_VOICE_IRAQI=...
+ELEVENLABS_VOICE_B=...          # voice ID for speaker B in scenes
 ```
 
 ## Claude Code skills

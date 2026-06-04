@@ -68,6 +68,27 @@ def main() -> None:
         help="Path to vocab file (CSV or plain text). Defaults to vocab_pairs.csv.",
     )
 
+    # --- scene ---
+    scene = sub.add_parser(
+        "scene", help="Generate immersive audio scene from a section's chunks"
+    )
+    scene.add_argument(
+        "--section", "-s", required=True,
+        help="concept_tag to build the scene from",
+    )
+    scene.add_argument(
+        "--setting", required=True,
+        help="Scene setting (e.g. restaurant, cafe, market) — used for ambient audio",
+    )
+    scene.add_argument(
+        "--monologue", action="store_true",
+        help="Generate a monologue (single speaker) instead of a dialogue",
+    )
+    scene.add_argument(
+        "--ambient-file",
+        help="Path to a custom ambient audio file instead of generating one",
+    )
+
     # --- voices ---
     sub.add_parser(
         "voices", help="List available ElevenLabs voices"
@@ -101,6 +122,15 @@ def main() -> None:
     elif args.command == "promote":
         from scripts.promote import main as promote_main
         promote_main(getattr(args, "input_file", None))
+
+    elif args.command == "scene":
+        from scripts.scene import main as scene_main
+        scene_main(
+            section=args.section,
+            setting=args.setting,
+            monologue=args.monologue,
+            ambient_file=args.ambient_file,
+        )
 
     elif args.command == "voices":
         from scripts.generate import main as generate_main
