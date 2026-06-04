@@ -125,16 +125,18 @@ def get_or_generate_chunk_audio(
     chunk: Chunk,
     voice_map: dict[str, str],
     audio_dir: Path,
-    pause_ms: int = 2000,
-) -> Path | None:
-    """Return path to a chunk's stitched audio file, generating if missing.
+) -> tuple[Path, Path] | None:
+    """Return paths to separate English and Arabic audio files for a chunk.
 
-    Audio format: English -> pause -> Arabic (recall-then-confirm).
+    Caches as audio/{id}_en.mp3 and audio/{id}_ar.mp3.
+    Returns (en_path, ar_path) or None on failure.
     """
-    audio_path = audio_dir / f"{chunk.id}.mp3"
-    if audio_path.exists():
+    en_path = audio_dir / f"{chunk.id}_en.mp3"
+    ar_path = audio_dir / f"{chunk.id}_ar.mp3"
+
+    if en_path.exists() and ar_path.exists():
         logger.info("  Cached: %s", chunk.id)
-        return audio_path
+        return en_path, ar_path
 
     en_bytes = generate_tts(client, chunk.english, voice_map["english"])
     ar_bytes = generate_tts(client, chunk.arabic, voice_map[chunk.register])
@@ -150,25 +152,10 @@ def get_or_generate_chunk_audio(
         AudioSegment.from_file(io.BytesIO(ar_bytes), format="mp3")
     )
 
-    combined = en_seg + AudioSegment.silent(duration=pause_ms) + ar_seg
-    combined.export(str(audio_path), format="mp3", bitrate="128k")
+    en_seg.export(str(en_path), format="mp3", bitrate="128k")
+    ar_seg.export(str(ar_path), format="mp3", bitrate="128k")
     logger.info("  Generated: %s", chunk.id)
-    return audio_path
-
-
-def stitch_section(
-    audio_paths: list[Path],
-    pause_after_ms: int,
-) -> AudioSegment:
-    """Concatenate per-chunk audio files into a section MP3."""
-    combined = AudioSegment.empty()
-    silence = AudioSegment.silent(duration=pause_after_ms)
-
-    for path in audio_paths:
-        seg = AudioSegment.from_file(str(path), format="mp3")
-        combined += seg + silence
-
-    return combined
+    return en_path, ar_path
 
 
 def write_transcript(
@@ -264,29 +251,34 @@ def main() -> None:
             run_dir / f"{prefix}.txt", tag, tag_chunks
         )
 
-        # Generate per-chunk audio (cached by id)
-        audio_paths: list[Path] = []
+        # Generate per-chunk audio (cached by id) and stitch into section
+        section_audio = AudioSegment.empty()
+        chunk_count = 0
+        pause = AudioSegment.silent(duration=pause_ms)
         for chunk in tag_chunks:
             logger.info(
                 "  Chunk %s: %s / %s",
                 chunk.id, chunk.english[:30], chunk.arabic[:30],
             )
-            path = get_or_generate_chunk_audio(
-                client, chunk, voice_map, AUDIO_DIR, pause_ms
+            result = get_or_generate_chunk_audio(
+                client, chunk, voice_map, AUDIO_DIR
             )
-            if path:
-                audio_paths.append(path)
+            if result:
+                en_path, ar_path = result
+                en_seg = AudioSegment.from_file(str(en_path), format="mp3")
+                ar_seg = AudioSegment.from_file(str(ar_path), format="mp3")
+                section_audio += en_seg + pause + ar_seg + pause
+                chunk_count += 1
 
-        if not audio_paths:
+        if not chunk_count:
             logger.warning(
                 "No audio generated for section '%s', skipping MP3", tag
             )
             continue
 
-        # Stitch into section MP3
-        combined = stitch_section(audio_paths, pause_ms)
+        # Export section MP3
         mp3_path = run_dir / f"{prefix}.mp3"
-        combined.export(str(mp3_path), format="mp3", bitrate="128k")
+        section_audio.export(str(mp3_path), format="mp3", bitrate="128k")
         logger.info("Exported: %s", mp3_path)
 
     logger.info("Done. %d section(s) processed.", len(sections))

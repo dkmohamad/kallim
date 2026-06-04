@@ -33,7 +33,7 @@ MODEL_ID = 1607392319
 
 
 def build_model() -> genanki.Model:
-    """Build the Anki card model (English -> Arabic with audio)."""
+    """Build the Anki card model with bidirectional templates."""
     import genanki
 
     return genanki.Model(
@@ -56,6 +56,18 @@ def build_model() -> genanki.Model:
                     '{{FrontSide}}<hr id="answer">'
                     '<div class="arabic">{{Arabic}}</div>'
                     "<div>{{ArabicAudio}}</div>"
+                ),
+            },
+            {
+                "name": "Arabic → English",
+                "qfmt": (
+                    '<div class="arabic">{{Arabic}}</div>'
+                    "<div>{{ArabicAudio}}</div>"
+                ),
+                "afmt": (
+                    '{{FrontSide}}<hr id="answer">'
+                    '<div class="english">{{English}}</div>'
+                    "<div>{{EnglishAudio}}</div>"
                 ),
             },
         ],
@@ -139,15 +151,15 @@ def main() -> None:
                 "  Chunk %s: %s / %s",
                 chunk.id, chunk.english[:30], chunk.arabic[:30],
             )
-            audio_path = get_or_generate_chunk_audio(
+            result = get_or_generate_chunk_audio(
                 client, chunk, voice_map, audio_dir
             )
-            if audio_path:
-                # The chunk audio file contains both English and Arabic
-                # stitched together. For Anki we use it on the back side
-                # as a combined recall+confirm audio.
-                ar_sound = f"[sound:{audio_path.name}]"
-                media_files.append(str(audio_path))
+            if result:
+                en_path, ar_path = result
+                en_sound = f"[sound:{en_path.name}]"
+                ar_sound = f"[sound:{ar_path.name}]"
+                media_files.append(str(en_path))
+                media_files.append(str(ar_path))
 
         note = genanki.Note(
             model=model,
