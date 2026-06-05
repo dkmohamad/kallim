@@ -9,6 +9,7 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
+from enum import Enum
 from pathlib import Path
 from typing import NamedTuple
 
@@ -22,6 +23,16 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 AUDIO_DIR = PROJECT_ROOT / "audio"
 OUTPUT_DIR = PROJECT_ROOT / "output"
 CHUNKS_CSV = PROJECT_ROOT / "chunks.csv"
+
+
+class Register(str, Enum):
+    """Arabic register / voice role."""
+
+    ENGLISH = "english"
+    EGYPTIAN = "egyptian"
+    MSA = "msa"
+    IRAQI = "iraqi"
+    SECONDARY = "secondary"  # second voice for dialogues
 
 
 class Chunk(NamedTuple):
@@ -66,28 +77,37 @@ def load_chunks(path: Path) -> list[Chunk]:
         return [Chunk(*row) for row in reader]
 
 
-def load_voice_map() -> dict[str, str]:
-    """Build register -> voice ID mapping from environment variables.
+VOICES_JSON = PROJECT_ROOT / "voices.json"
+
+# Registers required by the generate/anki pipelines.
+_REQUIRED_VOICES = {Register.ENGLISH, Register.EGYPTIAN, Register.MSA, Register.IRAQI}
+
+
+def load_voice_map(require: set[Register] | None = None) -> dict[str, str]:
+    """Load register -> voice ID mapping from voices.json.
+
+    Args:
+        require: Set of registers that must be present.  Defaults to the
+                 four TTS registers (english, egyptian, msa, iraqi).
 
     Returns:
-        Mapping of register name to ElevenLabs voice ID.
+        Mapping of register value string to ElevenLabs voice ID.
 
     Raises:
-        SystemExit: If any required voice variables are missing.
+        SystemExit: If voices.json is missing or required keys are absent.
     """
-    voice_map: dict[str, str] = {}
-    missing: list[str] = []
+    if not VOICES_JSON.exists():
+        sys.exit(f"Error: {VOICES_JSON} not found. See voices.json.example.")
 
-    for register in ("english", "egyptian", "msa", "iraqi"):
-        var = f"ELEVENLABS_VOICE_{register.upper()}"
-        value = os.environ.get(var, "")
-        if value:
-            voice_map[register] = value
-        else:
-            missing.append(var)
+    import json as _json
 
+    with VOICES_JSON.open(encoding="utf-8") as f:
+        voice_map: dict[str, str] = _json.load(f)
+
+    needed = {r.value for r in (require if require is not None else _REQUIRED_VOICES)}
+    missing = needed - voice_map.keys()
     if missing:
-        sys.exit(f"Error: missing voice env vars: {', '.join(missing)}")
+        sys.exit(f"Error: missing voices in {VOICES_JSON}: {', '.join(sorted(missing))}")
 
     return voice_map
 

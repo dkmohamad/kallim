@@ -147,17 +147,30 @@ Anki owns scheduling state. You can re-export and re-import safely at any time.
 
 ## Configuration
 
-`.env` file:
+API keys live in `.env` (gitignored):
 
 ```
 ANTHROPIC_API_KEY=...
 ELEVENLABS_API_KEY=...
-ELEVENLABS_VOICE_ENGLISH=...
-ELEVENLABS_VOICE_EGYPTIAN=...
-ELEVENLABS_VOICE_MSA=...
-ELEVENLABS_VOICE_IRAQI=...
-ELEVENLABS_VOICE_B=...          # voice ID for speaker B in scenes
 ```
+
+Voice IDs live in `voices.json` (committed):
+
+```json
+{
+  "english": "...",
+  "egyptian": "...",
+  "msa": "...",
+  "iraqi": "...",
+  "secondary": "..."
+}
+```
+
+- `english`, `egyptian`, `msa`, `iraqi` — per-register TTS voices for
+  shadowing audio and Anki decks.
+- `secondary` — second speaker voice for scene dialogues.
+
+Run `kallim voices` to list available ElevenLabs voice IDs.
 
 ## Claude Code skills
 

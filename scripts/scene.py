@@ -11,6 +11,7 @@ import json
 import logging
 import os
 import sys
+from collections import Counter
 from pathlib import Path
 
 import anthropic
@@ -23,7 +24,9 @@ from scripts.generate import (
     AUDIO_DIR,
     CHUNKS_CSV,
     Chunk,
+    Register,
     load_chunks,
+    load_voice_map,
     make_run_dir,
     normalize_audio,
     setup_logging,
@@ -231,8 +234,9 @@ def mix_scene(dialogue_bytes: bytes, ambient_path: Path) -> AudioSegment:
         ambient = ambient * repeats
     ambient = ambient[: len(dialogue)]
 
-    # Lower ambient volume relative to dialogue
-    ambient = ambient - 25
+    # Set ambient to 20 dB below the dialogue level
+    target_ambient_dbfs = dialogue.dBFS - 20
+    ambient = ambient.apply_gain(target_ambient_dbfs - ambient.dBFS)
 
     mixed = dialogue.overlay(ambient)
     return normalize_audio(mixed, target_dbfs=-20.0)
@@ -297,13 +301,12 @@ def main(
         sys.exit("Error: ELEVENLABS_API_KEY not set. Check your .env file.")
     el_client = ElevenLabs(api_key=el_key)
 
-    voice_a = os.environ.get("ELEVENLABS_VOICE_MSA", "")
-    if not voice_a:
-        sys.exit("Error: ELEVENLABS_VOICE_MSA not set. Check your .env file.")
-
-    voice_b = os.environ.get("ELEVENLABS_VOICE_B", "")
-    if not voice_b:
-        sys.exit("Error: ELEVENLABS_VOICE_B not set. Check your .env file.")
+    required = {Register.EGYPTIAN, Register.MSA, Register.IRAQI, Register.SECONDARY}
+    voice_map = load_voice_map(require=required)
+    dominant_register = Counter(c.register for c in section_chunks).most_common(1)[0][0]
+    voice_a = voice_map[dominant_register]
+    voice_b = voice_map[Register.SECONDARY.value]
+    logger.info("Speaker A voice: %s register", dominant_register)
 
     dialogue_bytes = generate_dialogue_audio(el_client, script_lines, voice_a, voice_b)
 
