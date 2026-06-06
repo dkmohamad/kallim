@@ -9,7 +9,7 @@ import logging
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime
 from enum import Enum
 from pathlib import Path
 from typing import NamedTuple
@@ -48,7 +48,7 @@ class Chunk(NamedTuple):
 
 def make_run_dir() -> Path:
     """Create a timestamped run directory under output/."""
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    stamp = datetime.now().astimezone().strftime("%Y%m%d_%H%M%S")
     run_dir = OUTPUT_DIR / stamp
     run_dir.mkdir(parents=True, exist_ok=True)
     return run_dir
@@ -242,15 +242,18 @@ def main() -> None:
     if not chunks:
         sys.exit("Error: no chunks found in CSV")
 
-    # Group by concept_tag
-    sections: dict[str, list[Chunk]] = {}
+    # Group by (concept_tag, register) so different registers get separate MP3s
+    sections: dict[tuple[str, str], list[Chunk]] = {}
     for chunk in chunks:
-        sections.setdefault(chunk.concept_tag, []).append(chunk)
+        sections.setdefault((chunk.concept_tag, chunk.register), []).append(chunk)
 
     if args.section:
-        if args.section not in sections:
+        filtered = {
+            k: v for k, v in sections.items() if k[0] == args.section
+        }
+        if not filtered:
             sys.exit(f"Error: section '{args.section}' not found")
-        sections = {args.section: sections[args.section]}
+        sections = filtered
 
     # Create directories
     AUDIO_DIR.mkdir(exist_ok=True)
@@ -259,15 +262,16 @@ def main() -> None:
 
     pause_ms = int(args.pause * 1000)
 
-    for idx, (tag, tag_chunks) in enumerate(sections.items(), 1):
-        prefix = f"{idx:02d}_{tag}"
+    for idx, ((tag, register), tag_chunks) in enumerate(sections.items(), 1):
+        prefix = f"{idx:02d}_{tag}_{register}"
+        section_label = f"{tag} ({register})"
         logger.info(
-            "Processing section: %s (%d chunks)", tag, len(tag_chunks)
+            "Processing section: %s (%d chunks)", section_label, len(tag_chunks)
         )
 
         # Always write transcript
         write_transcript(
-            run_dir / f"{prefix}.txt", tag, tag_chunks
+            run_dir / f"{prefix}.txt", section_label, tag_chunks
         )
 
         # Generate per-chunk audio (cached by id) and stitch into section
@@ -291,7 +295,7 @@ def main() -> None:
 
         if not chunk_count:
             logger.warning(
-                "No audio generated for section '%s', skipping MP3", tag
+                "No audio generated for section '%s', skipping MP3", section_label
             )
             continue
 

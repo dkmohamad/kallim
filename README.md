@@ -145,6 +145,16 @@ Anki owns scheduling state. You can re-export and re-import safely at any time.
 - **No duplicates** — Anki deduplicates by note ID, which is deterministic.
 - **Tags** are updated to match the current `concept_tag` values.
 
+## Troubleshooting
+
+### Duplicate or orphaned tags in AnkiDroid
+
+If you see tags appearing both as a flat list and as a nested tree (e.g. `cafe`
+and `topic::cafe`), stale tags from a previous import need clearing. From the
+main menu (decks), tap the three-dot menu in the top right and select
+**Check → Check database**. This removes orphaned tags that are no longer
+attached to any notes.
+
 ## Configuration
 
 API keys live in `.env` (gitignored):

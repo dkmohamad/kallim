@@ -27,7 +27,7 @@ logger = logging.getLogger("kallim.anki")
 
 # Fixed IDs so re-runs update existing cards rather than creating duplicates.
 DECK_ID = 2059400110
-MODEL_ID = 1607392319
+MODEL_ID = 1607392320
 
 
 def build_model() -> genanki.Model:
@@ -40,6 +40,7 @@ def build_model() -> genanki.Model:
             {"name": "Arabic"},
             {"name": "EnglishAudio"},
             {"name": "ArabicAudio"},
+            {"name": "Register"},
         ],
         templates=[
             {
@@ -49,7 +50,8 @@ def build_model() -> genanki.Model:
                     "<div>{{EnglishAudio}}</div>"
                 ),
                 "afmt": (
-                    '{{FrontSide}}<hr id="answer">'
+                    '<div class="english">{{English}}</div>'
+                    '<hr id="answer">'
                     '<div class="arabic">{{Arabic}}</div>'
                     "<div>{{ArabicAudio}}</div>"
                 ),
@@ -61,7 +63,8 @@ def build_model() -> genanki.Model:
                     "<div>{{ArabicAudio}}</div>"
                 ),
                 "afmt": (
-                    '{{FrontSide}}<hr id="answer">'
+                    '<div class="arabic">{{Arabic}}</div>'
+                    '<hr id="answer">'
                     '<div class="english">{{English}}</div>'
                     "<div>{{EnglishAudio}}</div>"
                 ),
@@ -155,8 +158,9 @@ def main() -> None:
 
         note = genanki.Note(
             model=model,
-            fields=[chunk.english, chunk.arabic, en_sound, ar_sound],
-            tags=[chunk.concept_tag],
+            fields=[chunk.english, chunk.arabic, en_sound, ar_sound, chunk.register],
+            tags=[f"topic::{chunk.concept_tag}", f"register::{chunk.register}"],
+            guid=genanki.guid_for(chunk.id),
         )
         deck.add_note(note)
         total_cards += 1
