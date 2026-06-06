@@ -18,6 +18,13 @@ kallim = "cli:main"
 py-modules = ["cli"]
 packages = ["scripts"]
 
+[tool.ruff.lint]
+select = ["PLC0415"]
+
+[tool.ruff.lint.per-file-ignores]
+# Allow import inside __main__ guard
+"scripts/scene.py" = ["PLC0415"]
+
 [build-system]
 requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"

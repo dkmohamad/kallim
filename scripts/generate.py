@@ -4,6 +4,7 @@
 import argparse
 import csv
 import io
+import json
 import logging
 import os
 import sys
@@ -99,10 +100,8 @@ def load_voice_map(require: set[Register] | None = None) -> dict[str, str]:
     if not VOICES_JSON.exists():
         sys.exit(f"Error: {VOICES_JSON} not found. See voices.json.example.")
 
-    import json as _json
-
     with VOICES_JSON.open(encoding="utf-8") as f:
-        voice_map: dict[str, str] = _json.load(f)
+        voice_map: dict[str, str] = json.load(f)
 
     needed = {r.value for r in (require if require is not None else _REQUIRED_VOICES)}
     missing = needed - voice_map.keys()

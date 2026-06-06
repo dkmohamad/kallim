@@ -48,6 +48,8 @@ Choose `@dataclass` when you need mutability or custom methods.
 
 - `import x` for packages/modules; `from x import y` for specific symbols
 - Never use relative imports
+- **All imports at module level** — never nest imports inside functions or methods.
+  The only exception is `if __name__ == "__main__":` blocks.
 - Group in order: stdlib, third-party, local — sorted lexicographically within groups
 - Separate groups with a blank line
 

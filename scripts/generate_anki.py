@@ -8,12 +8,10 @@ import logging
 import os
 import sys
 from pathlib import Path
-from typing import TYPE_CHECKING
 
+import genanki
 from dotenv import load_dotenv
-
-if TYPE_CHECKING:
-    import genanki
+from elevenlabs.client import ElevenLabs
 
 from scripts.generate import (
     load_chunks,
@@ -34,8 +32,6 @@ MODEL_ID = 1607392319
 
 def build_model() -> genanki.Model:
     """Build the Anki card model with bidirectional templates."""
-    import genanki
-
     return genanki.Model(
         MODEL_ID,
         "Kallim Arabic",
@@ -110,8 +106,6 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    import genanki
-
     chunks = load_chunks(Path(args.input))
     if not chunks:
         sys.exit("Error: no chunks found in CSV")
@@ -130,8 +124,6 @@ def main() -> None:
         api_key = os.environ.get("ELEVENLABS_API_KEY", "")
         if not api_key:
             sys.exit("Error: ELEVENLABS_API_KEY not set. Check your .env file.")
-
-        from elevenlabs.client import ElevenLabs
 
         client = ElevenLabs(api_key=api_key)
         voice_map = load_voice_map()

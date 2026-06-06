@@ -13,6 +13,7 @@ import sys
 import uuid
 from pathlib import Path
 
+import anthropic
 from dotenv import load_dotenv
 
 from scripts.generate import CHUNKS_CSV, Chunk
@@ -69,8 +70,6 @@ def promote_batch(
 
     Calls the Anthropic API in batches to generate natural Arabic sentences.
     """
-    import anthropic
-
     client = anthropic.Anthropic(api_key=api_key)
     results: list[dict[str, str]] = []
 
