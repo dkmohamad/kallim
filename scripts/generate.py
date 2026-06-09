@@ -59,8 +59,10 @@ class ConceptTag(str, Enum):
     FOOD = "food"
     TRAVEL = "travel"
     PEOPLE = "people"
+    FAMILY = "family"
     EMOTIONS = "emotions"
     LEISURE = "leisure"
+    DAILY_LIFE = "daily_life"
     CULTURE = "culture"
     WORK = "work"
     HEALTH = "health"
@@ -77,8 +79,9 @@ SITUATIONAL_TAGS = frozenset({
 # Tags valid for the MSA / Iraqi topical scheme.
 TOPICAL_TAGS = frozenset({
     ConceptTag.GREETINGS, ConceptTag.FOOD, ConceptTag.TRAVEL,
-    ConceptTag.PEOPLE, ConceptTag.EMOTIONS, ConceptTag.LEISURE,
-    ConceptTag.CULTURE, ConceptTag.WORK, ConceptTag.HEALTH,
+    ConceptTag.PEOPLE, ConceptTag.FAMILY, ConceptTag.EMOTIONS,
+    ConceptTag.LEISURE, ConceptTag.DAILY_LIFE, ConceptTag.CULTURE,
+    ConceptTag.WORK, ConceptTag.HEALTH,
 })
 
 # Which tag scheme each register is allowed to draw from.

@@ -100,14 +100,39 @@ id,arabic,english,register,concept_tag
 split into two register-scoped schemes. `greetings` is shared; otherwise a
 tag belongs to one scheme only.
 
-- **Situational** (`egyptian` — travel-phrasebook scenes): `greetings`,
-  `smalltalk`, `dining`, `hotel`, `taxis`, `directions`, `sightseeing`,
-  `beach_and_vendors`, `shopping`, `money`
-- **Topical** (`msa` / `iraqi` — conversation topics): `greetings`, `food`,
-  `travel`, `people`, `emotions`, `leisure`, `culture`, `work`, `health`
-
 Run `kallim lint` to check every row against the taxonomy; it fails on an
 unknown register/tag or a tag used outside its register's scheme.
+
+#### Situational (`egyptian` — travel-phrasebook scenes)
+
+| Tag | Description |
+|---|---|
+| `greetings` | Hellos, goodbyes, and first-contact phrases |
+| `smalltalk` | Light conversation: origins, impressions, compliments |
+| `dining` | Ordering food and drinks, asking about dishes, paying the bill |
+| `hotel` | Check-in/out, room requests, facilities |
+| `taxis` | Hailing, negotiating fares, giving directions to a driver |
+| `directions` | Asking for and giving directions on foot |
+| `sightseeing` | Visiting attractions, booking trips, asking about places |
+| `beach_and_vendors` | Beach vendors, hiring equipment, water safety |
+| `shopping` | Market bargaining, asking about stock, sizes, and prices |
+| `money` | Prices, change, payment |
+
+#### Topical (`msa` / `iraqi` — conversation topics)
+
+| Tag | Description |
+|---|---|
+| `greetings` | Hellos, goodbyes, and first-contact phrases (shared with Situational) |
+| `food` | Specific dishes, ingredients, cooking, eating preferences |
+| `travel` | Trips, transport, navigation, accommodation |
+| `people` | Describing or talking about other people; social interactions |
+| `family` | Immediate and extended family; family relationships and gatherings |
+| `emotions` | Feelings, reactions, opinions, agreement and disagreement |
+| `leisure` | Hobbies, sports, nature, free time, weather as backdrop |
+| `daily_life` | Everyday routines: waking, meals, commuting, habits |
+| `culture` | Religion, traditions, language learning, cultural observations |
+| `work` | Jobs, meetings, projects, professional life |
+| `health` | Fitness, diet, illness, medical appointments |
 
 ## Adding vocabulary
 
