@@ -33,7 +33,6 @@ class Register(str, Enum):
     EGYPTIAN = "egyptian"
     MSA = "msa"
     IRAQI = "iraqi"
-    SECONDARY = "secondary"  # second voice for dialogues
 
 
 class ConceptTag(str, Enum):
@@ -44,7 +43,7 @@ class ConceptTag(str, Enum):
     use abstract conversation topics. ``greetings`` is shared by both.
     """
 
-    # Situational (Egyptian travel-phrasebook scenes)
+    # Situational (Egyptian travel-phrasebook situations)
     GREETINGS = "greetings"
     SMALLTALK = "smalltalk"
     DINING = "dining"

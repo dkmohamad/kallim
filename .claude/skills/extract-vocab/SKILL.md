@@ -69,7 +69,7 @@ For each extracted item, determine:
 register. `greetings` is shared by both. (Source of truth: `ConceptTag` in
 `scripts/generate.py`; validate with `kallim lint`.)
 
-*Situational — for `egyptian` (travel-phrasebook scenes):*
+*Situational — for `egyptian` (travel-phrasebook situations):*
 
 | Tag | Covers |
 |-----|--------|

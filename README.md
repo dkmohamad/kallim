@@ -10,8 +10,6 @@ decks, and transcripts from a structured vocabulary bank (`chunks.csv`).
 - **Anki decks** — Flashcards with audio. English on front, Arabic on back.
 - **Multi-register** — Supports Egyptian, MSA, and Iraqi Arabic with separate
   ElevenLabs voices per register.
-- **Immersive scenes** — Arranges a section's vocab into a natural dialogue,
-  generates conversational audio with ambient background (restaurant, cafe, etc.).
 
 ## Prerequisites
 
@@ -46,15 +44,6 @@ kallim anki
 # Text-only Anki cards (no API calls)
 kallim anki --no-audio
 
-# Generate an immersive dialogue scene
-kallim scene --section food --setting restaurant
-
-# Monologue instead of dialogue
-kallim scene --section travel --setting airport --monologue
-
-# Use a custom ambient audio file
-kallim scene --section dining --setting cafe --ambient-file my_cafe.mp3
-
 # Validate chunks.csv against the concept_tag taxonomy
 kallim lint
 
@@ -74,16 +63,12 @@ output/
     ├── 01_greetings.txt
     ├── 02_smalltalk.mp3
     ├── 02_smalltalk.txt
-    ├── scene_food_restaurant.mp3     # scene: dialogue + ambient mix
-    ├── scene_food_restaurant.json    # generated script (editable)
-    ├── scene_food_restaurant.txt     # human-readable transcript
     ├── kallim_arabic.apkg
     └── generate.log
 ```
 
-Per-chunk audio is cached separately in `audio/` (keyed by chunk ID). Ambient
-audio for scenes is cached in `audio/scenes/`. If a cache file is missing it
-gets regenerated on the next run.
+Per-chunk audio is cached separately in `audio/` (keyed by chunk ID). If a cache
+file is missing it gets regenerated on the next run.
 
 ## Data model
 
@@ -103,7 +88,7 @@ tag belongs to one scheme only.
 Run `kallim lint` to check every row against the taxonomy; it fails on an
 unknown register/tag or a tag used outside its register's scheme.
 
-#### Situational (`egyptian` — travel-phrasebook scenes)
+#### Situational (`egyptian` — travel-phrasebook situations)
 
 | Tag | Description |
 |---|---|
@@ -216,14 +201,12 @@ Voice IDs live in `voices.json` (committed):
   "english": "...",
   "egyptian": "...",
   "msa": "...",
-  "iraqi": "...",
-  "secondary": "..."
+  "iraqi": "..."
 }
 ```
 
 - `english`, `egyptian`, `msa`, `iraqi` — per-register TTS voices for
   shadowing audio and Anki decks.
-- `secondary` — second speaker voice for scene dialogues.
 
 Run `kallim voices` to list available ElevenLabs voice IDs.
 

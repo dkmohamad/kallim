@@ -4,6 +4,12 @@
 import argparse
 import sys
 
+from scripts.generate import main as generate_main
+from scripts.generate_anki import main as anki_main
+from scripts.lint import main as lint_main
+from scripts.migrate import main as migrate_main
+from scripts.promote import main as promote_main
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -68,27 +74,6 @@ def main() -> None:
         help="Path to vocab file (CSV or plain text). Defaults to vocab_pairs.csv.",
     )
 
-    # --- scene ---
-    scene = sub.add_parser(
-        "scene", help="Generate immersive audio scene from a section's chunks"
-    )
-    scene.add_argument(
-        "--section", "-s", required=True,
-        help="concept_tag to build the scene from",
-    )
-    scene.add_argument(
-        "--setting", required=True,
-        help="Scene setting (e.g. restaurant, cafe, market) — used for ambient audio",
-    )
-    scene.add_argument(
-        "--monologue", action="store_true",
-        help="Generate a monologue (single speaker) instead of a dialogue",
-    )
-    scene.add_argument(
-        "--ambient-file",
-        help="Path to a custom ambient audio file instead of generating one",
-    )
-
     # --- voices ---
     sub.add_parser(
         "voices", help="List available ElevenLabs voices"
@@ -110,7 +95,6 @@ def main() -> None:
         sys.exit(1)
 
     if args.command == "generate":
-        from scripts.generate import main as generate_main
         # Rebuild sys.argv for the subcommand
         sys.argv = _rebuild_argv("generate", args, [
             "input", "output", "section", "list_voices", "pause",
@@ -118,36 +102,22 @@ def main() -> None:
         generate_main()
 
     elif args.command == "anki":
-        from scripts.generate_anki import main as anki_main
         sys.argv = _rebuild_argv("anki", args, [
             "input", "output", "section", "no_audio",
         ])
         anki_main()
 
     elif args.command == "migrate":
-        from scripts.migrate import main as migrate_main
         migrate_main()
 
     elif args.command == "promote":
-        from scripts.promote import main as promote_main
         promote_main(getattr(args, "input_file", None))
 
-    elif args.command == "scene":
-        from scripts.scene import main as scene_main
-        scene_main(
-            section=args.section,
-            setting=args.setting,
-            monologue=args.monologue,
-            ambient_file=args.ambient_file,
-        )
-
     elif args.command == "voices":
-        from scripts.generate import main as generate_main
         sys.argv = ["voices", "--list-voices"]
         generate_main()
 
     elif args.command == "lint":
-        from scripts.lint import main as lint_main
         sys.argv = ["lint"] + ([args.input] if args.input else [])
         lint_main()
 

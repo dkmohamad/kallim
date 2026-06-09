@@ -22,52 +22,39 @@ of truth for *generation*, not for *pruning what already exists*:
 Net: the *deciding* is the work; the *deletion* has a tail (Anki + audio) that
 won't clean itself up.
 
-## 1. Reclassify, re-tag, and thin the chunk set  _(in progress)_
+## 1. Reclassify, re-tag, and thin the chunk set  _(done)_
 
 Goal: keep only chunks **I would actually say**, and make the `concept_tag`
 taxonomy clear and well-documented.
 
-**Effort/risk:** mostly trivial code, but heavy on *human review* — that's the real
-cost. Lint gates correctness; the gotchas above are the only real traps.
+- [x] **Thin `chunks.csv`** — reviewed and dropped chunks I wouldn't actually say
+  (Anki + audio orphan gotchas above apply to any future removals).
+- [x] **Re-tag** chunks to the right `concept_tag` — MSA/Egyptian passes completed,
+  reviewed, and lint-validated.
+- [x] **Document each tag with a description in `README.md`** — every tag now has a
+  one-line description, split per register-scheme (Situational / Topical).
+- [x] **Add missing tags** — added `family` and `daily_life` to the `ConceptTag`
+  enum, tag-scheme sets, and README.
+- [x] **Validate** — `kallim lint` reports 0 problems (655 chunks).
 
-- [ ] **Thin `chunks.csv`** — review every chunk, drop ones I wouldn't actually
-  say. **This is hours of content review, not an engineering task** — judgment per
-  phrase, ~667 rows. Deletion is one line; deciding is the job. Mind both gotchas
-  above (Anki + audio orphans) for every row removed.
-- [ ] **Re-tag** chunks to the right `concept_tag` — easy mechanically (one CSV
-  cell), tedious by hand (judgment per row). First batch of MSA rows retagged,
-  reviewed, lint-validated, and committed; more passes to come as thinning proceeds.
-- [ ] **Document each tag with a description in `README.md`** — _trivial, ~30 min._
-  The "Concept tags" section (README.md:97–112) currently lists tags as bare
-  comma-separated names. Rework so every tag has a one-line description, kept per
-  register-scheme (Situational / Topical).
-- [ ] **Add missing tags** — _easy._ Candidates: `about_me`, `daily_life` (review
-  for other gaps). Only real decision is which scheme/register each belongs to.
-  Adding a tag means updating the **source of truth**, then mirroring to README:
-  - `ConceptTag` enum in `scripts/generate.py` (~line 39)
-  - `SITUATIONAL_TAGS` / `TOPICAL_TAGS` + `ALLOWED_TAGS_BY_REGISTER` (~line 69)
-  - the README tag list + description
-- [ ] **Validate** — run `kallim lint` (`.venv/bin/python cli.py lint`) after any
-  taxonomy/CSV change; must report 0 problems.
+## 2a. Remove the synthetic scene pipeline  _(done)_
 
-## 2a. Remove the synthetic scene pipeline  _(do now — safe, self-contained)_
+The generated scene conversations sounded a bit off / unnatural, so the synthetic
+pipeline was removed outright. `generate` / `anki` / `lint` were untouched.
 
-The generated scene conversations sound a bit off / unnatural. Safest move is to
-remove the synthetic pipeline outright.
-
-**Effort/risk:** **low, ~30–60 min.** `scene.py` is self-contained — nothing
-imports it except a lazy `from scripts.scene import main` in `cli.py`.
-`generate` / `anki` / `lint` are untouched by its removal.
-
-- [ ] delete `scripts/scene.py` (347 lines — the whole generator)
-- [ ] remove the `scene` subcommand from `cli.py` (parser ~71–87, dispatch ~135–137)
-- [ ] strip scene references from `README.md` — feature bullet (line 13), usage
-  examples (49–56), output-file listing (77–79), cache note (line 85), the
-  `secondary` voice note (line 201)
-- [ ] delete the `audio/scenes/` cache (~3.7M)
-- [ ] if `secondary` voice is then unused, remove it from `voices.json`
-- [ ] sweep `pyproject.toml` and `.claude/skills/extract-vocab/SKILL.md` for stray
-  scene references
+- [x] delete `scripts/scene.py`
+- [x] remove the `scene` subcommand from `cli.py` (parser + dispatch)
+- [x] strip scene references from `README.md` (feature bullet, usage examples,
+  output-file listing, cache note, `secondary` voice note)
+- [x] delete the `audio/scenes/` cache
+- [x] remove the now-unused `secondary` voice from `voices.json` /
+  `voices.json.example`, and `Register.SECONDARY` from `generate.py`
+- [x] hoist `cli.py`'s lazy subcommand imports to module top-level (cleared a
+  pre-existing `PLC0415` ruff failure) and dropped the now-needless per-file-ignore
+  from `pyproject.toml`; the `PLC0415` rule now enforces top-level imports project-wide
+- [x] reword the three descriptive "travel-phrasebook scenes" mentions
+  (`generate.py`, `README.md`, `SKILL.md`) → "situations", since they describe the
+  Egyptian situational register, not the deleted pipeline, and "scenes" is now ambiguous
 
 ## 2b. Authentic-chunk ingestion  _(design first — this is the hard part)_
 
