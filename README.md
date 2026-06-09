@@ -35,7 +35,7 @@ cp .env.example .env
 kallim generate
 
 # Single section only
-kallim generate --section cafe
+kallim generate --section dining
 
 # Custom pause duration (seconds, applied uniformly)
 kallim generate --pause 3.0
@@ -53,7 +53,10 @@ kallim scene --section food --setting restaurant
 kallim scene --section travel --setting airport --monologue
 
 # Use a custom ambient audio file
-kallim scene --section cafe --setting cafe --ambient-file my_cafe.mp3
+kallim scene --section dining --setting cafe --ambient-file my_cafe.mp3
+
+# Validate chunks.csv against the concept_tag taxonomy
+kallim lint
 
 # List available ElevenLabs voices
 kallim voices
@@ -91,6 +94,21 @@ id,arabic,english,register,concept_tag
 0dc7e80b,السلام عليكم,Hello / Peace be upon you,egyptian,greetings
 ```
 
+### Concept tags
+
+`concept_tag` is drawn from the `ConceptTag` taxonomy (`scripts/generate.py`),
+split into two register-scoped schemes. `greetings` is shared; otherwise a
+tag belongs to one scheme only.
+
+- **Situational** (`egyptian` — travel-phrasebook scenes): `greetings`,
+  `smalltalk`, `dining`, `hotel`, `taxis`, `directions`, `sightseeing`,
+  `beach_and_vendors`, `shopping`, `money`
+- **Topical** (`msa` / `iraqi` — conversation topics): `greetings`, `food`,
+  `travel`, `people`, `emotions`, `leisure`, `culture`, `work`, `health`
+
+Run `kallim lint` to check every row against the taxonomy; it fails on an
+unknown register/tag or a tag used outside its register's scheme.
+
 ## Adding vocabulary
 
 The vocab pipeline turns raw input (teacher chats, lesson notes) into
@@ -109,13 +127,15 @@ structured phrase pairs in `chunks.csv`:
    Phrase-length entries pass through unchanged.
 3. **Review** — open `vocab_chunks_review.csv` and edit/delete as needed.
 4. **Append** — copy approved rows into `chunks.csv`.
-5. **Generate** — run `kallim generate` / `kallim anki` to produce audio and
+5. **Validate** — run `kallim lint` to check tags against the taxonomy.
+6. **Generate** — run `kallim generate` / `kallim anki` to produce audio and
    flashcards.
 
 ```bash
 # Full pipeline example
 kallim promote                     # writes vocab_chunks_review.csv
 # ... review the file, then append to chunks.csv ...
+kallim lint                        # validate concept_tags
 kallim anki                        # generate Anki deck
 ```
 

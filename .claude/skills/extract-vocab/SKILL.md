@@ -63,24 +63,42 @@ For each extracted item, determine:
 | `arabic` | The Arabic text, cleaned of stray punctuation or formatting artifacts |
 | `english` | English translation — take from the source if present, otherwise translate it yourself |
 | `register` | `msa`, `egyptian`, or `iraqi` — infer from dialect markers, context, or explicit labels in the source |
-| `concept_tag` | One of the tags below, based on meaning |
+| `concept_tag` | One of the tags below, based on meaning **and** register |
 
-**Concept tag taxonomy:**
+**Concept tag taxonomy.** There are two schemes — pick from the one matching the
+register. `greetings` is shared by both. (Source of truth: `ConceptTag` in
+`scripts/generate.py`; validate with `kallim lint`.)
+
+*Situational — for `egyptian` (travel-phrasebook scenes):*
 
 | Tag | Covers |
 |-----|--------|
-| `food` | diet, cooking, ingredients, meals, restaurants |
+| `greetings` | hello, goodbye, pleasantries |
+| `smalltalk` | casual chit-chat, "first time here?", traffic |
+| `dining` | cafe/restaurant: ordering, menus, the bill |
+| `hotel` | check-in, rooms, hotel amenities |
+| `taxis` | hailing/agreeing rides, fares |
+| `directions` | "walk from here", finding places |
+| `sightseeing` | landmarks, mosques, tours, excursions, boat trips |
+| `beach_and_vendors` | beach, sellers, hawkers |
+| `shopping` | shops, markets, haggling, "too expensive", "best price?" |
+| `money` | prices, change, paying amounts |
+
+*Topical — for `msa` / `iraqi` (conversation topics):*
+
+| Tag | Covers |
+|-----|--------|
+| `greetings` | hello, goodbye, pleasantries |
+| `food` | diet, cooking, ingredients, meals, cafes/drinks |
 | `travel` | transport, directions, sightseeing |
 | `people` | family, society, relationships, community |
 | `emotions` | feelings, dreams, personality traits |
 | `leisure` | nature, parks, daily life, weather, hobbies |
-| `greetings` | hello, goodbye, pleasantries |
-| `cafe` | ordering drinks/food, cafe dialogue |
 | `culture` | religion, traditions, proverbs, reading |
 | `health` | health system, body, exercise |
 | `work` | business, career, pressure |
 
-If no tag fits well, pick the closest match.
+If no tag fits well, pick the closest match within the register's scheme.
 
 ### 5. Deduplicate
 

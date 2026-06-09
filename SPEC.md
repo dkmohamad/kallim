@@ -52,7 +52,7 @@ Flat CSV (`chunks.csv`). One chunk per row. Columns:
 | `arabic`       | string   | The chunk, full tashkeel for MSA, natural form for dialect.   |
 | `english`      | string   | Gloss / translation.                                         |
 | `register`     | enum     | `msa` / `egyptian` / `iraqi`                                 |
-| `concept_tag`  | string   | Thematic grouping (e.g. `food`, `travel`, `greetings`).      |
+| `concept_tag`  | enum     | Thematic grouping from the `ConceptTag` taxonomy (`scripts/generate.py`). Two schemes: Egyptian uses *situational* tags (`dining`, `hotel`, `taxis`, `sightseeing`, `money`, …), MSA/Iraqi use *topical* tags (`food`, `travel`, `people`, `emotions`, …); `greetings` is shared. Run `kallim lint` to validate. |
 
 ### Example
 
@@ -201,17 +201,20 @@ Unified entrypoint: `kallim` (installed via `pip install -e .`).
 ```bash
 # Generate shadowing audio
 kallim generate
-kallim generate --section cafe
+kallim generate --section dining
 kallim generate --pause 3.0
 
 # Generate Anki deck
 kallim anki
 kallim anki --no-audio
-kallim anki --section cafe
+kallim anki --section dining
 
 # Promote vocab words into chunks (generates example sentences via Claude)
 kallim promote
 kallim promote vocab.txt
+
+# Validate chunks.csv against the concept_tag taxonomy
+kallim lint
 
 # List ElevenLabs voices
 kallim voices

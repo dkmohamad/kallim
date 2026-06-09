@@ -13,26 +13,26 @@ you're passing through without inspecting).
 # Yes
 from typing import NamedTuple
 
-class Chunk(NamedTuple):
-    id: str
-    arabic: str
-    english: str
+class Point(NamedTuple):
+    x: int
+    y: int
 
 # Yes
 from dataclasses import dataclass
 
-@dataclass
-class Chunk:
-    id: str
-    arabic: str
-    english: str
+@dataclass(frozen=True)
+class Point:
+    x: int
+    y: int
 
 # No
-chunk = {"id": "abc", "arabic": "...", "english": "..."}
+point = {"x": 1, "y": 2}
 ```
 
-Choose `NamedTuple` when the object is immutable and read-only.
-Choose `@dataclass` when you need mutability or custom methods.
+Use `NamedTuple` only for a plain immutable, read-only record with no methods.
+Once the type grows methods or validation, prefer `@dataclass(frozen=True)`: it
+stays immutable while giving behaviour a clear home. Use a mutable `@dataclass`
+only when you genuinely need to reassign fields.
 
 ## Naming
 
@@ -67,17 +67,17 @@ Choose `@dataclass` when you need mutability or custom methods.
 Google-style docstrings with `"""triple double quotes"""`.
 
 ```python
-def load_chunks(path: Path) -> list[Chunk]:
-    """Load chunks from a CSV file.
+def load_records(path: Path) -> list[Record]:
+    """Load records from a CSV file.
 
     Args:
-        path: Path to the chunks CSV file.
+        path: Path to the CSV file.
 
     Returns:
-        List of Chunk objects, one per CSV row.
+        List of Record objects, one per row.
 
     Raises:
-        FileNotFoundError: If the CSV file does not exist.
+        FileNotFoundError: If the file does not exist.
     """
 ```
 
@@ -94,10 +94,29 @@ def load_chunks(path: Path) -> list[Chunk]:
 
 ## Error handling
 
+- Prefer EAFP (try/except) over LBYL (check-then-act): attempt the operation
+  and handle the exception, rather than testing preconditions up front.
 - Use built-in exceptions: `ValueError`, `TypeError`, `FileNotFoundError`, etc.
+- Validate in the constructor (`__post_init__` for dataclasses) and raise, so
+  an object cannot exist in an invalid state — don't return sentinel values.
+- Use `raise ... from None` to suppress an irrelevant chained exception.
 - Never bare `except:`. Never catch generic `Exception` unless re-raising.
 - Minimise code in `try` blocks.
 - Use `with` statements for files, sockets, and any resource that needs cleanup.
+
+```python
+# Yes (EAFP)
+try:
+    value = mapping[key]
+except KeyError:
+    value = default
+
+# No (LBYL)
+if key in mapping:
+    value = mapping[key]
+else:
+    value = default
+```
 
 ## Strings
 

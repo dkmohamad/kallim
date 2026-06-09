@@ -41,7 +41,7 @@ def load_existing_arabic(chunks_path: Path) -> set[str]:
         reader = csv.reader(f)
         next(reader)  # skip header
         for row in reader:
-            chunk = Chunk(*row)
+            chunk = Chunk.from_row(row)
             existing.add(chunk.arabic)
     return existing
 

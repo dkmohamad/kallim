@@ -94,6 +94,15 @@ def main() -> None:
         "voices", help="List available ElevenLabs voices"
     )
 
+    # --- lint ---
+    lint = sub.add_parser(
+        "lint", help="Validate chunks.csv against the canonical taxonomy"
+    )
+    lint.add_argument(
+        "input", nargs="?",
+        help="Path to chunks CSV file. Defaults to chunks.csv.",
+    )
+
     args = parser.parse_args()
 
     if not args.command:
@@ -136,6 +145,11 @@ def main() -> None:
         from scripts.generate import main as generate_main
         sys.argv = ["voices", "--list-voices"]
         generate_main()
+
+    elif args.command == "lint":
+        from scripts.lint import main as lint_main
+        sys.argv = ["lint"] + ([args.input] if args.input else [])
+        lint_main()
 
 
 def _rebuild_argv(

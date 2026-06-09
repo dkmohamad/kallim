@@ -9,10 +9,10 @@ import logging
 import os
 import sys
 import time
+from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
-from typing import NamedTuple
 
 from dotenv import load_dotenv
 from elevenlabs.client import ElevenLabs
@@ -36,14 +36,107 @@ class Register(str, Enum):
     SECONDARY = "secondary"  # second voice for dialogues
 
 
-class Chunk(NamedTuple):
-    """A single phrase pair from chunks.csv."""
+class ConceptTag(str, Enum):
+    """Canonical concept_tag values — the source of truth for chunks.csv.
+
+    Two co-existing schemes (see ``SITUATIONAL_TAGS`` / ``TOPICAL_TAGS``):
+    Egyptian chunks use situational travel-phrasebook tags; MSA/Iraqi chunks
+    use abstract conversation topics. ``greetings`` is shared by both.
+    """
+
+    # Situational (Egyptian travel-phrasebook scenes)
+    GREETINGS = "greetings"
+    SMALLTALK = "smalltalk"
+    DINING = "dining"
+    HOTEL = "hotel"
+    TAXIS = "taxis"
+    DIRECTIONS = "directions"
+    SIGHTSEEING = "sightseeing"
+    BEACH_AND_VENDORS = "beach_and_vendors"
+    SHOPPING = "shopping"
+    MONEY = "money"
+    # Topical (MSA / Iraqi conversation topics)
+    FOOD = "food"
+    TRAVEL = "travel"
+    PEOPLE = "people"
+    EMOTIONS = "emotions"
+    LEISURE = "leisure"
+    CULTURE = "culture"
+    WORK = "work"
+    HEALTH = "health"
+
+
+# Tags valid for the Egyptian situational scheme.
+SITUATIONAL_TAGS = frozenset({
+    ConceptTag.GREETINGS, ConceptTag.SMALLTALK, ConceptTag.DINING,
+    ConceptTag.HOTEL, ConceptTag.TAXIS, ConceptTag.DIRECTIONS,
+    ConceptTag.SIGHTSEEING, ConceptTag.BEACH_AND_VENDORS,
+    ConceptTag.SHOPPING, ConceptTag.MONEY,
+})
+
+# Tags valid for the MSA / Iraqi topical scheme.
+TOPICAL_TAGS = frozenset({
+    ConceptTag.GREETINGS, ConceptTag.FOOD, ConceptTag.TRAVEL,
+    ConceptTag.PEOPLE, ConceptTag.EMOTIONS, ConceptTag.LEISURE,
+    ConceptTag.CULTURE, ConceptTag.WORK, ConceptTag.HEALTH,
+})
+
+# Which tag scheme each register is allowed to draw from.
+ALLOWED_TAGS_BY_REGISTER = {
+    Register.EGYPTIAN: SITUATIONAL_TAGS,
+    Register.MSA: TOPICAL_TAGS,
+    Register.IRAQI: TOPICAL_TAGS,
+}
+
+
+@dataclass(frozen=True, slots=True)
+class Chunk:
+    """A single phrase pair from chunks.csv.
+
+    Validates its register and concept_tag on construction, so a Chunk cannot
+    exist with a register or tag outside the taxonomy (see ConceptTag and
+    ALLOWED_TAGS_BY_REGISTER).
+    """
 
     id: str
     arabic: str
     english: str
     register: str
     concept_tag: str
+
+    def __post_init__(self) -> None:
+        try:
+            register = Register(self.register)
+        except ValueError:
+            raise ValueError(f"unknown register {self.register!r}") from None
+        try:
+            tag = ConceptTag(self.concept_tag)
+        except ValueError:
+            raise ValueError(
+                f"unknown concept_tag {self.concept_tag!r}"
+            ) from None
+        allowed = ALLOWED_TAGS_BY_REGISTER.get(register)
+        if allowed is not None and tag not in allowed:
+            raise ValueError(
+                f"concept_tag {self.concept_tag!r} not allowed for "
+                f"register {self.register!r}"
+            )
+
+    @classmethod
+    def from_row(cls, row: list[str]) -> "Chunk":
+        """Build a Chunk from a raw CSV row.
+
+        Raises:
+            ValueError: If the row has the wrong field count, or its register
+                or concept_tag is outside the taxonomy.
+        """
+        try:
+            return cls(*row)
+        except TypeError:
+            field_count = len(cls.__dataclass_fields__)
+            raise ValueError(
+                f"expected {field_count} fields, got {len(row)}: {row!r}"
+            ) from None
 
 
 def make_run_dir() -> Path:
@@ -75,7 +168,7 @@ def load_chunks(path: Path) -> list[Chunk]:
     with path.open(newline="", encoding="utf-8") as f:
         reader = csv.reader(f)
         next(reader)  # skip header
-        return [Chunk(*row) for row in reader]
+        return [Chunk.from_row(row) for row in reader]
 
 
 VOICES_JSON = PROJECT_ROOT / "voices.json"
