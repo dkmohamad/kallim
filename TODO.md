@@ -18,6 +18,16 @@ of truth for *generation*, not for *pruning what already exists*:
    - _Worth building:_ a small `kallim prune` (or a flag on `lint`) that deletes
      any `audio/{id}_*.mp3` whose `id` no longer appears in `chunks.csv`. Until
      then, orphaned audio just sits there (harmless but messy).
+   - Current count: **126 orphans** (63 thinned chunks × 2 files) vs 655 live
+     chunks × 2 = 1310 expected (1436 total in `audio/`).
+3. **The audio cache is content-blind — edited chunks serve STALE audio.** The
+   cache key is *only* the `id`; `generate` short-circuits when both
+   `{id}_en.mp3`/`{id}_ar.mp3` exist (`generate.py:251`), never checking whether
+   the text changed. IDs are random `uuid4`, not content-derived. So any chunk
+   whose Arabic/English was **edited in place** (e.g. the أقام hotel fix, the
+   female→first-person/male reframes, the third-person→first/second reframes —
+   ~30+ live rows) keeps its **old** audio forever. Pruning orphans does **not**
+   fix this. See §3.
 
 Net: the *deciding* is the work; the *deletion* has a tail (Anki + audio) that
 won't clean itself up.
@@ -80,8 +90,44 @@ authentic audio for deeper understanding.
 - [ ] **Later (optional):** per-chunk audio via ASR + forced alignment, only if the
   whole-file approach proves insufficient.
 
+## 3. Regeneration & output-sync workflow  _(flagged — not started, don't build yet)_
+
+Two related pain points around regenerating and getting audio onto my phone.
+Capturing now; **no work to be done on this yet.**
+
+### 3a. Regenerate only what changed (cache correctness)
+
+Right now there's no clean way to "regenerate the content" after editing chunks:
+
+- **Stale-but-live cache** (gotcha #3 above): edited chunks keep old audio because
+  the cache is keyed by `id` alone, content-blind. The reframed/أقام rows are
+  currently serving stale audio.
+- **Orphans** (gotcha #2): 126 dead files from thinned chunks.
+
+Options considered (pick later):
+- **Full fresh regen** — wipe `audio/` entirely, regenerate all from `chunks.csv`.
+  Simplest, guarantees correctness, highest ElevenLabs cost (~655 × 2 TTS calls).
+- **Content-aware cache + prune** — fold a hash of the chunk's text into the cache
+  key (or a sidecar manifest) so edits auto-invalidate, then prune stale/orphan
+  files and regenerate only what changed. Durable; less recurring cost; more code.
+- **Prune orphans only** — frees space but leaves edited rows stale (insufficient
+  for a true content refresh).
+
+### 3b. Incremental output + Google Drive sync
+
+Current friction: every `kallim generate` writes a **new timestamped `output/`
+directory**, even when only one section changed. I then manually copy the whole
+thing to Google Drive to access recordings/text from my phone.
+
+Wanted (someday):
+- Regenerate **only sections whose chunks changed** (and update the Anki deck only
+  when needed), rather than a full rebuild into a fresh dir each time.
+- **Sync to Google Drive via `rsync`** (or rclone for Drive) so only changed files
+  transfer — no manual full-folder copy.
+
 ## Loose ends right now
 
-- Working tree clean as of down-tools. The hotel-card fix (أقام) is committed
-  (`79c0ff1`); the first batch of MSA `concept_tag` re-tags is lint-validated and
-  committed alongside this TODO. Resume from the checklists above.
+- §1 (reclassify/re-tag/thin) and §2a (remove scene pipeline) are **done and
+  committed** (`fa40600`). Working tree clean.
+- Next up is §2b (authentic-chunk ingestion, design-first) and §3 (regen/sync —
+  flagged only, do not start yet).
