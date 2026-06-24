@@ -654,3 +654,104 @@ f1f5f5bf,القِطارُ يَصِلُ في السّاعَةِ الثّالِث�
 a81ee49c,الطّائِرَةُ تُقْلِعُ بَعْدَ عَشْرِ دَقائِقَ,The plane takes off in ten minutes,msa,travel
 8c1db032,التَّجَوُّلُ في المَدينَةِ القَديمَةِ مُمْتِعٌ,Strolling in the old city is enjoyable,msa,travel
 63e1a9fb,هٰذِهِ جَوْلَةٌ جَميلَةٌ في المَتْحَفِ,This is a nice tour of the museum,msa,travel
+72ffbe03,دي أَوِّل زِيارَة في مَصْر,This is my first visit to Egypt,egyptian,greetings
+32352b0d,بَحِبّ مَصْر,I love Egypt,egyptian,smalltalk
+9d8e755f,الأَكْل حِلْو,The food is tasty,egyptian,smalltalk
+06ce002d,النّاس لَطيفين,The people are nice,egyptian,smalltalk
+6122e839,الجَوّ حَرّ,The weather is hot,egyptian,smalltalk
+216a5525,الأَطْفال مَبْسوطين,The kids are happy,egyptian,smalltalk
+dc443c82,عايْزين نِجْلِس بَرّه,We want to sit outside,egyptian,smalltalk
+f1722c29,خَلاص اتَّفَقْنا,"Okay, we're agreed",egyptian,smalltalk
+37575fcd,عايْزين حاجَة,We want something,egyptian,dining
+b0c2229d,عايْزين ناكُل حاجَة,We want to eat something,egyptian,dining
+01f266f7,عايْزين نِشْتِري مَيَّة,We want to buy water,egyptian,dining
+441013c6,عايِز كوباية,I want a mug (of coffee),egyptian,dining
+de853df8,الفِنْجان ده بِكام؟,How much is this cup?,egyptian,dining
+61ee381f,فيه شاطِئ خاصّ لِلفُنْدُق؟,Is there a private beach for the hotel?,egyptian,hotel
+d3782e6c,فين المَسْبَح؟,Where's the pool?,egyptian,hotel
+276e3b42,عايِز أَسْبَح في المَسْبَح,I want to swim in the pool,egyptian,hotel
+cf9a0759,عايِز مَنْشَفَة,I want a towel,egyptian,beach_and_vendors
+2d7c4d8f,عايِز أَروح الشَّطّ,I want to go to the beach,egyptian,beach_and_vendors
+1aa8da97,يا أَفَنْدَم، فين الشّاطِئ لَوْ سَمَحْت؟,"Sir, where's the beach, please?",egyptian,directions
+b581b522,عايِز أَشوف القِطْعَة دي,I want to see this piece,egyptian,shopping
+0d2db113,القِطْعَة دي بِكام؟,How much is this piece?,egyptian,shopping
+3df754f7,التي-شيرت دي بِكام؟,How much is this T-shirt?,egyptian,shopping
+dc32b6ad,إِدّيني خَصْم لَوْ سَمَحْت,"Give me a discount, please",egyptian,shopping
+f0b7183a,ده آخِر كَلام,That's the final word,egyptian,shopping
+666f3ec6,عايْزين نِشْتِري حاجَة لِلأَوْلاد,We want to buy something for the children,egyptian,shopping
+8aa3cfa9,ما يِنْفَعْش,No deal / it won't work,egyptian,shopping
+da545ab5,أَدّ إيه؟,How much?,egyptian,money
+bd8faf41,خَلّي السِّعْر خَمَسْتاشَر جِنيه,Make the price fifteen pounds,egyptian,money
+5e635ddf,أَدْرُسُ اللُّغَةَ مُنْذُ سَنَتَيْنِ,I have been studying the language for two years,msa,culture
+08686465,أَنا شَخْصٌ بَيْنَ جِنْسِيَّتَيْنِ,I am a person between two nationalities,msa,culture
+bfc8a4d9,وُلِدْتُ في إِنْجِلْتِرا وَأَعيشُ هُنا، وَوالِدي مِنَ العِراقِ,"I was born in England and live here, and my father is from Iraq",msa,family
+a08eed1a,مُنْذُ الوِلادَةِ عِشْتُ حَياةً إِنْجِليزِيَّةً,Since birth I have lived an English life,msa,culture
+08b7c376,لَيْسَتْ هِوايَةً، إِنَّها واجِبي,It is not a hobby; it is my duty.,msa,emotions
+3f22630e,أُحِبُّ الثَّقافَةَ العَرَبِيَّةَ وَأَحْلُمُ بِالسَّفَرِ,I love Arab culture and dream of travel,msa,culture
+894f7b52,الكَلامُ السَّريعُ سَهْلٌ، تَقولُ فيهِ ما تَشاءُ؛ أَمّا الكِتابَةُ فَأَصْعَبُ,Quick speech is easy — you say what you want; but writing is harder,msa,culture
+cf2c83c5,مُنْذُ الطُّفولَةِ سَمِعْتُ صَوْتَ اللُّغَةِ مِنْ والِدي وَمِنَ الرّاديو,Since childhood I heard the sound of the language from my father and the radio,msa,culture
+374f438d,كانَ والِدي يَسْتَمِعُ إِلى الأَغاني التَّقْليدِيَّةِ وَيُشاهِدُ التِّلْفازَ العَرَبِيَّ,My father used to listen to traditional songs and watch Arabic television,msa,family
+730e12cd,وَمَرَّةً أَعْطاني الهاتِفَ فَسَمِعْتُ جَدَّتي وَلَمْ أَفْهَمْ شَيْئاً,Once he handed me the phone and I heard my grandmother but understood nothing,msa,family
+676a0ee5,كُنْتُ أُريدُ أَنْ أَتَحَدَّثَ مَعَ جَدَّتي وَأَنْ أَفْهَمَ هٰذِهِ اللُّغَةَ,I wanted to talk with my grandmother and understand this language,msa,family
+ca00ddfe,كَبِرْتُ في مَدينَةٍ صَغيرَةٍ تَقْليدِيَّةٍ لَيْسَ فيها أَشْخاصٌ عَرَبٌ,"I grew up in a small, traditional town with no Arab people",msa,culture
+7054c0aa,وَلَمْ نَكُنْ نَتَحَدَّثُ العَرَبِيَّةَ في المَنْزِلِ بِسَبَبِ والِدَتي,We didn't speak Arabic at home because of my mother,msa,family
+e3629892,كانَ هُناكَ نَقْصٌ في الفَهْمِ حَقّاً,There was truly a lack of understanding,msa,emotions
+3d3f84df,أَظُنُّني قَرَّرْتُ أَنْ أَبْقى إِنْجِليزِيّاً,I think I decided to stay English,msa,culture
+f09a56df,كانَ لَدَيَّ فُضولٌ تِجاهَ الثَّقافَةِ وَالدّينِ وَالحَياةِ في الدُّوَلِ العَرَبِيَّةِ,"I had curiosity about the culture, religion, and life in Arab countries",msa,culture
+c6c22c02,كانَ لَدَيَّ أَسْئِلَةٌ كَثيرَةٌ سَأَلْتُها لِوالِدي,I had many questions which I asked my father,msa,family
+663673c6,وَحينَ جِئْتُ كانَ عَلَيَّ أَنْ أَنْدَمِجَ في المُجْتَمَعِ وَأَنْ أَعيشَ حَياةً بِريطانِيَّةً,When I came I had to integrate into society and live a British life,msa,culture
+59981b63,أَنْتِ تَفْهَمينَني جَيِّداً,You understand me well,msa,emotions
+5a94e1b9,الأَطْفالُ يَتَعَلَّمونَ جَيِّداً عِنْدَما تَكونُ الدِّراسَةُ مُمْتِعَةً,Children learn well when study is enjoyable,msa,leisure
+42e8f341,كُلُّ شَخْصٍ يَخْتَلِفُ,Everyone is different,msa,people
+2104193f,إِنْ شاءَ اللهُ نَلْتَقي يَوْمَ الخَميسِ القادِمِ,God willing we'll meet next Thursday,msa,greetings
+aa9be8e3,كُلَّ عامٍ وَأَنْتَ بِخَيْرٍ، وَأَراكَ قَريباً,"May you be well always, and see you soon",msa,greetings
+71209cd0,أَنا الآنَ مَشْغولٌ بِالأَعْمالِ,I'm busy with work now,msa,daily_life
+f4839747,أُساعِدُهُمْ بِقَدْرِ اسْتِطاعَتي,I help them as much as I can,msa,people
+0411943c,حالِيّاً خَطَرَتْ عَلى عَقْلي فِكْرَةٌ,Just now an idea occurred to my mind,msa,emotions
+05765e3c,أَنا أَصْلي عَرَبِيٌّ,My origin is Arab,msa,culture
+ba138369,أَحْياناً أَشْعُرُ أَنَّ الدَّمَ عَرَبِيٌّ,Sometimes I feel the blood is Arab,msa,culture
+b5f91e4b,هٰذا جُزْءٌ مِنّي,This is a part of me,msa,emotions
+4f18071b,أَنْتَ أَبٌ، صَحيحٌ؟,"You are a father, correct?",msa,family
+9e21918a,أَعْتَقِدُ أَنَّ اللُّغَةَ العَرَبِيَّةَ شَيْءٌ مُهِمٌّ جِدّاً لي,I think the Arabic language is something very important to me,msa,culture
+12b0a5b3,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ واجِبٌ عَلَيْكَ وَلَيْسَ هِوايَةً,"Learning Arabic is a duty upon you, not a hobby",msa,culture
+9eeddec3,هَلْ لَدَيْكَ إِخْوَةٌ وَأَخَواتٌ؟,Do you have brothers and sisters?,msa,family
+f912fc72,لَدَيَّ أَخٌ واحِدٌ,I have one brother,msa,family
+c34c0f16,عائِلَتُنا مِنَ الشَّرْقِ الأَوْسَطِ,Our family is from the Middle East,msa,family
+03462bab,نَسينا صِلَتَنا بِأَقارِبِنا في الشَّرْقِ الأَوْسَطِ,We forgot our bond with our relatives in the Middle East,msa,family
+b6fbb434,أَحْياناً أَشْعُرُ أَنَّني ضائِعٌ، أَنا بِلا انْتِماءٍ,"Sometimes I feel that I am lost, that I have no belonging",msa,emotions
+fad8bf36,أَيْنَ أَنْتَمي؟ أَشْعُرُ أَنّي أَنْتَمي إِلَيْهِ,Where do I belong? I feel that I belong to it,msa,emotions
+07217e87,هٰذا الشُّعورُ طَبيعِيٌّ عِنْدَ أَيِّ شَخْصٍ وُلِدَ ابْناً لِثَقافَةٍ أُخْرى,This feeling is natural in anyone born a child of another culture,msa,culture
+2f6eedea,سَأَكونُ رَجُلاً ذا ثَقافَتَيْنِ,I will be a man with two cultures,msa,culture
+21ae532c,أَشْعُرُ أَنَّني أَعيشُ في عالَمَيْنِ مُخْتَلِفَيْنِ,I feel that I live in two different worlds,msa,emotions
+9b08ff75,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ يَحْتاجُ وَقْتاً أَطْوَلَ,Learning Arabic needs a longer time,msa,culture
+d88a943f,اللَّهْجَةُ المِصْرِيَّةُ غَريبَةٌ عَنّي,The Egyptian dialect is strange to me,msa,culture
+8d450652,قَرَأْتُ قِصَّةً عَنْ جُحا مُضْحِكَةً,I read a funny story about Joha,msa,leisure
+809b1104,لا شُكْرَ عَلى الواجِبِ,No thanks are due for a duty,msa,greetings
+38ea457c,أَتَمَنّى لَكَ يَوْماً سَعيداً,I wish you a happy day,msa,greetings
+1c42ced3,إِلى اللِّقاءِ، مَعَ السَّلامَةِ,"Goodbye, take care",msa,greetings
+c3a65f88,كُنْتُ مَريضاً قَليلاً,I was a little sick,msa,health
+04760a89,لا أَعْرِفُ السَّبَبَ — رُبَّما اخْتِلافُ الماءِ أَوِ الطَّعامِ,I don't know the reason — maybe the difference in water or food,msa,health
+a8211558,كُنّا مَرْضى لِفَتْرَةٍ طَويلَةٍ، حَوالَيْ أُسْبوعٍ,"We were sick for a long time, about a week",msa,health
+51833e9f,كُلَّ يَوْمٍ لَحْمٌ مَشْوِيٌّ، خُضْرَواتٌ مَشْوِيَّةٌ، سَلَطَةٌ مِصْرِيَّةٌ، سَمَكٌ,"Every day grilled meat, grilled vegetables, Egyptian salad, fish",msa,food
+730a0e8b,اشْتَرِ مِياهاً مَعْدِنِيَّةً غالِيَةً مِنَ المارْكِت وَاشْرَبْها,Buy expensive mineral water from the market and drink it,msa,health
+4108a2ff,تَعَلَّمْتُ كَلِماتٍ أَكْثَرَ في اللَّهْجَةِ,I learned more words in the dialect,msa,culture
+1c656bd5,حَتّى في مِصْرَ تَكَلَّمْتُ كَثيراً مَعَ النّاسِ بِالعَرَبِيَّةِ,Even in Egypt I spoke a lot with people in Arabic,msa,culture
+a399890e,حاوَلْتُ أَنْ أَتَكَلَّمَ بِاللَّهْجَةِ المِصْرِيَّةِ لٰكِنْ كانَ عَلَيَّ أَنْ أَتَحَدَّثَ بَعْضَ الفُصْحى,I tried to speak in the Egyptian dialect but had to speak some Fusha,msa,culture
+ab6f9a90,النّاسُ دائِماً يَفْهَمونَكَ لٰكِنْ لا يَسْتَطيعونَ الإِجابَةَ، لِأَنَّهُمْ غَيْرُ مُتَعَوِّدينَ,"People always understand you but can't answer, because they aren't used to it",msa,culture
+1861c938,الفُصْحى جَميلَةٌ، لٰكِنْ إِذا أَرَدْتَ أَنْ تَتَواصَلَ مَعَ النّاسِ فَرُبَّما تَخْتارُ لَهْجَةً,"Fusha is beautiful, but if you want to communicate with people, perhaps choose a dialect",msa,culture
+11bbf8af,الغَوْصُ في رَأْيي أَفْضَلُ شَيْءٍ في شَرْمَ,"Diving, in my opinion, is the best thing in Sharm",msa,leisure
+0571a2c1,نَزَلْنا إِلى البَحْرِ، أَنا وَعائِلَتي، وَرَأَيْنا تَحْتَ الماءِ جَنَّةً,"We went down into the sea, my family and I, and saw a paradise underwater",msa,leisure
+d2a79fd0,اكْتَشَفْنا عالَماً مُخْتَلِفاً,We discovered a different world,msa,leisure
+27daca3f,الماءُ دافِئٌ، لَمْ أَحْتَجْ بَدْلَةَ غَطْسٍ,"The water is warm, I didn't need a diving suit",msa,leisure
+6e75392f,وَأَخَذْنا رِحْلَةً بِالمَرْكَبِ — كانَتْ رائِعَةً,We took a boat trip — it was wonderful,msa,leisure
+102a2fa4,كانَتْ أَسْماكاً بِأَحْجامٍ مُخْتَلِفَةٍ وَأَلْوانٍ كَثيرَةٍ,They were fish of different sizes and many colors,msa,leisure
+2af7d6e1,مَعَ السْنوركِل أَشْعُرُ بِحُرِّيَّةٍ,With the snorkel I feel free,msa,leisure
+65cf9e35,ذَهَبْتُ مِنَ الأُرْدُنِّ إِلى مِصْرَ بِالقارِبِ، لَيْسَ بِالطّائِرَةِ,"I went from Jordan to Egypt by boat, not by plane",msa,travel
+f8d91663,رِحْلَةٌ طَويلَةٌ: حافِلَتانِ وَقارِبٌ,A long trip: two buses and a boat,msa,travel
+bf626f5a,بَقينا سِتَّةَ أَيّامٍ: أَرْبَعَةً في دهب وَيَوْمَيْنِ في شَرْمَ,We stayed six days: four in Dahab and two in Sharm,msa,travel
+abb3410d,وَاشْتَرَيْتُ هَدايا لِعائِلَتي، لِأَنَّ القُطْنَ مَشْهورٌ جِدّاً في مِصْرَ,"I bought gifts for my family, because cotton is very famous in Egypt",msa,travel
+1e8e8387,وَبَقيتُ بِجانِبِ البَحْرِ أَسْتَرْخي,I stayed beside the sea relaxing,msa,leisure
+9fe59d8d,شُكْراً جَزيلاً لِمُساعَدَتِكِ، حَقّاً,"Thank you very much for your help, truly",msa,greetings
+54c1a19a,سَلامٌ لِلْعائِلَةِ وَلِلْأَطْفالِ، وَأَراكَ الأُسْبوعَ القادِمَ,"Greetings to the family and the children, and I'll see you next week",msa,greetings
+78898883,مِشْ عايْزينْ حاجَة، سيبْني لو سَمَحْت,"We don't want anything, leave me alone please",egyptian,shopping
+54def6c9,أَنْتَ مِنينْ؟ فينْ تَعَلَّمْتَ عَرَبي؟,Where are you from? Where did you learn Arabic?,egyptian,smalltalk
