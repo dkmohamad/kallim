@@ -20,11 +20,12 @@ decks, and transcripts from a structured vocabulary bank (`chunks.csv`).
 ## Setup
 
 ```bash
-python3 -m venv .venv
-.venv/bin/pip install -e .
+uv sync
 cp .env.example .env
 # Edit .env with your API key and voice IDs
 ```
+
+Run commands with `uv run` (e.g. `uv run kallim generate`).
 
 ## Usage
 

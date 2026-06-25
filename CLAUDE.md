@@ -1,12 +1,15 @@
 # Kallim Project Instructions
 
-## Virtual Environment
+## Environment
 
-Always use the project venv for running Python and installing packages:
+Manage the environment with uv (the venv lives at `.venv/`):
 
-- Run Python: `.venv/bin/python`
-- Install packages: `.venv/bin/pip install <package>`
-- Never use system Python or pip for this project
+- Sync deps: `uv sync`
+- Run commands: `uv run <cmd>` — e.g. `uv run kallim lint`, `uv run pyright`,
+  `uv run ruff check`, `uv run pytest`
+- Add a dependency: `uv add <package>` (`uv add --dev <package>` for tooling)
+- Never call `pip` directly or edit `requirements*.txt`; `pyproject.toml` and
+  `uv.lock` are the source of truth.
 
 ## Commits
 

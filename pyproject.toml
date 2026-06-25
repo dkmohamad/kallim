@@ -14,6 +14,13 @@ dependencies = [
 [project.scripts]
 kallim = "cli:main"
 
+[dependency-groups]
+dev = [
+    "pyright>=1.1.410",
+    "pytest>=8.0",
+    "ruff>=0.15",
+]
+
 [tool.setuptools]
 py-modules = ["cli"]
 packages = ["scripts"]
