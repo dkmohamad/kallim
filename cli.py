@@ -9,6 +9,7 @@ from scripts.generate_anki import main as anki_main
 from scripts.lint import main as lint_main
 from scripts.migrate import main as migrate_main
 from scripts.promote import main as promote_main
+from scripts.prune import main as prune_main
 
 
 def main() -> None:
@@ -40,6 +41,10 @@ def main() -> None:
         "--pause", type=float, default=2.0,
         help="Pause duration in seconds (between English/Arabic and between chunks)",
     )
+    gen.add_argument(
+        "--force", action="store_true",
+        help="Regenerate audio even when cached (ignore the content manifest)",
+    )
 
     # --- anki ---
     anki = sub.add_parser(
@@ -58,6 +63,10 @@ def main() -> None:
     anki.add_argument(
         "--no-audio", action="store_true",
         help="Generate text-only cards (no TTS)",
+    )
+    anki.add_argument(
+        "--force", action="store_true",
+        help="Regenerate audio even when cached (ignore the content manifest)",
     )
 
     # --- migrate ---
@@ -88,6 +97,15 @@ def main() -> None:
         help="Path to chunks CSV file. Defaults to chunks.csv.",
     )
 
+    # --- prune ---
+    prune = sub.add_parser(
+        "prune", help="Delete orphaned audio cache files (ids gone from chunks.csv)"
+    )
+    prune.add_argument(
+        "--apply", action="store_true",
+        help="Actually delete (default is a dry run)",
+    )
+
     args = parser.parse_args()
 
     if not args.command:
@@ -97,13 +115,13 @@ def main() -> None:
     if args.command == "generate":
         # Rebuild sys.argv for the subcommand
         sys.argv = _rebuild_argv("generate", args, [
-            "input", "output", "section", "list_voices", "pause",
+            "input", "output", "section", "list_voices", "pause", "force",
         ])
         generate_main()
 
     elif args.command == "anki":
         sys.argv = _rebuild_argv("anki", args, [
-            "input", "output", "section", "no_audio",
+            "input", "output", "section", "no_audio", "force",
         ])
         anki_main()
 
@@ -120,6 +138,10 @@ def main() -> None:
     elif args.command == "lint":
         sys.argv = ["lint"] + ([args.input] if args.input else [])
         lint_main()
+
+    elif args.command == "prune":
+        sys.argv = ["prune"] + (["--apply"] if args.apply else [])
+        prune_main()
 
 
 def _rebuild_argv(

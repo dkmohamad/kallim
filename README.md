@@ -38,6 +38,9 @@ kallim generate --section dining
 # Custom pause duration (seconds, applied uniformly)
 kallim generate --pause 3.0
 
+# Force-regenerate audio, ignoring the cache (e.g. after a voice change)
+kallim generate --force
+
 # Generate Anki deck with audio
 kallim anki
 
@@ -46,6 +49,9 @@ kallim anki --no-audio
 
 # Validate chunks.csv against the concept_tag taxonomy
 kallim lint
+
+# Delete orphaned audio cache files (dry run; add --apply to delete)
+kallim prune
 
 # List available ElevenLabs voices
 kallim voices
@@ -67,8 +73,17 @@ output/
     └── generate.log
 ```
 
-Per-chunk audio is cached separately in `audio/` (keyed by chunk ID). If a cache
-file is missing it gets regenerated on the next run.
+Per-chunk audio is cached separately in `audio/` as `{id}_en.mp3` / `{id}_ar.mp3`.
+The cache is **content-aware**: `audio/manifest.json` records a hash of each
+chunk's text, so editing a chunk's English or Arabic (or changing its register)
+regenerates only the affected side on the next run — unedited chunks stay cached.
+Use `kallim generate --force` to regenerate regardless (the hash can't see voice-id
+changes in `voices.json`).
+
+Removing a row from `chunks.csv` leaves its `audio/` files orphaned (the cache is
+never auto-cleaned). Run `kallim prune` to list orphans and `kallim prune --apply`
+to delete them. Note Anki cards are **not** removed this way — genanki only
+adds/updates notes, so cards for deleted chunks must be removed by hand in Anki.
 
 ## Data model
 

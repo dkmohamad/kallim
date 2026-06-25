@@ -11,7 +11,8 @@ import csv
 import sys
 from pathlib import Path
 
-from scripts.generate import CHUNKS_CSV, Chunk
+from scripts.config import CHUNKS_CSV
+from scripts.model import Chunk
 
 
 def lint_chunks(path: Path) -> int:

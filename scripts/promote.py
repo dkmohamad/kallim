@@ -16,7 +16,8 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 
-from scripts.generate import CHUNKS_CSV, Chunk
+from scripts.config import CHUNKS_CSV
+from scripts.model import Chunk
 
 load_dotenv()
 

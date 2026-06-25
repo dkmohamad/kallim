@@ -1,36 +1,34 @@
 # TODO
 
 Tracking in-flight work on the kallim chunk set and pipeline.
-_Status: tools down for now — this file is the cold-start capture to resume from._
 
 ## ⚠️ Gotchas to remember (read before thinning chunks)
 
-Deleting a row from `chunks.csv` is **not** self-contained. The CSV is the source
-of truth for *generation*, not for *pruning what already exists*:
+Deleting a row from `chunks.csv` is **not** fully self-contained. The CSV is the
+source of truth for *generation*; the tail has mostly been automated, but one
+manual step remains:
 
 1. **Anki keeps orphaned cards.** genanki/Anki only *add or update* notes by GUID
    on import — they never delete. So a chunk removed from `chunks.csv` leaves its
    card alive in the Anki collection. Removing it means **manually deleting that
-   card in Anki** (search by the English/Arabic text, or by tag).
-2. **The audio cache keeps orphaned files.** Audio is cached per chunk as
-   `audio/{id}_en.mp3` and `audio/{id}_ar.mp3`, keyed by `id`. Deleting a row
-   leaves those files behind — dead weight that accumulates in `audio/`.
-   - _Worth building:_ a small `kallim prune` (or a flag on `lint`) that deletes
-     any `audio/{id}_*.mp3` whose `id` no longer appears in `chunks.csv`. Until
-     then, orphaned audio just sits there (harmless but messy).
-   - Current count: **126 orphans** (63 thinned chunks × 2 files) vs 655 live
-     chunks × 2 = 1310 expected (1436 total in `audio/`).
-3. **The audio cache is content-blind — edited chunks serve STALE audio.** The
-   cache key is *only* the `id`; `generate` short-circuits when both
-   `{id}_en.mp3`/`{id}_ar.mp3` exist (`generate.py:251`), never checking whether
-   the text changed. IDs are random `uuid4`, not content-derived. So any chunk
-   whose Arabic/English was **edited in place** (e.g. the أقام hotel fix, the
-   female→first-person/male reframes, the third-person→first/second reframes —
-   ~30+ live rows) keeps its **old** audio forever. Pruning orphans does **not**
-   fix this. See §3.
-
-Net: the *deciding* is the work; the *deletion* has a tail (Anki + audio) that
-won't clean itself up.
+   card in Anki** (search by the English/Arabic text, or by tag). _Still manual —
+   no automation for this._
+2. **Orphaned audio files — now handled by `kallim prune`.** Audio is cached per
+   chunk as `audio/{id}_en.mp3` / `{id}_ar.mp3`. Deleting a row leaves those files
+   behind. `kallim prune` lists them (dry run) and `kallim prune --apply` deletes
+   any `audio/{id}_*.mp3` whose `id` is gone from `chunks.csv`, and drops the dead
+   `manifest.json` entries.
+3. **Stale-but-live audio — now handled by the content-aware cache.** The cache
+   used to short-circuit on `id` alone (content-blind), so a chunk edited in place
+   (the أقام hotel fix, the female→first-person/male reframes, the
+   third-person→first/second reframes) kept serving its **old** audio forever.
+   `generate`/`anki` now record a text hash per side in `audio/manifest.json`, so
+   an edited chunk regenerates only the changed side on the next run. `--force`
+   overrides the cache (e.g. after a `voices.json` change the hash can't see).
+   - **One-time cost:** the manifest starts empty, so the *next* full
+     `generate`/`anki` run regenerates everything once (~756×2 TTS calls) to seed
+     it and clear all current staleness; every run after that is incremental.
+     Scope with `--section` to spread the cost.
 
 ## 1. Reclassify, re-tag, and thin the chunk set  _(done)_
 
@@ -45,7 +43,8 @@ taxonomy clear and well-documented.
   one-line description, split per register-scheme (Situational / Topical).
 - [x] **Add missing tags** — added `family` and `daily_life` to the `ConceptTag`
   enum, tag-scheme sets, and README.
-- [x] **Validate** — `kallim lint` reports 0 problems (655 chunks).
+- [x] **Validate** — `kallim lint` reports 0 problems (756 chunks as of the
+  authentic-chunk additions; was 655 at the time of the thin/re-tag pass).
 
 ## 2a. Remove the synthetic scene pipeline  _(done)_
 
@@ -82,36 +81,40 @@ authentic audio for deeper understanding.
   Arabic forced alignment is genuinely fiddly. ElevenLabs is TTS, not STT, so this
   is new infrastructure (Whisper-class model + alignment), not a refactor.
 
-- [ ] **Decide ambition level first** (this gates everything below).
-- [ ] **Recommended MVP** — sidestep the hard half: chunk the **text** for practice
-  and attach the **whole source-audio file** (not per-chunk clips). Still authentic
-  chunks + authentic audio; defer ASR/alignment until per-chunk clips are actually
-  wanted. Turns the "hard half" into "moderate."
+- [x] **Decide ambition level** — went with the text-first MVP (no per-chunk audio).
+- [x] **Text → chunks** — done ad hoc: **101 authentic chunks** ingested from three
+  MSA lesson transcripts via the existing extract/promote path (commit `47f4316`).
+  These are now live in `chunks.csv` and lint-clean.
+  - ⚠️ Those 101 chunks have **no generated audio yet** — they need a
+    `generate`/`anki` run (folds into the one-time regen noted in gotcha #3).
+- [ ] **Attach whole source-audio file** — the still-open half of the MVP: pair each
+  ingested batch with its (whole) source recording so you can practice the chunks
+  *and* listen back to the authentic audio. Not built.
 - [ ] **Later (optional):** per-chunk audio via ASR + forced alignment, only if the
   whole-file approach proves insufficient.
 
-## 3. Regeneration & output-sync workflow  _(flagged — not started, don't build yet)_
+## 3. Regeneration & output-sync workflow
 
 Two related pain points around regenerating and getting audio onto my phone.
-Capturing now; **no work to be done on this yet.**
+**3a (cache correctness) is now done; 3b (output sync) is still flagged.**
 
-### 3a. Regenerate only what changed (cache correctness)
+### 3a. Regenerate only what changed (cache correctness)  _(done)_
 
-Right now there's no clean way to "regenerate the content" after editing chunks:
+Both pain points are resolved by the content-aware cache + `prune`:
 
-- **Stale-but-live cache** (gotcha #3 above): edited chunks keep old audio because
-  the cache is keyed by `id` alone, content-blind. The reframed/أقام rows are
-  currently serving stale audio.
-- **Orphans** (gotcha #2): 126 dead files from thinned chunks.
+- [x] **Content-aware cache** — `get_or_generate_chunk_audio` now records a text
+  hash per side in `audio/manifest.json` (`{id: {en, ar}}`); the `ar` key folds in
+  the register. An edited chunk regenerates only the changed side; unedited chunks
+  stay cached. `generate --force` / `anki --force` overrides the cache. Both
+  commands share the one function, so both paths are covered.
+- [x] **`kallim prune`** — new subcommand (`scripts/prune.py`): dry-run by default,
+  `--apply` deletes orphan `audio/{id}_*.mp3` files and dead manifest entries.
+  Cleared the 126 orphans.
 
-Options considered (pick later):
-- **Full fresh regen** — wipe `audio/` entirely, regenerate all from `chunks.csv`.
-  Simplest, guarantees correctness, highest ElevenLabs cost (~655 × 2 TTS calls).
-- **Content-aware cache + prune** — fold a hash of the chunk's text into the cache
-  key (or a sidecar manifest) so edits auto-invalidate, then prune stale/orphan
-  files and regenerate only what changed. Durable; less recurring cost; more code.
-- **Prune orphans only** — frees space but leaves edited rows stale (insufficient
-  for a true content refresh).
+The chosen design (content-aware cache + prune) supersedes the "full fresh regen"
+and "prune orphans only" options that were on the table. The one residual cost is
+the seed regen noted in gotcha #3 — a single full run after which everything is
+incremental.
 
 ### 3b. Incremental output + Google Drive sync
 
@@ -127,7 +130,11 @@ Wanted (someday):
 
 ## Loose ends right now
 
-- §1 (reclassify/re-tag/thin) and §2a (remove scene pipeline) are **done and
-  committed** (`fa40600`). Working tree clean.
-- Next up is §2b (authentic-chunk ingestion, design-first) and §3 (regen/sync —
-  flagged only, do not start yet).
+- §1 (re-tag/thin), §2a (remove scene pipeline) **done** (`fa40600`); §2b text→chunks
+  MVP **done** ad hoc (`47f4316`, 101 authentic chunks); §3a (cache correctness)
+  **done** (content-aware cache + `kallim prune`).
+- **Operational, not yet run:** the one-time seed regen — `kallim generate` /
+  `kallim anki` to (a) clear current stale audio and (b) give the 101 new authentic
+  chunks their audio. Costs ElevenLabs credits; scope with `--section` to spread it.
+- **Still open:** §2b "attach whole source-audio file" half, and §3b (incremental
+  output + Google Drive `rsync`/rclone sync — still flagged, not started).

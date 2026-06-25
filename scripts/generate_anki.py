@@ -5,23 +5,16 @@ from __future__ import annotations
 
 import argparse
 import logging
-import os
 import sys
 from pathlib import Path
 
 import genanki
 from dotenv import load_dotenv
-from elevenlabs.client import ElevenLabs
 
-from scripts.generate import (
-    load_chunks,
-    load_voice_map,
-    get_or_generate_chunk_audio,
-    make_run_dir,
-    setup_logging,
-    AUDIO_DIR,
-    CHUNKS_CSV,
-)
+from scripts.audio import AudioGenerator
+from scripts.config import AUDIO_DIR, CHUNKS_CSV
+from scripts.utils import make_run_dir, setup_logging
+from scripts.store import load_chunks
 
 logger = logging.getLogger("kallim.anki")
 
@@ -107,30 +100,23 @@ def main() -> None:
         "--no-audio", action="store_true",
         help="Generate text-only cards (no TTS)",
     )
+    parser.add_argument(
+        "--force", action="store_true",
+        help="Regenerate audio even when cached (ignore the content manifest)",
+    )
     args = parser.parse_args()
 
     chunks = load_chunks(Path(args.input))
-    if not chunks:
-        sys.exit("Error: no chunks found in CSV")
 
     if args.section:
         chunks = [c for c in chunks if c.concept_tag == args.section]
         if not chunks:
             sys.exit(f"Error: section '{args.section}' not found")
 
-    # Set up ElevenLabs client if generating audio
-    client = None
-    voice_map: dict[str, str] = {}
-    audio_dir = AUDIO_DIR
-
+    # Set up the audio generator if generating audio
+    generator: AudioGenerator | None = None
     if not args.no_audio:
-        api_key = os.environ.get("ELEVENLABS_API_KEY", "")
-        if not api_key:
-            sys.exit("Error: ELEVENLABS_API_KEY not set. Check your .env file.")
-
-        client = ElevenLabs(api_key=api_key)
-        voice_map = load_voice_map()
-        audio_dir.mkdir(exist_ok=True)
+        generator = AudioGenerator.from_env(force=args.force)
 
     model = build_model()
     deck = genanki.Deck(DECK_ID, "Kallim Arabic")
@@ -141,20 +127,17 @@ def main() -> None:
         en_sound = ""
         ar_sound = ""
 
-        if client:
+        if generator:
             logger.info(
                 "  Chunk %s: %s / %s",
                 chunk.id, chunk.english[:30], chunk.arabic[:30],
             )
-            result = get_or_generate_chunk_audio(
-                client, chunk, voice_map, audio_dir
-            )
-            if result:
-                en_path, ar_path = result
-                en_sound = f"[sound:{en_path.name}]"
-                ar_sound = f"[sound:{ar_path.name}]"
-                media_files.append(str(en_path))
-                media_files.append(str(ar_path))
+            generator.generate(chunk)
+            en_path, ar_path = chunk.audio_paths(AUDIO_DIR)
+            en_sound = f"[sound:{en_path.name}]"
+            ar_sound = f"[sound:{ar_path.name}]"
+            media_files.append(str(en_path))
+            media_files.append(str(ar_path))
 
         note = genanki.Note(
             model=model,
@@ -164,6 +147,9 @@ def main() -> None:
         )
         deck.add_note(note)
         total_cards += 1
+
+    if generator:
+        generator.save()
 
     package = genanki.Package(deck)
     package.media_files = media_files
