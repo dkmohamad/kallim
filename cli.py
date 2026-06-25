@@ -43,7 +43,7 @@ def main() -> None:
     )
     gen.add_argument(
         "--force", action="store_true",
-        help="Regenerate audio even when cached (ignore the content manifest)",
+        help="Regenerate audio even when the cached file exists",
     )
 
     # --- anki ---
@@ -66,7 +66,7 @@ def main() -> None:
     )
     anki.add_argument(
         "--force", action="store_true",
-        help="Regenerate audio even when cached (ignore the content manifest)",
+        help="Regenerate audio even when the cached file exists",
     )
 
     # --- migrate ---
@@ -99,7 +99,7 @@ def main() -> None:
 
     # --- prune ---
     prune = sub.add_parser(
-        "prune", help="Delete orphaned audio cache files (ids gone from chunks.csv)"
+        "prune", help="Delete orphaned audio cache files (stale or removed)"
     )
     prune.add_argument(
         "--apply", action="store_true",

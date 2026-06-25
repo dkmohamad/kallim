@@ -102,7 +102,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--force", action="store_true",
-        help="Regenerate audio even when cached (ignore the content manifest)",
+        help="Regenerate audio even when the cached file exists",
     )
     args = parser.parse_args()
 
@@ -147,9 +147,6 @@ def main() -> None:
         )
         deck.add_note(note)
         total_cards += 1
-
-    if generator:
-        generator.save()
 
     package = genanki.Package(deck)
     package.media_files = media_files

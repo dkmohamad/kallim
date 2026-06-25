@@ -73,17 +73,19 @@ output/
     └── generate.log
 ```
 
-Per-chunk audio is cached separately in `audio/` as `{id}_en.mp3` / `{id}_ar.mp3`.
-The cache is **content-aware**: `audio/manifest.json` records a hash of each
-chunk's text, so editing a chunk's English or Arabic (or changing its register)
-regenerates only the affected side on the next run — unedited chunks stay cached.
-Use `kallim generate --force` to regenerate regardless (the hash can't see voice-id
+Per-chunk audio is **content-addressed**: each side is cached in `audio/` as
+`<content-hash>.mp3` (the hash of its text). A present file is therefore correct
+by construction — editing a chunk's English or Arabic (or changing its register)
+changes the hash, so the next run regenerates only the affected side and leaves
+the old file behind; identical text across chunks shares one file. Use
+`kallim generate --force` to regenerate regardless (the hash can't see voice-id
 changes in `voices.json`).
 
-Removing a row from `chunks.csv` leaves its `audio/` files orphaned (the cache is
-never auto-cleaned). Run `kallim prune` to list orphans and `kallim prune --apply`
-to delete them. Note Anki cards are **not** removed this way — genanki only
-adds/updates notes, so cards for deleted chunks must be removed by hand in Anki.
+Both removing a row and editing one leave orphaned files (the old hash is no
+longer produced by any chunk). Run `kallim prune` to list them and
+`kallim prune --apply` to delete. Note Anki cards are **not** removed this way —
+genanki only adds/updates notes, so cards for deleted chunks must be removed by
+hand in Anki.
 
 ## Data model
 

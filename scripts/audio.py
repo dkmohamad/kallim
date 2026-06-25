@@ -2,7 +2,7 @@
 """ElevenLabs TTS audio generation and content-addressed caching.
 
 Everything about turning a Chunk into per-side mp3 files: the ElevenLabs client,
-the voice map, the content manifest, and the AudioGenerator service.
+the voice map, and the AudioGenerator service.
 """
 
 import io
@@ -18,7 +18,6 @@ from pydub import AudioSegment
 
 from scripts.config import AUDIO_DIR, VOICES_JSON
 from scripts.model import Chunk, Register
-from scripts.store import Manifest
 
 logger = logging.getLogger("kallim")
 
@@ -107,18 +106,17 @@ def list_voices(client: ElevenLabs) -> None:
 
 
 def load_clip(path: Path) -> AudioSegment:
-    """Decode a cached mp3 into an AudioSegment (a model.AudioClip)."""
+    """Decode a cached mp3 into an AudioSegment."""
     return AudioSegment.from_file(str(path), format="mp3")
 
 
 class AudioGenerator:
     """Generates and caches per-chunk TTS audio.
 
-    Holds the generation collaborators (ElevenLabs client, voice map, cache dir)
-    and owns the content manifest, so callers build one per run and call
-    ``generate(chunk)`` — the chunk stays a passive value object. Use as a
-    context manager to persist the manifest on exit, including on error, so
-    audio already paid for isn't forgotten if a run dies mid-loop.
+    Holds the generation collaborators (ElevenLabs client, voice map, cache dir),
+    so callers build one per run and call ``generate(chunk)``. Audio is
+    content-addressed (``chunk.en_filename``/``ar_filename`` are content hashes),
+    so a present file is correct by construction — no manifest, no staleness.
     """
 
     def __init__(
@@ -133,7 +131,6 @@ class AudioGenerator:
         self._voice_map = voice_map
         self._audio_dir = audio_dir
         self._force = force
-        self._manifest = Manifest.load(audio_dir)
 
     @classmethod
     def from_env(
@@ -149,16 +146,6 @@ class AudioGenerator:
         audio_dir.mkdir(exist_ok=True)
         return cls(client, voice_map, audio_dir, force=force)
 
-    def __enter__(self) -> "AudioGenerator":
-        return self
-
-    def __exit__(self, *_exc: object) -> None:
-        self.save()
-
-    def save(self) -> None:
-        """Persist the content manifest."""
-        self._manifest.save(self._audio_dir)
-
     def _ensure_side(self, text: str, voice_id: str, path: Path) -> None:
         """Generate, normalize, and write one TTS file. Raises on TTS failure."""
         audio_bytes = generate_tts(self._client, text, voice_id)
@@ -168,31 +155,17 @@ class AudioGenerator:
         seg.export(str(path), format="mp3", bitrate="128k")
 
     def generate(self, chunk: Chunk) -> None:
-        """Ensure the chunk's cached audio is present and current.
+        """Ensure the chunk's content-addressed audio files exist.
 
-        Caches as audio/{id}_en.mp3 and audio/{id}_ar.mp3, keyed by the content
-        hash in the manifest, so an edited chunk regenerates instead of serving
-        stale audio. Only the side(s) whose text changed are regenerated (both
-        when constructed with ``force=True``). The files are at
+        Each side's file is named by the hash of its text, so a present file is
+        already current; a missing one means new/edited content. Regenerate the
+        missing side(s) (or all, with ``force=True``). The files are at
         ``chunk.audio_paths(audio_dir)``; decode them with ``load_clip``. Raises
         on TTS failure — a bad chunk stops the run rather than being skipped.
         """
         en_path, ar_path = chunk.audio_paths(self._audio_dir)
-        en_key = chunk.en_cache_key
-        ar_key = chunk.ar_cache_key
-        entry = self._manifest.get(chunk.id, {})
-
-        en_ok = not self._force and en_path.exists() and entry.get("en") == en_key
-        ar_ok = not self._force and ar_path.exists() and entry.get("ar") == ar_key
-
-        if en_ok and ar_ok:
-            logger.info("  Cached: %s", chunk.id)
-            return
-
-        if not en_ok:
+        if self._force or not en_path.exists():
             self._ensure_side(chunk.english, self._voice_map["english"], en_path)
-        if not ar_ok:
+        if self._force or not ar_path.exists():
             self._ensure_side(chunk.arabic, self._voice_map[chunk.register], ar_path)
-
-        self._manifest[chunk.id] = {"en": en_key, "ar": ar_key}
-        logger.info("  Generated: %s", chunk.id)
+        logger.info("  %s", chunk.id)
