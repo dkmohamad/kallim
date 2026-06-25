@@ -1,20 +1,43 @@
 #!/usr/bin/env python3
-"""Kallim domain model — the Chunk entity and its concept_tag taxonomy.
+"""Kallim domain model — utterances, chunks, and the concept_tag taxonomy.
 
-Pure data types with no pipeline/service dependencies (no ElevenLabs, no audio
-I/O), so loaders, the linter, and the generator can all share one definition of
-what a chunk is.
+Pure data types with no audio/pipeline dependencies (no pydub, no ElevenLabs).
+A Chunk pairs an English and an Arabic Utterance; an Utterance is text + the
+voice it's said in. It owns its content-addressed audio *identity* (``key``)
+and the *act* of synthesising itself; the concrete engine is the injected
+``Synthesiser`` port, and the resulting bytes live in the audio cache.
 """
 
+from __future__ import annotations
+
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import StrEnum
-from pathlib import Path
+from typing import ClassVar, Protocol
 
 from scripts.utils import content_hash
 
 
+class PlayableAudio(Protocol):
+    """Playable audio data — e.g. a pydub AudioSegment.
+
+    The model's type for actual sound: clips concatenate (``+``). The concrete
+    type and all heavy ops live in the audio layer, so the model needs no audio
+    library. Identity is the utterance's ``key``, not the audio's.
+    """
+
+    def __add__(self, other: PlayableAudio) -> PlayableAudio: ...
+
+
+# The model's port for text-to-speech: an utterance -> playable audio. The
+# concrete engine (ElevenLabs) lives in the audio layer and is *injected* onto
+# Utterance.synthesiser, so the model declares the capability without importing
+# any audio library. Just a Callable — the port has a single operation.
+type Synthesiser = Callable[[Utterance], PlayableAudio]
+
+
 class Register(StrEnum):
-    """Arabic register / voice role."""
+    """Voice role of an utterance (selects the TTS voice)."""
 
     ENGLISH = "english"
     EGYPTIAN = "egyptian"
@@ -79,43 +102,85 @@ ALLOWED_TAGS_BY_REGISTER = {
 
 
 @dataclass(frozen=True, slots=True)
-class Chunk:
-    """A single phrase pair from chunks.csv.
+class Utterance:
+    """A spoken unit: text said in a given register (voice role)."""
 
-    Validates its register and concept_tag on construction, so a Chunk cannot
-    exist with a register or tag outside the taxonomy (see ConceptTag and
-    ALLOWED_TAGS_BY_REGISTER).
+    text: str
+    register: Register
+
+    # The TTS engine, injected once by make_synthesiser (shared by all
+    # utterances). Unset until then — synthesise() raises AttributeError.
+    synthesiser: ClassVar[Synthesiser]
+
+    def __str__(self) -> str:
+        return self.text
+
+    @property
+    def key(self) -> str:
+        """Content hash identifying this utterance (and its cached audio)."""
+        return content_hash(f"{self.register}\n{self.text}")
+
+    def synthesise(self) -> PlayableAudio:
+        """Produce this utterance's audio via the injected synthesiser.
+
+        Raises AttributeError if no synthesiser has been wired yet (call
+        make_synthesiser first).
+        """
+        return Utterance.synthesiser(self)
+
+
+@dataclass(frozen=True, slots=True)
+class Chunk:
+    """An English/Arabic phrase pair from chunks.csv.
+
+    Validates concept_tag against the Arabic register's tag scheme, so a Chunk
+    can't carry a tag outside its taxonomy (see ALLOWED_TAGS_BY_REGISTER).
     """
 
     id: str
-    arabic: str
-    english: str
-    register: Register
+    english: Utterance
+    arabic: Utterance
     concept_tag: ConceptTag
 
+    # The chunks.csv schema — the single source of truth for column order,
+    # shared by from_row (read) and to_row (write).
+    FIELDS: ClassVar[tuple[str, ...]] = (
+        "id", "arabic", "english", "register", "concept_tag",
+    )
+
+    def __str__(self) -> str:
+        return f"{self.id}: {self.english} / {self.arabic}"
+
+    def to_row(self) -> list[str]:
+        """Serialise to a chunks.csv row, in ``FIELDS`` order."""
+        return [
+            self.id,
+            self.arabic.text,
+            self.english.text,
+            self.arabic.register,
+            self.concept_tag,
+        ]
+
     def __post_init__(self) -> None:
-        allowed = ALLOWED_TAGS_BY_REGISTER.get(self.register)
+        allowed = ALLOWED_TAGS_BY_REGISTER.get(self.arabic.register)
         if allowed is not None and self.concept_tag not in allowed:
             raise ValueError(
                 f"concept_tag {self.concept_tag.value!r} not allowed for "
-                f"register {self.register.value!r}"
+                f"register {self.arabic.register.value!r}"
             )
 
     @classmethod
     def from_row(cls, row: list[str]) -> "Chunk":
-        """Build a Chunk from a raw CSV row, coercing register/concept_tag.
+        """Build a Chunk from a raw CSV row (id, arabic, english, register, tag).
 
         Raises:
-            ValueError: If the row has the wrong field count, or its register
-                or concept_tag is outside the taxonomy.
+            ValueError: If the row has the wrong field count, or its register or
+                concept_tag is outside the taxonomy.
         """
         try:
             cid, arabic, english, register, concept_tag = row
         except ValueError:
-            field_count = len(cls.__dataclass_fields__)
-            raise ValueError(
-                f"expected {field_count} fields, got {len(row)}: {row!r}"
-            ) from None
+            raise ValueError(f"expected 5 fields, got {len(row)}: {row!r}") from None
         try:
             reg = Register(register)
         except ValueError:
@@ -124,39 +189,6 @@ class Chunk:
             tag = ConceptTag(concept_tag)
         except ValueError:
             raise ValueError(f"unknown concept_tag {concept_tag!r}") from None
-        return cls(cid, arabic, english, reg, tag)
-
-    # --- audio cache binding --------------------------------------------------
-    # Audio is content-addressed: each side's file is named by the hash of its
-    # text, so editing a chunk changes the filename and the cache self-invalidates
-    # (the old file becomes an orphan for `prune`); identical text dedups. This is
-    # the *content* identity, distinct from the frozen-dataclass __hash__ used for
-    # in-memory set/dict membership.
-
-    @property
-    def en_cache_key(self) -> str:
-        """Content hash of the English side."""
-        return content_hash(self.english)
-
-    @property
-    def ar_cache_key(self) -> str:
-        """Content hash of the Arabic side.
-
-        Folds in ``register`` because it selects the voice, so a register change
-        invalidates even when the Arabic text is unchanged.
-        """
-        return content_hash(f"{self.register}\n{self.arabic}")
-
-    @property
-    def en_filename(self) -> str:
-        """Content-addressed cache filename for the English audio."""
-        return f"{self.en_cache_key}.mp3"
-
-    @property
-    def ar_filename(self) -> str:
-        """Content-addressed cache filename for the Arabic audio."""
-        return f"{self.ar_cache_key}.mp3"
-
-    def audio_paths(self, audio_dir: Path) -> tuple[Path, Path]:
-        """(english, arabic) cache file paths under ``audio_dir``."""
-        return audio_dir / self.en_filename, audio_dir / self.ar_filename
+        return cls(
+            cid, Utterance(english, Register.ENGLISH), Utterance(arabic, reg), tag
+        )

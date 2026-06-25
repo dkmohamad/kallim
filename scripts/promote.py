@@ -8,9 +8,9 @@ Reads vocab_pairs.csv (or a plain text file of Arabic entries) and:
 """
 
 import csv
+import logging
 import os
 import sys
-import uuid
 from pathlib import Path
 
 import anthropic
@@ -18,14 +18,13 @@ from dotenv import load_dotenv
 
 from scripts.config import CHUNKS_CSV
 from scripts.model import Chunk
+from scripts.utils import generate_id, setup_logging
 
 load_dotenv()
 
+logger = logging.getLogger("kallim.promote")
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-
-def generate_id() -> str:
-    return uuid.uuid4().hex[:8]
 
 
 def is_chunk(arabic: str) -> bool:
@@ -43,7 +42,7 @@ def load_existing_arabic(chunks_path: Path) -> set[str]:
         next(reader)  # skip header
         for row in reader:
             chunk = Chunk.from_row(row)
-            existing.add(chunk.arabic)
+            existing.add(chunk.arabic.text)
     return existing
 
 
@@ -126,22 +125,20 @@ def promote_batch(
             if ar_part and en_part:
                 results.append({"arabic": ar_part, "english": en_part})
 
-        print(f"  Generated {len(results)}/{len(words)} sentences...", file=sys.stderr)
+        logger.info("Generated %d/%d sentences...", len(results), len(words))
 
     return results
 
 
 def main(input_path: str | None = None) -> None:
+    setup_logging()
     root = PROJECT_ROOT
     if input_path:
         vocab_path = Path(input_path)
     else:
         vocab_path = root / "vocab_pairs.csv"
 
-    if not vocab_path.exists():
-        sys.exit(f"Error: {vocab_path} not found")
-
-    pairs = load_vocab_pairs(vocab_path)
+    pairs = load_vocab_pairs(vocab_path)  # raises FileNotFoundError if absent
     existing = load_existing_arabic(CHUNKS_CSV)
 
     # Split into pass-through chunks and words needing promotion
@@ -157,59 +154,58 @@ def main(input_path: str | None = None) -> None:
         else:
             needs_promotion.append(pair)
 
-    print(f"Total entries: {len(pairs)}", file=sys.stderr)
-    print(f"  Already in chunks.csv: {len(pairs) - len(passthrough) - len(needs_promotion)}", file=sys.stderr)
-    print(f"  Pass-through (already chunks): {len(passthrough)}", file=sys.stderr)
-    print(f"  Need promotion (single words): {len(needs_promotion)}", file=sys.stderr)
+    logger.info("Total entries: %d", len(pairs))
+    logger.info(
+        "  Already in chunks.csv: %d",
+        len(pairs) - len(passthrough) - len(needs_promotion),
+    )
+    logger.info("  Pass-through (already chunks): %d", len(passthrough))
+    logger.info("  Need promotion (single words): %d", len(needs_promotion))
 
     # Generate sentences for words
     promoted: list[dict[str, str]] = []
     if needs_promotion:
-        api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-        if not api_key:
-            sys.exit(
-                "Error: ANTHROPIC_API_KEY not set. "
-                "Check your .env file."
-            )
+        api_key = os.environ["ANTHROPIC_API_KEY"]  # raises KeyError if unset
+        logger.info("Generating sentences for %d words...", len(needs_promotion))
+        generated = promote_batch(needs_promotion, api_key)
+
+        # Match generated sentences back to original entries for metadata
+        if len(generated) == len(needs_promotion):
+            for orig, gen in zip(needs_promotion, generated):
+                promoted.append({
+                    "arabic": gen["arabic"],
+                    "english": gen["english"],
+                    "register": orig["register"],
+                    "concept_tag": orig["concept_tag"],
+                })
         else:
-            print(f"Generating sentences for {len(needs_promotion)} words...", file=sys.stderr)
-            generated = promote_batch(needs_promotion, api_key)
+            logger.warning(
+                "got %d sentences for %d words. Writing originals.",
+                len(generated), len(needs_promotion),
+            )
+            promoted = needs_promotion
 
-            # Match generated sentences back to original entries for metadata
-            if len(generated) == len(needs_promotion):
-                for orig, gen in zip(needs_promotion, generated):
-                    promoted.append({
-                        "arabic": gen["arabic"],
-                        "english": gen["english"],
-                        "register": orig["register"],
-                        "concept_tag": orig["concept_tag"],
-                    })
-            else:
-                print(
-                    f"Warning: got {len(generated)} sentences for "
-                    f"{len(needs_promotion)} words. Writing originals.",
-                    file=sys.stderr,
-                )
-                promoted = needs_promotion
-
-    # Combine and write review CSV
+    # Combine into validated chunks and write the review CSV
     all_entries = passthrough + promoted
-    out_path = root / "vocab_chunks_review.csv"
+    chunks = [
+        Chunk.from_row([
+            generate_id(),
+            entry["arabic"],
+            entry["english"],
+            entry["register"],
+            entry["concept_tag"],
+        ])
+        for entry in all_entries
+    ]
 
+    out_path = root / "vocab_chunks_review.csv"
     with out_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["id", "arabic", "english", "register", "concept_tag"])
-        for entry in all_entries:
-            writer.writerow([
-                generate_id(),
-                entry["arabic"],
-                entry["english"],
-                entry["register"],
-                entry["concept_tag"],
-            ])
+        writer.writerow(Chunk.FIELDS)
+        writer.writerows(chunk.to_row() for chunk in chunks)
 
-    print(f"\nWrote {len(all_entries)} chunks to {out_path}", file=sys.stderr)
-    print("Review this file, then append to chunks.csv when ready.", file=sys.stderr)
+    logger.info("Wrote %d chunks to %s", len(chunks), out_path)
+    logger.info("Review this file, then append to chunks.csv when ready.")
 
 
 if __name__ == "__main__":

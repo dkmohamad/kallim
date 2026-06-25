@@ -2,6 +2,28 @@
 
 Tracking in-flight work on the kallim chunk set and pipeline.
 
+## Startup performance — lazy-dispatch in cli.py  _(recommended, not done)_
+
+`pydub` and `elevenlabs` are already fully deferred: `audio.py` (synth, `stitch`)
+and `store.py` (the `AudioCache` `Codec`) lazy-import pydub inside the methods
+that use it, and `audio.py` lazy-imports elevenlabs in `make_synthesiser` /
+`list_voices` (`PLC0415` per-file-ignored in both — the one sanctioned deviation
+so far). `generate.py` is pydub-free: it composes `PlayableAudio` via
+`audio.stitch` and writes via the store `Codec` (`make_codec`). So no command
+loads them on startup.
+
+The remaining cost is `cli.py`: it imports all six command `main`s at module
+top, so running *any* command transitively loads **`genanki`** (via
+`generate_anki.py`) and **`anthropic`** (via `promote.py`) whether needed or not.
+Measured: `kallim lint` ≈ **0.46 s** vs ≈ **0.03 s** for importing the `lint`
+module alone — almost all of the gap is anthropic + genanki.
+
+**Next stage:** lazy-dispatch — move each `from scripts.<cmd> import main` into
+its `if args.command == …` branch in `cli.py`, so e.g. `lint`/`prune`/`voices`/
+`migrate` import only what they use (≈ 0.1 s; a ~0.35 s win per invocation). Cost:
+a second `PLC0415` per-file-ignore (`"cli.py"`). Deferred deliberately to keep
+the lazy-import deviation list short.
+
 ## ⚠️ Gotchas to remember (read before thinning chunks)
 
 Deleting a row from `chunks.csv` is **not** fully self-contained. The CSV is the

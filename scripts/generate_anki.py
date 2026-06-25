@@ -11,10 +11,10 @@ from pathlib import Path
 import genanki
 from dotenv import load_dotenv
 
-from scripts.audio import AudioGenerator
-from scripts.config import AUDIO_DIR, CHUNKS_CSV
+from scripts.audio import make_synthesiser
+from scripts.config import CHUNKS_CSV
+from scripts.store import AudioCache, load_chunks
 from scripts.utils import make_run_dir, setup_logging
-from scripts.store import load_chunks
 
 logger = logging.getLogger("kallim.anki")
 
@@ -107,16 +107,15 @@ def main() -> None:
     args = parser.parse_args()
 
     chunks = load_chunks(Path(args.input))
-
     if args.section:
         chunks = [c for c in chunks if c.concept_tag == args.section]
         if not chunks:
             sys.exit(f"Error: section '{args.section}' not found")
 
-    # Set up the audio generator if generating audio
-    generator: AudioGenerator | None = None
-    if not args.no_audio:
-        generator = AudioGenerator.from_env(force=args.force)
+    audio = not args.no_audio
+    if audio:
+        make_synthesiser()  # wires Utterance.synthesiser
+    cache = AudioCache()
 
     model = build_model()
     deck = genanki.Deck(DECK_ID, "Kallim Arabic")
@@ -127,22 +126,25 @@ def main() -> None:
         en_sound = ""
         ar_sound = ""
 
-        if generator:
-            logger.info(
-                "  Chunk %s: %s / %s",
-                chunk.id, chunk.english[:30], chunk.arabic[:30],
-            )
-            generator.generate(chunk)
-            en_path, ar_path = chunk.audio_paths(AUDIO_DIR)
-            en_sound = f"[sound:{en_path.name}]"
-            ar_sound = f"[sound:{ar_path.name}]"
-            media_files.append(str(en_path))
-            media_files.append(str(ar_path))
+        if audio:
+            logger.info("  %s", chunk)
+            for utt in (chunk.english, chunk.arabic):
+                if args.force or utt.key not in cache:
+                    cache[utt.key] = utt.synthesise()
+                media_files.append(str(cache.path(utt.key)))
+            en_sound = f"[sound:{cache.path(chunk.english.key).name}]"
+            ar_sound = f"[sound:{cache.path(chunk.arabic.key).name}]"
 
         note = genanki.Note(
             model=model,
-            fields=[chunk.english, chunk.arabic, en_sound, ar_sound, chunk.register],
-            tags=[f"topic::{chunk.concept_tag}", f"register::{chunk.register}"],
+            fields=[
+                chunk.english.text, chunk.arabic.text,
+                en_sound, ar_sound, chunk.arabic.register,
+            ],
+            tags=[
+                f"topic::{chunk.concept_tag}",
+                f"register::{chunk.arabic.register}",
+            ],
             guid=genanki.guid_for(chunk.id),
         )
         deck.add_note(note)

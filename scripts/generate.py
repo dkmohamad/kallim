@@ -7,22 +7,21 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
-from pydub import AudioSegment
 
-from scripts.audio import AudioGenerator, list_voices, load_clip, make_client
-from scripts.config import AUDIO_DIR, CHUNKS_CSV
-from scripts.model import Chunk
-from scripts.store import load_chunks
+from scripts.audio import list_voices, make_synthesiser, stitch
+from scripts.config import CHUNKS_CSV
+from scripts.model import Chunk, PlayableAudio, Register
+from scripts.store import AudioCache, load_chunks, make_codec
 from scripts.utils import make_run_dir, setup_logging
 
 logger = logging.getLogger("kallim")
 
 
-def _sections(chunks: list[Chunk]) -> list[tuple[str, str, list[Chunk]]]:
-    """Group chunks by (concept_tag, register), preserving first-seen order."""
-    groups: dict[tuple[str, str], list[Chunk]] = {}
+def _sections(chunks: list[Chunk]) -> list[tuple[str, Register, list[Chunk]]]:
+    """Group chunks by (concept_tag, Arabic register), preserving first-seen order."""
+    groups: dict[tuple[str, Register], list[Chunk]] = {}
     for chunk in chunks:
-        groups.setdefault((chunk.concept_tag, chunk.register), []).append(chunk)
+        groups.setdefault((chunk.concept_tag, chunk.arabic.register), []).append(chunk)
     return [(tag, reg, cs) for (tag, reg), cs in groups.items()]
 
 
@@ -31,8 +30,8 @@ def _transcript(label: str, chunks: list[Chunk]) -> str:
     title = label.replace("_", " ").title()
     lines = [f"=== {title} ===\n"]
     for idx, chunk in enumerate(chunks, 1):
-        lines.append(f"{idx}. {chunk.english}")
-        lines.append(f"   {chunk.arabic}\n")
+        lines.append(f"{idx}. {chunk.english.text}")
+        lines.append(f"   {chunk.arabic.text}\n")
     return "\n".join(lines)
 
 
@@ -65,7 +64,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.list_voices:
-        list_voices(make_client())
+        list_voices()
         return
 
     chunks = load_chunks(Path(args.input))
@@ -78,8 +77,9 @@ def main() -> None:
     setup_logging(run_dir)
 
     pause_ms = int(args.pause * 1000)
-    pause = AudioSegment.silent(duration=pause_ms)
-    audio = AudioGenerator.from_env(force=args.force)
+    make_synthesiser()  # wires Utterance.synthesiser
+    cache = AudioCache()
+    codec = make_codec()
 
     sections = _sections(chunks)
     for idx, (tag, register, group) in enumerate(sections, 1):
@@ -92,19 +92,20 @@ def main() -> None:
             _transcript(label, group), encoding="utf-8"
         )
 
-        # Generate per-chunk audio (content-addressed cache) and stitch
-        section_audio = AudioSegment.empty()
+        # Synthesise/load each utterance's audio, then stitch the section
+        clips: list[PlayableAudio] = []
         for chunk in group:
-            logger.info(
-                "  Chunk %s: %s / %s",
-                chunk.id, chunk.english[:30], chunk.arabic[:30],
-            )
-            audio.generate(chunk)
-            en_path, ar_path = chunk.audio_paths(AUDIO_DIR)
-            section_audio += load_clip(en_path) + pause + load_clip(ar_path) + pause
+            logger.info("  %s", chunk)
+            for utt in (chunk.english, chunk.arabic):
+                if args.force or utt.key not in cache:
+                    clip = utt.synthesise()
+                    cache[utt.key] = clip
+                else:
+                    clip = cache[utt.key]
+                clips.append(clip)
 
         mp3_path = run_dir / f"{prefix}.mp3"
-        section_audio.export(str(mp3_path), format="mp3", bitrate="128k")
+        codec.encode(stitch(clips, pause_ms), mp3_path)
         logger.info("Exported: %s", mp3_path)
 
     logger.info("Done. %d section(s) processed.", len(sections))

@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
-"""Cross-cutting helpers: content hashing, run directories, logging setup."""
+"""Cross-cutting helpers: ids, content hashing, run directories, logging setup."""
 
 import hashlib
 import logging
 import sys
+import uuid
 from datetime import datetime
 from pathlib import Path
 
 from scripts.config import OUTPUT_DIR
+
+
+def generate_id() -> str:
+    """A short random id for a new chunk (8 hex chars)."""
+    return uuid.uuid4().hex[:8]
 
 
 def content_hash(text: str) -> str:
@@ -28,18 +34,23 @@ def make_run_dir() -> Path:
     return run_dir
 
 
-def setup_logging(run_dir: Path) -> None:
-    """Configure the 'kallim' logger to write to run_dir/generate.log and stderr."""
+def setup_logging(run_dir: Path | None = None) -> None:
+    """Configure the 'kallim' logger to write to stderr.
+
+    If ``run_dir`` is given, also write a DEBUG-level run_dir/generate.log;
+    commands without a run directory (e.g. promote) just pass nothing.
+    """
     logger = logging.getLogger("kallim")
     logger.setLevel(logging.DEBUG)
     fmt = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
-
-    fh = logging.FileHandler(run_dir / "generate.log")
-    fh.setLevel(logging.DEBUG)
-    fh.setFormatter(fmt)
-    logger.addHandler(fh)
 
     sh = logging.StreamHandler(sys.stderr)
     sh.setLevel(logging.INFO)
     sh.setFormatter(fmt)
     logger.addHandler(sh)
+
+    if run_dir is not None:
+        fh = logging.FileHandler(run_dir / "generate.log")
+        fh.setLevel(logging.DEBUG)
+        fh.setFormatter(fmt)
+        logger.addHandler(fh)

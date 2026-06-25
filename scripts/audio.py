@@ -1,171 +1,114 @@
 #!/usr/bin/env python3
-"""ElevenLabs TTS audio generation and content-addressed caching.
+"""ElevenLabs TTS synthesis and playable-clip composition.
 
-Everything about turning a Chunk into per-side mp3 files: the ElevenLabs client,
-the voice map, and the AudioGenerator service.
+``ElevenLabsSynthesiser`` turns an Utterance into playable audio (generation
+only, no I/O) and is the callable adapter for the model's ``Synthesiser`` port;
+``make_synthesiser`` builds it and wires it onto ``Utterance.synthesiser`` so
+utterances can synthesise themselves. ``stitch`` concatenates clips for the
+shadowing layout. (The audio *store* and the mp3 codec live in
+``scripts.store`` with the other persistence.)
+
+This module imports pydub/elevenlabs *lazily* (inside the functions that use
+them) so commands that don't make audio — lint, prune, --help — don't pay to
+load them. PLC0415 is waived here in pyproject for exactly this.
 """
+
+from __future__ import annotations
 
 import io
 import json
 import logging
 import os
-import sys
-import time
-from pathlib import Path
+from collections.abc import Iterable
+from typing import TYPE_CHECKING, cast
 
-from elevenlabs.client import ElevenLabs
-from pydub import AudioSegment
+from scripts.config import VOICES_JSON
+from scripts.model import PlayableAudio, Synthesiser, Utterance
 
-from scripts.config import AUDIO_DIR, VOICES_JSON
-from scripts.model import Chunk, Register
+if TYPE_CHECKING:
+    from elevenlabs.client import ElevenLabs
+    from pydub import AudioSegment
 
 logger = logging.getLogger("kallim")
 
-# Registers required by the generate/anki pipelines.
-_REQUIRED_VOICES = {Register.ENGLISH, Register.EGYPTIAN, Register.MSA, Register.IRAQI}
 
+def list_voices() -> None:
+    """Print all available ElevenLabs voices (for filling in voices.json)."""
+    from elevenlabs.client import ElevenLabs
 
-def load_voice_map(require: set[Register] | None = None) -> dict[str, str]:
-    """Load register -> voice ID mapping from voices.json.
-
-    Args:
-        require: Set of registers that must be present.  Defaults to the
-                 four TTS registers (english, egyptian, msa, iraqi).
-
-    Returns:
-        Mapping of register value string to ElevenLabs voice ID.
-
-    Raises:
-        SystemExit: If voices.json is missing or required keys are absent.
-    """
-    if not VOICES_JSON.exists():
-        sys.exit(f"Error: {VOICES_JSON} not found. See voices.json.example.")
-
-    with VOICES_JSON.open(encoding="utf-8") as f:
-        voice_map: dict[str, str] = json.load(f)
-
-    needed = {r.value for r in (require if require is not None else _REQUIRED_VOICES)}
-    missing = needed - voice_map.keys()
-    if missing:
-        sys.exit(f"Error: missing voices in {VOICES_JSON}: {', '.join(sorted(missing))}")
-
-    return voice_map
-
-
-def make_client() -> ElevenLabs:
-    """Build an ElevenLabs client from ELEVENLABS_API_KEY (exits if unset)."""
-    api_key = os.environ.get("ELEVENLABS_API_KEY", "")
-    if not api_key:
-        sys.exit("Error: ELEVENLABS_API_KEY not set. Check your .env file.")
-    return ElevenLabs(api_key=api_key)
-
-
-def generate_tts(client: ElevenLabs, text: str, voice_id: str) -> bytes:
-    """Generate TTS audio bytes via ElevenLabs API, retrying once.
-
-    Raises:
-        Exception: Propagates the API error if both attempts fail — a failed
-            chunk should stop the run, not be silently skipped.
-    """
-    for attempt in range(2):
-        try:
-            audio_iter = client.text_to_speech.convert(
-                text=text,
-                voice_id=voice_id,
-                model_id="eleven_multilingual_v2",
-                output_format="mp3_44100_128",
-            )
-            return b"".join(audio_iter)
-        except Exception as e:
-            logger.warning(
-                "TTS failed for '%s' (attempt %d/2): %s", text[:40], attempt + 1, e
-            )
-            if attempt == 0:
-                time.sleep(2)
-            else:
-                raise
-    raise AssertionError("unreachable: loop returns or raises")
-
-
-def normalize_audio(
-    segment: AudioSegment, target_dbfs: float = -20.0
-) -> AudioSegment:
-    """Normalize audio segment to a target loudness level."""
-    change = target_dbfs - segment.dBFS
-    return segment.apply_gain(change)
-
-
-def list_voices(client: ElevenLabs) -> None:
-    """Print all available ElevenLabs voices."""
+    client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
     response = client.voices.get_all()
     for voice in response.voices:
-        labels = ", ".join(
-            f"{k}={v}" for k, v in (voice.labels or {}).items()
-        )
+        labels = ", ".join(f"{k}={v}" for k, v in (voice.labels or {}).items())
         print(f"{voice.voice_id}  {voice.name}  [{labels}]")
 
 
-def load_clip(path: Path) -> AudioSegment:
-    """Decode a cached mp3 into an AudioSegment."""
-    return AudioSegment.from_file(str(path), format="mp3")
+class ElevenLabsSynthesiser:
+    """Generates an utterance's audio via ElevenLabs TTS — generation only.
 
-
-class AudioGenerator:
-    """Generates and caches per-chunk TTS audio.
-
-    Holds the generation collaborators (ElevenLabs client, voice map, cache dir),
-    so callers build one per run and call ``generate(chunk)``. Audio is
-    content-addressed (``chunk.en_filename``/``ar_filename`` are content hashes),
-    so a present file is correct by construction — no manifest, no staleness.
+    The callable adapter for the model's ``Synthesiser`` port (``__call__``
+    takes an Utterance and returns a clip). Persistence is the AudioCache's job;
+    the caller decides when to synthesise (missing / --force) vs. load.
     """
 
-    def __init__(
-        self,
-        client: ElevenLabs,
-        voice_map: dict[str, str],
-        audio_dir: Path,
-        *,
-        force: bool = False,
-    ) -> None:
+    def __init__(self, client: ElevenLabs, voice_map: dict[str, str]) -> None:
         self._client = client
         self._voice_map = voice_map
-        self._audio_dir = audio_dir
-        self._force = force
 
-    @classmethod
-    def from_env(
-        cls, audio_dir: Path = AUDIO_DIR, *, force: bool = False
-    ) -> "AudioGenerator":
-        """Build a generator from environment + config.
+    def __call__(self, utterance: Utterance) -> PlayableAudio:
+        from pydub import AudioSegment
 
-        Resolves the API key into a client, loads the voice map, and ensures the
-        cache dir exists — the wiring otherwise duplicated across entry points.
-        """
-        client = make_client()
-        voice_map = load_voice_map()
-        audio_dir.mkdir(exist_ok=True)
-        return cls(client, voice_map, audio_dir, force=force)
-
-    def _ensure_side(self, text: str, voice_id: str, path: Path) -> None:
-        """Generate, normalize, and write one TTS file. Raises on TTS failure."""
-        audio_bytes = generate_tts(self._client, text, voice_id)
-        seg = normalize_audio(
+        audio_bytes = self._tts(utterance.text, self._voice_map[utterance.register])
+        seg = self._normalize(
             AudioSegment.from_file(io.BytesIO(audio_bytes), format="mp3")
         )
-        seg.export(str(path), format="mp3", bitrate="128k")
+        logger.info("  synth %s", utterance.key)
+        return cast(PlayableAudio, seg)
 
-    def generate(self, chunk: Chunk) -> None:
-        """Ensure the chunk's content-addressed audio files exist.
+    def _tts(self, text: str, voice_id: str) -> bytes:
+        """Generate TTS audio bytes via the ElevenLabs API.
 
-        Each side's file is named by the hash of its text, so a present file is
-        already current; a missing one means new/edited content. Regenerate the
-        missing side(s) (or all, with ``force=True``). The files are at
-        ``chunk.audio_paths(audio_dir)``; decode them with ``load_clip``. Raises
-        on TTS failure — a bad chunk stops the run rather than being skipped.
+        Raises on API failure — a failed utterance stops the run.
         """
-        en_path, ar_path = chunk.audio_paths(self._audio_dir)
-        if self._force or not en_path.exists():
-            self._ensure_side(chunk.english, self._voice_map["english"], en_path)
-        if self._force or not ar_path.exists():
-            self._ensure_side(chunk.arabic, self._voice_map[chunk.register], ar_path)
-        logger.info("  %s", chunk.id)
+        # NOTE: no retry. Add a retry/backoff here if transient API errors crop up.
+        audio_iter = self._client.text_to_speech.convert(
+            text=text,
+            voice_id=voice_id,
+            model_id="eleven_multilingual_v2",
+            output_format="mp3_44100_128",
+        )
+        return b"".join(audio_iter)
+
+    @staticmethod
+    def _normalize(segment: AudioSegment, target_dbfs: float = -20.0) -> AudioSegment:
+        """Normalize a segment to a target loudness level."""
+        return segment.apply_gain(target_dbfs - segment.dBFS)
+
+
+def make_synthesiser() -> Synthesiser:
+    """Build a synthesiser from the environment + config and wire it in.
+
+    Reads ELEVENLABS_API_KEY and voices.json, then injects the engine onto
+    ``Utterance.synthesiser`` so every utterance can synthesise itself. Returns
+    it too. Raises if either input is absent — FileNotFoundError for
+    voices.json, KeyError for the API key (and for a register whose voice isn't
+    listed, when it's first synthesised).
+    """
+    from elevenlabs.client import ElevenLabs
+
+    voice_map: dict[str, str] = json.loads(VOICES_JSON.read_text(encoding="utf-8"))
+    client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
+    synth = ElevenLabsSynthesiser(client, voice_map)
+    Utterance.synthesiser = synth
+    return synth
+
+
+def stitch(clips: Iterable[PlayableAudio], pause_ms: int) -> PlayableAudio:
+    """Concatenate clips with a pause after each (the shadowing layout)."""
+    from pydub import AudioSegment
+
+    section = cast(PlayableAudio, AudioSegment.empty())
+    pause = cast(PlayableAudio, AudioSegment.silent(duration=pause_ms))
+    for clip in clips:
+        section = section + clip + pause
+    return section
