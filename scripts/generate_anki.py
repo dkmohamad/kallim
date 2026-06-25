@@ -11,10 +11,10 @@ from pathlib import Path
 import genanki
 from dotenv import load_dotenv
 
-from scripts.audio import make_synthesiser
-from scripts.config import CHUNKS_CSV
-from scripts.store import AudioCache, load_chunks
-from scripts.utils import make_run_dir, setup_logging
+from .audio import make_synthesiser
+from .config import CHUNKS_CSV
+from .store import AudioCache, load_chunks
+from .utils import make_run_dir, setup_logging
 
 logger = logging.getLogger("kallim.anki")
 
@@ -39,8 +39,7 @@ def build_model() -> genanki.Model:
             {
                 "name": "English → Arabic",
                 "qfmt": (
-                    '<div class="english">{{English}}</div>'
-                    "<div>{{EnglishAudio}}</div>"
+                    '<div class="english">{{English}}</div><div>{{EnglishAudio}}</div>'
                 ),
                 "afmt": (
                     '<div class="english">{{English}}</div>'
@@ -52,8 +51,7 @@ def build_model() -> genanki.Model:
             {
                 "name": "Arabic → English",
                 "qfmt": (
-                    '<div class="arabic">{{Arabic}}</div>'
-                    "<div>{{ArabicAudio}}</div>"
+                    '<div class="arabic">{{Arabic}}</div><div>{{ArabicAudio}}</div>'
                 ),
                 "afmt": (
                     '<div class="arabic">{{Arabic}}</div>'
@@ -84,24 +82,30 @@ def main() -> None:
         description="Kallim — Anki deck generator from chunks.csv"
     )
     parser.add_argument(
-        "--input", "-i", default=str(CHUNKS_CSV),
+        "--input",
+        "-i",
+        default=str(CHUNKS_CSV),
         help="Path to chunks CSV file",
     )
     parser.add_argument(
-        "--output", "-o",
+        "--output",
+        "-o",
         default=str(run_dir / "kallim_arabic.apkg"),
         help="Output .apkg path",
     )
     parser.add_argument(
-        "--section", "-s",
+        "--section",
+        "-s",
         help="Process only chunks with this concept_tag",
     )
     parser.add_argument(
-        "--no-audio", action="store_true",
+        "--no-audio",
+        action="store_true",
         help="Generate text-only cards (no TTS)",
     )
     parser.add_argument(
-        "--force", action="store_true",
+        "--force",
+        action="store_true",
         help="Regenerate audio even when the cached file exists",
     )
     args = parser.parse_args()
@@ -138,8 +142,11 @@ def main() -> None:
         note = genanki.Note(
             model=model,
             fields=[
-                chunk.english.text, chunk.arabic.text,
-                en_sound, ar_sound, chunk.arabic.register,
+                chunk.english.text,
+                chunk.arabic.text,
+                en_sound,
+                ar_sound,
+                chunk.arabic.register,
             ],
             tags=[
                 f"topic::{chunk.concept_tag}",

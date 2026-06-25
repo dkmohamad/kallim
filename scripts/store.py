@@ -17,8 +17,8 @@ from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
-from scripts.config import AUDIO_DIR
-from scripts.model import Chunk, PlayableAudio
+from .config import AUDIO_DIR
+from .model import Chunk, PlayableAudio
 
 if TYPE_CHECKING:
     from pydub import AudioSegment

@@ -16,9 +16,9 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 
-from scripts.config import CHUNKS_CSV
-from scripts.model import Chunk
-from scripts.utils import generate_id, setup_logging
+from .config import CHUNKS_CSV
+from .model import Chunk
+from .utils import generate_id, setup_logging
 
 load_dotenv()
 
@@ -55,7 +55,12 @@ def load_vocab_pairs(path: Path) -> list[dict[str, str]]:
         # Plain text: one Arabic entry per line, no English
         lines = path.read_text(encoding="utf-8").splitlines()
         return [
-            {"arabic": line.strip(), "english": "", "register": "msa", "concept_tag": ""}
+            {
+                "arabic": line.strip(),
+                "english": "",
+                "register": "msa",
+                "concept_tag": "",
+            }
             for line in lines
             if line.strip()
         ]
@@ -82,9 +87,9 @@ def promote_batch(
                 "egyptian": "Egyptian Arabic dialect",
                 "iraqi": "Iraqi Arabic dialect",
             }.get(w["register"], "Arabic")
-            english_hint = f' (meaning: {w["english"]})' if w["english"] else ""
+            english_hint = f" (meaning: {w['english']})" if w["english"] else ""
             prompt_lines.append(
-                f'{idx}. {w["arabic"]}{english_hint} — register: {register_label}'
+                f"{idx}. {w['arabic']}{english_hint} — register: {register_label}"
             )
 
         prompt = (
@@ -172,29 +177,34 @@ def main(input_path: str | None = None) -> None:
         # Match generated sentences back to original entries for metadata
         if len(generated) == len(needs_promotion):
             for orig, gen in zip(needs_promotion, generated):
-                promoted.append({
-                    "arabic": gen["arabic"],
-                    "english": gen["english"],
-                    "register": orig["register"],
-                    "concept_tag": orig["concept_tag"],
-                })
+                promoted.append(
+                    {
+                        "arabic": gen["arabic"],
+                        "english": gen["english"],
+                        "register": orig["register"],
+                        "concept_tag": orig["concept_tag"],
+                    }
+                )
         else:
             logger.warning(
                 "got %d sentences for %d words. Writing originals.",
-                len(generated), len(needs_promotion),
+                len(generated),
+                len(needs_promotion),
             )
             promoted = needs_promotion
 
     # Combine into validated chunks and write the review CSV
     all_entries = passthrough + promoted
     chunks = [
-        Chunk.from_row([
-            generate_id(),
-            entry["arabic"],
-            entry["english"],
-            entry["register"],
-            entry["concept_tag"],
-        ])
+        Chunk.from_row(
+            [
+                generate_id(),
+                entry["arabic"],
+                entry["english"],
+                entry["register"],
+                entry["concept_tag"],
+            ]
+        )
         for entry in all_entries
     ]
 

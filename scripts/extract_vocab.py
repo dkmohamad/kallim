@@ -42,17 +42,17 @@ class VocabEntry(NamedTuple):
 
 SECTIONS: list[tuple[int, int, str, str]] = [
     # (start_line, end_line, register, concept_tag)
-    (791, 807, "msa", "food"),         # Jan 13: diet vocab
-    (839, 857, "msa", "travel"),       # Jan 16: transport, Morocco
-    (940, 987, "msa", "food"),         # Feb 1: food, family meals, geography
-    (1060, 1102, "msa", "travel"),     # Feb 6: travel (partial repeat) + Morocco
-    (1112, 1131, "msa", "emotions"),   # Feb 9: feelings, countryside, dreams
-    (1259, 1300, "msa", "people"),     # Feb 25: refugees, integration, generosity
-    (1694, 1732, "msa", "leisure"),    # Apr 1 MSA: camping, spring, planning
+    (791, 807, "msa", "food"),  # Jan 13: diet vocab
+    (839, 857, "msa", "travel"),  # Jan 16: transport, Morocco
+    (940, 987, "msa", "food"),  # Feb 1: food, family meals, geography
+    (1060, 1102, "msa", "travel"),  # Feb 6: travel (partial repeat) + Morocco
+    (1112, 1131, "msa", "emotions"),  # Feb 9: feelings, countryside, dreams
+    (1259, 1300, "msa", "people"),  # Feb 25: refugees, integration, generosity
+    (1694, 1732, "msa", "leisure"),  # Apr 1 MSA: camping, spring, planning
     (1739, 1758, "egyptian", "greetings"),  # Apr 1 Egyptian: greetings + cafe
-    (1837, 1868, "msa", "food"),       # Apr 16: Egyptian food, cooking, health
-    (1940, 1966, "msa", "culture"),    # Apr 24: religion, reading, travel stories
-    (2041, 2079, "msa", "leisure"),    # Apr 30: daily life, nature, parks
+    (1837, 1868, "msa", "food"),  # Apr 16: Egyptian food, cooking, health
+    (1940, 1966, "msa", "culture"),  # Apr 24: religion, reading, travel stories
+    (2041, 2079, "msa", "leisure"),  # Apr 30: daily life, nature, parks
     (2112, 2141, "egyptian", "cafe"),  # May 14: Egyptian cafe ordering
 ]
 
@@ -150,7 +150,9 @@ def extract_vocab(chat_path: str) -> list[VocabEntry]:
                 english_text = english_text.strip()
                 if arabic_text and arabic_text not in seen:
                     seen.add(arabic_text)
-                    raw_entries.append(VocabEntry(arabic_text, english_text, register, tag))
+                    raw_entries.append(
+                        VocabEntry(arabic_text, english_text, register, tag)
+                    )
             continue
 
         # Non-tab Arabic lines inside a vocab block
@@ -171,8 +173,11 @@ def _clean_entries(entries: list[VocabEntry]) -> list[VocabEntry]:
 
     skip_words = {"على", "عن", "له", "حب"}
     skip_phrases = {
-        "شكرا لك", "لا مشكلة", "لدي زكام و صداع",
-        "اهلا انا بخير الحمد لله", "هذا صحيح",
+        "شكرا لك",
+        "لا مشكلة",
+        "لدي زكام و صداع",
+        "اهلا انا بخير الحمد لله",
+        "هذا صحيح",
         "الان احتاج الى درس واحد في الاسبوع",
     }
     skip_prefixes = ("الدرس ",)
@@ -206,7 +211,11 @@ def _clean_entries(entries: list[VocabEntry]) -> list[VocabEntry]:
                 continue
             if not is_arabic(part):
                 continue
-            if part in conjugation_fragments or part in skip_words or part in skip_exact:
+            if (
+                part in conjugation_fragments
+                or part in skip_words
+                or part in skip_exact
+            ):
                 continue
             seen.add(part)
             # If the entry was split, the English applies to the whole
@@ -230,9 +239,7 @@ def main() -> None:
     entries = extract_vocab(str(chat_path))
 
     # Write plain text (Arabic only)
-    vocab_txt.write_text(
-        "\n".join(e.arabic for e in entries) + "\n", encoding="utf-8"
-    )
+    vocab_txt.write_text("\n".join(e.arabic for e in entries) + "\n", encoding="utf-8")
 
     # Write CSV with all metadata
     with vocab_csv.open("w", newline="", encoding="utf-8") as f:

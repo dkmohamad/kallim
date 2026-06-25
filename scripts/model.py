@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from enum import StrEnum
 from typing import ClassVar, Protocol
 
-from scripts.utils import content_hash
+from .utils import content_hash
 
 
 class PlayableAudio(Protocol):
@@ -78,20 +78,37 @@ class ConceptTag(StrEnum):
 
 
 # Tags valid for the Egyptian situational scheme.
-SITUATIONAL_TAGS = frozenset({
-    ConceptTag.GREETINGS, ConceptTag.SMALLTALK, ConceptTag.DINING,
-    ConceptTag.HOTEL, ConceptTag.TAXIS, ConceptTag.DIRECTIONS,
-    ConceptTag.SIGHTSEEING, ConceptTag.BEACH_AND_VENDORS,
-    ConceptTag.SHOPPING, ConceptTag.MONEY,
-})
+SITUATIONAL_TAGS = frozenset(
+    {
+        ConceptTag.GREETINGS,
+        ConceptTag.SMALLTALK,
+        ConceptTag.DINING,
+        ConceptTag.HOTEL,
+        ConceptTag.TAXIS,
+        ConceptTag.DIRECTIONS,
+        ConceptTag.SIGHTSEEING,
+        ConceptTag.BEACH_AND_VENDORS,
+        ConceptTag.SHOPPING,
+        ConceptTag.MONEY,
+    }
+)
 
 # Tags valid for the MSA / Iraqi topical scheme.
-TOPICAL_TAGS = frozenset({
-    ConceptTag.GREETINGS, ConceptTag.FOOD, ConceptTag.TRAVEL,
-    ConceptTag.PEOPLE, ConceptTag.FAMILY, ConceptTag.EMOTIONS,
-    ConceptTag.LEISURE, ConceptTag.DAILY_LIFE, ConceptTag.CULTURE,
-    ConceptTag.WORK, ConceptTag.HEALTH,
-})
+TOPICAL_TAGS = frozenset(
+    {
+        ConceptTag.GREETINGS,
+        ConceptTag.FOOD,
+        ConceptTag.TRAVEL,
+        ConceptTag.PEOPLE,
+        ConceptTag.FAMILY,
+        ConceptTag.EMOTIONS,
+        ConceptTag.LEISURE,
+        ConceptTag.DAILY_LIFE,
+        ConceptTag.CULTURE,
+        ConceptTag.WORK,
+        ConceptTag.HEALTH,
+    }
+)
 
 # Which tag scheme each register is allowed to draw from.
 ALLOWED_TAGS_BY_REGISTER = {
@@ -145,7 +162,11 @@ class Chunk:
     # The chunks.csv schema — the single source of truth for column order,
     # shared by from_row (read) and to_row (write).
     FIELDS: ClassVar[tuple[str, ...]] = (
-        "id", "arabic", "english", "register", "concept_tag",
+        "id",
+        "arabic",
+        "english",
+        "register",
+        "concept_tag",
     )
 
     def __str__(self) -> str:

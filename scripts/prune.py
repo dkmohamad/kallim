@@ -12,8 +12,8 @@ Defaults to a dry run — pass --apply to actually delete.
 import argparse
 from pathlib import Path
 
-from scripts.config import CHUNKS_CSV
-from scripts.store import AudioCache, load_chunks
+from .config import CHUNKS_CSV
+from .store import AudioCache, load_chunks
 
 
 def live_keys(csv_path: Path) -> set[str]:
@@ -61,7 +61,8 @@ def main() -> None:
         description="Delete orphaned (stale or removed) audio cache files",
     )
     parser.add_argument(
-        "--apply", action="store_true",
+        "--apply",
+        action="store_true",
         help="Actually delete (default is a dry run)",
     )
     args = parser.parse_args()

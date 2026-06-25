@@ -8,7 +8,7 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 
-from scripts.config import OUTPUT_DIR
+from .config import OUTPUT_DIR
 
 
 def generate_id() -> str:

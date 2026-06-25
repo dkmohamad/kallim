@@ -80,13 +80,15 @@ def parse_phrases(path: Path) -> list[Chunk]:
                 register = "egyptian" if "egyptian" in section_name else "msa"
                 # Strip register suffix from tag (e.g. "cafe_egyptian" -> "cafe")
                 tag = re.sub(r"_(?:egyptian|msa|iraqi)$", "", section_name)
-                chunks.append(Chunk(
-                    id=generate_id(),
-                    arabic=arabic,
-                    english=english,
-                    register=register,
-                    concept_tag=tag,
-                ))
+                chunks.append(
+                    Chunk(
+                        id=generate_id(),
+                        arabic=arabic,
+                        english=english,
+                        register=register,
+                        concept_tag=tag,
+                    )
+                )
             i += 1
             continue
 

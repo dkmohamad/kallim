@@ -22,8 +22,8 @@ import os
 from collections.abc import Iterable
 from typing import TYPE_CHECKING, cast
 
-from scripts.config import VOICES_JSON
-from scripts.model import PlayableAudio, Synthesiser, Utterance
+from .config import VOICES_JSON
+from .model import PlayableAudio, Synthesiser, Utterance
 
 if TYPE_CHECKING:
     from elevenlabs.client import ElevenLabs

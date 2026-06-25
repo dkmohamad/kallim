@@ -8,11 +8,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from scripts.audio import list_voices, make_synthesiser, stitch
-from scripts.config import CHUNKS_CSV
-from scripts.model import Chunk, PlayableAudio, Register
-from scripts.store import AudioCache, load_chunks, make_codec
-from scripts.utils import make_run_dir, setup_logging
+from .audio import list_voices, make_synthesiser, stitch
+from .config import CHUNKS_CSV
+from .model import Chunk, PlayableAudio, Register
+from .store import AudioCache, load_chunks, make_codec
+from .utils import make_run_dir, setup_logging
 
 logger = logging.getLogger("kallim")
 
@@ -42,23 +42,30 @@ def main() -> None:
         description="Kallim — generate shadowing audio from chunks.csv"
     )
     parser.add_argument(
-        "--input", "-i", default=str(CHUNKS_CSV),
+        "--input",
+        "-i",
+        default=str(CHUNKS_CSV),
         help="Path to chunks CSV file",
     )
     parser.add_argument(
-        "--section", "-s",
+        "--section",
+        "-s",
         help="Process only chunks with this concept_tag",
     )
     parser.add_argument(
-        "--list-voices", action="store_true",
+        "--list-voices",
+        action="store_true",
         help="List ElevenLabs voices and exit",
     )
     parser.add_argument(
-        "--pause", type=float, default=2.0,
+        "--pause",
+        type=float,
+        default=2.0,
         help="Pause duration in seconds (between English/Arabic and between chunks)",
     )
     parser.add_argument(
-        "--force", action="store_true",
+        "--force",
+        action="store_true",
         help="Regenerate audio even when the cached file exists",
     )
     args = parser.parse_args()
