@@ -1,30 +1,34 @@
-#!/usr/bin/env python3
 """Promote vocabulary words into chunks with example sentences.
 
-Reads vocab_pairs.csv (or a plain text file of Arabic entries) and:
+Reads vocab_pairs.csv (arabic,english,register,concept_tag) and:
 - Passes through entries that are already phrase-length chunks.
 - Generates example sentences for single words using the Anthropic API.
 - Outputs a review CSV ready to be appended to chunks.csv.
 """
 
+import argparse
 import csv
 import logging
 import os
-import sys
 from pathlib import Path
 
 import anthropic
 from dotenv import load_dotenv
 
-from .config import CHUNKS_CSV
-from .model import Chunk
-from .utils import generate_id, setup_logging
+from .config import CHUNKS_CSV, VOCAB_CHUNKS_REVIEW_CSV, VOCAB_PAIRS_CSV
+from .model import Chunk, VocabEntry
+from .store import load_chunks
+from .utils import generate_id, setup_logging, write_csv_rows
 
-load_dotenv()
+__all__ = [
+    "is_chunk",
+    "load_existing_arabic",
+    "load_vocab_pairs",
+    "promote_batch",
+    "run",
+]
 
 logger = logging.getLogger("kallim.promote")
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 def is_chunk(arabic: str) -> bool:
@@ -33,131 +37,82 @@ def is_chunk(arabic: str) -> bool:
 
 
 def load_existing_arabic(chunks_path: Path) -> set[str]:
-    """Load existing Arabic text from chunks.csv for dedup."""
+    """Arabic text already in chunks.csv, for dedup (empty if it doesn't exist)."""
     if not chunks_path.exists():
         return set()
-    existing: set[str] = set()
-    with chunks_path.open(newline="", encoding="utf-8") as f:
+    return {chunk.arabic.text for chunk in load_chunks(chunks_path)}
+
+
+def load_vocab_pairs(path: Path) -> list[VocabEntry]:
+    """Load vocab entries from a CSV (arabic,english,register,concept_tag).
+
+    Args:
+        path: Path to a ``.csv`` with the four vocab columns.
+
+    Returns:
+        One VocabEntry per row, with register/concept_tag as taxonomy members.
+
+    Raises:
+        ValueError: If ``path`` isn't a CSV (a bare word list has no register or
+            concept_tag, so it can't become chunks), or a row is off-taxonomy.
+    """
+    if path.suffix != ".csv":
+        raise ValueError(
+            f"{path} is not a .csv; vocab input needs arabic,english,register,"
+            "concept_tag columns (a plain word list carries no register/tag)"
+        )
+    with path.open(newline="", encoding="utf-8") as f:
         reader = csv.reader(f)
         next(reader)  # skip header
-        for row in reader:
-            chunk = Chunk.from_row(row)
-            existing.add(chunk.arabic.text)
-    return existing
-
-
-def load_vocab_pairs(path: Path) -> list[dict[str, str]]:
-    """Load vocab pairs from CSV or plain text."""
-    if path.suffix == ".csv":
-        with path.open(newline="", encoding="utf-8") as f:
-            return list(csv.DictReader(f))
-    else:
-        # Plain text: one Arabic entry per line, no English
-        lines = path.read_text(encoding="utf-8").splitlines()
-        return [
-            {
-                "arabic": line.strip(),
-                "english": "",
-                "register": "msa",
-                "concept_tag": "",
-            }
-            for line in lines
-            if line.strip()
-        ]
+        return [VocabEntry.from_row(row) for row in reader]
 
 
 def promote_batch(
-    words: list[dict[str, str]],
+    words: list[VocabEntry],
     api_key: str,
     batch_size: int = 30,
-) -> list[dict[str, str]]:
-    """Generate example sentences for words that need promotion.
+) -> list[tuple[str, str]]:
+    """Generate (arabic_sentence, english_translation) pairs for each word.
 
-    Calls the Anthropic API in batches to generate natural Arabic sentences.
+    Calls the Anthropic API in batches. Returns one pair per parsed reply line;
+    the caller checks the count matches the input.
     """
     client = anthropic.Anthropic(api_key=api_key)
-    results: list[dict[str, str]] = []
+    results: list[tuple[str, str]] = []
 
     for i in range(0, len(words), batch_size):
         batch = words[i : i + batch_size]
-        prompt_lines: list[str] = []
-        for idx, w in enumerate(batch, 1):
-            register_label = {
-                "msa": "Modern Standard Arabic",
-                "egyptian": "Egyptian Arabic dialect",
-                "iraqi": "Iraqi Arabic dialect",
-            }.get(w["register"], "Arabic")
-            english_hint = f" (meaning: {w['english']})" if w["english"] else ""
-            prompt_lines.append(
-                f"{idx}. {w['arabic']}{english_hint} — register: {register_label}"
-            )
-
-        prompt = (
-            "You are helping an intermediate Arabic learner build flashcards.\n\n"
-            "For each word below, generate:\n"
-            "1. A short, natural example sentence (5-10 words) using the word "
-            "in the specified register. The sentence should be something a "
-            "learner might actually say or hear in daily life.\n"
-            "2. An English translation of the sentence.\n\n"
-            "IMPORTANT: Write all Arabic text with full tashkeel "
-            "(vowel diacritics: fatḥa, kasra, ḍamma, sukūn, shadda, tanwīn). "
-            "This is essential for the learner to read correctly.\n\n"
-            "Format each response as:\n"
-            "N. arabic_sentence ||| english_translation\n\n"
-            "Words:\n" + "\n".join(prompt_lines)
-        )
-
         response = client.messages.create(
             model="claude-sonnet-4-20250514",
             max_tokens=4096,
-            messages=[{"role": "user", "content": prompt}],
+            messages=[{"role": "user", "content": _build_prompt(batch)}],
         )
-
-        # Parse the response
-        response_text = response.content[0].text  # type: ignore[union-attr]
-        for line in response_text.strip().splitlines():
-            line = line.strip()
-            if not line or "|||" not in line:
-                continue
-            # Parse "N. arabic ||| english"
-            parts = line.split("|||", 1)
-            if len(parts) != 2:
-                continue
-            ar_part = parts[0].strip()
-            en_part = parts[1].strip()
-            # Remove the leading number
-            ar_part = ar_part.lstrip("0123456789. ").strip()
-            if ar_part and en_part:
-                results.append({"arabic": ar_part, "english": en_part})
-
+        text = response.content[0].text  # type: ignore[union-attr]
+        results.extend(_parse_reply(text))
         logger.info("Generated %d/%d sentences...", len(results), len(words))
 
     return results
 
 
-def main(input_path: str | None = None) -> None:
+def run(args: argparse.Namespace) -> None:
+    """Promote single vocab words into example-sentence chunks (review CSV)."""
+    load_dotenv()
     setup_logging()
-    root = PROJECT_ROOT
-    if input_path:
-        vocab_path = Path(input_path)
-    else:
-        vocab_path = root / "vocab_pairs.csv"
 
+    vocab_path = Path(args.input_file) if args.input_file else VOCAB_PAIRS_CSV
     pairs = load_vocab_pairs(vocab_path)  # raises FileNotFoundError if absent
     existing = load_existing_arabic(CHUNKS_CSV)
 
     # Split into pass-through chunks and words needing promotion
-    passthrough: list[dict[str, str]] = []
-    needs_promotion: list[dict[str, str]] = []
-
-    for pair in pairs:
-        arabic = pair["arabic"]
-        if arabic in existing:
+    passthrough: list[VocabEntry] = []
+    needs_promotion: list[VocabEntry] = []
+    for entry in pairs:
+        if entry.arabic in existing:
             continue  # already in chunks.csv
-        if is_chunk(arabic) and pair["english"]:
-            passthrough.append(pair)
+        if is_chunk(entry.arabic) and entry.english:
+            passthrough.append(entry)
         else:
-            needs_promotion.append(pair)
+            needs_promotion.append(entry)
 
     logger.info("Total entries: %d", len(pairs))
     logger.info(
@@ -167,57 +122,71 @@ def main(input_path: str | None = None) -> None:
     logger.info("  Pass-through (already chunks): %d", len(passthrough))
     logger.info("  Need promotion (single words): %d", len(needs_promotion))
 
-    # Generate sentences for words
-    promoted: list[dict[str, str]] = []
+    promoted: list[VocabEntry] = []
     if needs_promotion:
         api_key = os.environ["ANTHROPIC_API_KEY"]  # raises KeyError if unset
         logger.info("Generating sentences for %d words...", len(needs_promotion))
         generated = promote_batch(needs_promotion, api_key)
-
-        # Match generated sentences back to original entries for metadata
-        if len(generated) == len(needs_promotion):
-            for orig, gen in zip(needs_promotion, generated):
-                promoted.append(
-                    {
-                        "arabic": gen["arabic"],
-                        "english": gen["english"],
-                        "register": orig["register"],
-                        "concept_tag": orig["concept_tag"],
-                    }
-                )
-        else:
-            logger.warning(
-                "got %d sentences for %d words. Writing originals.",
-                len(generated),
-                len(needs_promotion),
+        if len(generated) != len(needs_promotion):
+            raise ValueError(
+                f"expected {len(needs_promotion)} sentences, got {len(generated)}"
             )
-            promoted = needs_promotion
+        # Keep each original's register/tag; take the generated arabic/english.
+        promoted = [
+            VocabEntry(
+                arabic=arabic,
+                english=english,
+                register=orig.register,
+                concept_tag=orig.concept_tag,
+            )
+            for orig, (arabic, english) in zip(needs_promotion, generated)
+        ]
 
-    # Combine into validated chunks and write the review CSV
-    all_entries = passthrough + promoted
-    chunks = [
-        Chunk.from_row(
-            [
-                generate_id(),
-                entry["arabic"],
-                entry["english"],
-                entry["register"],
-                entry["concept_tag"],
-            ]
-        )
-        for entry in all_entries
-    ]
+    # Build validated chunks and write the review CSV
+    chunks = [entry.to_chunk(generate_id()) for entry in passthrough + promoted]
+    write_csv_rows(
+        VOCAB_CHUNKS_REVIEW_CSV, Chunk.FIELDS, (chunk.to_row() for chunk in chunks)
+    )
 
-    out_path = root / "vocab_chunks_review.csv"
-    with out_path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(Chunk.FIELDS)
-        writer.writerows(chunk.to_row() for chunk in chunks)
-
-    logger.info("Wrote %d chunks to %s", len(chunks), out_path)
+    logger.info("Wrote %d chunks to %s", len(chunks), VOCAB_CHUNKS_REVIEW_CSV)
     logger.info("Review this file, then append to chunks.csv when ready.")
 
 
-if __name__ == "__main__":
-    path = sys.argv[1] if len(sys.argv) > 1 else None
-    main(path)
+def _build_prompt(batch: list[VocabEntry]) -> str:
+    """Build the sentence-generation prompt for one batch of words."""
+    prompt_lines: list[str] = []
+    for idx, entry in enumerate(batch, 1):
+        english_hint = f" (meaning: {entry.english})" if entry.english else ""
+        prompt_lines.append(
+            f"{idx}. {entry.arabic}{english_hint} — register: {entry.register.label}"
+        )
+    return (
+        "You are helping an intermediate Arabic learner build flashcards.\n\n"
+        "For each word below, generate:\n"
+        "1. A short, natural example sentence (5-10 words) using the word "
+        "in the specified register. The sentence should be something a "
+        "learner might actually say or hear in daily life.\n"
+        "2. An English translation of the sentence.\n\n"
+        "IMPORTANT: Write all Arabic text with full tashkeel "
+        "(vowel diacritics: fatḥa, kasra, ḍamma, sukūn, shadda, tanwīn). "
+        "This is essential for the learner to read correctly.\n\n"
+        "Format each response as:\n"
+        "N. arabic_sentence ||| english_translation\n\n"
+        "Words:\n" + "\n".join(prompt_lines)
+    )
+
+
+def _parse_reply(text: str) -> list[tuple[str, str]]:
+    """Parse 'N. arabic ||| english' reply lines into (arabic, english) pairs."""
+    pairs: list[tuple[str, str]] = []
+    for raw in text.strip().splitlines():
+        line = raw.strip()
+        if not line or "|||" not in line:
+            continue
+        ar_part, _, en_part = line.partition("|||")
+        # Drop the leading list number from the Arabic half.
+        arabic = ar_part.strip().lstrip("0123456789. ").strip()
+        english = en_part.strip()
+        if arabic and english:
+            pairs.append((arabic, english))
+    return pairs

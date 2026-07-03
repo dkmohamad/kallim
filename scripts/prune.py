@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Kallim — Prune orphaned audio cache files.
 
 Audio is content-addressed: each file is named ``audio/<key>.mp3``. A file is an
@@ -14,6 +13,8 @@ from pathlib import Path
 
 from .config import CHUNKS_CSV
 from .store import AudioCache, load_chunks
+
+__all__ = ["live_keys", "prune", "run"]
 
 
 def live_keys(csv_path: Path) -> set[str]:
@@ -55,19 +56,6 @@ def prune(cache: AudioCache, csv_path: Path, *, apply: bool) -> int:
     return len(orphans)
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        prog="prune",
-        description="Delete orphaned (stale or removed) audio cache files",
-    )
-    parser.add_argument(
-        "--apply",
-        action="store_true",
-        help="Actually delete (default is a dry run)",
-    )
-    args = parser.parse_args()
+def run(args: argparse.Namespace) -> None:
+    """Delete orphaned audio cache files (dry run unless ``--apply``)."""
     prune(AudioCache(), CHUNKS_CSV, apply=args.apply)
-
-
-if __name__ == "__main__":
-    main()

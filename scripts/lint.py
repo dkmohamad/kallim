@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Kallim — Validate chunks.csv against the canonical taxonomy.
 
 Builds a Chunk from every row; rows that fail construction (malformed, unknown
@@ -7,12 +6,15 @@ in scripts.generate) are reported with their line number. Exits non-zero if any
 row is invalid, so it can gate commits.
 """
 
+import argparse
 import csv
 import sys
 from pathlib import Path
 
 from .config import CHUNKS_CSV
 from .model import Chunk
+
+__all__ = ["lint_chunks", "run"]
 
 
 def lint_chunks(path: Path) -> int:
@@ -40,10 +42,7 @@ def lint_chunks(path: Path) -> int:
     return len(errors)
 
 
-def main() -> None:
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else CHUNKS_CSV
+def run(args: argparse.Namespace) -> None:
+    """Validate the chunks CSV; exit non-zero if any row is invalid."""
+    path = Path(args.input) if args.input else CHUNKS_CSV
     sys.exit(1 if lint_chunks(path) else 0)
-
-
-if __name__ == "__main__":
-    main()

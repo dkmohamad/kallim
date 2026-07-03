@@ -6,163 +6,175 @@ Outputs:
   vocab_pairs.csv  — arabic,english,register,concept_tag (for promote step)
 """
 
-import csv
+import argparse
+import logging
 import re
-import sys
 from pathlib import Path
-from typing import NamedTuple
 
-ARABIC_RE = re.compile(
+from .config import TEACHER_CHAT, VOCAB_PAIRS_CSV, VOCAB_TXT
+from .model import ConceptTag, Register, VocabEntry
+from .utils import setup_logging, write_csv_rows
+
+__all__ = ["arabic_ratio", "extract_vocab", "is_arabic", "run"]
+
+logger = logging.getLogger("kallim.vocab")
+
+_ARABIC_RE = re.compile(
     r"[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]"
 )
 
 
 def is_arabic(text: str) -> bool:
-    return bool(ARABIC_RE.search(text))
+    """True if the text contains any Arabic-script character."""
+    return bool(_ARABIC_RE.search(text))
 
 
 def arabic_ratio(text: str) -> float:
+    """Fraction of alphabetic characters that are Arabic script (0.0 if none)."""
     alpha = [c for c in text if c.isalpha()]
     if not alpha:
         return 0.0
-    arabic = [c for c in alpha if ARABIC_RE.match(c)]
+    arabic = [c for c in alpha if _ARABIC_RE.match(c)]
     return len(arabic) / len(alpha)
 
 
-class VocabEntry(NamedTuple):
-    arabic: str
-    english: str  # empty string if no translation available
-    register: str
-    concept_tag: str
+def extract_vocab(chat_path: Path) -> list[VocabEntry]:
+    """Parse the chat file and return deduplicated vocab entries with metadata."""
+    lines = chat_path.read_text(encoding="utf-8").splitlines()
+    tab_lines = _tab_vocab_lines(lines)
+    in_block = _vocab_block(lines, tab_lines)
+    raw_entries = _extract_entries(lines, in_block)
+    return _clean_entries(raw_entries)
 
 
 # ── Section definitions ─────────────────────────────────────────────
 # Each section is a range of line numbers in teacher-chat.txt (1-indexed)
 # mapped to (register, concept_tag).  Line ranges are inclusive.
 
-SECTIONS: list[tuple[int, int, str, str]] = [
+_SECTIONS: list[tuple[int, int, Register, ConceptTag]] = [
     # (start_line, end_line, register, concept_tag)
-    (791, 807, "msa", "food"),  # Jan 13: diet vocab
-    (839, 857, "msa", "travel"),  # Jan 16: transport, Morocco
-    (940, 987, "msa", "food"),  # Feb 1: food, family meals, geography
-    (1060, 1102, "msa", "travel"),  # Feb 6: travel (partial repeat) + Morocco
-    (1112, 1131, "msa", "emotions"),  # Feb 9: feelings, countryside, dreams
-    (1259, 1300, "msa", "people"),  # Feb 25: refugees, integration, generosity
-    (1694, 1732, "msa", "leisure"),  # Apr 1 MSA: camping, spring, planning
-    (1739, 1758, "egyptian", "greetings"),  # Apr 1 Egyptian: greetings + cafe
-    (1837, 1868, "msa", "food"),  # Apr 16: Egyptian food, cooking, health
-    (1940, 1966, "msa", "culture"),  # Apr 24: religion, reading, travel stories
-    (2041, 2079, "msa", "leisure"),  # Apr 30: daily life, nature, parks
-    (2112, 2141, "egyptian", "cafe"),  # May 14: Egyptian cafe ordering
+    (791, 807, Register.MSA, ConceptTag.FOOD),  # Jan 13: diet vocab
+    (839, 857, Register.MSA, ConceptTag.TRAVEL),  # Jan 16: transport, Morocco
+    (940, 987, Register.MSA, ConceptTag.FOOD),  # Feb 1: food, family meals
+    (1060, 1102, Register.MSA, ConceptTag.TRAVEL),  # Feb 6: travel + Morocco
+    (1112, 1131, Register.MSA, ConceptTag.EMOTIONS),  # Feb 9: feelings, dreams
+    (1259, 1300, Register.MSA, ConceptTag.PEOPLE),  # Feb 25: refugees, generosity
+    (1694, 1732, Register.MSA, ConceptTag.LEISURE),  # Apr 1 MSA: camping, spring
+    (1739, 1758, Register.EGYPTIAN, ConceptTag.GREETINGS),  # Apr 1 Egyptian
+    (1837, 1868, Register.MSA, ConceptTag.FOOD),  # Apr 16: food, cooking, health
+    (1940, 1966, Register.MSA, ConceptTag.CULTURE),  # Apr 24: religion, reading
+    (2041, 2079, Register.MSA, ConceptTag.LEISURE),  # Apr 30: daily life, parks
+    (2112, 2141, Register.EGYPTIAN, ConceptTag.DINING),  # May 14: Egyptian cafe
 ]
 
+_HEADER_MARKERS = ("english", "المعنى", "العربية", "arabic")
 
-def _line_to_section(line_num: int) -> tuple[str, str] | None:
-    """Return (register, concept_tag) for a line number, or None."""
-    for start, end, register, tag in SECTIONS:
+
+def _is_header(text: str) -> bool:
+    """True if a tab line is a column header (English/Arabic labels), not vocab."""
+    lowered = text.lower()
+    return any(marker in lowered for marker in _HEADER_MARKERS)
+
+
+def _line_to_section(line_num: int) -> tuple[Register, ConceptTag] | None:
+    """Return (register, concept_tag) for a 1-indexed line number, or None."""
+    for start, end, register, tag in _SECTIONS:
         if start <= line_num <= end:
             return register, tag
     return None
 
 
-def extract_vocab(chat_path: str) -> list[VocabEntry]:
-    """Parse the chat file and return deduplicated vocab entries with metadata."""
-    text = Path(chat_path).read_text(encoding="utf-8")
-    lines = text.splitlines()
+def _is_arabic_run_line(line: str) -> bool:
+    """True if a line is a standalone (non-tab) mostly-Arabic vocab line."""
+    stripped = line.strip()
+    return (
+        bool(stripped)
+        and is_arabic(stripped)
+        and arabic_ratio(stripped) > 0.7
+        and "\t" not in stripped
+        and len(stripped) > 1
+        and stripped not in {"img", "y"}
+    )
 
-    # First pass: identify tab-separated vocab lines
-    tab_vocab_lines: set[int] = set()
+
+def _tab_vocab_lines(lines: list[str]) -> set[int]:
+    """First pass: line numbers of tab-separated arabic/english vocab rows."""
+    found: set[int] = set()
     for i, line in enumerate(lines):
         stripped = line.strip()
-        if "\t" in stripped and is_arabic(stripped):
-            parts = [p.strip() for p in stripped.split("\t")]
-            if len(parts) == 2:
-                if any(
-                    h in stripped.lower()
-                    for h in ["english", "المعنى", "العربية", "arabic"]
-                ):
-                    continue
-                tab_vocab_lines.add(i)
+        if "\t" not in stripped or not is_arabic(stripped):
+            continue
+        parts = [p.strip() for p in stripped.split("\t")]
+        if len(parts) == 2 and not _is_header(stripped):
+            found.add(i)
+    return found
 
-    # Build vocab block ranges (±5 lines around tab vocab)
-    in_vocab_block: set[int] = set()
-    for i in tab_vocab_lines:
-        for j in range(max(0, i - 5), min(len(lines), i + 6)):
-            in_vocab_block.add(j)
 
-    # Identify runs of consecutive Arabic-only lines (3+)
-    run_start = None
+def _vocab_block(lines: list[str], tab_lines: set[int]) -> set[int]:
+    """Line numbers inside a vocab block: ±5 of a tab row, or a 3+ Arabic run."""
+    block: set[int] = set()
+    for i in tab_lines:
+        block.update(range(max(0, i - 5), min(len(lines), i + 6)))
+
+    run_start: int | None = None
     for i, line in enumerate(lines):
-        stripped = line.strip()
-        if (
-            stripped
-            and is_arabic(stripped)
-            and arabic_ratio(stripped) > 0.7
-            and "\t" not in stripped
-            and len(stripped) > 1
-            and stripped not in {"img", "y"}
-        ):
+        if _is_arabic_run_line(line):
             if run_start is None:
                 run_start = i
         else:
             if run_start is not None and i - run_start >= 3:
-                for j in range(run_start, i):
-                    in_vocab_block.add(j)
+                block.update(range(run_start, i))
             run_start = None
     if run_start is not None and len(lines) - run_start >= 3:
-        for j in range(run_start, len(lines)):
-            in_vocab_block.add(j)
+        block.update(range(run_start, len(lines)))
+    return block
 
-    # Second pass: extract entries with translations
-    raw_entries: list[VocabEntry] = []
+
+def _tab_entry(stripped: str, register: Register, tag: ConceptTag) -> VocabEntry | None:
+    """Build a VocabEntry from a tab line, picking the more-Arabic side."""
+    parts = [p.strip() for p in stripped.split("\t")]
+    if len(parts) != 2 or _is_header(stripped):
+        return None
+    left, right = parts
+    if arabic_ratio(right) > arabic_ratio(left):
+        arabic_text, english_text = right, left
+    else:
+        arabic_text, english_text = left, right
+    arabic_text = arabic_text.strip()
+    if not arabic_text:
+        return None
+    return VocabEntry(arabic_text, english_text.strip(), register, tag)
+
+
+def _extract_entries(lines: list[str], in_block: set[int]) -> list[VocabEntry]:
+    """Second pass: pull vocab entries out of tab rows and Arabic-run lines."""
+    entries: list[VocabEntry] = []
     seen: set[str] = set()
 
     for i, line in enumerate(lines):
         stripped = line.strip()
-        if not stripped or not is_arabic(stripped):
-            continue
-        if stripped in {"img", "y"}:
+        if not stripped or not is_arabic(stripped) or stripped in {"img", "y"}:
             continue
 
-        # Determine section metadata (1-indexed line numbers in chat)
-        section = _line_to_section(i + 1)
-        if not section:
+        section = _line_to_section(i + 1)  # 1-indexed line numbers in chat
+        if section is None:
             continue  # not in a known vocab section
         register, tag = section
 
-        # Tab-separated vocab line
         if "\t" in stripped:
-            parts = [p.strip() for p in stripped.split("\t")]
-            if len(parts) == 2:
-                left, right = parts
-                if any(
-                    h in stripped.lower()
-                    for h in ["english", "المعنى", "العربية", "arabic"]
-                ):
-                    continue
-                if arabic_ratio(left) > arabic_ratio(right):
-                    arabic_text, english_text = left, right
-                elif arabic_ratio(right) > arabic_ratio(left):
-                    arabic_text, english_text = right, left
-                else:
-                    arabic_text, english_text = left, right
-                arabic_text = arabic_text.strip()
-                english_text = english_text.strip()
-                if arabic_text and arabic_text not in seen:
-                    seen.add(arabic_text)
-                    raw_entries.append(
-                        VocabEntry(arabic_text, english_text, register, tag)
-                    )
+            entry = _tab_entry(stripped, register, tag)
+            if entry is not None and entry.arabic not in seen:
+                seen.add(entry.arabic)
+                entries.append(entry)
             continue
 
-        # Non-tab Arabic lines inside a vocab block
-        if i in in_vocab_block and arabic_ratio(stripped) > 0.7 and len(stripped) > 1:
+        if i in in_block and arabic_ratio(stripped) > 0.7 and len(stripped) > 1:
             clean = stripped.strip("- ,،.")
             if clean and clean not in seen:
                 seen.add(clean)
-                raw_entries.append(VocabEntry(clean, "", register, tag))
+                entries.append(VocabEntry(clean, "", register, tag))
 
-    return _clean_entries(raw_entries)
+    return entries
 
 
 def _clean_entries(entries: list[VocabEntry]) -> list[VocabEntry]:
@@ -226,33 +238,19 @@ def _clean_entries(entries: list[VocabEntry]) -> list[VocabEntry]:
     return cleaned
 
 
-def main() -> None:
-    root = Path(__file__).resolve().parent.parent
-    chat_path = root / "teacher-chat.txt"
-    vocab_txt = root / "vocab.txt"
-    vocab_csv = root / "vocab_pairs.csv"
+def run(_args: argparse.Namespace) -> None:
+    """Extract vocab from teacher-chat.txt into vocab.txt and vocab_pairs.csv."""
+    setup_logging()
+    if not TEACHER_CHAT.exists():
+        raise FileNotFoundError(f"{TEACHER_CHAT} not found")
 
-    if not chat_path.exists():
-        print(f"Error: {chat_path} not found", file=sys.stderr)
-        sys.exit(1)
+    entries = extract_vocab(TEACHER_CHAT)
 
-    entries = extract_vocab(str(chat_path))
-
-    # Write plain text (Arabic only)
-    vocab_txt.write_text("\n".join(e.arabic for e in entries) + "\n", encoding="utf-8")
-
-    # Write CSV with all metadata
-    with vocab_csv.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["arabic", "english", "register", "concept_tag"])
-        for e in entries:
-            writer.writerow([e.arabic, e.english, e.register, e.concept_tag])
+    VOCAB_TXT.write_text("\n".join(e.arabic for e in entries) + "\n", encoding="utf-8")
+    write_csv_rows(VOCAB_PAIRS_CSV, VocabEntry.FIELDS, (e.to_row() for e in entries))
 
     with_en = sum(1 for e in entries if e.english)
-    without_en = sum(1 for e in entries if not e.english)
-    print(f"Extracted {len(entries)} entries to {vocab_csv}")
-    print(f"  {with_en} with English translations, {without_en} without")
-
-
-if __name__ == "__main__":
-    main()
+    logger.info("Extracted %d entries to %s", len(entries), VOCAB_PAIRS_CSV)
+    logger.info(
+        "  %d with English translations, %d without", with_en, len(entries) - with_en
+    )

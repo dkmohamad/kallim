@@ -1,12 +1,11 @@
-#!/usr/bin/env python3
 """ElevenLabs TTS synthesis and playable-clip composition.
 
 ``ElevenLabsSynthesiser`` turns an Utterance into playable audio (generation
 only, no I/O) and is the callable adapter for the model's ``Synthesiser`` port;
-``make_synthesiser`` builds it and wires it onto ``Utterance.synthesiser`` so
-utterances can synthesise themselves. ``stitch`` concatenates clips for the
-shadowing layout. (The audio *store* and the mp3 codec live in
-``scripts.store`` with the other persistence.)
+``make_synthesiser`` builds it and returns it for the caller to inject (e.g. into
+``ensure_cached``). ``stitch`` concatenates clips for the shadowing layout. (The
+audio *store* and the mp3 codec live in ``scripts.store`` with the other
+persistence.)
 
 This module imports pydub/elevenlabs *lazily* (inside the functions that use
 them) so commands that don't make audio — lint, prune, --help — don't pay to
@@ -28,6 +27,8 @@ from .model import PlayableAudio, Synthesiser, Utterance
 if TYPE_CHECKING:
     from elevenlabs.client import ElevenLabs
     from pydub import AudioSegment
+
+__all__ = ["ElevenLabsSynthesiser", "list_voices", "make_synthesiser", "stitch"]
 
 logger = logging.getLogger("kallim")
 
@@ -86,21 +87,18 @@ class ElevenLabsSynthesiser:
 
 
 def make_synthesiser() -> Synthesiser:
-    """Build a synthesiser from the environment + config and wire it in.
+    """Build a synthesiser from the environment + config.
 
-    Reads ELEVENLABS_API_KEY and voices.json, then injects the engine onto
-    ``Utterance.synthesiser`` so every utterance can synthesise itself. Returns
-    it too. Raises if either input is absent — FileNotFoundError for
-    voices.json, KeyError for the API key (and for a register whose voice isn't
-    listed, when it's first synthesised).
+    Reads ELEVENLABS_API_KEY and voices.json and returns the ready engine for
+    the caller to inject (e.g. into ``ensure_cached``). Raises if either input
+    is absent — FileNotFoundError for voices.json, KeyError for the API key (and
+    for a register whose voice isn't listed, when it's first synthesised).
     """
     from elevenlabs.client import ElevenLabs
 
     voice_map: dict[str, str] = json.loads(VOICES_JSON.read_text(encoding="utf-8"))
     client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
-    synth = ElevenLabsSynthesiser(client, voice_map)
-    Utterance.synthesiser = synth
-    return synth
+    return ElevenLabsSynthesiser(client, voice_map)
 
 
 def stitch(clips: Iterable[PlayableAudio], pause_ms: int) -> PlayableAudio:

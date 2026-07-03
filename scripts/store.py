@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Persistence: the chunks.csv loader and the content-addressed audio cache.
 
 ``load_chunks`` reads the source-of-truth CSV. ``AudioCache`` is the audio
@@ -18,10 +17,19 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from .config import AUDIO_DIR
-from .model import Chunk, PlayableAudio
+from .model import Chunk, PlayableAudio, Synthesiser
 
 if TYPE_CHECKING:
     from pydub import AudioSegment
+
+__all__ = [
+    "AudioCache",
+    "Codec",
+    "ensure_cached",
+    "load_chunks",
+    "make_codec",
+    "select_section",
+]
 
 
 def load_chunks(path: Path) -> list[Chunk]:
@@ -38,6 +46,27 @@ def load_chunks(path: Path) -> list[Chunk]:
     if not chunks:
         raise ValueError(f"no chunks in {path}")
     return chunks
+
+
+def select_section(chunks: list[Chunk], tag: str | None) -> list[Chunk]:
+    """Filter chunks to a single concept_tag; return all when ``tag`` is None.
+
+    Args:
+        chunks: The chunks to filter.
+        tag: The concept_tag to keep, or None for no filtering.
+
+    Returns:
+        The matching chunks (all of them when ``tag`` is None).
+
+    Raises:
+        ValueError: If ``tag`` is given but no chunk carries it.
+    """
+    if tag is None:
+        return chunks
+    selected = [c for c in chunks if c.concept_tag == tag]
+    if not selected:
+        raise ValueError(f"section {tag!r} not found")
+    return selected
 
 
 class Codec:
@@ -111,3 +140,27 @@ class AudioCache(MutableMapping[str, PlayableAudio]):
 
     def __len__(self) -> int:
         return sum(1 for _ in self._dir.glob("*.mp3"))
+
+
+def ensure_cached(
+    chunk: Chunk,
+    synth: Synthesiser,
+    cache: AudioCache,
+    *,
+    force: bool = False,
+) -> None:
+    """Ensure both of a chunk's utterances have audio in the cache.
+
+    Synthesises (via ``synth``) any utterance that is missing, or every one when
+    ``force`` is set. The caller then reads back what it needs — the decoded
+    clip (``cache[key]``) or the file path (``cache.path(key)``).
+
+    Args:
+        chunk: The chunk whose English + Arabic audio to materialise.
+        synth: The synthesiser to call on a cache miss.
+        cache: The audio cache to populate.
+        force: Re-synthesise even when a cached file already exists.
+    """
+    for utt in (chunk.english, chunk.arabic):
+        if force or utt.key not in cache:
+            cache[utt.key] = synth(utt)

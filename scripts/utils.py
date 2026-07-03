@@ -1,19 +1,44 @@
-#!/usr/bin/env python3
-"""Cross-cutting helpers: ids, content hashing, run directories, logging setup."""
+"""Cross-cutting helpers: ids, content hashing, CSV writing, run dirs, logging."""
 
+import csv
 import hashlib
 import logging
 import sys
 import uuid
+from collections.abc import Iterable, Sequence
 from datetime import datetime
 from pathlib import Path
 
 from .config import OUTPUT_DIR
 
+__all__ = [
+    "content_hash",
+    "generate_id",
+    "make_run_dir",
+    "setup_logging",
+    "write_csv_rows",
+]
+
 
 def generate_id() -> str:
     """A short random id for a new chunk (8 hex chars)."""
     return uuid.uuid4().hex[:8]
+
+
+def write_csv_rows(
+    path: Path, header: Sequence[str], rows: Iterable[Sequence[str]]
+) -> None:
+    """Write a CSV file: a header row followed by the data rows.
+
+    Args:
+        path: Destination CSV path (overwritten).
+        header: Column names for the first row (e.g. a model's ``FIELDS``).
+        rows: The data rows, each already serialised (e.g. via ``to_row``).
+    """
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        writer.writerows(rows)
 
 
 def content_hash(text: str) -> str:

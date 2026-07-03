@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
 """Kallim domain model — utterances, chunks, and the concept_tag taxonomy.
 
 Pure data types with no audio/pipeline dependencies (no pydub, no ElevenLabs).
 A Chunk pairs an English and an Arabic Utterance; an Utterance is text + the
-voice it's said in. It owns its content-addressed audio *identity* (``key``)
-and the *act* of synthesising itself; the concrete engine is the injected
-``Synthesiser`` port, and the resulting bytes live in the audio cache.
+voice it's said in, and owns its content-addressed audio *identity* (``key``).
+Synthesis itself is done by the ``Synthesiser`` port (a callable), passed in by
+the caller; the resulting bytes live in the audio cache. A ``VocabEntry`` is a
+candidate row on its way to becoming a ``Chunk`` (see ``promote``).
 """
 
 from __future__ import annotations
@@ -16,6 +16,19 @@ from enum import StrEnum
 from typing import ClassVar, Protocol
 
 from .utils import content_hash
+
+__all__ = [
+    "ALLOWED_TAGS_BY_REGISTER",
+    "Chunk",
+    "ConceptTag",
+    "PlayableAudio",
+    "Register",
+    "SITUATIONAL_TAGS",
+    "Synthesiser",
+    "TOPICAL_TAGS",
+    "Utterance",
+    "VocabEntry",
+]
 
 
 class PlayableAudio(Protocol):
@@ -30,9 +43,9 @@ class PlayableAudio(Protocol):
 
 
 # The model's port for text-to-speech: an utterance -> playable audio. The
-# concrete engine (ElevenLabs) lives in the audio layer and is *injected* onto
-# Utterance.synthesiser, so the model declares the capability without importing
-# any audio library. Just a Callable — the port has a single operation.
+# concrete engine (ElevenLabs) lives in the audio layer and is *passed in* by the
+# caller (e.g. to ensure_cached), so the model declares the capability without
+# importing any audio library. Just a Callable — the port has a single operation.
 type Synthesiser = Callable[[Utterance], PlayableAudio]
 
 
@@ -43,6 +56,11 @@ class Register(StrEnum):
     EGYPTIAN = "egyptian"
     MSA = "msa"
     IRAQI = "iraqi"
+
+    @property
+    def label(self) -> str:
+        """Full human-readable register name (for prompts and display)."""
+        return _REGISTER_LABELS[self]
 
 
 class ConceptTag(StrEnum):
@@ -117,6 +135,14 @@ ALLOWED_TAGS_BY_REGISTER = {
     Register.IRAQI: TOPICAL_TAGS,
 }
 
+# Full register names for prompts / display (read by ``Register.label``).
+_REGISTER_LABELS = {
+    Register.ENGLISH: "English",
+    Register.EGYPTIAN: "Egyptian Arabic dialect",
+    Register.MSA: "Modern Standard Arabic",
+    Register.IRAQI: "Iraqi Arabic dialect",
+}
+
 
 @dataclass(frozen=True, slots=True)
 class Utterance:
@@ -125,10 +151,6 @@ class Utterance:
     text: str
     register: Register
 
-    # The TTS engine, injected once by make_synthesiser (shared by all
-    # utterances). Unset until then — synthesise() raises AttributeError.
-    synthesiser: ClassVar[Synthesiser]
-
     def __str__(self) -> str:
         return self.text
 
@@ -136,14 +158,6 @@ class Utterance:
     def key(self) -> str:
         """Content hash identifying this utterance (and its cached audio)."""
         return content_hash(f"{self.register}\n{self.text}")
-
-    def synthesise(self) -> PlayableAudio:
-        """Produce this utterance's audio via the injected synthesiser.
-
-        Raises AttributeError if no synthesiser has been wired yet (call
-        make_synthesiser first).
-        """
-        return Utterance.synthesiser(self)
 
 
 @dataclass(frozen=True, slots=True)
@@ -191,7 +205,7 @@ class Chunk:
             )
 
     @classmethod
-    def from_row(cls, row: list[str]) -> "Chunk":
+    def from_row(cls, row: list[str]) -> Chunk:
         """Build a Chunk from a raw CSV row (id, arabic, english, register, tag).
 
         Raises:
@@ -202,14 +216,88 @@ class Chunk:
             cid, arabic, english, register, concept_tag = row
         except ValueError:
             raise ValueError(f"expected 5 fields, got {len(row)}: {row!r}") from None
-        try:
-            reg = Register(register)
-        except ValueError:
-            raise ValueError(f"unknown register {register!r}") from None
-        try:
-            tag = ConceptTag(concept_tag)
-        except ValueError:
-            raise ValueError(f"unknown concept_tag {concept_tag!r}") from None
+        reg, tag = _parse_taxonomy(register, concept_tag)
         return cls(
             cid, Utterance(english, Register.ENGLISH), Utterance(arabic, reg), tag
         )
+
+
+@dataclass(frozen=True, slots=True)
+class VocabEntry:
+    """A candidate vocab row on its way to becoming a Chunk.
+
+    Produced by ``extract_vocab`` (from the teacher chat) and consumed by
+    ``promote``, which fills in an example sentence for single words. The
+    ``register`` and ``concept_tag`` are taxonomy members; ``english`` may be
+    empty until promotion supplies it. Validation of the tag against the
+    register's scheme lives on ``Chunk`` — call ``to_chunk`` for a validated one.
+    """
+
+    arabic: str
+    english: str
+    register: Register
+    concept_tag: ConceptTag
+
+    # The vocab_pairs.csv schema — the single source of truth for column order,
+    # shared by from_row (read) and to_row (write).
+    FIELDS: ClassVar[tuple[str, ...]] = ("arabic", "english", "register", "concept_tag")
+
+    def to_row(self) -> list[str]:
+        """Serialise to a vocab_pairs.csv row, in ``FIELDS`` order."""
+        return [self.arabic, self.english, self.register, self.concept_tag]
+
+    def to_chunk(self, chunk_id: str) -> Chunk:
+        """Build a validated Chunk from this entry.
+
+        Args:
+            chunk_id: The id to assign the new chunk.
+
+        Returns:
+            A Chunk carrying this entry's Arabic/English text and tag.
+
+        Raises:
+            ValueError: If ``concept_tag`` is outside ``register``'s scheme.
+        """
+        return Chunk(
+            id=chunk_id,
+            english=Utterance(self.english, Register.ENGLISH),
+            arabic=Utterance(self.arabic, self.register),
+            concept_tag=self.concept_tag,
+        )
+
+    @classmethod
+    def from_row(cls, row: list[str]) -> VocabEntry:
+        """Build a VocabEntry from a vocab_pairs.csv row (arabic, english, …).
+
+        Mirrors ``Chunk.from_row``: a positional row in ``FIELDS`` order.
+
+        Raises:
+            ValueError: If the row has the wrong field count, or its register or
+                concept_tag is off-taxonomy.
+        """
+        try:
+            arabic, english, register, concept_tag = row
+        except ValueError:
+            raise ValueError(f"expected 4 fields, got {len(row)}: {row!r}") from None
+        reg, tag = _parse_taxonomy(register, concept_tag)
+        return cls(arabic, english, reg, tag)
+
+
+def _parse_taxonomy(register: str, concept_tag: str) -> tuple[Register, ConceptTag]:
+    """Parse a raw register + concept_tag pair into their enum members.
+
+    Shared by ``Chunk.from_row`` and ``VocabEntry.from_row`` so the CSV
+    taxonomy-decode lives in one place.
+
+    Raises:
+        ValueError: If ``register`` or ``concept_tag`` is outside its enum.
+    """
+    try:
+        reg = Register(register)
+    except ValueError:
+        raise ValueError(f"unknown register {register!r}") from None
+    try:
+        tag = ConceptTag(concept_tag)
+    except ValueError:
+        raise ValueError(f"unknown concept_tag {concept_tag!r}") from None
+    return reg, tag

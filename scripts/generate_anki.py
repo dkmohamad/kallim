@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Kallim — Generate Anki flashcard deck with audio from chunks.csv."""
 
 from __future__ import annotations
@@ -12,9 +11,10 @@ import genanki
 from dotenv import load_dotenv
 
 from .audio import make_synthesiser
-from .config import CHUNKS_CSV
-from .store import AudioCache, load_chunks
+from .store import AudioCache, ensure_cached, load_chunks, select_section
 from .utils import make_run_dir, setup_logging
+
+__all__ = ["make_model", "run"]
 
 logger = logging.getLogger("kallim.anki")
 
@@ -23,7 +23,7 @@ DECK_ID = 2059400110
 MODEL_ID = 1607392320
 
 
-def build_model() -> genanki.Model:
+def make_model() -> genanki.Model:
     """Build the Anki card model with bidirectional templates."""
     return genanki.Model(
         MODEL_ID,
@@ -72,56 +72,24 @@ def build_model() -> genanki.Model:
     )
 
 
-def main() -> None:
+def run(args: argparse.Namespace) -> None:
+    """Build an Anki .apkg deck (optionally with TTS audio) from chunks.csv."""
     load_dotenv()
 
     run_dir = make_run_dir()
     setup_logging(run_dir)
 
-    parser = argparse.ArgumentParser(
-        description="Kallim — Anki deck generator from chunks.csv"
-    )
-    parser.add_argument(
-        "--input",
-        "-i",
-        default=str(CHUNKS_CSV),
-        help="Path to chunks CSV file",
-    )
-    parser.add_argument(
-        "--output",
-        "-o",
-        default=str(run_dir / "kallim_arabic.apkg"),
-        help="Output .apkg path",
-    )
-    parser.add_argument(
-        "--section",
-        "-s",
-        help="Process only chunks with this concept_tag",
-    )
-    parser.add_argument(
-        "--no-audio",
-        action="store_true",
-        help="Generate text-only cards (no TTS)",
-    )
-    parser.add_argument(
-        "--force",
-        action="store_true",
-        help="Regenerate audio even when the cached file exists",
-    )
-    args = parser.parse_args()
-
     chunks = load_chunks(Path(args.input))
-    if args.section:
-        chunks = [c for c in chunks if c.concept_tag == args.section]
-        if not chunks:
-            sys.exit(f"Error: section '{args.section}' not found")
+    try:
+        chunks = select_section(chunks, args.section)
+    except ValueError as exc:
+        sys.exit(f"Error: {exc}")
 
-    audio = not args.no_audio
-    if audio:
-        make_synthesiser()  # wires Utterance.synthesiser
+    output = Path(args.output) if args.output else run_dir / "kallim_arabic.apkg"
+    synth = None if args.no_audio else make_synthesiser()
     cache = AudioCache()
 
-    model = build_model()
+    model = make_model()
     deck = genanki.Deck(DECK_ID, "Kallim Arabic")
     media_files: list[str] = []
 
@@ -130,12 +98,12 @@ def main() -> None:
         en_sound = ""
         ar_sound = ""
 
-        if audio:
+        if synth is not None:
             logger.info("  %s", chunk)
-            for utt in (chunk.english, chunk.arabic):
-                if args.force or utt.key not in cache:
-                    cache[utt.key] = utt.synthesise()
-                media_files.append(str(cache.path(utt.key)))
+            ensure_cached(chunk, synth, cache, force=args.force)
+            media_files.extend(
+                str(cache.path(utt.key)) for utt in (chunk.english, chunk.arabic)
+            )
             en_sound = f"[sound:{cache.path(chunk.english.key).name}]"
             ar_sound = f"[sound:{cache.path(chunk.arabic.key).name}]"
 
@@ -159,15 +127,11 @@ def main() -> None:
 
     package = genanki.Package(deck)
     package.media_files = media_files
-    package.write_to_file(args.output)
+    package.write_to_file(str(output))
 
     logger.info(
         "Done. %d cards across %d section(s) → %s",
         total_cards,
         len({c.concept_tag for c in chunks}),
-        args.output,
+        output,
     )
-
-
-if __name__ == "__main__":
-    main()
