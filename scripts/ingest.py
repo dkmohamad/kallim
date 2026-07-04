@@ -88,6 +88,7 @@ def build_review(candidates_path: Path, chunks_path: Path, review_path: Path) ->
         fresh.append(entry)
 
     chunks = [entry.to_chunk(generate_id()) for entry in fresh]
+    review_path.parent.mkdir(parents=True, exist_ok=True)  # scratch/ may not exist
     write_csv_rows(review_path, Chunk.FIELDS, (chunk.to_row() for chunk in chunks))
 
     logger.info("Candidates: %d", len(candidates))

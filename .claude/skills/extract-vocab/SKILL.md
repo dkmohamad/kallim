@@ -62,7 +62,7 @@ Follow these steps in order. Do NOT skip or reorder steps.
 
 Dispatch a `Task` sub-agent with `model: sonnet`, passing the fetched source
 text, the taxonomy below, and the extraction rules. Ask it to **write
-`vocab_pairs.csv`** in the project root (columns
+`scratch/vocab_pairs.csv`** (columns
 `arabic,english,register,concept_tag`, **no `id`**) and to **return only a
 short count summary** — this keeps the long transcript out of the main
 context.
@@ -134,17 +134,17 @@ If no tag fits well, pick the closest match within the register's scheme.
 Run the deterministic ingest command over the sub-agent's candidates:
 
 ```bash
-.venv/bin/kallim ingest vocab_pairs.csv
+.venv/bin/kallim ingest scratch/vocab_pairs.csv
 ```
 
 This dedups each candidate against `chunks.csv` (diacritics-insensitive —
 vocalized and bare spellings of the same phrase collapse to one), assigns a
 new id, validates the register/tag against the taxonomy, and writes
-`vocab_chunks_review.csv`. It never calls an external API or invents text.
+`scratch/vocab_chunks_review.csv`. It never calls an external API or invents text.
 
 ### 4. Show the summary and wait for approval
 
-Read `vocab_chunks_review.csv` and present a markdown table of the new
+Read `scratch/vocab_chunks_review.csv` and present a markdown table of the new
 chunks with counts:
 
 - New chunks written
@@ -153,7 +153,7 @@ chunks with counts:
 - By concept_tag
 
 **Stop and wait for the user to review.** They may edit
-`vocab_chunks_review.csv` directly — add, remove, retag, or fix Arabic.
+`scratch/vocab_chunks_review.csv` directly — add, remove, retag, or fix Arabic.
 Do NOT proceed until they explicitly approve.
 
 ### 5. Append and validate

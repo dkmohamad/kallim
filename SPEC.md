@@ -211,8 +211,8 @@ kallim anki --no-audio
 kallim anki --section dining
 
 # Ingest extracted vocab candidates into review-ready chunks (dedup + id + validate)
-kallim ingest vocab_pairs.csv
-kallim ingest --append   # commit vocab_chunks_review.csv into chunks.csv
+kallim ingest scratch/vocab_pairs.csv
+kallim ingest --append   # commit scratch/vocab_chunks_review.csv into chunks.csv
 
 # Validate chunks.csv against the concept_tag taxonomy
 kallim lint

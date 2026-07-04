@@ -147,11 +147,11 @@ entries you captured yourself — into `chunks.csv`. Nothing is synthesised.
    page, or a local text file.
 2. **Extract** — run the `/extract-vocab <source>` skill. A Sonnet sub-agent
    pulls high-authority chunks (teacher-said or teacher-corrected), tags each by
-   register + concept, and writes `vocab_pairs.csv`.
-3. **Ingest** — `kallim ingest vocab_pairs.csv` dedups against `chunks.csv`
+   register + concept, and writes `scratch/vocab_pairs.csv`.
+3. **Ingest** — `kallim ingest scratch/vocab_pairs.csv` dedups against `chunks.csv`
    (diacritics-insensitive), assigns ids, validates the taxonomy, and writes
-   `vocab_chunks_review.csv`. No API calls, no invented text.
-4. **Review** — open `vocab_chunks_review.csv` and edit/delete as needed.
+   `scratch/vocab_chunks_review.csv`. No API calls, no invented text.
+4. **Review** — open `scratch/vocab_chunks_review.csv` and edit/delete as needed.
 5. **Append + validate** — `kallim ingest --append` commits the reviewed rows
    into `chunks.csv`, then `kallim lint` checks the taxonomy.
 6. **Generate** — run `kallim generate` / `kallim anki` to produce audio and
@@ -159,8 +159,8 @@ entries you captured yourself — into `chunks.csv`. Nothing is synthesised.
 
 ```bash
 # From a review CSV onward
-kallim ingest vocab_pairs.csv      # dedup + id + validate -> review CSV
-# ... review vocab_chunks_review.csv ...
+kallim ingest scratch/vocab_pairs.csv   # dedup + id + validate -> review CSV
+# ... review scratch/vocab_chunks_review.csv ...
 kallim ingest --append             # commit reviewed rows into chunks.csv
 kallim lint                        # validate concept_tags
 kallim anki                        # generate Anki deck

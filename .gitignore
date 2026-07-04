@@ -4,8 +4,6 @@ __pycache__/
 *.egg-info/
 .venv/
 pending/
-vocab_pairs.csv
-vocab_chunks_review.csv
 audio/
 output/
 scratch/
