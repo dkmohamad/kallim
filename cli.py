@@ -7,7 +7,7 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import generate, generate_anki, lint, migrate, promote, prune
+from scripts import generate, generate_anki, ingest, lint, migrate, prune
 from scripts.config import CHUNKS_CSV
 
 __all__ = ["main"]
@@ -67,16 +67,22 @@ def main() -> None:
     )
     mig.set_defaults(func=migrate.run)
 
-    prom = sub.add_parser(
-        "promote", help="Promote vocab words into chunks with example sentences"
+    ing = sub.add_parser(
+        "ingest",
+        help="Dedup + id + validate extracted vocab candidates into a review CSV",
     )
-    prom.add_argument(
-        "input_file",
+    ing.add_argument(
+        "candidates",
         nargs="?",
-        help="Path to vocab CSV (arabic,english,register,concept_tag). "
+        help="Path to candidates CSV (arabic,english,register,concept_tag). "
         "Defaults to vocab_pairs.csv.",
     )
-    prom.set_defaults(func=promote.run)
+    ing.add_argument(
+        "--append",
+        action="store_true",
+        help="Commit the reviewed vocab_chunks_review.csv into chunks.csv",
+    )
+    ing.set_defaults(func=ingest.run)
 
     voices = sub.add_parser("voices", help="List available ElevenLabs voices")
     voices.set_defaults(func=generate.list_installed_voices)
