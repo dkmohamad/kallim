@@ -19,18 +19,62 @@ import json
 import logging
 import os
 from collections.abc import Iterable
+from dataclasses import dataclass
 from typing import TYPE_CHECKING, cast
 
-from .config import VOICES_JSON
+from .config import TTS_MODEL_ID, VOICES_JSON
 from .model import PlayableAudio, Synthesiser, Utterance
 
 if TYPE_CHECKING:
     from elevenlabs.client import ElevenLabs
     from pydub import AudioSegment
 
-__all__ = ["ElevenLabsSynthesiser", "list_voices", "make_synthesiser", "stitch"]
+__all__ = [
+    "ElevenLabsSynthesiser",
+    "Quota",
+    "get_quota",
+    "list_voices",
+    "make_synthesiser",
+    "stitch",
+]
 
 logger = logging.getLogger("kallim")
+
+
+@dataclass(frozen=True, slots=True)
+class Quota:
+    """An ElevenLabs subscription's character (credit) usage snapshot."""
+
+    used: int
+    limit: int
+    tier: str
+
+    @property
+    def remaining(self) -> int:
+        """Characters (credits) left before the quota is exhausted."""
+        return self.limit - self.used
+
+    def covers(self, chars: int) -> bool:
+        """Whether ``chars`` more characters fit within the remaining quota."""
+        return chars <= self.remaining
+
+
+def get_quota() -> Quota | None:
+    """Live ElevenLabs usage as a ``Quota``, or None if it can't be fetched.
+
+    Best-effort — returns None on any failure (missing API key, offline, API
+    error) so the dry-run report still prints its offline character/credit
+    counts. Reads ELEVENLABS_API_KEY from the environment like the synthesiser.
+    """
+    from elevenlabs.client import ElevenLabs
+
+    try:
+        client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
+        sub = client.user.subscription.get()
+        return Quota(sub.character_count, sub.character_limit, sub.tier)
+    except Exception:  # best-effort resilience boundary: any failure hides quota
+        logger.debug("ElevenLabs quota lookup failed", exc_info=True)
+        return None
 
 
 def list_voices() -> None:
@@ -75,7 +119,7 @@ class ElevenLabsSynthesiser:
         audio_iter = self._client.text_to_speech.convert(
             text=text,
             voice_id=voice_id,
-            model_id="eleven_multilingual_v2",
+            model_id=TTS_MODEL_ID,
             output_format="mp3_44100_128",
         )
         return b"".join(audio_iter)

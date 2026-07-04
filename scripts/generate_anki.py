@@ -10,7 +10,9 @@ from pathlib import Path
 import genanki
 from dotenv import load_dotenv
 
-from .audio import make_synthesiser
+from . import plan
+from .audio import get_quota, make_synthesiser
+from .model import Chunk
 from .store import AudioCache, ensure_cached, load_chunks, select_section
 from .utils import make_run_dir, setup_logging
 
@@ -76,14 +78,26 @@ def run(args: argparse.Namespace) -> None:
     """Build an Anki .apkg deck (optionally with TTS audio) from chunks.csv."""
     load_dotenv()
 
-    run_dir = make_run_dir()
-    setup_logging(run_dir)
-
     chunks = load_chunks(Path(args.input))
     try:
         chunks = select_section(chunks, args.section)
     except ValueError as exc:
         sys.exit(f"Error: {exc}")
+
+    if args.dry_run:
+        plan.report(
+            command="anki",
+            section=args.section,
+            force=args.force,
+            chunks=chunks,
+            cache=AudioCache(),
+            quota=None if args.no_audio else get_quota(),
+            audio_enabled=not args.no_audio,
+        )
+        return
+
+    run_dir = make_run_dir()
+    setup_logging(run_dir)
 
     output = Path(args.output) if args.output else run_dir / "kallim_arabic.apkg"
     synth = None if args.no_audio else make_synthesiser()
@@ -101,28 +115,11 @@ def run(args: argparse.Namespace) -> None:
         if synth is not None:
             logger.info("  %s", chunk)
             ensure_cached(chunk, synth, cache, force=args.force)
-            media_files.extend(
-                str(cache.path(utt.key)) for utt in (chunk.english, chunk.arabic)
-            )
+            media_files.extend(str(cache.path(utt.key)) for utt in chunk.utterances)
             en_sound = f"[sound:{cache.path(chunk.english.key).name}]"
             ar_sound = f"[sound:{cache.path(chunk.arabic.key).name}]"
 
-        note = genanki.Note(
-            model=model,
-            fields=[
-                chunk.english.text,
-                chunk.arabic.text,
-                en_sound,
-                ar_sound,
-                chunk.arabic.register,
-            ],
-            tags=[
-                f"topic::{chunk.concept_tag}",
-                f"register::{chunk.arabic.register}",
-            ],
-            guid=genanki.guid_for(chunk.id),
-        )
-        deck.add_note(note)
+        deck.add_note(_note(chunk, model, en_sound, ar_sound))
         total_cards += 1
 
     package = genanki.Package(deck)
@@ -134,4 +131,25 @@ def run(args: argparse.Namespace) -> None:
         total_cards,
         len({c.concept_tag for c in chunks}),
         output,
+    )
+
+
+def _note(
+    chunk: Chunk, model: genanki.Model, en_sound: str, ar_sound: str
+) -> genanki.Note:
+    """Build the bidirectional Anki note for a chunk (audio refs already resolved)."""
+    return genanki.Note(
+        model=model,
+        fields=[
+            chunk.english.text,
+            chunk.arabic.text,
+            en_sound,
+            ar_sound,
+            chunk.arabic.register,
+        ],
+        tags=[
+            f"topic::{chunk.concept_tag}",
+            f"register::{chunk.arabic.register}",
+        ],
+        guid=genanki.guid_for(chunk.id),
     )

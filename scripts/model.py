@@ -186,6 +186,11 @@ class Chunk:
     def __str__(self) -> str:
         return f"{self.id}: {self.english} / {self.arabic}"
 
+    @property
+    def utterances(self) -> tuple[Utterance, Utterance]:
+        """This chunk's utterances, English then Arabic (the synthesis order)."""
+        return (self.english, self.arabic)
+
     def to_row(self) -> list[str]:
         """Serialise to a chunks.csv row, in ``FIELDS`` order."""
         return [

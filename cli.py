@@ -38,6 +38,11 @@ def main() -> None:
         action="store_true",
         help="Regenerate audio even when the cached file exists",
     )
+    gen.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Report what would be synthesised (and its credit cost) without doing it",
+    )
     gen.set_defaults(func=generate.run)
 
     anki = sub.add_parser("anki", help="Generate Anki flashcard deck from chunks.csv")
@@ -59,6 +64,11 @@ def main() -> None:
         "--force",
         action="store_true",
         help="Regenerate audio even when the cached file exists",
+    )
+    anki.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Report what would be synthesised (and its credit cost) without doing it",
     )
     anki.set_defaults(func=generate_anki.run)
 

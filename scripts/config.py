@@ -1,4 +1,4 @@
-"""Kallim project paths — the canonical locations everything reads/writes."""
+"""Kallim project paths and constants — the canonical settings everything shares."""
 
 from pathlib import Path
 
@@ -9,10 +9,17 @@ __all__ = [
     "PHRASES_TXT",
     "PROJECT_ROOT",
     "SCRATCH_DIR",
+    "TTS_MODEL_ID",
     "VOCAB_CHUNKS_REVIEW_CSV",
     "VOCAB_PAIRS_CSV",
     "VOICES_JSON",
 ]
+
+# The ElevenLabs model every utterance is synthesised with. It bills one credit
+# per character, so a plan's character total is its credit cost. Load-bearing for
+# both the synthesis call (audio._tts) and the dry-run cost claim (plan), so it
+# lives here once rather than as a literal in each.
+TTS_MODEL_ID = "eleven_multilingual_v2"
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 AUDIO_DIR = PROJECT_ROOT / "audio"

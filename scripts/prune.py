@@ -20,7 +20,7 @@ __all__ = ["live_keys", "prune", "run"]
 def live_keys(csv_path: Path) -> set[str]:
     """The content keys (English + Arabic) produced by every chunk."""
     chunks = load_chunks(csv_path)
-    return {utt.key for c in chunks for utt in (c.english, c.arabic)}
+    return {utt.key for c in chunks for utt in c.utterances}
 
 
 def prune(cache: AudioCache, csv_path: Path, *, apply: bool) -> int:

@@ -12,12 +12,13 @@ from __future__ import annotations
 
 import csv
 from collections.abc import Iterator, MutableMapping
+from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from .config import AUDIO_DIR
-from .model import Chunk, PlayableAudio, Synthesiser
+from .model import Chunk, ConceptTag, PlayableAudio, Register, Synthesiser, Utterance
 
 if TYPE_CHECKING:
     from pydub import AudioSegment
@@ -25,9 +26,12 @@ if TYPE_CHECKING:
 __all__ = [
     "AudioCache",
     "Codec",
+    "Section",
     "ensure_cached",
+    "group_sections",
     "load_chunks",
     "make_codec",
+    "needs_synth",
     "select_section",
 ]
 
@@ -67,6 +71,38 @@ def select_section(chunks: list[Chunk], tag: str | None) -> list[Chunk]:
     if not selected:
         raise ValueError(f"section {tag!r} not found")
     return selected
+
+
+@dataclass(frozen=True, slots=True)
+class Section:
+    """Chunks sharing a concept_tag and Arabic register — one output unit.
+
+    The group ``generate`` writes a single MP3 (and transcript) per, and the
+    dry-run report tallies per. Owns its own ``label`` so the real run and the
+    dry run can't format it differently.
+    """
+
+    tag: ConceptTag
+    register: Register
+    chunks: list[Chunk]
+
+    @property
+    def label(self) -> str:
+        """Human label for the section, e.g. ``greetings (egyptian)``."""
+        return f"{self.tag} ({self.register})"
+
+
+def group_sections(chunks: list[Chunk]) -> list[Section]:
+    """Group chunks into sections by (concept_tag, Arabic register).
+
+    Preserves first-seen order, so the output sections follow the CSV. Shared by
+    the real run (``generate``) and the dry-run report (``plan``) so both see the
+    same sectioning.
+    """
+    groups: dict[tuple[ConceptTag, Register], list[Chunk]] = {}
+    for chunk in chunks:
+        groups.setdefault((chunk.concept_tag, chunk.arabic.register), []).append(chunk)
+    return [Section(tag, reg, cs) for (tag, reg), cs in groups.items()]
 
 
 class Codec:
@@ -142,6 +178,15 @@ class AudioCache(MutableMapping[str, PlayableAudio]):
         return sum(1 for _ in self._dir.glob("*.mp3"))
 
 
+def needs_synth(utt: Utterance, cache: AudioCache, *, force: bool) -> bool:
+    """Whether an utterance must be synthesised: a cache miss, or ``force``.
+
+    The one place the synth-vs-reuse decision lives, so the dry-run plan and the
+    real run can't drift on it.
+    """
+    return force or utt.key not in cache
+
+
 def ensure_cached(
     chunk: Chunk,
     synth: Synthesiser,
@@ -161,6 +206,6 @@ def ensure_cached(
         cache: The audio cache to populate.
         force: Re-synthesise even when a cached file already exists.
     """
-    for utt in (chunk.english, chunk.arabic):
-        if force or utt.key not in cache:
+    for utt in chunk.utterances:
+        if needs_synth(utt, cache, force=force):
             cache[utt.key] = synth(utt)

@@ -7,9 +7,17 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from .audio import list_voices, make_synthesiser, stitch
-from .model import Chunk, ConceptTag, PlayableAudio, Register
-from .store import AudioCache, ensure_cached, load_chunks, make_codec, select_section
+from . import plan
+from .audio import get_quota, list_voices, make_synthesiser, stitch
+from .model import Chunk, PlayableAudio
+from .store import (
+    AudioCache,
+    ensure_cached,
+    group_sections,
+    load_chunks,
+    make_codec,
+    select_section,
+)
 from .utils import make_run_dir, setup_logging
 
 __all__ = ["list_installed_voices", "run"]
@@ -33,6 +41,17 @@ def run(args: argparse.Namespace) -> None:
     except ValueError as exc:
         sys.exit(f"Error: {exc}")
 
+    if args.dry_run:
+        plan.report(
+            command="generate",
+            section=args.section,
+            force=args.force,
+            chunks=chunks,
+            cache=AudioCache(),
+            quota=get_quota(),
+        )
+        return
+
     run_dir = make_run_dir()
     setup_logging(run_dir)
 
@@ -41,37 +60,30 @@ def run(args: argparse.Namespace) -> None:
     cache = AudioCache()
     codec = make_codec()
 
-    sections = _sections(chunks)
-    for idx, (tag, register, group) in enumerate(sections, 1):
-        label = f"{tag} ({register})"
-        prefix = f"{idx:02d}_{tag}_{register}"
-        logger.info("Processing section: %s (%d chunks)", label, len(group))
+    sections = group_sections(chunks)
+    for idx, section in enumerate(sections, 1):
+        prefix = f"{idx:02d}_{section.tag}_{section.register}"
+        logger.info(
+            "Processing section: %s (%d chunks)", section.label, len(section.chunks)
+        )
 
         # Always write the transcript
         (run_dir / f"{prefix}.txt").write_text(
-            _transcript(label, group), encoding="utf-8"
+            _transcript(section.label, section.chunks), encoding="utf-8"
         )
 
         # Synthesise/load each utterance's audio, then stitch the section
         clips: list[PlayableAudio] = []
-        for chunk in group:
+        for chunk in section.chunks:
             logger.info("  %s", chunk)
             ensure_cached(chunk, synth, cache, force=args.force)
-            clips.extend(cache[utt.key] for utt in (chunk.english, chunk.arabic))
+            clips.extend(cache[utt.key] for utt in chunk.utterances)
 
         mp3_path = run_dir / f"{prefix}.mp3"
         codec.encode(stitch(clips, pause_ms), mp3_path)
         logger.info("Exported: %s", mp3_path)
 
     logger.info("Done. %d section(s) processed.", len(sections))
-
-
-def _sections(chunks: list[Chunk]) -> list[tuple[ConceptTag, Register, list[Chunk]]]:
-    """Group chunks by (concept_tag, Arabic register), preserving first-seen order."""
-    groups: dict[tuple[ConceptTag, Register], list[Chunk]] = {}
-    for chunk in chunks:
-        groups.setdefault((chunk.concept_tag, chunk.arabic.register), []).append(chunk)
-    return [(tag, reg, cs) for (tag, reg), cs in groups.items()]
 
 
 def _transcript(label: str, chunks: list[Chunk]) -> str:
