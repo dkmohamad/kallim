@@ -96,8 +96,8 @@ authentic audio for deeper understanding.
 **Effort/risk depends entirely on one decision — per-chunk audio clips or not:**
 
 - **Text → chunks: moderate.** Segmenting real text into chunks is very doable;
-  reuse the existing Claude-API path (`scripts/promote.py`, `scripts/extract_vocab.py`,
-  and the "Adding vocabulary" flow in README).
+  reuse the existing Claude-API path (`scripts/promote.py`, the `/extract-vocab`
+  skill, and the "Adding vocabulary" flow in README).
 - **Audio → per-chunk clips: hard.** Playing *this chunk's* authentic audio needs
   ASR (transcription) **plus forced alignment** for chunk-level timestamps — and
   Arabic forced alignment is genuinely fiddly. ElevenLabs is TTS, not STT, so this

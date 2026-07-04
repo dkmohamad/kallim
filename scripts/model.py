@@ -226,8 +226,8 @@ class Chunk:
 class VocabEntry:
     """A candidate vocab row on its way to becoming a Chunk.
 
-    Produced by ``extract_vocab`` (from the teacher chat) and consumed by
-    ``promote``, which fills in an example sentence for single words. The
+    Produced by the ``extract-vocab`` skill and consumed by ``promote``, which
+    fills in an example sentence for single words. The
     ``register`` and ``concept_tag`` are taxonomy members; ``english`` may be
     empty until promotion supplies it. Validation of the tag against the
     register's scheme lives on ``Chunk`` — call ``to_chunk`` for a validated one.

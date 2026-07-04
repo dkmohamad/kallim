@@ -7,15 +7,7 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import (
-    extract_vocab,
-    generate,
-    generate_anki,
-    lint,
-    migrate,
-    promote,
-    prune,
-)
+from scripts import generate, generate_anki, lint, migrate, promote, prune
 from scripts.config import CHUNKS_CSV
 
 __all__ = ["main"]
@@ -74,11 +66,6 @@ def main() -> None:
         "migrate", help="One-time migration: phrases.txt -> chunks.csv"
     )
     mig.set_defaults(func=migrate.run)
-
-    ext = sub.add_parser(
-        "extract-vocab", help="Extract vocab pairs from teacher-chat.txt"
-    )
-    ext.set_defaults(func=extract_vocab.run)
 
     prom = sub.add_parser(
         "promote", help="Promote vocab words into chunks with example sentences"
