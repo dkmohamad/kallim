@@ -1,73 +1,102 @@
 ---
 name: extract-vocab
 description: >-
-  Extract Arabic vocabulary from raw input (teacher chats, notes,
-  lesson recordings) into structured vocab pairs for the learning
-  pipeline
+  Mine authentic Arabic chunks from a cleaned Notion lesson transcript,
+  the Arabic Scratchpad, or a text file into chunks.csv — via a Sonnet
+  first-pass agent plus the deterministic `kallim ingest` command
 user-invocable: true
-argument-hint: "<file>"
+argument-hint: "<cleaned recording title|date|url> | scratchpad | <file path>"
 allowed-tools:
   - Read
   - Write
-  - Bash(.venv/bin/python *)
+  - Task
   - Bash(.venv/bin/kallim *)
+  - mcp__claude_ai_Notion__notion-fetch
+  - mcp__claude_ai_Notion__notion-search
+  - mcp__claude_ai_Notion__notion-query-data-sources
 ---
 
 # Extract Vocabulary Skill
 
-Extract Arabic vocabulary from any raw input file and feed it into
-the Kallim learning pipeline. This skill replaces manual extraction
-scripts by using your language understanding directly.
+Mine **authentic** Arabic chunks from one named source into the Kallim
+learning pipeline. Everything practiced must be real — a teacher's own
+Arabic, a phrase she corrected, or an entry you captured yourself — never
+synthetic. A Sonnet sub-agent does the first-pass extraction; the
+deterministic `kallim ingest` command does the dedup, id assignment, and
+validation.
 
 ## Input
 
-`$ARGUMENTS` is the path to the input file. If empty, ask the user
-to provide a file path or paste content.
+`$ARGUMENTS` names **one** source:
+
+- `scratchpad` — the Notion *Arabic — Scratchpad* page.
+- a **cleaned** lesson recording — by title, date, or Notion URL.
+- a path to a local text file (transcript or notes).
+
+If `$ARGUMENTS` is empty, ask the user which source to use.
 
 ## Steps
 
 Follow these steps in order. Do NOT skip or reorder steps.
 
-### 1. Read the input
+### 1. Resolve and fetch the source
 
-Read the file at `$ARGUMENTS`. Understand its format — it could be:
-- A teacher chat log (WhatsApp, Telegram, etc.)
-- Pasted lesson notes
-- A plain list of Arabic words/phrases
-- A transcript of a conversation
+- **`scratchpad`** → `notion-fetch` page
+  `374d9af2-a639-817a-adca-ec8bf4b66aa5`.
+- **A recording** → `notion-fetch` the page directly if given a URL,
+  otherwise `notion-query-data-sources` the Recordings data source
+  `collection://f409a1e9-2eb6-47df-be16-3e29ac2da44d` to find it by
+  title/date, then fetch it with `include_transcript: true`.
 
-### 2. Read existing chunks for deduplication
+  **Fail-fast — cleaned transcripts only.** The extractor needs a cleaned
+  transcript: bold **named** speaker labels (`**المعلِّمة:**` for teacher
+  Haya, `**ديفيد:**` for David) with a per-line italic English gloss. If
+  the fetched body lacks that format — raw ASR, `SPEAKER S2/S3` labels, no
+  labels, or a non-lesson recording (the Recordings DB also holds coaching
+  and debugging sessions) — **stop** and tell the user to run the
+  transcript-cleanup workflow (verify speakers, add glosses, write back to
+  Notion) first. Do not guess speakers from unlabelled text.
+- **A file path** → `Read` it. A file is taken as authoritative input.
 
-Read `chunks.csv` in the project root. Note every Arabic entry so
-you can skip duplicates later.
+### 2. First-pass extraction (Sonnet sub-agent)
 
-### 3. Extract vocabulary
+Dispatch a `Task` sub-agent with `model: sonnet`, passing the fetched source
+text, the taxonomy below, and the extraction rules. Ask it to **write
+`vocab_pairs.csv`** in the project root (columns
+`arabic,english,register,concept_tag`, **no `id`**) and to **return only a
+short count summary** — this keeps the long transcript out of the main
+context.
 
-Scan the input for Arabic vocabulary — words, phrases, and short
-sentences that a learner would want to memorise. Use your knowledge
-of Arabic, not regex.
+The sub-agent's brief:
 
-**Include:** vocabulary items, useful phrases, example sentences,
-dialect expressions, greetings, idioms.
+**What counts as a high-authority chunk**
 
-**Exclude:** conversational noise (e.g. "ok", "yes", timestamps),
-platform UI text, file attachment notices, emoji-only messages,
-English-only messages, duplicate entries.
+- *Cleaned recording:* the **teacher's** (`المعلِّمة`) correct Arabic, and
+  any of David's lines the teacher **explicitly corrected or confirmed** in
+  context. Skip David's error-attempts, filler, Fusha scaffolding he used to
+  reach for a word, bare single words, and trip-logistics chatter.
+- *Scratchpad:* its entries are authentic by its own capture rules — take
+  the `English⇥Arabic` tab-table pairs and the bullet chunk-lists; ignore
+  the italic grammar-frame annotations `*(...)*` and correction notes.
+- *File:* the useful phrases/sentences a learner would memorise.
 
-### 4. Build structured entries
+**Validity gate.** Keep a candidate only if it is teacher-origin/corrected
+(or a scratchpad/file entry) **and** it passes the sub-agent's own
+linguistic check — well-formed, correct meaning, sensible tashkeel. Drop
+anything doubtful rather than pass it through.
 
-For each extracted item, determine:
+**Fields, per candidate**
 
 | Field | How to decide |
 |-------|---------------|
-| `arabic` | The Arabic text, cleaned of stray punctuation or formatting artifacts |
-| `english` | English translation — take from the source if present, otherwise translate it yourself |
-| `register` | `msa`, `egyptian`, or `iraqi` — infer from dialect markers, context, or explicit labels in the source |
-| `concept_tag` | One of the tags below, based on meaning **and** register |
+| `arabic` | The Arabic text, cleaned of stray formatting; keep the transcript's tashkeel |
+| `english` | Reuse the transcript's italic gloss if present, else translate |
+| `register` | **Per phrase:** `egyptian` for Egyptian colloquial, `msa` for Fusha, `iraqi` for Iraqi — one lesson mixes registers, so decide line by line |
+| `concept_tag` | A tag from the scheme matching the register (below) |
 
-**Concept tag taxonomy.** There are two schemes — pick from the one matching the
-register. `greetings` is shared by both. (Source of truth: `ConceptTag` in
-`scripts/generate.py`; validate with `kallim lint`.)
+**Concept tag taxonomy.** Two schemes — pick from the one matching the
+register. `greetings` is shared. (Source of truth: `ConceptTag` in
+`scripts/model.py`; `kallim lint` validates.)
 
 *Situational — for `egyptian` (travel-phrasebook situations):*
 
@@ -100,58 +129,51 @@ register. `greetings` is shared by both. (Source of truth: `ConceptTag` in
 
 If no tag fits well, pick the closest match within the register's scheme.
 
-### 5. Deduplicate
+### 3. Ingest — dedup, id, validate
 
-Remove any entry whose `arabic` text already appears in
-`chunks.csv` (loaded in step 2). Report how many duplicates
-were skipped.
-
-### 6. Write vocab_pairs.csv
-
-Write the results to `vocab_pairs.csv` in the project root with
-columns: `arabic,english,register,concept_tag`
-
-Do **not** include an `id` column — IDs are assigned later by
-the promote step.
-
-### 7. Show summary and wait for approval
-
-Present a markdown table of all extracted entries to the user.
-Include counts:
-- Total entries extracted
-- Duplicates skipped
-- Entries by register
-- Entries by concept_tag
-
-**Stop and wait for the user to review.** Ask if they want to
-add, remove, or edit any entries before proceeding. If the user
-requests changes, update `vocab_pairs.csv` and show the revised
-summary.
-
-Do NOT proceed until the user explicitly approves.
-
-### 8. Run promote
-
-Run the promote command to generate example sentences for single
-words and prepare the review CSV:
+Run the deterministic ingest command over the sub-agent's candidates:
 
 ```bash
-.venv/bin/kallim promote
+.venv/bin/kallim ingest vocab_pairs.csv
 ```
 
-This reads `vocab_pairs.csv`, generates example sentences for
-single words (requires `ANTHROPIC_API_KEY`), and writes
-`vocab_chunks_review.csv`.
+This dedups each candidate against `chunks.csv` (diacritics-insensitive —
+vocalized and bare spellings of the same phrase collapse to one), assigns a
+new id, validates the register/tag against the taxonomy, and writes
+`vocab_chunks_review.csv`. It never calls an external API or invents text.
 
-Tell the user the promote step is complete and that they should
-review `vocab_chunks_review.csv`. When they are satisfied, they
-can append the approved rows to `chunks.csv`.
+### 4. Show the summary and wait for approval
+
+Read `vocab_chunks_review.csv` and present a markdown table of the new
+chunks with counts:
+
+- New chunks written
+- Duplicates skipped (from the ingest log)
+- By register
+- By concept_tag
+
+**Stop and wait for the user to review.** They may edit
+`vocab_chunks_review.csv` directly — add, remove, retag, or fix Arabic.
+Do NOT proceed until they explicitly approve.
+
+### 5. Append and validate
+
+On approval, commit the reviewed rows and lint:
+
+```bash
+.venv/bin/kallim ingest --append
+.venv/bin/kallim lint
+```
+
+`--append` writes the reviewed chunks into `chunks.csv` (matching its
+CRLF + minimal-quoting dialect); `lint` confirms the taxonomy. Report the
+result. Regenerating audio / the Anki deck is left to the user.
 
 ## Error handling
 
-- If the input file doesn't exist, tell the user and stop.
-- If `chunks.csv` doesn't exist, skip dedup (there's nothing to
-  deduplicate against).
-- If `ANTHROPIC_API_KEY` is not set when running promote, it
-  will fail with an error. Tell the user to add the key to
-  their `.env` file and retry.
+- **Notion fetch fails / page not found** → tell the user and stop.
+- **Recording isn't a cleaned transcript** → fail-fast per step 1; point the
+  user at the transcript-cleanup workflow.
+- **Input file doesn't exist** → tell the user and stop.
+- **`chunks.csv` doesn't exist** → ingest simply skips dedup (nothing to
+  compare against).

@@ -139,30 +139,29 @@ unknown register/tag or a tag used outside its register's scheme.
 
 ## Adding vocabulary
 
-The vocab pipeline turns raw input (teacher chats, lesson notes) into
-structured phrase pairs in `chunks.csv`:
+The vocab pipeline mines **authentic** Arabic — a teacher's own phrases or
+entries you captured yourself — into `chunks.csv`. Nothing is synthesised.
 
-0. **Transcribe** — if working from lesson recordings, transcribe first:
-   ```bash
-   ~/dev/scripts/transcribe/transcribe.sh --babel ~/recordings/lesson-dir/
-   ```
-   Uses the multilingual whisper model with auto language detection, handling
-   mixed Arabic/English audio. The output `.txt` file can be fed into step 1.
-1. **Extract** — read raw input and write `vocab_pairs.csv` (Arabic + English
-   columns). Use the `/extract-vocab` skill or prepare the CSV manually.
-2. **Promote** — `kallim promote` generates example sentences for single words
-   (< 3 Arabic words) via the Claude API, writing `vocab_chunks_review.csv`.
-   Phrase-length entries pass through unchanged.
-3. **Review** — open `vocab_chunks_review.csv` and edit/delete as needed.
-4. **Append** — copy approved rows into `chunks.csv`.
-5. **Validate** — run `kallim lint` to check tags against the taxonomy.
+1. **Source** — one of: a **cleaned** Notion lesson transcript (named speakers
+   + English glosses, written back to Notion), the Notion *Arabic — Scratchpad*
+   page, or a local text file.
+2. **Extract** — run the `/extract-vocab <source>` skill. A Sonnet sub-agent
+   pulls high-authority chunks (teacher-said or teacher-corrected), tags each by
+   register + concept, and writes `vocab_pairs.csv`.
+3. **Ingest** — `kallim ingest vocab_pairs.csv` dedups against `chunks.csv`
+   (diacritics-insensitive), assigns ids, validates the taxonomy, and writes
+   `vocab_chunks_review.csv`. No API calls, no invented text.
+4. **Review** — open `vocab_chunks_review.csv` and edit/delete as needed.
+5. **Append + validate** — `kallim ingest --append` commits the reviewed rows
+   into `chunks.csv`, then `kallim lint` checks the taxonomy.
 6. **Generate** — run `kallim generate` / `kallim anki` to produce audio and
    flashcards.
 
 ```bash
-# Full pipeline example
-kallim promote                     # writes vocab_chunks_review.csv
-# ... review the file, then append to chunks.csv ...
+# From a review CSV onward
+kallim ingest vocab_pairs.csv      # dedup + id + validate -> review CSV
+# ... review vocab_chunks_review.csv ...
+kallim ingest --append             # commit reviewed rows into chunks.csv
 kallim lint                        # validate concept_tags
 kallim anki                        # generate Anki deck
 ```
@@ -208,7 +207,6 @@ attached to any notes.
 API keys live in `.env` (gitignored):
 
 ```
-ANTHROPIC_API_KEY=...
 ELEVENLABS_API_KEY=...
 ```
 
@@ -235,5 +233,5 @@ The project includes [Claude Code](https://claude.com/claude-code) skills in
 
 | Skill | Invocation | What it does |
 |-------|------------|--------------|
-| **extract-vocab** | `/extract-vocab <file>` | Reads raw input (teacher chats, lesson notes, transcripts), extracts Arabic vocabulary, deduplicates against `chunks.csv`, writes `vocab_pairs.csv`, then runs `kallim promote` to generate example sentences. |
+| **extract-vocab** | `/extract-vocab <source>` | Mines authentic Arabic chunks from a cleaned Notion transcript, the Scratchpad, or a text file (Sonnet sub-agent), then `kallim ingest` dedups, ids, and validates them into `vocab_chunks_review.csv`. |
 | **commit** | `/commit [message]` | Runs pyright type checks, stages files explicitly, shows the diff for approval, then commits. |

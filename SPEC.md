@@ -36,9 +36,10 @@ Trying to make one system do all three is what felt unwieldy.
 ## The primitive: chunks, not words
 
 A row is a **chunk** — a phrase with context, not an isolated word. You speak in
-collocations, correctly inflected, with grammatical environment attached. Words
-arrive in the inbox; processing promotes a word into a chunk (a real sentence
-using it) — and that promotion step is itself good learning.
+collocations, correctly inflected, with grammatical environment attached. Chunks
+are mined from **authentic** sources — a teacher's own phrases (or ones she
+corrected) and notes you captured yourself — never synthesised from bare word
+lists.
 
 ---
 
@@ -209,9 +210,9 @@ kallim anki
 kallim anki --no-audio
 kallim anki --section dining
 
-# Promote vocab words into chunks (generates example sentences via Claude)
-kallim promote
-kallim promote vocab.txt
+# Ingest extracted vocab candidates into review-ready chunks (dedup + id + validate)
+kallim ingest vocab_pairs.csv
+kallim ingest --append   # commit vocab_chunks_review.csv into chunks.csv
 
 # Validate chunks.csv against the concept_tag taxonomy
 kallim lint
@@ -228,7 +229,6 @@ kallim migrate
 ## Dependencies
 
 ```
-anthropic>=0.39.0       # Claude API for vocab promotion
 elevenlabs>=1.0.0       # TTS API client
 genanki>=0.13.0         # Anki deck generation
 pydub>=0.25.1           # Audio manipulation
@@ -244,7 +244,6 @@ System: `ffmpeg` (required by pydub for MP3 encoding).
 `.env` file:
 
 ```
-ANTHROPIC_API_KEY=...
 ELEVENLABS_API_KEY=...
 ELEVENLABS_VOICE_ENGLISH=...
 ELEVENLABS_VOICE_EGYPTIAN=...

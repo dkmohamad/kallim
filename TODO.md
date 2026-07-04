@@ -14,9 +14,10 @@ loads them on startup.
 
 The remaining cost is `cli.py`: it imports all six command `main`s at module
 top, so running *any* command transitively loads **`genanki`** (via
-`generate_anki.py`) and **`anthropic`** (via `promote.py`) whether needed or not.
-Measured: `kallim lint` ≈ **0.46 s** vs ≈ **0.03 s** for importing the `lint`
-module alone — almost all of the gap is anthropic + genanki.
+`generate_anki.py`) whether needed or not. (The old `anthropic` load via
+`promote.py` is gone — `promote` was retired and its LLM work moved into the
+`/extract-vocab` skill.) Measured historically: `kallim lint` ≈ **0.46 s** vs
+≈ **0.03 s** for importing the `lint` module alone.
 
 **Next stage:** lazy-dispatch — move each `from scripts.<cmd> import main` into
 its `if args.command == …` branch in `cli.py`, so e.g. `lint`/`prune`/`voices`/
@@ -96,8 +97,9 @@ authentic audio for deeper understanding.
 **Effort/risk depends entirely on one decision — per-chunk audio clips or not:**
 
 - **Text → chunks: moderate.** Segmenting real text into chunks is very doable;
-  reuse the existing Claude-API path (`scripts/promote.py`, the `/extract-vocab`
-  skill, and the "Adding vocabulary" flow in README).
+  use the `/extract-vocab` skill (a Sonnet sub-agent extracts + tags authentic
+  chunks in-Claude, then `kallim ingest` dedups/ids/validates) and the "Adding
+  vocabulary" flow in README.
 - **Audio → per-chunk clips: hard.** Playing *this chunk's* authentic audio needs
   ASR (transcription) **plus forced alignment** for chunk-level timestamps — and
   Arabic forced alignment is genuinely fiddly. ElevenLabs is TTS, not STT, so this
@@ -105,7 +107,7 @@ authentic audio for deeper understanding.
 
 - [x] **Decide ambition level** — went with the text-first MVP (no per-chunk audio).
 - [x] **Text → chunks** — done ad hoc: **101 authentic chunks** ingested from three
-  MSA lesson transcripts via the existing extract/promote path (commit `47f4316`).
+  MSA lesson transcripts via the extract → ingest path (commit `47f4316`).
   These are now live in `chunks.csv` and lint-clean.
   - ⚠️ Those 101 chunks have **no generated audio yet** — they need a
     `generate`/`anki` run (folds into the one-time regen noted in gotcha #3).
