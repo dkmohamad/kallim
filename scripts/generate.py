@@ -2,22 +2,14 @@
 
 import argparse
 import logging
-import sys
-from pathlib import Path
 
 from dotenv import load_dotenv
 
-from . import plan
-from .audio import get_quota, list_voices, make_synthesiser, stitch
+from .audio import list_voices, make_synthesiser, stitch
+from .cache import AudioCache, ensure_cached, make_codec
+from .chunks import group_sections
+from .command import dry_run_report, scoped_chunks
 from .model import Chunk, PlayableAudio
-from .store import (
-    AudioCache,
-    ensure_cached,
-    group_sections,
-    load_chunks,
-    make_codec,
-    select_section,
-)
 from .utils import make_run_dir, setup_logging
 
 __all__ = ["list_installed_voices", "run"]
@@ -33,23 +25,10 @@ def list_installed_voices(_args: argparse.Namespace) -> None:
 
 def run(args: argparse.Namespace) -> None:
     """Generate one shadowing MP3 (and transcript) per chunk section."""
-    load_dotenv()
-
-    chunks = load_chunks(Path(args.input))
-    try:
-        chunks = select_section(chunks, args.section)
-    except ValueError as exc:
-        sys.exit(f"Error: {exc}")
+    chunks = scoped_chunks(args)
 
     if args.dry_run:
-        plan.report(
-            command="generate",
-            section=args.section,
-            force=args.force,
-            chunks=chunks,
-            cache=AudioCache(),
-            quota=get_quota(),
-        )
+        dry_run_report("generate", args, chunks, audio_enabled=True)
         return
 
     run_dir = make_run_dir()

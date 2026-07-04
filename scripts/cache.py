@@ -1,24 +1,22 @@
-"""Persistence: the chunks.csv loader and the content-addressed audio cache.
+"""The audio cache and its mp3 codec — the audio side of persistence.
 
-``load_chunks`` reads the source-of-truth CSV. ``AudioCache`` is the audio
-store — a MutableMapping of ``key`` to an ``<key>.mp3`` file, a live view of the
-cache dir (assignment writes, access decodes, del unlinks). It encodes/decodes
-through a ``Codec``, which is the single place this module imports pydub. The
-cache builds its codec lazily, so commands that only delete cache files (prune)
-never load pydub. PLC0415 is waived here in pyproject for that one import.
+``AudioCache`` is a MutableMapping of ``key`` to an ``<key>.mp3`` file, a live
+view of the cache dir (assignment writes, access decodes, del unlinks). It
+encodes/decodes through a ``Codec``, the single place this module imports pydub;
+the cache builds its codec lazily, so commands that only delete cache files
+(prune) never load pydub. PLC0415 is waived here in pyproject for that one
+import. The chunk-side loader/grouping lives in ``scripts.chunks``.
 """
 
 from __future__ import annotations
 
-import csv
 from collections.abc import Iterator, MutableMapping
-from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from .config import AUDIO_DIR
-from .model import Chunk, ConceptTag, PlayableAudio, Register, Synthesiser, Utterance
+from .model import Chunk, PlayableAudio, Synthesiser, Utterance
 
 if TYPE_CHECKING:
     from pydub import AudioSegment
@@ -26,83 +24,10 @@ if TYPE_CHECKING:
 __all__ = [
     "AudioCache",
     "Codec",
-    "Section",
     "ensure_cached",
-    "group_sections",
-    "load_chunks",
     "make_codec",
     "needs_synth",
-    "select_section",
 ]
-
-
-def load_chunks(path: Path) -> list[Chunk]:
-    """Load all chunks from the CSV file.
-
-    Raises:
-        FileNotFoundError: If ``path`` doesn't exist.
-        ValueError: If a row is malformed/off-taxonomy, or the file has no chunks.
-    """
-    with path.open(newline="", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        next(reader)  # skip header
-        chunks = [Chunk.from_row(row) for row in reader]
-    if not chunks:
-        raise ValueError(f"no chunks in {path}")
-    return chunks
-
-
-def select_section(chunks: list[Chunk], tag: str | None) -> list[Chunk]:
-    """Filter chunks to a single concept_tag; return all when ``tag`` is None.
-
-    Args:
-        chunks: The chunks to filter.
-        tag: The concept_tag to keep, or None for no filtering.
-
-    Returns:
-        The matching chunks (all of them when ``tag`` is None).
-
-    Raises:
-        ValueError: If ``tag`` is given but no chunk carries it.
-    """
-    if tag is None:
-        return chunks
-    selected = [c for c in chunks if c.concept_tag == tag]
-    if not selected:
-        raise ValueError(f"section {tag!r} not found")
-    return selected
-
-
-@dataclass(frozen=True, slots=True)
-class Section:
-    """Chunks sharing a concept_tag and Arabic register — one output unit.
-
-    The group ``generate`` writes a single MP3 (and transcript) per, and the
-    dry-run report tallies per. Owns its own ``label`` so the real run and the
-    dry run can't format it differently.
-    """
-
-    tag: ConceptTag
-    register: Register
-    chunks: list[Chunk]
-
-    @property
-    def label(self) -> str:
-        """Human label for the section, e.g. ``greetings (egyptian)``."""
-        return f"{self.tag} ({self.register})"
-
-
-def group_sections(chunks: list[Chunk]) -> list[Section]:
-    """Group chunks into sections by (concept_tag, Arabic register).
-
-    Preserves first-seen order, so the output sections follow the CSV. Shared by
-    the real run (``generate``) and the dry-run report (``plan``) so both see the
-    same sectioning.
-    """
-    groups: dict[tuple[ConceptTag, Register], list[Chunk]] = {}
-    for chunk in chunks:
-        groups.setdefault((chunk.concept_tag, chunk.arabic.register), []).append(chunk)
-    return [Section(tag, reg, cs) for (tag, reg), cs in groups.items()]
 
 
 class Codec:

@@ -2,7 +2,7 @@
 
 Read-only, mirrors ``prune``'s dry-run-by-default shape. Given the loaded chunks
 and the audio cache, it works out which utterances are cache misses (or all of
-them, with ``force``) via ``store.needs_synth`` — the same rule the real run
+them, with ``force``) via ``cache.needs_synth`` — the same rule the real run
 applies — and sums their characters, which equal ElevenLabs credits on the TTS
 model (1 credit/char). No synthesis, no run dir, no TTS call; the live quota (if
 any) is passed in.
@@ -13,9 +13,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from .audio import Quota
+from .cache import AudioCache, needs_synth
+from .chunks import Section, group_sections
 from .config import TTS_MODEL_ID
 from .model import Chunk, Utterance
-from .store import AudioCache, Section, group_sections, needs_synth
 
 __all__ = ["SectionPlan", "SynthPlan", "plan_synthesis", "report"]
 
@@ -60,8 +61,8 @@ class SynthPlan:
 def plan_synthesis(chunks: list[Chunk], cache: AudioCache, *, force: bool) -> SynthPlan:
     """Compute which utterances a run would synthesise, without synthesising.
 
-    Uses ``store.needs_synth`` per utterance — the same cache-miss/``force`` rule
-    ``store.ensure_cached`` applies — so the plan can't drift from the real run.
+    Uses ``cache.needs_synth`` per utterance — the same cache-miss/``force`` rule
+    ``cache.ensure_cached`` applies — so the plan can't drift from the real run.
     """
     total = 0
     to_synth: list[Utterance] = []

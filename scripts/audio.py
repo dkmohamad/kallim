@@ -4,7 +4,7 @@
 only, no I/O) and is the callable adapter for the model's ``Synthesiser`` port;
 ``make_synthesiser`` builds it and returns it for the caller to inject (e.g. into
 ``ensure_cached``). ``stitch`` concatenates clips for the shadowing layout. (The
-audio *store* and the mp3 codec live in ``scripts.store`` with the other
+audio cache and the mp3 codec live in ``scripts.cache`` with the other
 persistence.)
 
 This module imports pydub/elevenlabs *lazily* (inside the functions that use

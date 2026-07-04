@@ -29,13 +29,13 @@ packages = ["scripts"]
 select = ["PLC0415"]
 
 [tool.ruff.lint.per-file-ignores]
-# The one sanctioned exception: audio.py and store.py lazily import their heavy
+# The one sanctioned exception: audio.py and cache.py lazily import their heavy
 # third-party dep (pydub) inside the methods that use it, so commands that don't
 # touch audio (lint, prune, --help) don't pay to load it on startup. audio.py
-# also lazy-imports elevenlabs; store.py's AudioCache lazy-imports pydub to
+# also lazy-imports elevenlabs; cache.py's AudioCache lazy-imports pydub to
 # decode cached clips.
 "scripts/audio.py" = ["PLC0415"]
-"scripts/store.py" = ["PLC0415"]
+"scripts/cache.py" = ["PLC0415"]
 
 [build-system]
 requires = ["setuptools>=68.0"]

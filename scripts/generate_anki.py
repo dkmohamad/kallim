@@ -4,16 +4,14 @@ from __future__ import annotations
 
 import argparse
 import logging
-import sys
 from pathlib import Path
 
 import genanki
-from dotenv import load_dotenv
 
-from . import plan
-from .audio import get_quota, make_synthesiser
+from .audio import make_synthesiser
+from .cache import AudioCache, ensure_cached
+from .command import dry_run_report, scoped_chunks
 from .model import Chunk
-from .store import AudioCache, ensure_cached, load_chunks, select_section
 from .utils import make_run_dir, setup_logging
 
 __all__ = ["make_model", "run"]
@@ -76,24 +74,10 @@ def make_model() -> genanki.Model:
 
 def run(args: argparse.Namespace) -> None:
     """Build an Anki .apkg deck (optionally with TTS audio) from chunks.csv."""
-    load_dotenv()
-
-    chunks = load_chunks(Path(args.input))
-    try:
-        chunks = select_section(chunks, args.section)
-    except ValueError as exc:
-        sys.exit(f"Error: {exc}")
+    chunks = scoped_chunks(args)
 
     if args.dry_run:
-        plan.report(
-            command="anki",
-            section=args.section,
-            force=args.force,
-            chunks=chunks,
-            cache=AudioCache(),
-            quota=None if args.no_audio else get_quota(),
-            audio_enabled=not args.no_audio,
-        )
+        dry_run_report("anki", args, chunks, audio_enabled=not args.no_audio)
         return
 
     run_dir = make_run_dir()

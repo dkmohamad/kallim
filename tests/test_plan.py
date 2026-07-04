@@ -4,7 +4,7 @@ from pathlib import Path
 
 from scripts.model import Chunk
 from scripts.plan import plan_synthesis
-from scripts.store import AudioCache
+from scripts.cache import AudioCache
 
 # (id, arabic, english, register, concept_tag) — Chunk.FIELDS order.
 _ROWS = [
@@ -42,7 +42,7 @@ def test_plan_skips_a_cached_utterance_but_force_ignores_the_cache(
     ``AudioCache.__contains__`` is existence-only, so seeding the file at an
     utterance's content-key path is enough to mark it cached. Asserts the plan
     honours that (cached: 1) and that ``force`` bills everything regardless —
-    the two branches of ``store.ensure_cached``'s synth rule.
+    the two branches of ``cache.ensure_cached``'s synth rule.
     """
     chunks = _chunks()
     cache = AudioCache(tmp_path)

@@ -11,16 +11,16 @@ Defaults to a dry run — pass --apply to actually delete.
 import argparse
 from pathlib import Path
 
+from .cache import AudioCache
+from .chunks import Chunks
 from .config import CHUNKS_CSV
-from .store import AudioCache, load_chunks
 
 __all__ = ["live_keys", "prune", "run"]
 
 
 def live_keys(csv_path: Path) -> set[str]:
     """The content keys (English + Arabic) produced by every chunk."""
-    chunks = load_chunks(csv_path)
-    return {utt.key for c in chunks for utt in c.utterances}
+    return Chunks.load(csv_path).audio_keys()
 
 
 def prune(cache: AudioCache, csv_path: Path, *, apply: bool) -> int:

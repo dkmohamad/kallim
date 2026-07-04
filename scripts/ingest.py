@@ -18,9 +18,9 @@ import csv
 import logging
 from pathlib import Path
 
+from .chunks import Chunks
 from .config import CHUNKS_CSV, VOCAB_CHUNKS_REVIEW_CSV, VOCAB_PAIRS_CSV
 from .model import Chunk, VocabEntry
-from .store import load_chunks
 from .utils import (
     append_csv_rows,
     generate_id,
@@ -142,10 +142,9 @@ def run(args: argparse.Namespace) -> None:
 def _normalized_existing(chunks_path: Path) -> set[str]:
     """Normalized Arabic already in chunks.csv (empty if it doesn't exist)."""
     try:
-        chunks = load_chunks(chunks_path)
+        return Chunks.load(chunks_path).arabic_keys()
     except FileNotFoundError:
         return set()
-    return {normalize_arabic(chunk.arabic.text) for chunk in chunks}
 
 
 def _validated_chunks(review_path: Path) -> list[Chunk]:
