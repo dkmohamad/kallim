@@ -23,39 +23,37 @@ def live_keys(csv_path: Path) -> set[str]:
     return Chunks.load(csv_path).audio_keys()
 
 
-def prune(cache: AudioCache, csv_path: Path, *, apply: bool) -> int:
-    """Report (and with apply=True, delete) orphaned cache files.
+def prune(cache: AudioCache, csv_path: Path, *, apply: bool) -> str:
+    """Report orphaned cache files (and with apply=True, delete them).
 
-    Returns the number of orphan files found.
+    Returns the report text; the caller (the CLI) prints it.
     """
     orphans = sorted(set(cache) - live_keys(csv_path))
 
     if not orphans:
-        print(f"OK: no orphans ({len(cache)} cached).")
-        return 0
+        return f"OK: no orphans ({len(cache)} cached)."
 
-    print(f"{len(orphans)} orphan file(s):")
-    for key in orphans[:10]:
-        print(f"  {cache.path(key).name}")
+    lines = [f"{len(orphans)} orphan file(s):"]
+    lines += [f"  {cache.path(key).name}" for key in orphans[:10]]
     if len(orphans) > 10:
-        print(f"  ... and {len(orphans) - 10} more")
-    print()
+        lines.append(f"  ... and {len(orphans) - 10} more")
+    lines.append("")
 
     if not apply:
-        print("Dry run — nothing deleted. Re-run with --apply to remove.")
-        return len(orphans)
+        lines.append("Dry run — nothing deleted. Re-run with --apply to remove.")
+        return "\n".join(lines)
 
     for key in orphans:
         del cache[key]
 
-    print(f"Deleted {len(orphans)} file(s).")
-    print(
+    lines.append(f"Deleted {len(orphans)} file(s).")
+    lines.append(
         "Note: Anki cards for removed chunks are not deleted automatically — "
         "remove them by hand in Anki (genanki only adds/updates)."
     )
-    return len(orphans)
+    return "\n".join(lines)
 
 
-def run(args: argparse.Namespace) -> None:
+def run(args: argparse.Namespace) -> str:
     """Delete orphaned audio cache files (dry run unless ``--apply``)."""
-    prune(AudioCache(), CHUNKS_CSV, apply=args.apply)
+    return prune(AudioCache(), CHUNKS_CSV, apply=args.apply)

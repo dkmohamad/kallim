@@ -25,8 +25,9 @@ py-modules = ["cli"]
 packages = ["scripts"]
 
 [tool.ruff.lint]
-# Keep all imports at module top-level (no lazy in-function imports)
-select = ["PLC0415"]
+# PLC0415: keep imports at module top-level (no lazy in-function imports).
+# T20: ban print() — logic returns strings; only the CLI layer prints.
+select = ["PLC0415", "T20"]
 
 [tool.ruff.lint.per-file-ignores]
 # The one sanctioned exception: audio.py and cache.py lazily import their heavy
@@ -36,6 +37,9 @@ select = ["PLC0415"]
 # decode cached clips.
 "scripts/audio.py" = ["PLC0415"]
 "scripts/cache.py" = ["PLC0415"]
+# cli.py is the single place user-facing output is printed; everything else
+# returns strings for it to print. This is the only sanctioned print() site.
+"cli.py" = ["T20"]
 
 [build-system]
 requires = ["setuptools>=68.0"]

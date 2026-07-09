@@ -2,9 +2,10 @@
 
 from pathlib import Path
 
+from scripts.cache import AudioCache
+from scripts.chunks import Chunks
 from scripts.model import Chunk
 from scripts.plan import plan_synthesis
-from scripts.cache import AudioCache
 
 # (id, arabic, english, register, concept_tag) — Chunk.FIELDS order.
 _ROWS = [
@@ -25,7 +26,7 @@ def test_plan_counts_every_utterance_as_a_miss_on_empty_cache(tmp_path: Path) ->
     at 1 credit/char). Guards the core dry-run number the user gates spend on.
     """
     chunks = _chunks()
-    plan = plan_synthesis(chunks, AudioCache(tmp_path), force=False)
+    plan = plan_synthesis(Chunks(chunks), AudioCache(tmp_path), force=False)
 
     assert plan.total_utterances == len(chunks) * 2
     assert len(plan.to_synth) == len(chunks) * 2
@@ -49,12 +50,12 @@ def test_plan_skips_a_cached_utterance_but_force_ignores_the_cache(
     cached_utt = chunks[0].english
     cache.path(cached_utt.key).touch()
 
-    plan = plan_synthesis(chunks, cache, force=False)
+    plan = plan_synthesis(Chunks(chunks), cache, force=False)
     assert plan.reused == 1
     assert len(plan.to_synth) == len(chunks) * 2 - 1
     assert plan.chars == sum(len(u.text) for u in plan.to_synth)
 
-    forced = plan_synthesis(chunks, cache, force=True)
+    forced = plan_synthesis(Chunks(chunks), cache, force=True)
     assert forced.reused == 0
     assert len(forced.to_synth) == len(chunks) * 2
 
@@ -76,12 +77,12 @@ def test_plan_bills_a_repeated_utterance_once_unless_forced(tmp_path: Path) -> N
     chunks = [Chunk.from_row(row) for row in rows]
     cache = AudioCache(tmp_path)
 
-    plan = plan_synthesis(chunks, cache, force=False)
+    plan = plan_synthesis(Chunks(chunks), cache, force=False)
     assert plan.total_utterances == 4
     # The shared "Welcome" English is billed once → 3, not 4.
     assert len(plan.to_synth) == 3
     keys = [u.key for u in plan.to_synth]
     assert len(keys) == len(set(keys)), "a non-force plan holds no duplicate keys"
 
-    forced = plan_synthesis(chunks, cache, force=True)
+    forced = plan_synthesis(Chunks(chunks), cache, force=True)
     assert len(forced.to_synth) == 4  # --force re-synthesises every occurrence

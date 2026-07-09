@@ -18,22 +18,24 @@ from dotenv import load_dotenv
 from . import plan
 from .audio import get_quota
 from .cache import AudioCache
-from .chunks import load_chunks, select_section
-from .model import Chunk
+from .chunks import Chunks
+from .model import ConceptTag
 
 __all__ = ["dry_run_report", "scoped_chunks"]
 
 
-def scoped_chunks(args: argparse.Namespace) -> list[Chunk]:
+def scoped_chunks(args: argparse.Namespace) -> Chunks:
     """Load the .env and chunks.csv, narrowed to ``--section``.
 
-    Exits (via ``sys.exit``) with a message if ``--section`` names a tag no chunk
-    carries — the CLI boundary for a user typo.
+    Parses ``--section`` into a ``ConceptTag`` at this CLI boundary, so a value
+    off the taxonomy is rejected as such (not as a silent "section not found").
+    Exits (via ``sys.exit``) with a message on either error.
     """
     load_dotenv()
-    chunks = load_chunks(Path(args.input))
+    chunks = Chunks.load(Path(args.input))
     try:
-        return select_section(chunks, args.section)
+        tag = None if args.section is None else ConceptTag(args.section)
+        return chunks.section(tag)
     except ValueError as exc:
         sys.exit(f"Error: {exc}")
 
@@ -41,16 +43,17 @@ def scoped_chunks(args: argparse.Namespace) -> list[Chunk]:
 def dry_run_report(
     command: str,
     args: argparse.Namespace,
-    chunks: list[Chunk],
+    chunks: Chunks,
     *,
     audio_enabled: bool,
-) -> None:
-    """Print the dry-run cost report for a command — no synthesis, no run dir.
+) -> str:
+    """Build the dry-run cost report for a command — no synthesis, no run dir.
 
-    Fetches live quota only when audio would actually be synthesised (skipped for
-    ``anki --no-audio``, which makes no TTS calls).
+    Returns the report text for the CLI to print. Fetches live quota only when
+    audio would actually be synthesised (skipped for ``anki --no-audio``, which
+    makes no TTS calls).
     """
-    plan.report(
+    return plan.render(
         command=command,
         section=args.section,
         force=args.force,

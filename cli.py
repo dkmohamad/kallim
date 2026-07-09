@@ -117,7 +117,11 @@ def main() -> None:
     if not args.command:
         parser.print_help()
         raise SystemExit(1)
-    args.func(args)
+    # Commands return the text to display (or None); the CLI is the one place
+    # that prints — every other module returns strings (enforced by ruff T20).
+    output = args.func(args)
+    if output is not None:
+        print(output)
 
 
 if __name__ == "__main__":

@@ -135,14 +135,6 @@ ALLOWED_TAGS_BY_REGISTER = {
     Register.IRAQI: TOPICAL_TAGS,
 }
 
-# Full register names for prompts / display (read by ``Register.label``).
-_REGISTER_LABELS = {
-    Register.ENGLISH: "English",
-    Register.EGYPTIAN: "Egyptian Arabic dialect",
-    Register.MSA: "Modern Standard Arabic",
-    Register.IRAQI: "Iraqi Arabic dialect",
-}
-
 
 @dataclass(frozen=True, slots=True)
 class Utterance:
@@ -306,3 +298,12 @@ def _parse_taxonomy(register: str, concept_tag: str) -> tuple[Register, ConceptT
     except ValueError:
         raise ValueError(f"unknown concept_tag {concept_tag!r}") from None
     return reg, tag
+
+
+# Full register names for prompts / display (read by ``Register.label``).
+_REGISTER_LABELS = {
+    Register.ENGLISH: "English",
+    Register.EGYPTIAN: "Egyptian Arabic dialect",
+    Register.MSA: "Modern Standard Arabic",
+    Register.IRAQI: "Iraqi Arabic dialect",
+}

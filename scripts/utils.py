@@ -6,7 +6,7 @@ import logging
 import re
 import sys
 import uuid
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from datetime import datetime
 from pathlib import Path
 
@@ -18,6 +18,7 @@ __all__ = [
     "generate_id",
     "make_run_dir",
     "normalize_arabic",
+    "read_csv_rows",
     "setup_logging",
     "write_csv_rows",
 ]
@@ -48,6 +49,30 @@ def normalize_arabic(text: str) -> str:
     folded = _TASHKIL_RE.sub("", text).translate(_FOLD)
     kept = "".join(ch if ch.isalnum() else " " for ch in folded)
     return " ".join(kept.split())
+
+
+def read_csv_rows[Row](path: Path, factory: Callable[[list[str]], Row]) -> list[Row]:
+    """Read a CSV: skip the header, build one object per row via ``factory``.
+
+    The symmetric reader to ``write_csv_rows`` — same csv dialect. ``factory`` is
+    typically a model's ``from_row`` classmethod. A header-only (or empty) file
+    yields an empty list.
+
+    Args:
+        path: Source CSV path.
+        factory: Builds one object from a raw row (e.g. ``Chunk.from_row``).
+
+    Returns:
+        One object per data row (empty for a header-only/empty file).
+
+    Raises:
+        FileNotFoundError: If ``path`` doesn't exist.
+        ValueError: Propagated from ``factory`` on a malformed/off-taxonomy row.
+    """
+    with path.open(newline="", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        next(reader, None)  # skip header (tolerant of an empty file)
+        return [factory(row) for row in reader]
 
 
 def write_csv_rows(

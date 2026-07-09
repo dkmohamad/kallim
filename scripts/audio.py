@@ -77,15 +77,17 @@ def get_quota() -> Quota | None:
         return None
 
 
-def list_voices() -> None:
-    """Print all available ElevenLabs voices (for filling in voices.json)."""
+def list_voices() -> str:
+    """Return a listing of all available ElevenLabs voices (for voices.json)."""
     from elevenlabs.client import ElevenLabs
 
     client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
     response = client.voices.get_all()
+    lines = []
     for voice in response.voices:
         labels = ", ".join(f"{k}={v}" for k, v in (voice.labels or {}).items())
-        print(f"{voice.voice_id}  {voice.name}  [{labels}]")
+        lines.append(f"{voice.voice_id}  {voice.name}  [{labels}]")
+    return "\n".join(lines)
 
 
 class ElevenLabsSynthesiser:

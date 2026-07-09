@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from scripts.chunks import Chunks
-from scripts.model import Chunk
+from scripts.model import Chunk, ConceptTag
 
 # One phrase in two spellings (vocalized + bare) sharing an English gloss.
 _ROWS = [
@@ -40,6 +40,29 @@ def test_audio_keys_are_content_keys_deduped_across_chunks() -> None:
     contributes one cache file, and audio_keys must reflect that.
     """
     assert len(_chunks().audio_keys()) == 3
+
+
+def test_section_narrows_by_tag_and_sections_group_by_tag_and_register() -> None:
+    """`section` filters to one concept_tag; `sections` groups tag+register.
+
+    Guards the collection operations moved onto Chunks in the restructure: a
+    concept_tag not present raises, a present one narrows, and grouping yields
+    one Section per (tag, register) with the label the real run and dry run share.
+    """
+    rows = [
+        ["s1", "السلام عليكم", "Hello", "egyptian", "greetings"],
+        ["s2", "صباح الخير", "Good morning", "egyptian", "greetings"],
+        ["s3", "أنا بخير", "I am fine", "msa", "greetings"],
+    ]
+    chunks = Chunks(Chunk.from_row(row) for row in rows)
+
+    assert len(chunks.section(ConceptTag.GREETINGS)) == 3
+    assert chunks.section(None) is chunks
+
+    sections = chunks.sections()
+    labels = [s.label for s in sections]
+    assert labels == ["greetings (egyptian)", "greetings (msa)"]
+    assert sections[0].slug(3) == "03_greetings_egyptian"
 
 
 def test_load_raises_when_the_csv_is_absent(tmp_path: Path) -> None:

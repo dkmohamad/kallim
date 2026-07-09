@@ -25,7 +25,6 @@ __all__ = [
     "AudioCache",
     "Codec",
     "ensure_cached",
-    "make_codec",
     "needs_synth",
 ]
 
@@ -52,11 +51,6 @@ class Codec:
         cast("AudioSegment", audio).export(str(path), format="mp3", bitrate="128k")
 
 
-def make_codec() -> Codec:
-    """Build the mp3 codec (loads pydub)."""
-    return Codec()
-
-
 class AudioCache(MutableMapping[str, PlayableAudio]):
     """Content-addressed audio cache: key <-> ``audio_dir/<key>.mp3``.
 
@@ -72,7 +66,7 @@ class AudioCache(MutableMapping[str, PlayableAudio]):
 
     @cached_property
     def _codec(self) -> Codec:
-        return make_codec()
+        return Codec()
 
     def path(self, key: str) -> Path:
         return self._dir / f"{key}.mp3"

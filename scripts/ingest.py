@@ -14,7 +14,6 @@ build and append steps dedup against chunks.csv (diacritics-insensitive), so
 """
 
 import argparse
-import csv
 import logging
 from pathlib import Path
 
@@ -25,6 +24,7 @@ from .utils import (
     append_csv_rows,
     generate_id,
     normalize_arabic,
+    read_csv_rows,
     setup_logging,
     write_csv_rows,
 )
@@ -57,10 +57,7 @@ def load_vocab_pairs(path: Path) -> list[VocabEntry]:
             f"{path} is not a .csv; candidates need arabic,english,register,"
             "concept_tag columns (a plain word list carries no register/tag)"
         )
-    with path.open(newline="", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        next(reader, None)  # skip header (empty file -> no rows)
-        return [VocabEntry.from_row(row) for row in reader]
+    return read_csv_rows(path, VocabEntry.from_row)
 
 
 def build_review(candidates_path: Path, chunks_path: Path, review_path: Path) -> int:
@@ -149,7 +146,4 @@ def _normalized_existing(chunks_path: Path) -> set[str]:
 
 def _validated_chunks(review_path: Path) -> list[Chunk]:
     """Read the review CSV, validating each row via ``Chunk.from_row``."""
-    with review_path.open(newline="", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        next(reader, None)  # skip header (empty file -> no rows)
-        return [Chunk.from_row(row) for row in reader]
+    return read_csv_rows(review_path, Chunk.from_row)

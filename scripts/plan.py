@@ -14,11 +14,11 @@ from dataclasses import dataclass
 
 from .audio import Quota
 from .cache import AudioCache, needs_synth
-from .chunks import Section, group_sections
+from .chunks import Chunks, Section
 from .config import TTS_MODEL_ID
-from .model import Chunk, Utterance
+from .model import Utterance
 
-__all__ = ["SectionPlan", "SynthPlan", "plan_synthesis", "report"]
+__all__ = ["SectionPlan", "SynthPlan", "plan_synthesis", "render"]
 
 
 @dataclass(frozen=True, slots=True)
@@ -58,7 +58,7 @@ class SynthPlan:
         return sum(len(utt.text) for utt in self.to_synth)
 
 
-def plan_synthesis(chunks: list[Chunk], cache: AudioCache, *, force: bool) -> SynthPlan:
+def plan_synthesis(chunks: Chunks, cache: AudioCache, *, force: bool) -> SynthPlan:
     """Compute which utterances a run would synthesise, without synthesising.
 
     Uses ``cache.needs_synth`` per utterance — the same cache-miss/``force`` rule
@@ -68,7 +68,7 @@ def plan_synthesis(chunks: list[Chunk], cache: AudioCache, *, force: bool) -> Sy
     to_synth: list[Utterance] = []
     planned: set[str] = set()
     by_section: list[SectionPlan] = []
-    for section in group_sections(chunks):
+    for section in chunks.sections():
         sec_count = 0
         sec_chars = 0
         for chunk in section.chunks:
@@ -89,59 +89,63 @@ def plan_synthesis(chunks: list[Chunk], cache: AudioCache, *, force: bool) -> Sy
     return SynthPlan(total, to_synth, by_section)
 
 
-def report(
+def render(
     *,
     command: str,
     section: str | None,
     force: bool,
-    chunks: list[Chunk],
+    chunks: Chunks,
     cache: AudioCache,
     quota: Quota | None,
     audio_enabled: bool = True,
-) -> None:
-    """Print the dry-run report for a ``generate``/``anki`` invocation."""
+) -> str:
+    """Render the dry-run report for a ``generate``/``anki`` invocation.
+
+    Returns the text to print; the caller (the CLI) does the printing.
+    """
     scope = section or "all"
-    print(
+    footer = "\nNothing was generated. Drop --dry-run to run for real."
+    parts = [
         f"Dry run — kallim {command}  "
         f"(section: {scope}, force: {'yes' if force else 'no'})"
-    )
+    ]
 
     if not audio_enabled:
-        print(
+        parts.append(
             f"{len(chunks)} chunks in scope · text-only (--no-audio): "
             "0 utterances to synthesize."
         )
-        print("\nNothing was generated. Drop --dry-run to run for real.")
-        return
+        parts.append(footer)
+        return "\n".join(parts)
 
     plan = plan_synthesis(chunks, cache, force=force)
-    print(f"{len(chunks)} chunks in scope · {plan.total_utterances} utterances\n")
-    print(f"To synthesize: {len(plan.to_synth):,}  (reused: {plan.reused:,})")
-    print(
+    parts += [
+        f"{len(chunks)} chunks in scope · {plan.total_utterances} utterances\n",
+        f"To synthesize: {len(plan.to_synth):,}  (reused: {plan.reused:,})",
         f"Characters:    {plan.chars:,}   "
-        f"≈ {plan.chars:,} credits ({TTS_MODEL_ID}, 1 credit/char)"
-    )
+        f"≈ {plan.chars:,} credits ({TTS_MODEL_ID}, 1 credit/char)",
+    ]
+    parts += _quota_lines(quota, plan.chars)
+    parts.append("\nBy section (utterances → chars):")
+    parts += [
+        f"  {sec.label:<28} {sec.to_synth_count:>4} → {sec.chars:,}"
+        for sec in plan.by_section
+    ]
+    parts.append(footer)
+    return "\n".join(parts)
 
-    _print_quota(quota, plan.chars)
 
-    print("\nBy section (utterances → chars):")
-    for sec in plan.by_section:
-        print(f"  {sec.label:<28} {sec.to_synth_count:>4} → {sec.chars:,}")
-
-    print("\nNothing was generated. Drop --dry-run to run for real.")
-
-
-def _print_quota(quota: Quota | None, needed: int) -> None:
-    """Print the live-quota line (or an unavailable note), plus an over-quota warn."""
+def _quota_lines(quota: Quota | None, needed: int) -> list[str]:
+    """The live-quota line (or an unavailable note), plus an over-quota warning."""
     if quota is None:
-        print("\nQuota: unavailable (offline / no API key)")
-        return
-    print(
+        return ["\nQuota: unavailable (offline / no API key)"]
+    lines = [
         f"\nQuota: {quota.used:,} / {quota.limit:,} used — "
         f"{quota.remaining:,} remaining ({quota.tier})"
-    )
+    ]
     if not quota.covers(needed):
-        print(
+        lines.append(
             f"⚠ this run needs {needed:,} characters and would exceed "
             f"the {quota.remaining:,} remaining in quota."
         )
+    return lines

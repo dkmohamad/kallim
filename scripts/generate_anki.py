@@ -11,7 +11,7 @@ import genanki
 from .audio import make_synthesiser
 from .cache import AudioCache, ensure_cached
 from .command import dry_run_report, scoped_chunks
-from .model import Chunk
+from .model import Chunk, Utterance
 from .utils import make_run_dir, setup_logging
 
 __all__ = ["make_model", "run"]
@@ -72,13 +72,16 @@ def make_model() -> genanki.Model:
     )
 
 
-def run(args: argparse.Namespace) -> None:
-    """Build an Anki .apkg deck (optionally with TTS audio) from chunks.csv."""
+def run(args: argparse.Namespace) -> str | None:
+    """Build an Anki .apkg deck (optionally with TTS audio) from chunks.csv.
+
+    Returns the dry-run report to print in ``--dry-run`` mode; otherwise writes
+    the .apkg and returns None (progress goes through the logger).
+    """
     chunks = scoped_chunks(args)
 
     if args.dry_run:
-        dry_run_report("anki", args, chunks, audio_enabled=not args.no_audio)
-        return
+        return dry_run_report("anki", args, chunks, audio_enabled=not args.no_audio)
 
     run_dir = make_run_dir()
     setup_logging(run_dir)
@@ -100,8 +103,8 @@ def run(args: argparse.Namespace) -> None:
             logger.info("  %s", chunk)
             ensure_cached(chunk, synth, cache, force=args.force)
             media_files.extend(str(cache.path(utt.key)) for utt in chunk.utterances)
-            en_sound = f"[sound:{cache.path(chunk.english.key).name}]"
-            ar_sound = f"[sound:{cache.path(chunk.arabic.key).name}]"
+            en_sound = _sound_ref(cache, chunk.english)
+            ar_sound = _sound_ref(cache, chunk.arabic)
 
         deck.add_note(_note(chunk, model, en_sound, ar_sound))
         total_cards += 1
@@ -116,6 +119,11 @@ def run(args: argparse.Namespace) -> None:
         len({c.concept_tag for c in chunks}),
         output,
     )
+
+
+def _sound_ref(cache: AudioCache, utt: Utterance) -> str:
+    """The Anki ``[sound:…]`` reference for an utterance's cached audio file."""
+    return f"[sound:{cache.path(utt.key).name}]"
 
 
 def _note(
