@@ -7,8 +7,9 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import generate, generate_anki, ingest, lint, migrate, prune
+from scripts import generate, generate_anki, ingest, lint, migrate, prune, tags
 from scripts.config import CHUNKS_CSV
+from scripts.model import Scheme
 
 __all__ = ["main"]
 
@@ -96,6 +97,16 @@ def main() -> None:
 
     voices = sub.add_parser("voices", help="List available ElevenLabs voices")
     voices.set_defaults(func=generate.list_installed_voices)
+
+    tag = sub.add_parser(
+        "tags", help="List the concept_tag taxonomy and each tag's description"
+    )
+    tag.add_argument(
+        "--scheme",
+        choices=[s.value for s in Scheme],
+        help="Show only one scheme (default: both)",
+    )
+    tag.set_defaults(func=tags.run)
 
     lnt = sub.add_parser(
         "lint", help="Validate chunks.csv against the canonical taxonomy"

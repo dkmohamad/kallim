@@ -60,8 +60,11 @@ Follow these steps in order. Do NOT skip or reorder steps.
 
 ### 2. First-pass extraction (Sonnet sub-agent)
 
+First, fetch the current tag menu (see **Concept tag taxonomy** below) so the
+sub-agent tags against the live taxonomy, not a copy.
+
 Dispatch a `Task` sub-agent with `model: sonnet`, passing the fetched source
-text, the taxonomy below, and the extraction rules. Ask it to **write
+text, that tag menu, and the extraction rules. Ask it to **write
 `scratch/vocab_pairs.csv`** (columns
 `arabic,english,register,concept_tag`, **no `id`**) and to **return only a
 short count summary** — this keeps the long transcript out of the main
@@ -92,42 +95,22 @@ anything doubtful rather than pass it through.
 | `arabic` | The Arabic text, cleaned of stray formatting; keep the transcript's tashkeel |
 | `english` | Reuse the transcript's italic gloss if present, else translate |
 | `register` | **Per phrase:** `egyptian` for Egyptian colloquial, `msa` for Fusha, `iraqi` for Iraqi — one lesson mixes registers, so decide line by line |
-| `concept_tag` | A tag from the scheme matching the register (below) |
+| `concept_tag` | A tag from the scheme matching the register — fetched via `kallim tags`, see below |
 
-**Concept tag taxonomy.** Two schemes — pick from the one matching the
-register. `greetings` is shared. (Source of truth: `ConceptTag` in
-`scripts/model.py`; `kallim lint` validates.)
+**Concept tag taxonomy.** Two schemes — the *situational* scheme for
+`egyptian`, the *topical* scheme for `msa` / `iraqi` (`greetings` is shared).
+The tags and their descriptions are **not copied here** — fetch them live so
+this skill can never drift from the code. Run this and paste the output into
+the sub-agent's brief as its tag menu:
 
-*Situational — for `egyptian` (travel-phrasebook situations):*
+```bash
+.venv/bin/kallim tags
+```
 
-| Tag | Covers |
-|-----|--------|
-| `greetings` | hello, goodbye, pleasantries |
-| `smalltalk` | casual chit-chat, "first time here?", traffic |
-| `dining` | cafe/restaurant: ordering, menus, the bill |
-| `hotel` | check-in, rooms, hotel amenities |
-| `taxis` | hailing/agreeing rides, fares |
-| `directions` | "walk from here", finding places |
-| `sightseeing` | landmarks, mosques, tours, excursions, boat trips |
-| `beach_and_vendors` | beach, sellers, hawkers |
-| `shopping` | shops, markets, haggling, "too expensive", "best price?" |
-| `money` | prices, change, paying amounts |
-
-*Topical — for `msa` / `iraqi` (conversation topics):*
-
-| Tag | Covers |
-|-----|--------|
-| `greetings` | hello, goodbye, pleasantries |
-| `food` | diet, cooking, ingredients, meals, cafes/drinks |
-| `travel` | transport, directions, sightseeing |
-| `people` | family, society, relationships, community |
-| `emotions` | feelings, dreams, personality traits |
-| `leisure` | nature, parks, daily life, weather, hobbies |
-| `culture` | religion, traditions, proverbs, reading |
-| `health` | health system, body, exercise |
-| `work` | business, career, pressure |
-
-If no tag fits well, pick the closest match within the register's scheme.
+(Use `--scheme topical` or `--scheme situational` to show just one.) Source of
+truth: `ConceptTag` / `_TAXONOMY` in `scripts/model.py`; `kallim lint`
+validates chunks against it. If no tag fits well, pick the closest match within
+the register's scheme.
 
 ### 3. Ingest — dedup, id, validate
 

@@ -13,7 +13,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from enum import StrEnum
-from typing import ClassVar, Protocol
+from typing import ClassVar, NamedTuple, Protocol
 
 from .utils import content_hash
 
@@ -23,11 +23,13 @@ __all__ = [
     "ConceptTag",
     "PlayableAudio",
     "Register",
+    "Scheme",
     "SITUATIONAL_TAGS",
     "Synthesiser",
     "TOPICAL_TAGS",
     "Utterance",
     "VocabEntry",
+    "tags_for",
 ]
 
 
@@ -91,42 +93,89 @@ class ConceptTag(StrEnum):
     LEISURE = "leisure"
     DAILY_LIFE = "daily_life"
     CULTURE = "culture"
+    LANGUAGE = "language"
     WORK = "work"
     HEALTH = "health"
 
+    @property
+    def description(self) -> str:
+        """One-line 'covers…' gloss (for prompts, display, and ``kallim tags``)."""
+        return _TAXONOMY[self].description
 
-# Tags valid for the Egyptian situational scheme.
-SITUATIONAL_TAGS = frozenset(
-    {
-        ConceptTag.GREETINGS,
-        ConceptTag.SMALLTALK,
-        ConceptTag.DINING,
-        ConceptTag.HOTEL,
-        ConceptTag.TAXIS,
-        ConceptTag.DIRECTIONS,
-        ConceptTag.SIGHTSEEING,
-        ConceptTag.BEACH_AND_VENDORS,
-        ConceptTag.SHOPPING,
-        ConceptTag.MONEY,
-    }
-)
 
-# Tags valid for the MSA / Iraqi topical scheme.
-TOPICAL_TAGS = frozenset(
-    {
-        ConceptTag.GREETINGS,
-        ConceptTag.FOOD,
-        ConceptTag.TRAVEL,
-        ConceptTag.PEOPLE,
-        ConceptTag.FAMILY,
-        ConceptTag.EMOTIONS,
-        ConceptTag.LEISURE,
-        ConceptTag.DAILY_LIFE,
-        ConceptTag.CULTURE,
-        ConceptTag.WORK,
-        ConceptTag.HEALTH,
-    }
-)
+class Scheme(StrEnum):
+    """The two co-existing concept_tag schemes (see ``ConceptTag``)."""
+
+    SITUATIONAL = "situational"  # Egyptian travel-phrasebook situations
+    TOPICAL = "topical"  # MSA / Iraqi conversation topics
+
+
+class _TagInfo(NamedTuple):
+    """What the taxonomy records per tag: its scheme(s) and a 'covers' gloss."""
+
+    schemes: frozenset[Scheme]
+    description: str
+
+
+# Scheme-membership shorthands, kept terse so the taxonomy table stays scannable
+# (``_SIT``/``_TOP`` = the tag lives in that scheme only; ``_BOTH`` = shared).
+_BOTH = frozenset({Scheme.SITUATIONAL, Scheme.TOPICAL})
+_SIT = frozenset({Scheme.SITUATIONAL})
+_TOP = frozenset({Scheme.TOPICAL})
+
+# The concept_tag taxonomy — the single source of truth. Each tag maps to the
+# scheme(s) it belongs to and a one-line description of what it covers.
+# ``kallim tags`` renders this for the extract-vocab skill, and the frozensets
+# and ``ConceptTag.description`` below all derive from it, so the taxonomy can
+# never drift out of sync with a hand-copied table.
+_TAXONOMY: dict[ConceptTag, _TagInfo] = {
+    ConceptTag.GREETINGS: _TagInfo(_BOTH, "hello, goodbye, pleasantries"),
+    ConceptTag.SMALLTALK: _TagInfo(_SIT, "casual chit-chat — first-time-here, the weather, traffic"),
+    ConceptTag.DINING: _TagInfo(_SIT, "cafe/restaurant: ordering, menus, the bill"),
+    ConceptTag.HOTEL: _TagInfo(_SIT, "check-in, rooms, hotel amenities"),
+    ConceptTag.TAXIS: _TagInfo(_SIT, "hailing and agreeing rides, fares"),
+    ConceptTag.DIRECTIONS: _TagInfo(_SIT, "asking the way, finding places, 'walk from here'"),
+    ConceptTag.SIGHTSEEING: _TagInfo(_SIT, "landmarks, mosques, tours, excursions, boat trips"),
+    ConceptTag.BEACH_AND_VENDORS: _TagInfo(_SIT, "the beach, sellers and hawkers"),
+    ConceptTag.SHOPPING: _TagInfo(_SIT, "shops, markets, haggling, 'too expensive', 'best price?'"),
+    ConceptTag.MONEY: _TagInfo(_SIT, "prices, change, paying amounts"),
+    ConceptTag.FOOD: _TagInfo(_TOP, "diet, cooking, ingredients, meals, cafes and drinks"),
+    ConceptTag.TRAVEL: _TagInfo(_TOP, "transport, journeys, directions, sightseeing"),
+    ConceptTag.PEOPLE: _TagInfo(_TOP, "society, community, and relationships beyond one's own family"),
+    ConceptTag.FAMILY: _TagInfo(
+        _TOP,
+        "kin and relatives — parents, grandparents, cousins, marriage, childhood at home",
+    ),
+    ConceptTag.EMOTIONS: _TagInfo(_TOP, "feelings, moods, dreams, personality traits"),
+    ConceptTag.LEISURE: _TagInfo(_TOP, "nature, parks, weather, hobbies, free time"),
+    ConceptTag.DAILY_LIFE: _TagInfo(_TOP, "everyday routine — home, technology, phones, errands"),
+    ConceptTag.CULTURE: _TagInfo(_TOP, "religion, traditions, proverbs, history, the arts"),
+    ConceptTag.LANGUAGE: _TagInfo(
+        _TOP,
+        "the language-learning journey — mother tongue, translation, foreign "
+        "languages, self-discovery through language",
+    ),
+    ConceptTag.WORK: _TagInfo(_TOP, "business, career, professional life, pressure"),
+    ConceptTag.HEALTH: _TagInfo(_TOP, "the health system, the body, exercise, medicine"),
+}
+
+# Fail early on drift: every ConceptTag needs exactly one _TAXONOMY entry (with
+# its scheme membership and description), so a new tag can't be half-added. An
+# explicit raise (not ``assert``) so the guard survives ``python -O``.
+if set(_TAXONOMY) != set(ConceptTag):
+    raise RuntimeError(
+        f"_TAXONOMY out of sync with ConceptTag: {set(ConceptTag) ^ set(_TAXONOMY)}"
+    )
+
+
+def tags_for(scheme: Scheme) -> frozenset[ConceptTag]:
+    """The set of tags valid in ``scheme``, derived from the taxonomy above."""
+    return frozenset(tag for tag, info in _TAXONOMY.items() if scheme in info.schemes)
+
+
+# Tags valid for each scheme, derived from the taxonomy above.
+SITUATIONAL_TAGS = tags_for(Scheme.SITUATIONAL)
+TOPICAL_TAGS = tags_for(Scheme.TOPICAL)
 
 # Which tag scheme each register is allowed to draw from.
 ALLOWED_TAGS_BY_REGISTER = {
