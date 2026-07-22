@@ -1,905 +1,938 @@
-id,arabic,english,register,concept_tag
-0dc7e80b,السلام عليكم,Hello / Peace be upon you,egyptian,greetings
-d984ee6d,وعليكم السلام,And upon you peace,egyptian,greetings
-414b5835,صباح الخير,Good morning,egyptian,greetings
-b5493e06,صباح النور,Good morning (reply),egyptian,greetings
-b9ad361d,مساء الخير,Good evening,egyptian,greetings
-cf69f1cf,مساء النور,Good evening (reply),egyptian,greetings
-1a5eadb2,إزيك؟,How are you? (to a man),egyptian,greetings
-a97f1e17,كويس، الحمد لله,"I'm fine, thanks be to God",egyptian,greetings
-913e08ca,اسمك إيه؟,What's your name?,egyptian,greetings
-54530d14,اسمي داوود,My name is David,egyptian,greetings
-cc5ae71e,تشرفنا,Nice to meet you,egyptian,greetings
-24083ab3,أهلاً وسهلاً,Welcome,egyptian,greetings
-34ae8e09,أهلاً بيك,Welcome (reply),egyptian,greetings
-4005bc81,إنت من فين؟,Where are you from?,egyptian,greetings
-79c5d3bc,أنا من إنجلترا,I'm from England,egyptian,greetings
-425b2a7e,أبويا عراقي,My father is Iraqi,egyptian,greetings
-fed92bd2,بتكلم عربي شوية,I speak a little Arabic,egyptian,greetings
-e3ee768f,بتعلم عربي,I'm learning Arabic,egyptian,greetings
-cce0e2b4,اتكلم ببطء لو سمحت,Please speak slowly,egyptian,greetings
-0916501f,عندك عيلة؟,Do you have family?,egyptian,smalltalk
-869866d8,إنت متجوز؟,Are you married?,egyptian,smalltalk
-a2d5c6e6,عندك كام ولد؟,How many children do you have?,egyptian,smalltalk
-bd6a1d52,عندك كام سنة؟,How old are you?,egyptian,smalltalk
-57966a8d,بتشتغل إيه؟,What work do you do?,egyptian,smalltalk
-0f7bbe67,بشتغل في الكمبيوتر,I work in computers,egyptian,smalltalk
-a22dfc22,بحب مصر أوي,I like Egypt very much,egyptian,smalltalk
-7e7af097,الجو جميل,The weather is beautiful,egyptian,smalltalk
-f0f1d18c,الأكل هنا لذيذ أوي,The food here is delicious,egyptian,smalltalk
-bc40fe15,ده أول مرة في مصر,This is my first time in Egypt,egyptian,smalltalk
-e788adff,أنا هنا في إجازة,I'm here on holiday,egyptian,smalltalk
-6466fdde,مصر جميلة أوي,Egypt is very beautiful,egyptian,smalltalk
-e400f031,الناس هنا طيبين أوي,The people here are very kind,egyptian,smalltalk
-dfd56081,أنا مبسوط إني هنا,I'm very happy to be here,egyptian,smalltalk
-1e532702,إن شاء الله نتقابل تاني,God willing we will meet again,egyptian,smalltalk
-a0ac96fe,مع السلامة,Goodbye,egyptian,smalltalk
-5655533c,عندي حجز لاتنين,I have a reservation for two,egyptian,dining
-d436c023,ممكن نقعد برة؟,Can we sit outside?,egyptian,dining
-cbc468e8,ممكن نقعد جوه؟,Can we sit inside?,egyptian,dining
-0198f74f,اتفضل,Please / Come through / Here you go,egyptian,dining
-154efb27,طبعاً,Of course,egyptian,dining
-5fdfcfcc,عايزين تشربوا إيه؟,What would you like to drink?,egyptian,dining
-18987cf1,ممكن أشوف المنيو الأول؟,Can I see the menu first?,egyptian,dining
-9b6071bf,شاي بلبن، بدون سكر,"Tea with milk, no sugar",egyptian,dining
-8432d5ba,قهوة بشوية لبن,Coffee with a little milk,egyptian,dining
-f1adb3c7,بدون ولا حاجة,Without anything / Nothing at all,egyptian,dining
-5e44ba3d,والولاد؟,And the children?,egyptian,dining
-e9a050bb,عصير برتقال,Orange juice,egyptian,dining
-4cf4f5b8,حاضر,Sure / Right away,egyptian,dining
-b1c2ca9e,عايزين تاكلوا حاجة؟,Would you like anything to eat?,egyptian,dining
-c6e388f2,الكيك بتاعنا تحفة,Our cake is excellent,egyptian,dining
-feb87172,السندوتشات كمان كويسة,The sandwiches are good too,egyptian,dining
-923639d8,هاخد الكيك,I'll have the cake,egyptian,dining
-e7b7abc7,هي هتاخد زيي,She'll have the same as me,egyptian,dining
-e671d4e6,أيوه، أمر حضرتك؟,"Yes, what can I do for you?",egyptian,dining
-dec6d152,ممكن شوية مية؟,Some water please,egyptian,dining
-3f55e0b7,دي لذيذة أوي,That was really delicious,egyptian,dining
-36d2359b,الأكل عجبكم؟,Did you enjoy the food?,egyptian,dining
-6850969b,الأجواء هنا حلوة,The atmosphere here is lovely,egyptian,dining
-cfa7c7cc,أنا بستمتع أوي,I'm really enjoying it,egyptian,dining
-78179dc8,الحساب مية وخمسين جنيه,The bill is 150 pounds,egyptian,dining
-379d6ff1,ممكن أدفع بكارت؟,Can I pay by card?,egyptian,dining
-05f166f1,آسف، كاش بس,"Sorry, cash only",egyptian,dining
-75490afa,خلي الباقي,Keep the change,egyptian,dining
-cbfedbf6,هنرجع أكيد,We'll definitely be back,egyptian,dining
-4badc4e9,بكام ده؟,How much does this cost?,egyptian,money
-3a8ae052,بكام كله؟,How much does it all cost?,egyptian,money
-8bf144ef,ده غالي أوي,That's too expensive,egyptian,money
-d2fbeba4,تقدر تدي سعر أحسن؟,Can you give me a better price?,egyptian,money
-ab6aa2e3,أحسن سعر إيه؟,What's the best price?,egyptian,money
-992be3aa,هدي خمسين جنيه,I'll give you fifty pounds,egyptian,money
-646312ac,عندك فكة؟,Do you have change?,egyptian,money
-7d68f58a,أهلاً، تعال شوف,"Welcome, come in and look",egyptian,shopping
-b02d39dd,بتدور على إيه؟,What are you looking for?,egyptian,shopping
-3b5d739c,بس بتفرج,I'm just looking,egyptian,shopping
-75ad9b66,اتفرج، مفيش مشكلة,"Have a look, no problem",egyptian,shopping
-d06560c6,وده؟,And this one?,egyptian,shopping
-515d18fc,ده بميتين جنيه,This one is two hundred pounds,egyptian,shopping
-54ab0a45,ده غالي جداً,That's very expensive,egyptian,shopping
-ba2368ad,لا، ده سعر كويس,"No, this is a good price",egyptian,shopping
-de6201c3,ديني سعر كويس وهاخده,Give me a good price and I'll buy it,egyptian,shopping
-ee26952c,قول سعرك,What's your price?,egyptian,shopping
-f8be46b5,هدي مية جنيه,I'll give you one hundred,egyptian,shopping
-63d8c3c5,لا، ده قليل أوي,"No, that's too low",egyptian,shopping
-47e31933,هديك سعر خاص، مية وخمسين,"I'll give you a special price, one fifty",egyptian,shopping
-25a384f5,شفته أرخص هناك,I saw it cheaper over there,egyptian,shopping
-d0db8559,ده جودة أحسن,This is better quality,egyptian,shopping
-375a5c9f,آخر كلام مية جنيه,My final offer is one hundred pounds,egyptian,shopping
-34b68278,تمام، ماشي,"OK, agreed",egyptian,shopping
-fcf26a07,يلا نتفق على مية وخمسين,OK let's agree on one fifty,egyptian,shopping
-1fb0ad73,ده جلد أصلي؟,Is this real leather?,egyptian,shopping
-d74fba4e,أيوه، مية في المية أصلي,"Yes, one hundred percent genuine",egyptian,shopping
-12f6ecd5,عندك مقاس أصغر؟,Do you have a smaller size?,egyptian,shopping
-151c6d85,عندك مقاس أكبر؟,Do you have a bigger size?,egyptian,shopping
-27291b06,عندك لون تاني؟,Do you have another colour?,egyptian,shopping
-b01ca302,هشوفلك,I'll check for you,egyptian,shopping
-7733c98b,ممكن أجرب؟,Can I try it?,egyptian,shopping
-40043aa4,ده باظ,This is broken,egyptian,shopping
-e46ad581,هجيبلك واحد تاني,I'll get you another one,egyptian,shopping
-cee3e2e3,تمام، هاخده,OK I'll take it,egyptian,shopping
-f7e4c813,هاخد اتنين، ديني خصم,"I'll buy two, give me a discount",egyptian,shopping
-5d634ee7,تمام، للاتنين هديك سعر كويس,"OK, for two I'll give you a good price",egyptian,shopping
-5b308065,مش عايزه,I don't want it,egyptian,shopping
-3f6563f0,هرجع بعدين,I'll come back later,egyptian,shopping
-2c0b567e,تمام، إنت عارف مكاني,"OK, you know where to find me",egyptian,shopping
-9149e5a7,عايز تاكسي,I want a taxi,egyptian,taxis
-67c8aecc,رايح فين؟,Where are you going?,egyptian,taxis
-985ac074,بكام للفندق؟,How much to the hotel?,egyptian,taxis
-06d72372,بكام للسوق؟,How much to the market?,egyptian,taxis
-d9f07f30,بكام للمطار؟,How much to the airport?,egyptian,taxis
-a073818b,خمسين جنيه,Fifty pounds,egyptian,taxis
-ad28f914,ده غالي أوي، هدي تلاتين,"That's too expensive, I'll give you thirty",egyptian,taxis
-6a1bb3a7,لا، أربعين آخر حاجة,"No, forty is the lowest",egyptian,taxis
-b6b8ddea,تمام، اتفقنا,OK agreed,egyptian,taxis
-0f40721d,وديني على العنوان ده لو سمحت,Please take me to this address,egyptian,taxis
-3f65d251,تمام، أنا عارفه,"OK, I know it",egyptian,taxis
-1ed78b05,فين بالظبط؟,Where exactly?,egyptian,taxis
-723bba52,لف يمين,Turn right,egyptian,taxis
-e6d68d10,لف شمال,Turn left,egyptian,taxis
-a51751d4,على طول,Go straight,egyptian,taxis
-95f0a2c0,وقف هنا لو سمحت,Stop here please,egyptian,taxis
-9e7c6600,هياخد قد إيه؟,How long will it take?,egyptian,taxis
-56759f16,حوالي عشرين دقيقة,About twenty minutes,egyptian,taxis
-7f95b3c0,في زحمة كتير,There's a lot of traffic,egyptian,taxis
-b4a624df,أنا مستعجل,I'm in a hurry,egyptian,taxis
-0c336f47,متسرعش أوي لو سمحت,Please don't go so fast,egyptian,taxis
-7fb41084,تقدر تستناني؟,Can you wait for me?,egyptian,taxis
-46ccfe58,قد إيه؟,How long?,egyptian,taxis
-21afe7d7,هرجع في عشر دقايق,I'll be back in ten minutes,egyptian,taxis
-a40ae6b5,تمام، هستنى,"OK, I'll wait",egyptian,taxis
-65828c50,خد الباقي,Keep the change,egyptian,taxis
-e1825b7e,شكراً، ربنا يخليك,"Thank you, God bless you",egyptian,taxis
-d081a4a8,لو سمحت، فين الفندق؟,"Excuse me, where is the hotel?",egyptian,directions
-ca9ae36f,فين السوق؟,Where is the market?,egyptian,directions
-fb5fef60,فين الشاطئ؟,Where is the beach?,egyptian,directions
-2d7886e7,فين الصيدلية؟,Where is the pharmacy?,egyptian,directions
-da224374,فين الصراف الآلي؟,Where is the ATM?,egyptian,directions
-d28e1b5b,ده بعيد؟,Is it far?,egyptian,directions
-3bb86915,لا، ده قريب,"No, it's close",egyptian,directions
-b32f91f6,أيوه، ده بعيد شوية,"Yes, it's a bit far",egyptian,directions
-dcec82f6,امشي على طول,Go straight ahead,egyptian,directions
-9aa2a55b,وبعدين لف يمين,Then turn right,egyptian,directions
-a499cdb1,وبعدين لف شمال,Then turn left,egyptian,directions
-c22a2410,هتلاقيه على اليمين,It's on the right,egyptian,directions
-3d5662cb,هتلاقيه على الشمال,It's on the left,egyptian,directions
-9ebe6bff,ورا الفندق,It's behind the hotel,egyptian,directions
-27aea229,قدام المطعم,It's in front of the restaurant,egyptian,directions
-a734ed59,جنب الجامع,It's next to the mosque,egyptian,directions
-13d7692f,كام دقيقة مشي؟,How many minutes on foot?,egyptian,directions
-8807b621,حوالي خمس دقايق,About five minutes,egyptian,directions
-03b9c60d,محتاج تاكسي، ده بعيد,"You need a taxi, it's far",egyptian,directions
-89fe5c8e,تقدر تورني على الخريطة؟,Can you show me on the map?,egyptian,directions
-57c81020,تعال، هوريك الطريق,"Come, I'll show you the way",egyptian,directions
-df61dc36,أنا تاهت,I'm lost,egyptian,directions
-69604a34,عايز تروح فين؟,Where do you want to go?,egyptian,directions
-c0d9b161,ترابيزة لاتنين لو سمحت,A table for two please,egyptian,dining
-0012afb0,كام واحد؟,How many people?,egyptian,dining
-3a74e612,جوة ولا برة؟,Inside or outside?,egyptian,dining
-31a86279,برة لو سمحت,Outside please,egyptian,dining
-27314977,اتفضل، اقعد,"Please, sit down",egyptian,dining
-d6df070b,اتفضل، المنيو,Here's the menu,egyptian,dining
-312f51e8,ممكن المنيو؟,Can I have the menu?,egyptian,dining
-1718676c,حضرتك جاهز تطلب؟,Are you ready to order?,egyptian,dining
-0927be03,لسة، دقيقة لو سمحت,"Not yet, give us a minute",egyptian,dining
-18fbb6a5,بتنصح بإيه؟,What do you recommend?,egyptian,dining
-dbe949d1,الفراخ المشوية حلوة أوي,The grilled chicken is very good,egyptian,dining
-0cba7214,طبق النهارده كفتة,Today's special is kofta,egyptian,dining
-ea789138,عايزين تشربوا حاجة؟,Would you like anything to drink?,egyptian,dining
-5f9a7209,مراتي بتفضل أكل نباتي,My wife prefers vegetarian food,egyptian,dining
-0d488586,عندنا سلطات وخضار مشوي,We have salads and grilled vegetables,egyptian,dining
-b53e7023,عندكم كحول؟,Do you have alcohol?,egyptian,dining
-450b1f07,أيوه، عندنا نبيت وبيرة,"Yes, we have wine and beer",egyptian,dining
-541e31ce,هي هتاخد كاس نبيت أبيض,She'll have a glass of white wine,egyptian,dining
-5fcb4e0d,عندي حساسية من المكسرات,I'm allergic to nuts,egyptian,dining
-3d3e9003,مفيش مشكلة، عندنا كتير من غير مكسرات,"No problem, we have plenty without nuts",egyptian,dining
-eb93812c,الأكلة دي إيه؟,What is this dish?,egyptian,dining
-a465ec0e,دي رز مع لحمة مشوية,It's rice with grilled meat,egyptian,dining
-fe26f192,هاخد زيه,I'll have the same as him,egyptian,dining
-036e29e0,حاجة تاني؟,Anything else?,egyptian,dining
-474e6bf2,خلاص كده، شكراً,"That's everything, thanks",egyptian,dining
-91626264,ممكن مية لو سمحت؟,Can I have some water please?,egyptian,dining
-d5e55fb9,مية معدنية لو سمحت، مش من الحنفية,"Bottled water please, not tap",egyptian,dining
-7131632b,من غير تلج لو سمحت,No ice please,egyptian,dining
-c8937c6d,إزازة كبيرة ولا صغيرة؟,Large or small bottle?,egyptian,dining
-675c51b4,كبيرة لو سمحت,Large please,egyptian,dining
-b4adc65d,كله تمام؟,Is everything OK?,egyptian,dining
-a28d6950,ده لذيذ أوي,This is delicious,egyptian,dining
-5a028a45,شكراً، الحمد لله عجبكم,"Thank you, glad you like it",egyptian,dining
-258cc0ef,ده بارد شوية، تسخنه لو سمحت؟,"It's a little cold, can you heat it up?",egyptian,dining
-ab43fa42,إحنا مطلبناش ده,We didn't order this,egyptian,dining
-08954cbd,آسف، هصلحها حالاً,"Sorry, I'll fix it right away",egyptian,dining
-e1bead07,ممكن واحد تاني من ده؟,Can I have another one of these?,egyptian,dining
-abb11ebb,طبعاً، حالاً,"Of course, right away",egyptian,dining
-c7ad988e,الحساب لو سمحت,Can I have the bill please?,egyptian,dining
-6c30f7be,اتفضل الحساب,Here's the bill,egyptian,dining
-64380547,الخدمة داخلة؟,Is service included?,egyptian,dining
-3d91205d,أيوه، الخدمة داخلة,"Yes, service is included",egyptian,dining
-c723f8b1,لا، الخدمة مش داخلة,"No, service is not included",egyptian,dining
-00e59738,شكراً، أهلاً بيكم تاني,"Thank you, come back again",egyptian,dining
-95eb7d12,عايز تشتري حاجة؟,Want to buy something?,egyptian,beach_and_vendors
-65131cce,عندي أسعار كويسة ليك,I have good prices for you,egyptian,beach_and_vendors
-35b5e8c4,لا شكراً,No thank you,egyptian,beach_and_vendors
-152bb274,مش عايز حاجة,I don't want anything,egyptian,beach_and_vendors
-092ee7c4,يمكن بعدين,Maybe later,egyptian,beach_and_vendors
-8034e4de,عندي واحد خلاص,I already have one,egyptian,beach_and_vendors
-b84afe6f,بس شوف,Just have a look,egyptian,beach_and_vendors
-96bc307a,سيبني لو سمحت,Please leave me alone,egyptian,beach_and_vendors
-d50062c0,بكام الكرسي؟,How much for a sunbed?,egyptian,beach_and_vendors
-bbeca218,بكام الشمسية؟,How much for an umbrella?,egyptian,beach_and_vendors
-1210dfcc,خمسين جنيه للاتنين,Fifty pounds for both,egyptian,beach_and_vendors
-d2952495,الشاطئ ده خاص؟,Is this beach private?,egyptian,beach_and_vendors
-8e539758,أيوه، لنزلاء الفندق بس,"Yes, for hotel guests only",egyptian,beach_and_vendors
-cb959bc6,لا، ده عام,"No, it's public",egyptian,beach_and_vendors
-094bb5dd,آمن أنزل أعوم هنا؟,Is it safe to swim here?,egyptian,beach_and_vendors
-142a91ce,أيوه، المية هادية,"Yes, the water is calm",egyptian,beach_and_vendors
-dde4dbff,خلي بالك، في تيار,"Be careful, there's a current",egyptian,beach_and_vendors
-63ccfd51,المية عميقة قد إيه؟,How deep is the water?,egyptian,beach_and_vendors
-9b32f267,في منقذ هنا؟,Is there a lifeguard?,egyptian,beach_and_vendors
-c36dd73c,فين أستأجر عدة غطس؟,Where can I hire a snorkel?,egyptian,beach_and_vendors
-4781b20e,هناك عند الاستقبال,Over there by the reception,egyptian,beach_and_vendors
-39138d6c,ممكن أحجز رحلة بالقارب؟,Can I book a boat trip?,egyptian,beach_and_vendors
-90196f6b,أيوه، بيمشي الساعة عشرة,"Yes, it leaves at ten",egyptian,beach_and_vendors
-279320b4,بيمشي إمتى؟,What time does it leave?,egyptian,beach_and_vendors
-739585ef,عايز عصير طازج لو سمحت,I'd like some fresh juice please,egyptian,beach_and_vendors
-f3df94ef,مانجو ولا برتقال؟,Mango or orange?,egyptian,beach_and_vendors
-9cb10088,عندي حجز,I have a reservation,egyptian,hotel
-20626f0a,اسم حضرتك إيه؟,What's your name?,egyptian,hotel
-e1857423,أهلاً بيك، اتفضل المفتاح,"Welcome, here's your key",egyptian,hotel
-6eaa2c58,أوضتك في الدور التالت,Your room is on the third floor,egyptian,hotel
-a31d06d0,الأسانسير هناك,The lift is over there,egyptian,hotel
-daafb3fb,الفطار داخل؟,Is breakfast included?,egyptian,hotel
-016d8802,أيوه، من سبعة لعشرة,"Yes, from seven to ten",egyptian,hotel
-2ac02894,الفطار إمتى؟,What time is breakfast?,egyptian,hotel
-10b8b081,في واي فاي؟,Is there wifi?,egyptian,hotel
-c2498364,أيوه، الباسورد على الكارت,"Yes, the password is on the card",egyptian,hotel
-57bfb0b0,باسورد الواي فاي إيه؟,What is the wifi password?,egyptian,hotel
-785cdbc4,التكييف مش شغال,The air conditioning isn't working,egyptian,hotel
-6026680e,هبعتلك حد يبص عليه,I'll send someone to look at it,egyptian,hotel
-fb2d1c90,المية السخنة مش شغالة,The hot water isn't working,egyptian,hotel
-9d40d06b,آسفين، هنصلحها حالاً,"Sorry, we'll fix it right away",egyptian,hotel
-7297c4a6,ممكن فوط زيادة؟,Can I have more towels?,egyptian,hotel
-333ae2b6,ممكن مخدات زيادة؟,Can I have extra pillows?,egyptian,hotel
-bff0f607,طبعاً، هجيبهم دلوقتي,"Of course, I'll bring them now",egyptian,hotel
-353f00ee,نضف الأوضة لو سمحت,Please clean the room,egyptian,hotel
-65426eca,إمتى يناسبك؟,What time suits you?,egyptian,hotel
-4c9356f6,ممكن توقظني الساعة سبعة؟,Can I have a wake up call at seven?,egyptian,hotel
-df80ad57,مفيش مشكلة,No problem,egyptian,hotel
-09bab8b1,إمتى موعد المغادرة؟,What time is check out?,egyptian,hotel
-0f4269bd,المغادرة الساعة اتناشر,Check out is at twelve,egyptian,hotel
-773e55e3,ممكن أتأخر في المغادرة؟,Can I have a late check out?,egyptian,hotel
-d7d3870e,أيوه، لحد الساعة اتنين، من غير فلوس زيادة,"Yes, until two o'clock, no extra charge",egyptian,hotel
-13047fc0,في فلوس زيادة مية جنيه,There's an extra charge of one hundred pounds,egyptian,hotel
-9cfe4a59,ممكن أسيب شنطتي هنا؟,Can I leave my bags here?,egyptian,hotel
-8c2ad71f,طبعاً، هنسيبهم عند الاستقبال,"Of course, we'll keep them at reception",egyptian,hotel
-5f9e966b,شكراً، الإقامة كانت حلوة أوي,"Thank you, the stay was wonderful",egyptian,hotel
-4f081bc5,شكراً، نتمنى نشوفك تاني,"Thank you, we hope to see you again",egyptian,hotel
-852763a5,عايزين نزور البلد القديمة,We want to visit the old town,egyptian,sightseeing
-71496069,فين السوق القديم؟,Where is the old market?,egyptian,sightseeing
-527f4e8f,في البلد القديمة، هوريك,"It's in the old town, I'll show you",egyptian,sightseeing
-103b2043,مفتوح دلوقتي؟,Is it open now?,egyptian,sightseeing
-fb0ab91b,أيوه، مفتوح كل يوم,"Yes, it's open every day",egyptian,sightseeing
-41ef64c8,بيقفل إمتى؟,What time does it close?,egyptian,sightseeing
-e0d917af,الساعة عشرة بالليل,At ten in the evening,egyptian,sightseeing
-eda3ea5b,فين الجامع؟,Where is the mosque?,egyptian,sightseeing
-e8e5e90e,ممكن ندخل الجامع؟,Can we go inside the mosque?,egyptian,sightseeing
-79552ea3,أيوه، بس لازم تقلع الجزمة,"Yes, but you need to take off your shoes",egyptian,sightseeing
-0e9e8c40,الستات لازم يغطوا شعرهم,Women need to cover their hair,egyptian,sightseeing
-8cbbec6d,عندكم غطاء للرأس ممكن نستعيره؟,Do you have a headscarf we can borrow?,egyptian,sightseeing
-0b4e0423,أيوه، اتفضلي,"Yes, here you go",egyptian,sightseeing
-ef111395,ممكن نصور جوة؟,Is it OK to take photos inside?,egyptian,sightseeing
-1e395dbb,أيوه، مفيش مشكلة,"Yes, no problem",egyptian,sightseeing
-e986b3a0,لا، آسف، التصوير ممنوع,"No, sorry, photos are not allowed",egyptian,sightseeing
-a273e9e3,الجامع ده جميل أوي,This mosque is beautiful,egyptian,sightseeing
-55549572,المكان ده إيه؟,What is this place?,egyptian,sightseeing
-01ec6af0,دي كنيسة قديمة أوي,This is a very old church,egyptian,sightseeing
-6a4ef4ca,عمرها قد إيه؟,How old is it?,egyptian,sightseeing
-7f539a8a,ممكن ندخل؟,Can we go in?,egyptian,sightseeing
-cfc6a84f,أيوه، الدخول مجاني,"Yes, the entrance is free",egyptian,sightseeing
-1626ad40,في رسم دخول، عشرين جنيه,"There's an entrance fee, twenty pounds",egyptian,sightseeing
-54400e1e,أربع تذاكر لو سمحت، اتنين كبار واتنين أطفال,"Four tickets please, two adults and two children",egyptian,sightseeing
-6cd25129,الأطفال تحت عشر سنين ببلاش,Children under ten are free,egyptian,sightseeing
-d26fe16b,في مرشد بيتكلم إنجليزي؟,Is there a guide who speaks English?,egyptian,sightseeing
-65be1368,أيوه، هناك,"Yes, he's over there",egyptian,sightseeing
-54bc8ea3,عايزين نتمشى في البلد القديمة,We want to walk around the old town,egyptian,sightseeing
-91f4b517,خلي بالك في الشوارع الضيقة,Be careful in the narrow streets,egyptian,sightseeing
-502c06ce,تنصحنا بمكان كويس نقعد نشرب شاي؟,Can you recommend a good place to sit and have tea?,egyptian,sightseeing
-c80b325d,في قهوة حلوة على الناصية,There's a nice café around the corner,egyptian,sightseeing
-111e0e7a,عايزين نحجز رحلة بالمركب,We want to book a boat trip,egyptian,sightseeing
-aa51f5a1,أهلاً، عايزين رحلة إيه؟,"Welcome, what kind of trip do you want?",egyptian,sightseeing
-deacbaf0,عايزين نروح غطس,We want to go snorkelling,egyptian,sightseeing
-e28df09e,عندنا رحلة نص يوم أو يوم كامل,We have a half day or full day trip,egyptian,sightseeing
-ef3bbd60,بكام رحلة نص اليوم؟,How much is the half day trip?,egyptian,sightseeing
-2c8d83a5,تلتمية جنيه للواحد,Three hundred pounds per person,egyptian,sightseeing
-d0f2db14,ده غالي، إحنا عيلة أربع أفراد,"That's expensive, we're a family of four",egyptian,sightseeing
-c08bfa54,للعيلة هديكم سعر خاص,For a family I'll give you a special price,egyptian,sightseeing
-039e48fe,سعر العيلة كام؟,What's the family price?,egyptian,sightseeing
-de072f1d,تمنمية ليكم كلكم,Eight hundred for all of you,egyptian,sightseeing
-531aea2e,ممكن سبعمية؟,Can you do seven hundred?,egyptian,sightseeing
-ddce8bf9,تمام، سبعمية وخمسين واتفقنا,"OK, seven fifty and we have a deal",egyptian,sightseeing
-2c82ff86,بتمشي إمتى؟,What time does it leave?,egyptian,sightseeing
-697b3afd,الساعة تسعة الصبح,At nine in the morning,egyptian,sightseeing
-aa5da688,هنرجع إمتى؟,What time do we get back?,egyptian,sightseeing
-d61756aa,حوالي تلاتة بعد الضهر,Around three in the afternoon,egyptian,sightseeing
-8482a33a,الغداء داخل؟,Is lunch included?,egyptian,sightseeing
-5443f5da,أيوه، سمك ورز على المركب,"Yes, fish and rice on the boat",egyptian,sightseeing
-c8fe353b,عدة الغطس داخلة؟,Is the snorkelling equipment included?,egyptian,sightseeing
-bfeed48c,أيوه، كل حاجة داخلة,"Yes, everything is included",egyptian,sightseeing
-d5839e11,في جاكتات نجاة للأطفال؟,Are there life jackets for the children?,egyptian,sightseeing
-087f308d,أيوه، متقلقش,"Yes, don't worry",egyptian,sightseeing
-78c4484c,نقابلك فين؟,Where do we meet you?,egyptian,sightseeing
-e63447f1,عند المارينا، هكون هناك الساعة تمانية ونص,"At the marina, I'll be there at half eight",egyptian,sightseeing
-cf658a59,هنوقف في تلات أماكن,We're going to stop at three places,egyptian,sightseeing
-8a648690,الأطفال يقدروا يعوموا هنا؟,Can the children swim here?,egyptian,sightseeing
-f33b8dc0,أيوه، المية ضحلة وآمنة,"Yes, the water is shallow and safe",egyptian,sightseeing
-5937ab0b,هنقعد قد إيه في كل مكان؟,How long do we stay at each place?,egyptian,sightseeing
-6e647de0,حوالي خمسة وأربعين دقيقة,About forty-five minutes,egyptian,sightseeing
-07c802d0,ده جميل أوي، المية صافية,"This is amazing, the water is so clear",egyptian,sightseeing
-e76f84f6,استنى لما تشوف المرجان,Wait till you see the coral,egyptian,sightseeing
-9d57ff13,أَتَّبِعُ نِظامًا غِذائِيًّا صِحِّيًّا مُنْذُ شَهْرٍ.,I have been following a healthy diet for a month.,msa,health
-2c7af453,أَتَجَنَّبُ نَوْعًا مُعَيَّنًا مِنَ الطَّعامِ الدَّسِمِ.,I avoid a specific kind of fatty food.,msa,food
-238a5a6e,فِي الماضِي كُنْتُ أَلْعَبُ كُرَةَ القَدَمِ كَثيرًا.,In the past I used to play football a lot.,msa,leisure
-0dfae1a6,كَثَّرْتُ مِنْ أَكْلِ الخُضارِ بَعْدَ مَرَضي.,I increased my vegetable intake after my illness.,msa,health
-adba8560,قَلَّلْتُ مِنَ السُّكَّرِ لِأُحافِظَ عَلى صِحَّتي.,I reduced sugar to keep my health.,msa,health
-637550e0,أُحاوِلُ أَنْ آكُلَ طَعامًا مُتَوازِنًا كُلَّ يَوْمٍ.,I try to eat balanced food every day.,msa,health
-2124b08e,أَتَحَكَّمُ بِكَمِّيَّةِ الطَّعامِ الَّتي آكُلُها.,I control the amount of food I eat.,msa,health
-e52b052a,أُحافِظُ عَلى وَزْني بِالرِّياضَةِ وَالطَّعامِ الصِّحِّيِّ.,I maintain my weight with exercise and healthy food.,msa,health
-6f6a7951,أَنا مُتَعَوِّدٌ عَلى الاسْتيقاظِ مُبَكِّرًا.,I'm used to waking up early.,msa,daily_life
-c0a71bb7,أَنا أَمْزَحُ مَعَكَ فَقَطْ.,I'm only joking with you.,msa,emotions
-33d44025,لا أَشْرَبُ الكُحُولَ لِأَسْبابٍ صِحِّيَّةٍ وَدينِيَّةٍ.,I don't drink alcohol for health and religious reasons.,msa,culture
-86a7f5ba,حاوَلْتُ أَنْ أَتَّبِعَ نِظامًا غِذائِيًّا,I tried to follow a diet,msa,health
-fd68ff71,أُقَلِّلُ مِنَ المِلْحِ في طَعامي هَذِهِ الأَيّامَ.,I'm cutting down on salt in my food these days.,msa,health
-7e68d5a9,عادَةً آكُلُ غَداءً خَفيفًا.,I usually eat a light lunch.,msa,daily_life
-1f84b6db,أَقَمْتُ في الفُنْدُقِ ثَلاثَةَ أَيّامٍ فَقَطْ.,I stayed at the hotel for only three days.,msa,travel
-97e35ed5,الحافِلاتُ هُنا أَرْخَصُ مِنْ سَيّاراتِ الأُجْرَةِ.,The buses here are cheaper than taxis.,msa,travel
-ba0e0671,القِطاراتُ السَّريعَةُ تَرْبِطُ المُدُنَ الكَبيرَةَ.,Fast trains connect the big cities.,msa,travel
-1abde1a0,جَميعُ وَسائِلِ المُواصَلاتِ,All means of transportation,msa,travel
-34acaf9a,احْتَجْتُ إِلى تَأْشيرَةٍ لِدُخولِ البِلادِ.,I needed a visa to enter the country.,msa,travel
-1d694e10,حَرَكَةُ التَّنَقُّلِ مُقَيَّدَةٌ في تِلْكَ المِنْطَقَةِ.,Movement is restricted in that area.,msa,travel
-2eee4b5c,سَأُريكَ أَجْمَلَ الأَماكِنِ في المَدينَةِ غَدًا.,I will show you the most beautiful places in the city tomorrow.,msa,travel
-f907ff65,ذَهَبْنا إِلى الشّاطِئِ في عُطْلَةِ نِهايَةِ الأُسْبوعِ.,We went to the beach over the weekend.,msa,leisure
-d34c5f31,الدَّليلُ جَعَلَنا نَرى تاريخَ المَدينَةِ الحَقيقِيَّ.,The guide made us see the city's real history.,msa,travel
-88ab694d,أَعْطَيْناهُ بَقْشيشًا لِأَنَّهُ ساعَدَنا كَثيرًا.,We gave him a tip because he helped us a lot.,msa,travel
-1eb26e5e,أُفَضِّلُ الاسْتِعانَةَ بِمُرْشِدٍ سِياحِيٍّ مَحَلِّيٍّ.,I prefer to use a local tour guide.,msa,travel
-1ba28958,اخْتَرْنا وَسيلَةَ نَقْلٍ اقْتِصادِيَّةً وَمُريحَةً.,We chose an economical and comfortable means of transport.,msa,travel
-d1c408b7,تَرَكَتِ المَدينَةُ انْطِباعًا جَميلًا في نَفْسي.,The city left a beautiful impression on me.,msa,travel
-c8dda121,مِعْمارُ المَساجِدِ القَديمَةِ يُبْهِرُ كُلَّ زائِرٍ.,The architecture of old mosques amazes every visitor.,msa,culture
-fcddbc41,قَريبونَ مِنَ القَلْبِ,Close to the heart,msa,emotions
-d3375e29,أَحْتاجُ كوبَ قَهْوَةٍ في الصَّباحِ لِأَسْتَيْقِظَ.,I need a cup of coffee in the morning to wake up.,msa,daily_life
-a9b681c0,هَذِهِ الحَديقَةُ تُشْبِهُ الجَنَّةَ في الرَّبيعِ.,This garden looks like paradise in spring.,msa,culture
-d9c0798b,أَنا صاحِبُ شَرِكَةٍ صَغيرَةٍ لِلْبَرْمَجَةِ.,I am the owner of a small software company.,msa,work
-97b82ad5,مَنْ جَدَّ وَجَدَ,"Whoever strives, succeeds",msa,culture
-aeceb678,مَنْ سارَ عَلى الدَّرْبِ وَصَلَ,Whoever follows the path will arrive,msa,culture
-9fb0a445,شَعَرْتُ أَنَّني ضائِعٌ في شَوارِعِ المَدينَةِ.,I felt lost in the city's streets.,msa,travel
-25b56e15,أُفَضِّلُ السَّمَكَ الطّازَجَ عَلى المُجَمَّدِ.,I prefer fresh fish over frozen.,msa,food
-be3c9ef5,نادِرًا ما أُشاهِدُ التِّلْفازَ هَذِهِ الأَيّامَ.,I rarely watch TV these days.,msa,daily_life
-1d4afac4,جَرَّبْتُ المُحارَ بِضْعَ مَرّاتٍ.,I've tried oysters a few times.,msa,food
-972ce0a7,تَحْتَوي عَلى البُروتينِ,Contains protein,msa,food
-6a62b37c,غَنِيَّةٌ بِالدُّهونِ الصِّحِّيَّةِ,Rich in healthy fats,msa,food
-bfddc738,أَخي أَصْغَرُ مِنّي بِثَلاثِ سَنَواتٍ.,My brother is three years younger than me.,msa,family
-7b37353a,والِدي دَرَسَ الطِّبَّ في لَنْدَنَ.,My father studied medicine in London.,msa,family
-4a43fe0b,أَعَدَّتْ أُمّي وَجْبَةً خاصَّةً لِلضُّيوفِ.,My mother prepared a special meal for the guests.,msa,family
-edcce825,أُحِبُّ الكوسا المَحْشِيَّ بِالأَرُزِّ وَاللَّحْمِ.,I love zucchini stuffed with rice and meat.,msa,food
-5fa962f4,طَلَبْنا دَجاجًا مَشْوِيًّا مَعَ الأَرُزِّ.,We ordered grilled chicken with rice.,msa,food
-402856ba,عَصَرْتُ أَرْبَعَ حَبّاتٍ,I squeezed four fruits,msa,food
-8053a9a6,أُحِبُّ القِراءَةَ، خاصَّةً في الشِّتاءِ.,"I love reading, especially in winter.",msa,leisure
-c607733a,اِلْتَقَيْنا في مَطْعَمٍ قَريبٍ لِتَناوُلِ الغَداءِ.,We met at a nearby restaurant for lunch.,msa,food
-37c8ad01,اخْتَرْتُ فيلْمًا كوميدِيًّا لِنُشاهِدَهُ مَعًا.,I chose a comedy film for us to watch together.,msa,leisure
-b5620e06,الجَميعُ حَضَرَ الاجْتِماعَ في الوَقْتِ المُحَدَّدِ.,Everyone attended the meeting on time.,msa,people
-85e812fa,سَأَحْكي لَكَ عَنِ الرِّحْلَةِ بِالتَّفْصيلِ.,I'll tell you about the trip in detail.,msa,travel
-c02fe585,يُحَرَّمُ عَلى المُسْلِمينَ أَكْلُ لَحْمِ الخِنْزيرِ.,Muslims are forbidden to eat pork.,msa,culture
-4bff5304,يَبْدَأُ المَطَرُ عادَةً في كانونَ الأَوَّلِ.,Rain usually starts in December.,msa,leisure
-38e55b1c,الجَوُّ بارِدٌ جِدًّا في كانونَ الثّاني.,The weather is very cold in January.,msa,leisure
-8b8de007,كُنّا أصحاباً مُنْذُ أَيّامِ المَدْرَسَةِ.,We've been friends since school days,msa,people
-b0e5f631,والِدايَ / والِدَيَّ,My parents,msa,family
-cd45e329,الجِبالُ مُحيطَةٌ بِالقَرْيَةِ مِنْ كُلِّ جِهَةٍ.,The mountains surround the village from every side.,msa,leisure
-3af73a41,المَطْعَمُ في الجِهَةِ المُقابِلَةِ لِلْفُنْدُقِ.,The restaurant is on the side opposite the hotel.,msa,travel
-09aba255,نَسْكُنُ جَنوبَ كامبريدج قُرْبَ الطَّريقِ السَّريعِ.,We live to the south of Cambridge near the motorway.,msa,daily_life
-df06676f,شَواطِئُ هَذِهِ الجَزيرَةِ نَظيفَةٌ وَهادِئَةٌ.,This island's beaches are clean and quiet.,msa,leisure
-5ebb274c,الطَّقْسُ دافِئٌ وَمُناسِبٌ لِلتَّنَزُّهِ اليَوْمَ.,The weather is warm and good for a walk today.,msa,leisure
-6b40d619,كانَتِ الرِّحْلَةُ مُمْتِعَةً حَقًّا.,The trip was really enjoyable.,msa,travel
-ade6bd57,المَشْيُ اليَوْمِيُّ مُفيدٌ جِدًّا لِلصِّحَّةِ.,Daily walking is very good for health.,msa,health
-cd569374,عَنْ طَريقِ البَرِّ,By land,msa,travel
-87733188,الخَريفُ أَجْمَلُ الفُصولِ في رَأْيي.,Autumn is the most beautiful of the seasons in my opinion.,msa,leisure
-8ca3e5d4,آسِفٌ عَلى التَّأَخُّرِ، كانَ الزِّحامُ فَظيعًا.,"Sorry I'm late, the traffic was terrible.",msa,travel
-dce73858,تَأْتي الحافِلَةُ كُلَّ نِصْفِ ساعَةٍ تَقْريبًا.,The bus comes roughly every half hour.,msa,travel
-5154a010,الرِّياحُ القادِمَةُ مِنَ البَحْرِ تَجْلِبُ المَطَرَ في بَريطانِيا.,Wind from the sea brings rain in the UK.,msa,leisure
-fdcacd5c,في هَذِهِ المَدينَةِ تَنَوُّعٌ ثَقافِيٌّ كَبيرٌ.,In this city there is great cultural diversity.,msa,culture
-f7f437f5,كُلُّ وَسائِلِ المُواصَلاتِ,All means of transportation,msa,travel
-8c4dbaed,مِنَ الضَّروريِّ أَنْ نُنْهِيَ المَشْروعَ هَذا الأُسْبوعَ.,It is necessary to finish the project this week.,msa,work
-3d082d83,وَصَلَني بَريدٌ عاجِلٌ مِنَ المُديرِ صَباحًا.,I received an urgent email from the manager this morning.,msa,work
-18942e49,قُمْ بِالشَّيْءِ المُهِمِّ قَبْلَ الشَّيْءِ العاجِلِ,Do the important thing before the urgent one,msa,work
-da535a82,شَعَرْتُ بِالمَلَلِ في الاجْتِماعِ الطَّويلِ.,I felt bored in the long meeting.,msa,work
-c902a580,يَرْوي جَدّي لَنا قِصَصَ جُحا المُضْحِكَةَ.,My grandfather tells us Juha's funny stories.,msa,family
-91e95b21,تَعَرَّفْنا عَلى سُيّاحٍ مَغْرِبِيِّينَ في الرِّحْلَةِ.,We met Moroccan tourists on the trip.,msa,travel
-b477b5c7,سَأَلونا عَنْ جِنْسِيَّتِنا عِنْدَ الحُدودِ.,They asked about our nationality at the border.,msa,travel
-5385af55,دائِمًا يَسْأَلونَنا مِنْ أَيْنَ نَحْنُ.,They always ask us where we are from.,msa,travel
-77e6a88e,أَزْعَجَني الضَّجيجُ طَوالَ اللَّيْلِ.,The noise annoyed me all night.,msa,emotions
-3f1a6fad,الجيرانُ كانوا مُزْعِجينَ في عُطْلَةِ الأُسْبوعِ.,The neighbors were annoying over the weekend.,msa,daily_life
-8311b210,البائِعونَ في السّوقِ يُنادونَ عَلى بَضائِعِهِمْ.,The sellers in the market call out about their goods.,msa,travel
-39c1ccf0,نادى عَلَيَّ صَديقي مِنْ بَعيدٍ.,My friend called to me from afar.,msa,people
-f6e1295f,أَصْرَرْتُ عَلى دَفْعِ الحِسابِ كامِلاً.,I insisted on paying the whole bill.,msa,people
-9efe2604,اشْتَرَيْتُ تِذْكارًا صَغيرًا لِأُمّي مِنَ السّوقِ.,I bought a small souvenir for my mother from the market.,msa,travel
-69e5c17e,حَصَلْتُ عَلى خَصْمٍ جَيِّدٍ عَلى تَذْكِرَةِ الطّائِرَةِ.,I got a good discount on the plane ticket.,msa,travel
-da0ca99d,في بَريطانِيا عادَةً نَقْضي إِجازَتَنا في الصَّيْفِ.,"In the UK, we usually holiday in summer.",msa,leisure
-d5879b7c,وَصَلْنا إِلى القَرْيَةِ عَبْرَ طَريقٍ جَبَلِيٍّ.,We reached the village through a mountain road.,msa,travel
-f5160acc,سَمِعْتُ صَوْتًا غَريبًا في مُنْتَصَفِ اللَّيْلِ.,I heard a strange sound in the middle of the night.,msa,daily_life
-23de3d47,كانَتْ تَجْرِبَةً مُمَيَّزَةً لَنْ أَنْساها.,It was a special experience I won't forget.,msa,travel
-31c5099c,كانَتِ الأَجْواءُ رائِعَةً في الحَفْلَةِ أَمْسِ.,The atmosphere was wonderful at the party yesterday.,msa,leisure
-2c8a5003,أَشْرَبُ فِنْجانَ قَهْوَةٍ أَوَّلَ شَيْءٍ في الصَّباحِ.,I drink a cup of coffee first thing in the morning.,msa,daily_life
-1f1a1c97,اسْتَقْبَلْنا الضُّيوفَ مَساءَ أَمْسِ.,Yesterday we welcomed guests in the evening.,msa,leisure
-30d9bcd4,اهْرُبْ بِسُرْعَةٍ قَبْلَ أَنْ يَبْدَأَ المَطَرُ!,Run quickly before the rain starts!,msa,leisure
-a7a0eb27,بِطَريقَةٍ ما نَجَحْنا في حَلِّ المُشْكِلَةِ.,Somehow we managed to solve the problem.,msa,work
-86708e03,التَّعَلُّمُ أَسْهَلُ عِنْدَما تَكونُ مُسْتَمْتِعًا.,Learning is easier when you are enjoying it.,msa,emotions
-e34995d6,كانَ الكِتابُ مُمْتِعًا مِنْ أَوَّلِ صَفْحَةٍ.,The book was enjoyable from the first page.,msa,leisure
-d3825b5e,نَقْضي العُطْلَةَ في الرّيفِ بَعيدًا عَنِ المَدينَةِ.,We spend the holiday in the countryside away from the city.,msa,leisure
-0db4ff59,شَعَرْتُ بِحُزْنٍ عَميقٍ عِنْدَ سَماعِ الخَبَرِ.,I felt deep sadness when I heard the news.,msa,emotions
-a0cae53a,أُحِبُّ هُدوءَ الصَّباحِ قَبْلَ اسْتيقاظِ الجَميعِ.,I love the calm of the morning before everyone wakes.,msa,daily_life
-7761f3ba,وَصَلْنا إِلى البَيْتِ في مُنْتَصَفِ اللَّيْلِ.,We got home at midnight.,msa,daily_life
-5d4f4d92,أَتَكَلَّمُ عَنِ تَعَلُّمِ العَرَبِيَّةِ بِشَغَفٍ كَبيرٍ.,I talk about learning Arabic with great passion.,msa,language
-d49bfc98,حُلْمي أَنْ أَزورَ بَغْدادَ يَوْمًا ما.,My dream is to visit Baghdad one day.,msa,travel
-fe26767f,حَقَّقْتُ حُلْمي بَعْدَ سَنَواتٍ مِنَ العَمَلِ.,I achieved my dream after years of work.,msa,work
-744e4719,قَدَّمْتُ عَرْضًا قَصيرًا أَمامَ الفَريقِ.,I gave a short presentation in front of the team.,msa,work
-23925c79,الكِبارُ يَجْلِسونَ هُنا وَالأَطْفالُ يَلْعَبونَ هُناكَ.,The adults sit here and the children play there.,msa,people
-4e4bded9,خَطَرَ بِخاطِري أَنْ أَتَّصِلَ بِكَ.,It crossed my mind to call you.,msa,emotions
-f74b3d1e,أُحِبُّ تَسَلُّقَ الصُّخورِ في وَقْتِ فَراغي.,I like to rock climb in my spare time.,msa,leisure
-12b507b0,وَجَدَ مِفْتاحَهُ تَحْتَ الكُرْسِيِّ أَخيرًا.,He finally found his key under the chair.,msa,daily_life
-6496c4f4,أَصْبَحْتُ مُهَنْدِسًا بَعْدَ تَخَرُّجي بِسَنَةٍ.,I became an engineer a year after graduating.,msa,work
-325e5c1c,تَقَبُّلُ النَّقْدِ صَعْبٌ لَكِنَّهُ مُفيدٌ.,Accepting criticism is hard but useful.,msa,emotions
-823c5bf0,تَتْرُكُ شَيْئًا مِنْكَ,To leave something of yourself,msa,people
-eaf0684d,وَجَّهَ إِلَيَّ انْتِقادًا بَنّاءً حَوْلَ عَمَلي.,He gave me constructive criticism about my work.,msa,work
-7aaf550d,تَنْتَشِرُ المَقاهي القَديمَةُ في وَسَطِ المَدينَةِ.,Old cafés are spread throughout the city center.,msa,travel
-97505f3d,اسْتَقْبَلْنا ضَيْفًا عَزيزًا مِنَ العِراقِ.,We welcomed a dear guest from Iraq.,msa,family
-bd7312b8,يُعامِلُ الجَميعَ بِاحْتِرامٍ وَلُطْفٍ.,He treats everyone with respect and kindness.,msa,people
-00c2bb33,احْتَرَمَ رَأْيي رَغْمَ اخْتِلافِنا.,He respected my opinion despite our disagreement.,msa,people
-72d3240d,يَأْكُلُ المُسْلِمونَ طَعامًا تَقْليدِيًّا في يَوْمِ العيدِ.,Muslims eat traditional food on the day of Eid.,msa,culture
-34153abb,خَطَرَتْ لي فِكْرَةٌ رائِعَةٌ لِلْمَشْروعِ.,A great idea for the project occurred to me.,msa,work
-ba2ee68d,الحُبُّ الحَقيقِيُّ يَحْتاجُ إِلى صَبْرٍ.,True love needs patience.,msa,emotions
-5b5fbe01,الدّافِعُ القَوِيُّ يُساعِدُ عَلى النَّجاحِ.,Strong motivation helps with success.,msa,work
-3b862ed7,غَطّى الغُبارُ السَّيّاراتِ بَعْدَ العاصِفَةِ.,Dust covered the cars after the storm.,msa,leisure
-035f783e,مِنْ أَيِّ ناحِيَةٍ,From which aspect,msa,people
-9e17a836,تَأَقْلَمَتْ بِسُرْعَةٍ مَعَ الحَياةِ الجَديدَةِ.,She adapted quickly to the new life.,msa,people
-6810c37c,واجَهْتُ صُعوبَةً في فَهْمِ اللَّهْجَةِ المَحَلِّيَّةِ.,I faced difficulty understanding the local dialect.,msa,language
-6f82e290,تَحْتاجُ إِلى رُؤْيَةِ طَبيبِ الأَسْنانِ,You need to see a dentist,msa,health
-95957cc4,بِسَبَبِ زِيارَتِها تَعَلَّمْتُ لُغَةً جَديدَةً,"Because of her visit, I learned a new language",msa,language
-d687519d,عِنْدَما وَصَلْتُ لَمْ أَكُنْ أَفْهَمُ اللَّهْجَةَ المَحَلِّيَّةَ.,When I arrived I didn't understand the local dialect.,msa,language
-c35c244a,لَمْ تَكُنِ القاهِرَةُ كَما تَخَيَّلْتُها.,Cairo was not as I had imagined it.,msa,travel
-3be005d6,تَعَلَّمْتُ الحُروفَ العَرَبِيَّةَ قَبْلَ الكَلِماتِ.,I learned the Arabic letters before words.,msa,language
-fdafb127,الجَميعُ ساعَدوا، حَتّى الأَطْفالُ الصِّغارُ.,"Everyone helped, even the little children.",msa,culture
-1a41beab,وافَقْتُ عَلى العَمَلِ بِشَرْطٍ واحِدٍ.,I agreed to the work on one condition.,msa,work
-4940d4d3,كُنْتُ أَحْتاجُ إِلى مُساعَدَتِها,I needed her help,msa,people
-7c8fd34d,فَهِمْتُ كَلامَهُ بِصُعوبَةٍ بِسَبَبِ سُرْعَتِهِ.,I understood his speech with difficulty because of his speed.,msa,language
-8b93340b,والِدي جاءَ مِنَ العِراقِ بَحْثًا عَنْ حَياةٍ أَفْضَلَ.,My father came from Iraq in search of a better life.,msa,family
-3cb7ded6,كَرَمُ أَهْلِ العِراقِ مَعْروفٌ لِلْجَميعِ.,The generosity of Iraqis is known to everyone.,msa,culture
-a0a0be54,التَّطَوُّعُ يَمْنَحُ الإِنْسانَ شُعورًا بِالمَعْنى.,Volunteering gives a person a sense of meaning.,msa,people
-fb7375d8,تُزْهِرُ الأَشْجارُ في فَصْلِ الرَّبيعِ.,The trees blossom in the spring season.,msa,leisure
-1b6fedb4,تُحَلِّقُ الطُّيورُ عالِيًا فَوْقَ البَحْرِ.,The birds fly high above the sea.,msa,leisure
-ec7e528b,وَقَفَتْ فَراشَةٌ مُلَوَّنَةٌ عَلى الزَّهْرَةِ.,A colorful butterfly landed on the flower.,msa,leisure
-76913a78,كَمْ مِنَ الوَقْتِ تَعْمَلُ في هَذِهِ الشَّرِكَةِ؟,How long have you been working at this company?,msa,work
-bbb9b815,فَريقُنا يَجْتَمِعُ كُلَّ صَباحٍ لِخَمْسِ دَقائِقَ.,Our team meets every morning for five minutes.,msa,work
-cf859e60,طَرَحْنا أَفْكارًا كَثيرَةً في الاجْتِماعِ.,We put forward many ideas in the meeting.,msa,work
-4f488b13,أَعْتَقِدُ أَنَّكَ عَلى حَقٍّ في هَذِهِ المَسْأَلَةِ.,I think you are right on this matter.,msa,work
-46240ff8,عِنْدي سُؤالٌ واحِدٌ قَبْلَ أَنْ نَبْدَأَ.,I have one question before we begin.,msa,work
-83afa602,أَقَمْنا في مُخَيَّمٍ صَحْراوِيٍّ لَيْلَةً واحِدَةً.,We stayed in a desert camp for one night.,msa,travel
-e2435bb8,نِمْنا في خَيْمَةٍ عادِيَّةٍ تَحْتَ النُّجومِ.,We slept in a regular tent under the stars.,msa,travel
-c7bb471c,أُحِبُّ رائِحَةَ التُّرابِ بَعْدَ المَطَرِ.,I love the smell of soil after rain.,msa,leisure
-b6d6d3e1,جَلَساتُ العائِلَةِ المَسائِيَّةُ هِيَ أَجْمَلُ الأَوْقاتِ.,The family's evening gatherings are the best of times.,msa,family
-627c755e,شاهَدْنا فيلْمًا مُخيفًا لَيْلَةَ أَمْسِ.,We watched a scary film last night.,msa,leisure
-4740a153,كانَتْ جَدَّتي، رَحِمَها اللهُ، تَرْتَدي عَباءَةً سَوْداءَ دائِمًا.,My grandmother (peace be upon her) wore a black abaya all the time.,msa,family
-fe8cec69,كانَتْ امْرَأَةً قَوِيَّةً جِدًّا.,She was a very strong woman.,msa,people
-3c9affec,اشْتَرى ثَوْبًا تَقْليدِيًّا مِنَ السّوقِ القَديمِ.,He bought a traditional garment from the old market.,msa,culture
-77b3e712,طَريقَةُ العَيْشِ في القَرْيَةِ بَسيطَةٌ وَهادِئَةٌ.,The way of living in the village is simple and quiet.,msa,daily_life
-040358a4,نَزورُ مَزْرَعَةَ جَدّي في كُلِّ صَيْفٍ.,We visit my grandfather's farm every summer.,msa,family
-4c1b00ca,الوَضْعُ الآنَ أَفْضَلُ مِمّا كانَ قَبْلَ سَنَةٍ.,The situation now is better than it was a year ago.,msa,leisure
-909a5822,أَمامَنا ثَلاثَةُ خِياراتٍ لِحَلِّ المُشْكِلَةِ.,We have three options to solve the problem.,msa,work
-1d21e136,نُقَدِّمُ السّاعَةَ في التَّوْقيتِ الصَّيْفِيِّ.,We move the clock forward for daylight saving time.,msa,daily_life
-8653998d,يَبْدَأُ التَّوْقيتُ الشِّتَوِيُّ في نِهايَةِ تِشْرينَ الأَوَّلِ.,Standard time begins at the end of October.,msa,leisure
-42be033b,هَلْ تَشْعُرونَ بِفَصْلِ الرَّبيعِ؟,Do you feel the spring season?,msa,leisure
-9855356f,أَرْسَلْتِ لي / بَعَثْتِ لي,You (female) sent me,msa,people
-6402eb25,حَجْزُ رِحْلَةٍ مَعَ شَرِكَةٍ سِياحِيَّةٍ,Booking a trip with a travel agency,msa,travel
-8bc80c74,نَحْنُ مُخْتَلِفانِ في الرَّأْيِ لَكِنَّنا صَديقانِ.,We are different in opinion but we are friends.,msa,people
-309e4c02,أُفَضِّلُ أَنْ أَحْجِزَ وَأُخَطِّطَ مُسْبَقًا.,I prefer to book and plan in advance.,msa,travel
-90cf374f,أُخَطِّطُ لِرِحْلَةٍ طَويلَةٍ إِلى آسْيا.,I'm planning a long trip to Asia.,msa,travel
-57a4ae23,أُحِبُّ السَّفَرَ العَفْوِيَّ دونَ خَطَّةٍ مُسْبَقَةٍ.,I love spontaneous travel without a prior plan.,msa,travel
-494770ad,أَنا مُتَّفِقٌ مَعَكَ تَمامًا في هَذِهِ النُّقْطَةِ.,I completely agree with you on this point.,msa,emotions
-89d1ec40,المَسْأَلَةُ مُعَقَّدَةٌ أَكْثَرَ مِمّا تَبْدو.,The matter is more complicated than it seems.,msa,emotions
-94a8244b,سَنُسافِرُ إِلى مِصْرَ قَريبًا إِنْ شاءَ اللهُ.,"We will travel to Egypt soon, God willing.",msa,travel
-af765ea8,مُتَعَطِّلٌ عَنِ العَمَلِ,Out of work,msa,work
-ca68d4a5,أَطْوَلُ مِنْ ذَلِكَ,Longer than that,msa,leisure
-5a86402f,إزَّيَّك يا صاحْبي، إيه الأَخْبار؟,"How are you, my friend? What's up?",egyptian,greetings
-29e90aaa,كُلّ حاجة تَمام,Everything is fine,egyptian,greetings
-270d0d65,أنا كْوَيِّس الحَمْدُ لِلَّه، وإنْتَ؟,"I'm good, thank God, and you?",egyptian,greetings
-3bbd3bbb,صَباح الخير، إزَّيَّك النَّهارْده؟,"Good morning, how are you today?",egyptian,greetings
-6e3cd9ee,كُلّ حاجة زَيّ الفُلّ مَعايا.,Everything's perfect with me.,egyptian,greetings
-c084f6bf,أهلاً وسَهْلاً، اتْفَضَّل اقْعُد.,"Welcome, please sit down.",egyptian,greetings
-22a9763c,لو سَمَحْت، أنا عايِز مَيّة باردة.,"Excuse me, I want cold water.",egyptian,greetings
-16d9ec81,واحِد شاي / قَهْوة,One tea / coffee,egyptian,dining
-cfd5cb68,لو سَمَحْت، فين أقْرَب صَيْدَلِيّة؟,"Excuse me, where's the nearest pharmacy?",egyptian,greetings
-c06e7a2b,مِن فَضْلَك، مُمْكِن الحِساب؟,"Please, may I have the bill?",egyptian,greetings
-da421106,زَيّ,Like / Similar to,egyptian,greetings
-107f8ddb,تَمام ماشي، نِتْقابِل بُكْرَة.,"Okay, alright, we'll meet tomorrow.",egyptian,greetings
-e60e27c8,مَصْر هِيَّ أُمّ الدُّنْيا زَيّ ما بِيْقولوا.,"Egypt is the mother of the world, as they say.",egyptian,smalltalk
-d38f0635,أَيْوَه / نَعَم,Yes,egyptian,greetings
-5c95d34a,أهلاً يا صاحبي، نوّرتنا!,"Welcome my friend, you've brightened our place!",egyptian,greetings
-e3fabd0a,فين؟,Where?,egyptian,greetings
-15f80a7f,عايِز أي حاجة يا أفَنْدِم؟,"Do you want anything, sir?",egyptian,greetings
-a4d71f06,الطَّعْمِيَّةُ الطّازَجَةُ أَلَذُّ مِنَ الجاهِزَةِ.,Fresh falafel is tastier than the ready-made.,msa,food
-a604a4e6,اعْتَذَرْتُ عَنِ الحُضورِ بِسَبَبِ ضيقِ الوَقْتِ.,I apologized for not attending because of time pressure.,msa,work
-cd8d5c09,طَلَبَ الطَّبيبُ مِنّي تَحْليلَ دَمٍ شامِلًا.,The doctor asked me for a comprehensive blood test.,msa,health
-e3dae5d8,كانَ الخَبَرُ صَدْمَةً كَبيرَةً لِلْعائِلَةِ.,The news was a big shock to the family.,msa,emotions
-ee7e48bc,نَصَحَني الطَّبيبُ بِتَقْليلِ القَهْوَةِ مَساءً.,The doctor advised me to reduce coffee in the evening.,msa,health
-76dad366,أُضيفُ الزَّنْجَبيلَ إِلى الشّايِ في الشِّتاءِ.,I add ginger to the tea in winter.,msa,daily_life
-5e294dea,كَبِدُ الدَّجاجِ وَسَبانِخ,Chicken liver and spinach,msa,food
-aad27a61,لِلْمَشْيِ فَوائِدُ كَثيرَةٌ لِلْقَلْبِ.,Walking has many benefits for the heart.,msa,health
-c0422ea0,كَيْفَ تَطْبُخينَ هَذا الطَّبَقَ اللَّذيذَ؟,How do you cook this delicious dish?,msa,food
-d58be3ef,أَضَعُ قَليلًا مِنَ الخَلِّ عَلى السَّلَطَةِ.,I put a little vinegar on the salad.,msa,food
-64e14173,يَحْتوي عَلى الحَديدِ,Contains iron,msa,food
-df4a2d0e,يَتَكَوَّنُ الطَّبَقُ مِنَ الأَرُزِّ وَالعَدَسِ.,The dish consists of rice and lentils.,msa,food
-77cf9e52,المِصْرِيّونَ مَعْروفونَ بِحُبِّهِمْ لِلنُّكْتَةِ.,Egyptians are known for their love of jokes.,msa,people
-1a5aab89,أَبْطِئْ قَليلًا، الطَّريقُ زَلِقٌ اليَوْمَ.,"Slow down a little, the road is slippery today.",msa,leisure
-26db0e42,نَشْتَري الطَّعْمِيَّةَ مِنَ المَحَلِّ القَريبِ صَباحًا.,We buy falafel from the nearby shop in the morning.,msa,daily_life
-77148f44,أَبْحَرَ القارِبُ الصَّغيرُ نَحْوَ الجَزيرَةِ.,The small boat sailed toward the island.,msa,travel
-e42ae971,الكُشَرِيُّ أَكْلَةٌ مِصْرِيَّةٌ شَعْبِيَّةٌ وَرَخيصَةٌ.,Koshari is a popular and cheap Egyptian dish.,msa,food
-81352afe,أَكَلَتْ زَوْجَتي الفولَ عَلى الغَداءِ.,My wife ate fava beans at lunch.,msa,food
-6c636ca0,المانْجا المِصْرِيَّةُ حُلْوَةٌ جِدًّا في الصَّيْفِ.,Egyptian mango is very sweet in summer.,msa,food
-338123f2,جَرَّبْتُ الجَوافَةَ في مِصْرَ.,I tried guava in Egypt.,msa,food
-d2c1f300,شايُ الكَرْكَديهِ مَشْروبٌ مُهَدِّئٌ.,Hibiscus tea is a calming drink.,msa,food
-fbf12faa,نُفْطِرُ عَلى التَّمْرِ وَالماءِ في رَمَضانَ.,We break our fast with dates and water in Ramadan.,msa,culture
-069e70c3,بابا غَنّوج يُؤْكَلُ مَعَ الخُبْزِ السّاخِنِ.,Baba ghanoush is eaten with hot bread.,msa,food
-41461073,التَّبّولَةُ سَلَطَةٌ خَفيفَةٌ مِنَ البَقْدونِسِ وَالبُرْغُلِ.,Tabbouleh is a light salad of parsley and bulgur.,msa,food
-35099843,الفَتّوشُ يَحْتوي عَلى خُبْزٍ مُحَمَّصٍ وَخُضارٍ.,Fattoush contains toasted bread and vegetables.,msa,food
-a4d25675,تَزَوَّجْتُ امْرَأَةً رائِعَةً.,I married a wonderful woman.,msa,family
-ee0a7d6e,يَحْتَفِلُ المَسيحِيّونَ بِعيدِ الميلادِ في كانونَ الأَوَّلِ.,Christians celebrate Christmas in December.,msa,culture
-c26fdaed,وُلِدَ المَسيحُ عَلَيْهِ السَّلامُ في بَيْتَ لَحْمَ.,"Christ, peace be upon him, was born in Bethlehem.",msa,culture
-56d0ae01,عيدٌ مُبارَكٌ لَكُمْ وَلِعائِلَتِكُمْ.,A blessed Eid to you and your family.,msa,culture
-c6f959f5,صَلّى المُسْلِمونَ صَلاةَ العيدِ في السّاحَةِ.,The Muslims prayed the Eid prayer in the square.,msa,culture
-18317f63,وَضَعَ الكِتابَ عَلى الطّاوِلَةِ وَخَرَجَ.,He put the book on the table and left.,msa,leisure
-bef475cd,سافَرْنا بَرًّا مِنْ عَمّانَ إِلى دِمَشْقَ.,We traveled by land from Amman to Damascus.,msa,travel
-9217dfa0,حَضَرْنا عُرْسًا كَبيرًا في القَرْيَةِ أَمْسِ.,We attended a big wedding in the village yesterday.,msa,family
-9bb6d7f0,قَرَأْتُ مَقالًا مُثيرًا لِلاهْتِمامِ عَنِ التّاريخِ.,I read an interesting article about history.,msa,culture
-372d4e39,مُعَقَّدٌ بِالنِّسْبَةِ لي لِلْحَديثِ عَنْهُ,It's complicated for me to talk about,msa,culture
-0ea680fd,مُسْتَوايَ في العَرَبِيَّةِ يَتَحَسَّنُ شَيْئًا فَشَيْئًا.,My level in Arabic is improving little by little.,msa,language
-d8e79be3,لِهَذا السَّبَبِ تَعَرَّفْتُ عَلَيْهِ,For this reason I got to know him,msa,people
-fb1c34ab,أَشْياءُ مُشْتَرَكَةٌ لِلْحَديثِ عَنْها,Common things to talk about,msa,culture
-1a538272,النّاسُ لا يَتَوَقَّعونَ أَنّي أَتَكَلَّمُ العَرَبِيَّةَ.,People don't expect that I speak Arabic.,msa,language
-59196b36,أَجَبْتُهُ بِصِدْقٍ عَنْ كُلِّ أَسْئِلَتِهِ.,I answered him honestly about all his questions.,msa,people
-d70de5e0,الأَهَمُّ أَنْ نَبْقى أَصْحابًا مَهْما حَدَثَ.,The most important thing is to stay friends no matter what.,msa,people
-cb6a9a81,القِراءَةُ اليَوْمِيَّةُ تُوَسِّعُ مَعْرِفَةَ الإِنْسانِ.,Daily reading widens a person's knowledge.,msa,culture
-eff8d894,سافَرَ في الدَّرَجَةِ الأولى لِأَوَّلِ مَرَّةٍ.,He traveled in first class for the first time.,msa,travel
-02316648,تَذْكِرَةُ الدَّرَجَةِ الثّانِيَةِ أَرْخَصُ بِكَثيرٍ.,A second-class ticket is much cheaper.,msa,travel
-4a4cc001,لاحَظْتُ تَحَسُّنًا واضِحًا في لُغَتِكَ.,I noticed a clear improvement in your language.,msa,language
-b9e550fe,أَعْطاني المُعَلِّمُ نَصائِحَ مُفيدَةً لِلدِّراسَةِ.,The teacher gave me useful advice for studying.,msa,culture
-c9c26555,أَنا في البَيْتِ كَالعادَةِ,I am at home as usual,msa,daily_life
-7d3bca6f,الجَوُّ مُشْمِسٌ وَدافِئٌ، لِنَخْرُجْ لِلتَّنَزُّهِ.,"The weather is sunny and warm, let's go out for a walk.",msa,leisure
-78dba13d,نَتَناوَلُ العَشاءَ مَعًا كُلَّ لَيْلَةِ جُمُعَةٍ.,We have dinner together every Friday night.,msa,family
-345d26d9,أَغادِرُ في السّاعَةِ التّاسِعَةِ.,I leave at nine o'clock.,msa,daily_life
-ab6eb697,يَلْعَبُ الأَطْفالُ بِطائِرَةٍ وَرَقِيَّةٍ عَلى الشّاطِئِ.,The children play with a paper kite on the beach.,msa,leisure
-41e39ef7,كانَتِ اللُّعْبَةُ مُمْتِعَةً وَمُثيرَةً حَتّى النِّهايَةِ.,The game was fun and exciting until the end.,msa,leisure
-cff0bcd0,أَشْعُرُ بِضَغْطٍ كَبيرٍ في العَمَلِ هَذا الشَّهْرَ.,I feel a lot of pressure at work this month.,msa,work
-c3aa0da4,لَدَيْكِ الكَثيرُ مِنَ الدُّروسِ,You have a lot of lessons,msa,leisure
-3786ea6b,شَعَرْتُ بِالإِرْهاقِ بَعْدَ يَوْمِ عَمَلٍ طَويلٍ.,I felt exhausted after a long workday.,msa,work
-b6908bf3,مُرْهَق / مُرْهَقَة,Exhausted (m/f),msa,emotions
-5dcf24ab,الاسْتِمْرارِيَّةُ أَهَمُّ مِنَ السُّرْعَةِ في التَّعَلُّمِ.,Continuity is more important than speed in learning.,msa,work
-69ca825d,التَّدْريسُ مِهْنَةٌ تَحْتاجُ إِلى صَبْرٍ كَبيرٍ.,Teaching is a profession that needs great patience.,msa,work
-5211311f,المَوْضوعُ مُعَقَّدٌ وَيَحْتاجُ إِلى وَقْتٍ لِفَهْمِهِ.,The topic is complicated and needs time to understand.,msa,emotions
-cf22ead4,زُرْنا والِدَ زَوْجَتي,We visited my wife's father,msa,family
-593ec1bd,خَمْسونَ كيلومِتْرًا,Fifty kilometers,msa,travel
-e302ce1b,المَطارُ يَبْعُدُ ساعَةً بِالسَّيّارَةِ عَنِ البَيْتِ.,The airport is an hour by car from home.,msa,travel
-1cde2e0c,تَحَسَّنَتْ صِحَّةُ أُمّي كَثيرًا بَعْدَ العَمَلِيَّةِ.,My mother's health improved a lot after the operation.,msa,health
-d359bdbc,بِالتَّمارينِ المُنْتَظِمَةِ سَتُصْبِحُ أَقْوى.,With regular exercise you will become stronger.,msa,health
-c9809172,نَتَمَشّى في المُنْتَزَهِ كُلَّ مَساءٍ.,We walk in the park every evening.,msa,leisure
-7f1c5bab,يَلْعَبُ الأَطْفالُ في الحَديقَةِ العامَّةِ بَعْدَ المَدْرَسَةِ.,The children play in the public garden after school.,msa,family
-c018ff35,شَعَرْتُ بِضَعْفٍ بَعْدَ أَيّامٍ مِنَ المَرَضِ.,I felt weak after days of illness.,msa,health
-0c716de9,كانَتْ أَوَّلَ مَرَّةٍ يَزورُ الحَديقَةَ مُنْذُ شَهْرَيْنِ,It was the first time he visited the park in two months,msa,leisure
-f0b8497f,قُمْنا بِزِيارَةِ لَهْوٍ إِلى المَدينَةِ القَديمَةِ.,We made a leisure visit to the old city.,msa,leisure
-52f0a53d,أَنا شَخْصٌ هادِئٌ لا أُحِبُّ الضَّجيجَ.,I am a calm person who dislikes noise.,msa,emotions
-8bc72dc7,لا أَتَكَلَّمُ كَثيرًا.,I don't talk much.,msa,emotions
-55908ceb,كِلاهُما يُشاهِدانِ المُبارَياتِ مَعًا كُلَّ سَبْتٍ.,Both of them watch the matches together every Saturday.,msa,leisure
-ecbe6223,غَدًا عُطْلَةٌ رَسْمِيَّةٌ بِمُناسَبَةِ العيدِ.,Tomorrow is an official holiday for the Eid.,msa,culture
-e543c3f8,لا أَرْتَدي مَلابِسَ رَسْمِيَّةً حَتّى في الاجْتِماعاتِ المُهِمَّةِ.,I don't even wear formal clothes in important meetings.,msa,work
-51f47edf,لا أُحِبُّ الحَديثَ في السِّياسَةِ مَعَ الغُرَباءِ.,I don't like talking politics with strangers.,msa,people
-044b2226,أَتَوَقَّفُ عَنِ العَمَلِ في السّاعَةِ الخامِسَةِ مَساءً.,I stop working at five in the evening.,msa,work
-9b6c2cd6,آخُذُ اسْتِراحَةً مِنَ العَمَلِ,I take a break from work,msa,work
-23a41d61,أَجْلِسُ في الطَّبيعَةِ لِأُريحَ ذِهْني.,I sit in nature to rest my mind.,msa,leisure
-77789cdb,الحَياةُ الرِّيفِيَّةُ أَهْدَأُ مِنْ حَياةِ المُدُنِ.,Rural life is calmer than city life.,msa,leisure
-9b111462,الأَمْواجُ عالِيَةٌ اليَوْمَ، فَالسِّباحَةُ خَطِرَةٌ.,"The waves are high today, so swimming is dangerous.",msa,leisure
-86b695de,نَرى قُوَّةَ الخالِقِ في جَمالِ الطَّبيعَةِ.,We see the power of the Creator in the beauty of nature.,msa,culture
-170f6d5b,عَشان أنا هِنا,Because I'm here,egyptian,dining
-85748702,مِن فَضْلَك، هاتْ لي فِنْجان قَهْوة.,"Please, bring me a cup of coffee.",egyptian,dining
-dbdcfafa,عايِز تِشْرَب إيه,What do you want to drink,egyptian,dining
-d5dd62cc,مِش عايِز أَشْرَب حاجة,I don't want to drink anything,egyptian,dining
-ad9936f2,مْراتي بِتْحِبّ القَهْوة بِاللَّبَن.,My wife likes coffee with milk.,egyptian,dining
-c3400dee,مراتي طلبت شاي بسكر زيادة.,My wife ordered tea with extra sugar.,egyptian,dining
-5ea06365,مُمْكِن شْوَيّة لَبَن مَع القَهْوة؟,Can I get a little milk with the coffee?,egyptian,dining
-88e2d68e,عايْزة تِشْرَب شاي بِلَبَن,She wants to drink tea with milk,egyptian,dining
-19e60243,أنا بَشْرَب الشاي مِن غير سُكَّر.,I drink tea without sugar.,egyptian,dining
-682a3dea,وِالوِلاد / الأَوْلاد عايْزين,And the kids want,egyptian,dining
-89abb787,عايْزين يِشْرَبوا عَصير بُرْتُقال,They want to drink orange juice,egyptian,dining
-ddab1176,أي خِدْمة تانْية؟,Any other service?,egyptian,dining
-a4839506,عايِز شْوَيّة سُكَّر,I want a little sugar,egyptian,dining
-90339722,قُرَيِّب مِن هِنا,Close to here,egyptian,directions
-66c27b5f,امْشي مِن هِنا وِتْلاقي,Walk from here and you'll find,egyptian,directions
-c2c50f45,كَم مِن الوَقْت قَضّيتي؟,How long did you spend?,egyptian,smalltalk
-5f3e0bed,دي أَوِّل زِيارة لي هِنا,This is my first visit here,egyptian,smalltalk
-2db31240,جيت مَصْر مِن قَبْل,I came to Egypt before,egyptian,smalltalk
-5c1d2d6f,أنا حَبّيت الجَوّ في الإسْكِنْدِرِيّة قَوي.,I really loved the atmosphere in Alexandria.,egyptian,smalltalk
-de067056,الأَجْواء في القاهْرة بِاللَّيْل حِلْوة قَوي.,The atmosphere in Cairo at night is really nice.,egyptian,smalltalk
-9aad7556,شِرِبْنا عَصير قَصَب فِ وِسْط البَلَد.,We drank sugarcane juice downtown.,egyptian,dining
-27e97324,رُحْنا الأَهْرامات أَوِّل يوم فِ مَصْر.,We went to the pyramids on the first day in Egypt.,egyptian,sightseeing
-0cc9ced2,عَمَلْتو إيه إمْبارِح بِاللَّيْل؟,What did you do last night?,egyptian,greetings
-555847f0,اتْمَشّينا فِ وِسْط البَلَد لِحَدّ المَغْرِب.,We walked around downtown until sunset.,egyptian,sightseeing
-7dc93f66,زُرْنا جامِع مُحَمَّد عَلي فوق القَلْعة.,We visited the Mosque of Muhammad Ali up at the Citadel.,egyptian,sightseeing
-f15af660,المَحَلّات هِنا بِتِفْتَح لِحَدّ بِاللَّيْل.,The shops here stay open until late at night.,egyptian,smalltalk
-cd7e35a6,أَحَبُّ الأَعْمَالِ إِلَى اللهِ أَدْوَمُهَا وَإِنْ قَلَّ,"The most beloved deeds to Allah are those done consistently, even if small",msa,culture
-b0533902,مِنَ العَقَبَةِ إِلى شَرْمِ الشَّيْخِ بِالقارِبِ,From Aqaba to Sharm el-Sheikh by boat,msa,travel
-f1e46cad,سَنَتَقابَلُ في شَرْمِ الشَّيْخِ,We will meet in Sharm el-Sheikh,msa,travel
-f4daee1f,سَأَكونُ في شَرْمِ الشَّيْخِ يَوْمَيْنِ فَقَطْ,I will be in Sharm el-Sheikh for only two days,msa,travel
-0b84aeb8,بَعْدَ ذَلِكَ سَأَذْهَبُ إِلى دَهَبَ,After that I will go to Dahab,msa,travel
-5ef2b2a6,أُريدُ أَنْ أَتَجَوَّلَ حَوْلَ المَدينَةِ القَديمَةِ,I want to wander around the old city,msa,travel
-bf22f72a,أُريدُ أَنْ أَكْتَشِفَ الثَّقافَةَ,I want to discover the culture,msa,culture
-f0b88028,هَلْ تُحِبُّ السِّباحَةَ؟,Do you like swimming?,msa,leisure
-dbb6bb81,سَنَسْبَحُ أَمامَ الفُنْدُقِ,We will swim in front of the hotel,msa,leisure
-b001377b,هَلْ يوجَدُ شاطِئٌ خاصٌّ؟,Is there a private beach?,msa,travel
-2a01e5cc,مارَسْتُ اللَّهْجَةَ المِصْرِيَّةَ,I practised the Egyptian dialect,msa,language
-53dd0b03,يَجِبُ عَلَيْكَ الغَوْصُ,You must go diving,msa,leisure
-ff65e35b,الغَوْصُ لَيْسَ مُناسِبًا لِلأَطْفالِ,Diving is not suitable for children,msa,leisure
-8310e1a4,سَنَفْعَلُ إِنْ شاءَ اللهُ,We will do it God willing,msa,leisure
-90039be0,أَنا أَكْتَشِفُ، أَنا أَتَجَوَّلُ,I explore / I wander,msa,travel
-bf7ecd39,دي أَوِّل زِيارة في مَصْر,This is my first visit to Egypt,egyptian,smalltalk
-05c8c70e,دي أَوِّل مَرَّة في مَصْر,This is my first time in Egypt,egyptian,smalltalk
-de4b2df4,عايْزين نِجْلِس بَرَّة,We want to sit outside,egyptian,dining
-07632afc,عايِز أَشوف الأَطْعِمة دي,I want to see this food,egyptian,dining
-f3b79d22,الأَطْعِمة دي بِكام؟,How much is this food?,egyptian,dining
-7cd4356c,أَنا جاهِزٌ لِلسَّفَرِ,I'm ready to travel,msa,travel
-9483e9c3,أُريدُ أَنْ أُمارِسَ اللَّهْجَةَ المِصْرِيَّةَ,I want to practise the Egyptian dialect,msa,language
-30e9db21,أَتَمَنّى أَنْ تَسْتَعْمِلَ هَذِهِ الكَلِماتِ في الزِّيارَةِ,I hope you use these words on the visit,msa,travel
-365c0264,أَتَمَنّى لَكَ إِجازَةً سَعيدَةً,I wish you a happy holiday,msa,greetings
-dfd496d8,شُكْرًا عَلى الدَّرْسِ,Thank you for the lesson,msa,greetings
-ae4f86e5,أَيْنَ الشّاطِئُ الخاصُّ بِالفُنْدُقِ؟,Where is the hotel's private beach?,msa,travel
-12abfa57,هَذا مُفيدٌ جِدًّا,This is very useful,msa,emotions
-444d075e,أَنا لَدَيَّ فُضولٌ,I'm curious,msa,emotions
-094fa073,أَنا وَعائِلَتي نُحِبُّ السَّفَرَ كَثيراً,Me and my family love to travel a lot,msa,family
-7540cc0f,اكْتِشافُ أَماكِنَ جَديدَةٍ يُوَسِّعُ آفاقَكَ,Discovering new places broadens your outlook,msa,travel
-2c60c385,السِّباحَةُ في البَحْرِ رائِعَةٌ,Swimming in the sea is wonderful,msa,leisure
-68495752,أُريدُ السِّباحَةَ في المُسْبَحِ غَداً,I want to swim in the pool tomorrow,msa,leisure
-740a4547,الماءُ الدّافِئُ مُريحٌ لِلْجِسْمِ,Warm water is comfortable for the body,msa,leisure
-b94d01a3,السِّباحَةُ في الماءِ البارِدِ مُنْعِشَةٌ,Cold water swimming is invigorating,msa,leisure
-5f041816,المَرْجانُ في البَحْرِ الأَحْمَرِ جَميلٌ,The coral in the Red Sea is beautiful,msa,leisure
-239a6bf3,السنوركلينج نَشاطٌ مُمْتِعٌ في الإِجازَةِ,Snorkelling is a fun activity on vacation,msa,leisure
-ea1ab5db,الفِنْجانُ عَلى الطّاوِلَةِ فارِغٌ,The cup on the table is empty,msa,food
-f01468f0,شُكْراً لَكَ، إِلى اللِّقاءِ!,"Thank you, goodbye!",msa,greetings
-8c0a76c9,أَيْنَ المَطْبَخُ في هٰذا البَيْتِ؟,Where is the kitchen in this house?,msa,daily_life
-056c9a80,ما رَقْمُ الهاتِفِ الخاصُّ بِكَ؟,What is your phone number?,msa,daily_life
-f1f5f5bf,القِطارُ يَصِلُ في السّاعَةِ الثّالِثَةِ,The train arrives at three o'clock,msa,travel
-a81ee49c,الطّائِرَةُ تُقْلِعُ بَعْدَ عَشْرِ دَقائِقَ,The plane takes off in ten minutes,msa,travel
-8c1db032,التَّجَوُّلُ في المَدينَةِ القَديمَةِ مُمْتِعٌ,Strolling in the old city is enjoyable,msa,travel
-63e1a9fb,هٰذِهِ جَوْلَةٌ جَميلَةٌ في المَتْحَفِ,This is a nice tour of the museum,msa,travel
-72ffbe03,دي أَوِّل زِيارَة في مَصْر,This is my first visit to Egypt,egyptian,greetings
-32352b0d,بَحِبّ مَصْر,I love Egypt,egyptian,smalltalk
-9d8e755f,الأَكْل حِلْو,The food is tasty,egyptian,smalltalk
-06ce002d,النّاس لَطيفين,The people are nice,egyptian,smalltalk
-6122e839,الجَوّ حَرّ,The weather is hot,egyptian,smalltalk
-216a5525,الأَطْفال مَبْسوطين,The kids are happy,egyptian,smalltalk
-dc443c82,عايْزين نِجْلِس بَرّه,We want to sit outside,egyptian,smalltalk
-f1722c29,خَلاص اتَّفَقْنا,"Okay, we're agreed",egyptian,smalltalk
-37575fcd,عايْزين حاجَة,We want something,egyptian,dining
-b0c2229d,عايْزين ناكُل حاجَة,We want to eat something,egyptian,dining
-01f266f7,عايْزين نِشْتِري مَيَّة,We want to buy water,egyptian,dining
-441013c6,عايِز كوباية,I want a mug (of coffee),egyptian,dining
-de853df8,الفِنْجان ده بِكام؟,How much is this cup?,egyptian,dining
-61ee381f,فيه شاطِئ خاصّ لِلفُنْدُق؟,Is there a private beach for the hotel?,egyptian,hotel
-d3782e6c,فين المَسْبَح؟,Where's the pool?,egyptian,hotel
-276e3b42,عايِز أَسْبَح في المَسْبَح,I want to swim in the pool,egyptian,hotel
-cf9a0759,عايِز مَنْشَفَة,I want a towel,egyptian,beach_and_vendors
-2d7c4d8f,عايِز أَروح الشَّطّ,I want to go to the beach,egyptian,beach_and_vendors
-1aa8da97,يا أَفَنْدَم، فين الشّاطِئ لَوْ سَمَحْت؟,"Sir, where's the beach, please?",egyptian,directions
-b581b522,عايِز أَشوف القِطْعَة دي,I want to see this piece,egyptian,shopping
-0d2db113,القِطْعَة دي بِكام؟,How much is this piece?,egyptian,shopping
-3df754f7,التي-شيرت دي بِكام؟,How much is this T-shirt?,egyptian,shopping
-dc32b6ad,إِدّيني خَصْم لَوْ سَمَحْت,"Give me a discount, please",egyptian,shopping
-f0b7183a,ده آخِر كَلام,That's the final word,egyptian,shopping
-666f3ec6,عايْزين نِشْتِري حاجَة لِلأَوْلاد,We want to buy something for the children,egyptian,shopping
-8aa3cfa9,ما يِنْفَعْش,No deal / it won't work,egyptian,shopping
-da545ab5,أَدّ إيه؟,How much?,egyptian,money
-bd8faf41,خَلّي السِّعْر خَمَسْتاشَر جِنيه,Make the price fifteen pounds,egyptian,money
-5e635ddf,أَدْرُسُ اللُّغَةَ مُنْذُ سَنَتَيْنِ,I have been studying the language for two years,msa,language
-08686465,أَنا شَخْصٌ بَيْنَ جِنْسِيَّتَيْنِ,I am a person between two nationalities,msa,culture
-bfc8a4d9,وُلِدْتُ في إِنْجِلْتِرا وَأَعيشُ هُنا، وَوالِدي مِنَ العِراقِ,"I was born in England and live here, and my father is from Iraq",msa,family
-a08eed1a,مُنْذُ الوِلادَةِ عِشْتُ حَياةً إِنْجِليزِيَّةً,Since birth I have lived an English life,msa,culture
-08b7c376,لَيْسَتْ هِوايَةً، إِنَّها واجِبي,It is not a hobby; it is my duty.,msa,emotions
-3f22630e,أُحِبُّ الثَّقافَةَ العَرَبِيَّةَ وَأَحْلُمُ بِالسَّفَرِ,I love Arab culture and dream of travel,msa,culture
-894f7b52,الكَلامُ السَّريعُ سَهْلٌ، تَقولُ فيهِ ما تَشاءُ؛ أَمّا الكِتابَةُ فَأَصْعَبُ,Quick speech is easy — you say what you want; but writing is harder,msa,culture
-cf2c83c5,مُنْذُ الطُّفولَةِ سَمِعْتُ صَوْتَ اللُّغَةِ مِنْ والِدي وَمِنَ الرّاديو,Since childhood I heard the sound of the language from my father and the radio,msa,culture
-374f438d,كانَ والِدي يَسْتَمِعُ إِلى الأَغاني التَّقْليدِيَّةِ وَيُشاهِدُ التِّلْفازَ العَرَبِيَّ,My father used to listen to traditional songs and watch Arabic television,msa,family
-730e12cd,وَمَرَّةً أَعْطاني الهاتِفَ فَسَمِعْتُ جَدَّتي وَلَمْ أَفْهَمْ شَيْئاً,Once he handed me the phone and I heard my grandmother but understood nothing,msa,language
-676a0ee5,كُنْتُ أُريدُ أَنْ أَتَحَدَّثَ مَعَ جَدَّتي وَأَنْ أَفْهَمَ هٰذِهِ اللُّغَةَ,I wanted to talk with my grandmother and understand this language,msa,language
-ca00ddfe,كَبِرْتُ في مَدينَةٍ صَغيرَةٍ تَقْليدِيَّةٍ لَيْسَ فيها أَشْخاصٌ عَرَبٌ,"I grew up in a small, traditional town with no Arab people",msa,culture
-7054c0aa,وَلَمْ نَكُنْ نَتَحَدَّثُ العَرَبِيَّةَ في المَنْزِلِ بِسَبَبِ والِدَتي,We didn't speak Arabic at home because of my mother,msa,language
-e3629892,كانَ هُناكَ نَقْصٌ في الفَهْمِ حَقّاً,There was truly a lack of understanding,msa,emotions
-3d3f84df,أَظُنُّني قَرَّرْتُ أَنْ أَبْقى إِنْجِليزِيّاً,I think I decided to stay English,msa,culture
-f09a56df,كانَ لَدَيَّ فُضولٌ تِجاهَ الثَّقافَةِ وَالدّينِ وَالحَياةِ في الدُّوَلِ العَرَبِيَّةِ,"I had curiosity about the culture, religion, and life in Arab countries",msa,culture
-c6c22c02,كانَ لَدَيَّ أَسْئِلَةٌ كَثيرَةٌ سَأَلْتُها لِوالِدي,I had many questions which I asked my father,msa,family
-663673c6,وَحينَ جِئْتُ كانَ عَلَيَّ أَنْ أَنْدَمِجَ في المُجْتَمَعِ وَأَنْ أَعيشَ حَياةً بِريطانِيَّةً,When I came I had to integrate into society and live a British life,msa,people
-59981b63,أَنْتِ تَفْهَمينَني جَيِّداً,You understand me well,msa,emotions
-5a94e1b9,الأَطْفالُ يَتَعَلَّمونَ جَيِّداً عِنْدَما تَكونُ الدِّراسَةُ مُمْتِعَةً,Children learn well when study is enjoyable,msa,leisure
-42e8f341,كُلُّ شَخْصٍ يَخْتَلِفُ,Everyone is different,msa,people
-2104193f,إِنْ شاءَ اللهُ نَلْتَقي يَوْمَ الخَميسِ القادِمِ,God willing we'll meet next Thursday,msa,greetings
-aa9be8e3,كُلَّ عامٍ وَأَنْتَ بِخَيْرٍ، وَأَراكَ قَريباً,"May you be well always, and see you soon",msa,greetings
-71209cd0,أَنا الآنَ مَشْغولٌ بِالأَعْمالِ,I'm busy with work now,msa,work
-f4839747,أُساعِدُهُمْ بِقَدْرِ اسْتِطاعَتي,I help them as much as I can,msa,people
-0411943c,حالِيّاً خَطَرَتْ عَلى عَقْلي فِكْرَةٌ,Just now an idea occurred to my mind,msa,emotions
-05765e3c,أَنا أَصْلي عَرَبِيٌّ,My origin is Arab,msa,culture
-ba138369,أَحْياناً أَشْعُرُ أَنَّ الدَّمَ عَرَبِيٌّ,Sometimes I feel the blood is Arab,msa,culture
-b5f91e4b,هٰذا جُزْءٌ مِنّي,This is a part of me,msa,emotions
-4f18071b,أَنْتَ أَبٌ، صَحيحٌ؟,"You are a father, correct?",msa,family
-9e21918a,أَعْتَقِدُ أَنَّ اللُّغَةَ العَرَبِيَّةَ شَيْءٌ مُهِمٌّ جِدّاً لي,I think the Arabic language is something very important to me,msa,language
-12b0a5b3,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ واجِبٌ عَلَيْكَ وَلَيْسَ هِوايَةً,"Learning Arabic is a duty upon you, not a hobby",msa,language
-9eeddec3,هَلْ لَدَيْكَ إِخْوَةٌ وَأَخَواتٌ؟,Do you have brothers and sisters?,msa,family
-f912fc72,لَدَيَّ أَخٌ واحِدٌ,I have one brother,msa,family
-c34c0f16,عائِلَتُنا مِنَ الشَّرْقِ الأَوْسَطِ,Our family is from the Middle East,msa,family
-03462bab,نَسينا صِلَتَنا بِأَقارِبِنا في الشَّرْقِ الأَوْسَطِ,We forgot our bond with our relatives in the Middle East,msa,family
-b6fbb434,أَحْياناً أَشْعُرُ أَنَّني ضائِعٌ، أَنا بِلا انْتِماءٍ,"Sometimes I feel that I am lost, that I have no belonging",msa,emotions
-fad8bf36,أَيْنَ أَنْتَمي؟ أَشْعُرُ أَنّي أَنْتَمي إِلَيْهِ,Where do I belong? I feel that I belong to it,msa,emotions
-07217e87,هٰذا الشُّعورُ طَبيعِيٌّ عِنْدَ أَيِّ شَخْصٍ وُلِدَ ابْناً لِثَقافَةٍ أُخْرى,This feeling is natural in anyone born a child of another culture,msa,culture
-2f6eedea,سَأَكونُ رَجُلاً ذا ثَقافَتَيْنِ,I will be a man with two cultures,msa,culture
-21ae532c,أَشْعُرُ أَنَّني أَعيشُ في عالَمَيْنِ مُخْتَلِفَيْنِ,I feel that I live in two different worlds,msa,emotions
-9b08ff75,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ يَحْتاجُ وَقْتاً أَطْوَلَ,Learning Arabic needs a longer time,msa,language
-d88a943f,اللَّهْجَةُ المِصْرِيَّةُ غَريبَةٌ عَنّي,The Egyptian dialect is strange to me,msa,language
-8d450652,قَرَأْتُ قِصَّةً عَنْ جُحا مُضْحِكَةً,I read a funny story about Joha,msa,leisure
-809b1104,لا شُكْرَ عَلى الواجِبِ,No thanks are due for a duty,msa,greetings
-38ea457c,أَتَمَنّى لَكَ يَوْماً سَعيداً,I wish you a happy day,msa,greetings
-1c42ced3,إِلى اللِّقاءِ، مَعَ السَّلامَةِ,"Goodbye, take care",msa,greetings
-c3a65f88,كُنْتُ مَريضاً قَليلاً,I was a little sick,msa,health
-04760a89,لا أَعْرِفُ السَّبَبَ — رُبَّما اخْتِلافُ الماءِ أَوِ الطَّعامِ,I don't know the reason — maybe the difference in water or food,msa,health
-a8211558,كُنّا مَرْضى لِفَتْرَةٍ طَويلَةٍ، حَوالَيْ أُسْبوعٍ,"We were sick for a long time, about a week",msa,health
-51833e9f,كُلَّ يَوْمٍ لَحْمٌ مَشْوِيٌّ، خُضْرَواتٌ مَشْوِيَّةٌ، سَلَطَةٌ مِصْرِيَّةٌ، سَمَكٌ,"Every day grilled meat, grilled vegetables, Egyptian salad, fish",msa,food
-730a0e8b,اشْتَرِ مِياهاً مَعْدِنِيَّةً غالِيَةً مِنَ المارْكِت وَاشْرَبْها,Buy expensive mineral water from the market and drink it,msa,health
-4108a2ff,تَعَلَّمْتُ كَلِماتٍ أَكْثَرَ في اللَّهْجَةِ,I learned more words in the dialect,msa,language
-1c656bd5,حَتّى في مِصْرَ تَكَلَّمْتُ كَثيراً مَعَ النّاسِ بِالعَرَبِيَّةِ,Even in Egypt I spoke a lot with people in Arabic,msa,language
-a399890e,حاوَلْتُ أَنْ أَتَكَلَّمَ بِاللَّهْجَةِ المِصْرِيَّةِ لٰكِنْ كانَ عَلَيَّ أَنْ أَتَحَدَّثَ بَعْضَ الفُصْحى,I tried to speak in the Egyptian dialect but had to speak some Fusha,msa,language
-ab6f9a90,النّاسُ دائِماً يَفْهَمونَكَ لٰكِنْ لا يَسْتَطيعونَ الإِجابَةَ، لِأَنَّهُمْ غَيْرُ مُتَعَوِّدينَ,"People always understand you but can't answer, because they aren't used to it",msa,language
-1861c938,الفُصْحى جَميلَةٌ، لٰكِنْ إِذا أَرَدْتَ أَنْ تَتَواصَلَ مَعَ النّاسِ فَرُبَّما تَخْتارُ لَهْجَةً,"Fusha is beautiful, but if you want to communicate with people, perhaps choose a dialect",msa,language
-11bbf8af,الغَوْصُ في رَأْيي أَفْضَلُ شَيْءٍ في شَرْمَ,"Diving, in my opinion, is the best thing in Sharm",msa,leisure
-0571a2c1,نَزَلْنا إِلى البَحْرِ، أَنا وَعائِلَتي، وَرَأَيْنا تَحْتَ الماءِ جَنَّةً,"We went down into the sea, my family and I, and saw a paradise underwater",msa,leisure
-d2a79fd0,اكْتَشَفْنا عالَماً مُخْتَلِفاً,We discovered a different world,msa,leisure
-27daca3f,الماءُ دافِئٌ، لَمْ أَحْتَجْ بَدْلَةَ غَطْسٍ,"The water is warm, I didn't need a diving suit",msa,leisure
-6e75392f,وَأَخَذْنا رِحْلَةً بِالمَرْكَبِ — كانَتْ رائِعَةً,We took a boat trip — it was wonderful,msa,leisure
-102a2fa4,كانَتْ أَسْماكاً بِأَحْجامٍ مُخْتَلِفَةٍ وَأَلْوانٍ كَثيرَةٍ,They were fish of different sizes and many colors,msa,leisure
-2af7d6e1,مَعَ السْنوركِل أَشْعُرُ بِحُرِّيَّةٍ,With the snorkel I feel free,msa,leisure
-65cf9e35,ذَهَبْتُ مِنَ الأُرْدُنِّ إِلى مِصْرَ بِالقارِبِ، لَيْسَ بِالطّائِرَةِ,"I went from Jordan to Egypt by boat, not by plane",msa,travel
-f8d91663,رِحْلَةٌ طَويلَةٌ: حافِلَتانِ وَقارِبٌ,A long trip: two buses and a boat,msa,travel
-bf626f5a,بَقينا سِتَّةَ أَيّامٍ: أَرْبَعَةً في دهب وَيَوْمَيْنِ في شَرْمَ,We stayed six days: four in Dahab and two in Sharm,msa,travel
-abb3410d,وَاشْتَرَيْتُ هَدايا لِعائِلَتي، لِأَنَّ القُطْنَ مَشْهورٌ جِدّاً في مِصْرَ,"I bought gifts for my family, because cotton is very famous in Egypt",msa,travel
-1e8e8387,وَبَقيتُ بِجانِبِ البَحْرِ أَسْتَرْخي,I stayed beside the sea relaxing,msa,leisure
-9fe59d8d,شُكْراً جَزيلاً لِمُساعَدَتِكِ، حَقّاً,"Thank you very much for your help, truly",msa,greetings
-54c1a19a,سَلامٌ لِلْعائِلَةِ وَلِلْأَطْفالِ، وَأَراكَ الأُسْبوعَ القادِمَ,"Greetings to the family and the children, and I'll see you next week",msa,greetings
-78898883,مِشْ عايْزينْ حاجَة، سيبْني لو سَمَحْت,"We don't want anything, leave me alone please",egyptian,shopping
-54def6c9,أَنْتَ مِنينْ؟ فينْ تَعَلَّمْتَ عَرَبي؟,Where are you from? Where did you learn Arabic?,egyptian,smalltalk
-5f6075d5,لَقَدْ خَرَجْتُ لِلتَّوِّ,I've just left.,msa,leisure
-ee0e1490,كانوا يَجْتَمِعونَ لِيَتَسامَروا,They used to meet to socialise.,msa,people
-3db73e13,ما زالَ المَكانُ مُهِمّاً,The place is still important.,msa,leisure
-0aae5643,أَسْتَطيعُ أَنْ أَسْمَعَ غِناءَ الطُّيورِ,I can hear the birdsong.,msa,leisure
-f85e0d16,أَنْوي أَنْ أَمْشِيَ إلى نِهايَةِ الشّارِعِ,I plan to walk to the end of the street.,msa,leisure
-ef16c9ab,كانَ البَيْتُ العامُّ مُهِمّاً لِلْمُجْتَمَعِ,The pub was important to the community.,msa,people
-6c8ed988,هٰذِهِ رِحْلَةٌ طَوِيلَةٌ,This is a long journey.,msa,travel
-e6f827e0,أُرِيدُ مَزِيدًا مِنَ العِبَارَاتِ,I want more phrases.,msa,language
-4d3de6c7,لَدَيَّ شَيْءٌ لِنُنَاقِشَهُ,I have something for us to discuss.,msa,work
-49066d26,هٰذَا حَدَثَ لِلتَّوِّ,This just happened.,msa,leisure
-57602b4e,هٰذَا حَدَثَ لِابْنِي,This happened to my son.,msa,family
-e4091988,رَجَعَ ابْنِي إِلَى المَنْزِلِ لِلتَّوِّ,My son has just come home.,msa,family
-faa4e008,رَجَعَ مِنْ رِحْلَةِ تَخْيِيمٍ,He came back from a camping trip.,msa,leisure
-122b2c00,كَانَ مُتَّسِخًا جِدًّا وَمُتْعَبًا,He was very dirty and tired.,msa,emotions
-040b5281,كَانَ عِيدُ مِيلَادِهِ قَبْلَ يَوْمَيْنِ,It was his birthday two days ago.,msa,family
-21e2eeaa,كَانَ بَعِيدًا عَنَّا,He was far away from us.,msa,family
-95781855,كَانَ فِي مَكَانٍ بَعِيدٍ عَنَّا,He was in a place far from us.,msa,family
-0ec134f9,لَمْ نَسْتَطِعْ أَنْ نَتَوَاصَلَ مَعَهُ,We couldn't contact him.,msa,family
-800040aa,لَمْ يَكُنْ لَدَيْهِ هَاتِفٌ,He didn't have a phone.,msa,family
-57755edc,لَمْ يَسْتَطِعْ أَنْ يَتَّصِلَ بِنَا,He couldn't call us.,msa,family
-07a266ee,اِشْتَقْنَا إِلَيْهِ,We missed him.,msa,emotions
-54a58f4c,اِشْتَقْنَا إِلَيْهِ وَلَمْ نَسْتَطِعْ أَنْ نَتَوَاصَلَ مَعَهُ,We missed him and couldn't contact him.,msa,emotions
-cbb7edcb,لَمْ تَكُنْ هُنَاكَ طَرِيقَةٌ أُخْرَى,There was no other way.,msa,emotions
-d03d78c0,سَأُغَادِرُ الآنَ,I'm leaving now.,msa,travel
-60d7c7bf,مَزِيدٌ مِنَ الوَقْتِ,More time.,msa,leisure
-f82166f5,مَزِيدٌ مِنَ المَعْلُومَاتِ,More information.,msa,work
-0fda98a7,مَزِيدٌ مِنَ العِبَارَاتِ,More phrases.,msa,language
-750013a0,حَدَثَ لِي,It happened to me.,msa,emotions
-a26fe39e,حَدَثَ لَهَا,It happened to her.,msa,emotions
-237dd03c,حَدَثَ لِابْنِي,It happened to my son.,msa,family
-1e37a0f9,وَصَلَ لِلتَّوِّ,Just arrived.,msa,travel
-46acd600,رَجَعَ لِلتَّوِّ,Just returned.,msa,travel
-0b60edf0,حَدَثَ لِلتَّوِّ,Just happened.,msa,leisure
-8cd2956a,اِشْتَقْنَا إِلَيْهَا,We missed her.,msa,emotions
-b5a0465a,اِشْتَقْنَا إِلَيْهِمْ,We missed them.,msa,emotions
-2982ffb8,لَمْ نَسْتَطِعْ أَنْ نَرَاهُ,We couldn't see him.,msa,family
-85400ab1,لَمْ نَسْتَطِعْ أَنْ نَزُورَهُ,We couldn't visit him.,msa,family
-3ffff6ce,كان والدي يتحدث مع جدتي.,My father used to speak to my grandmother.,msa,family
-265159a7,أحيانًا كان يناولني الهاتف.,Sometimes he would hand me the phone.,msa,family
-05970f9d,أحيانًا كان يعطيني الهاتف.,Sometimes he would give me the phone.,msa,family
-f81de177,وكنت أتحدث مع جدتي.,I would speak to my grandmother.,msa,family
-f1dde12c,كان والدي يترجم بيني وبين جدتي.,My father would translate between me and my grandmother.,msa,family
-1a37e101,كنا نشاهد الأخبار على التلفاز.,We used to watch the news on television.,msa,daily_life
-1226770d,كنا نستمع إلى الأغاني العربية الجميلة.,We used to listen to beautiful Arabic songs.,msa,culture
-5a752458,كنا نستمع إلى ترتيل القرآن الكريم.,We used to listen to the recitation of the Holy Qur'an.,msa,culture
-5a2eede4,كنا نشاهد الطواف حول الكعبة.,We used to watch the circumambulation around the Kaaba.,msa,culture
-612cc24a,وعبر كل ذلك، كنت أستمع إلى أصوات اللغة.,"Through all of that, I was listening to the sounds of the language.",msa,language
-36443844,لم أفهم شيئًا، لكن أذني اعتادت على أصوات اللغة.,"I didn't understand anything, but my ears became accustomed to the sounds of the language.",msa,language
-c0b82cea,منذ الولادة وخلال طفولتي، كنت أتحدث الإنجليزية.,"Since birth and throughout my childhood, I spoke English.",msa,language
-2bc7339a,وبسبب أن والدتي كانت إنجليزية، كنا نتحدث الإنجليزية في المنزل.,"Because my mother was English, we spoke English at home.",msa,language
-73cf3502,ولذلك لم أتعلم اللغة العربية حتى الآن.,Therefore I didn't learn Arabic until now.,msa,language
-7bcad6b2,مَوْضُوعُ هٰذَا الْمَشْرُوعِ عَنِّي.,The topic of this project is about me.,msa,work
-0cd4b4a2,يَجِبُ أَنْ أَتَحَدَّثَ عَنْ نَفْسِي.,I have to talk about myself.,msa,work
-5a51c938,إِنَّهَا قِصَّةُ حَيَاتِي.,It's the story of my life.,msa,people
-ef52c2e4,مُنْذُ الطُّفُولَةِ، كَانَ لَدَيَّ فُضُولٌ حَوْلَ الثَّقَافَةِ الْعَرَبِيَّةِ.,"Since childhood, I was curious about Arabic culture.",msa,culture
-3c1e8c62,كَانَ لَدَيَّ فُضُولٌ بِسَبَبِ أَصْلِ وَالِدِي.,I was curious because of my father's background.,msa,culture
-d3793383,وَالِدِي عِرَاقِيٌّ.,My father is Iraqi.,msa,family
-8b63d9e5,كُنْتُ أَسْمَعُ اللُّغَةَ الْعَرَبِيَّةَ مِنْ وَالِدِي.,I used to hear the Arabic language from my father.,msa,language
-4fadf750,كَانَ يَسْتَمِعُ إِلَى تِلَاوَةِ الْقُرْآنِ الْكَرِيمِ.,He used to listen to Qur'an recitation.,msa,culture
-8b40f87b,كَانَ يُشَاهِدُ الْأَخْبَارَ بِاللُّغَةِ الْعَرَبِيَّةِ.,He used to watch the Arabic news.,msa,daily_life
-9bfb02a2,كُنْتُ أَسْمَعُهُ عِنْدَمَا كَانَ يَتَحَدَّثُ مَعَ أَقَارِبِنَا عَبْرَ الْهَاتِفِ.,I used to hear him when he spoke to our relatives on the phone.,msa,family
-25926932,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً.,I used to ask him many questions.,msa,family
-19c9edb0,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً عَنِ الدِّينِ.,I asked him many questions about religion.,msa,culture
-a844e371,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً عَنِ الثَّقَافَةِ الْعَرَبِيَّةِ.,I asked him many questions about Arab culture.,msa,culture
-eb912cca,كُنْتُ أَحْضُرُ مَدْرَسَةً مَسِيحِيَّةً.,I attended a Christian school.,msa,culture
-7c0b4dbf,وَفِيهَا كُنَّا نَتَعَلَّمُ عَنْ عِيسَى عَلَيْهِ السَّلَامُ.,There we learned about Jesus.,msa,culture
-c1783d10,هل يمكننا أن نناقش هذا؟,Can we discuss this?,msa,work
-3a611f13,هل يمكننا أن نناقش هذا الموضوع؟,Can we discuss this topic?,msa,work
-69fdaee1,دعنا نُكْمِل.,Let's continue.,msa,work
-6b9fe3b8,كَرِّرِ السُّؤالَ.,Repeat the question.,msa,work
-66ec5fd4,أَعِدِ السُّؤالَ مَرَّةً أُخْرَى.,Repeat the question again.,msa,work
-12641d83,نصفُ عائلتي إنجليزي، والنصفُ الآخر عراقي.,Half of my family is English and the other half is Iraqi.,msa,family
-5c32ad9a,جاء والدي إلى بريطانيا منذ فترةٍ طويلةٍ.,He came to Britain a long time ago.,msa,family
-7fd1b875,جاء ليدرس الطِّبَّ.,He came to study medicine.,msa,work
-bb9a2f83,أصبح طبيبًا.,He became a doctor.,msa,work
-0b8a8aa0,أصبح طبيبًا رائعًا.,He became an excellent doctor.,msa,work
-9ecf1eef,لم يُخَطِّطْ لِلْبَقاءِ في بريطانيا.,He didn't plan to stay in Britain.,msa,family
-772ea962,أراد أن يعود.,He wanted to return.,msa,family
-a525bbf0,أراد أن يعود إلى بلده.,He wanted to return to his home country.,msa,family
-7b4d6263,تَقابَلا في المُستشفى.,They met in the hospital.,msa,family
-c57a84e7,تَعارَفا.,They got to know each other.,msa,family
-ee38578c,وَقَعا في الحُبِّ.,They fell in love.,msa,family
-7542c9df,تعارفا ثم وقعَا في الحُبِّ.,They got to know each other and fell in love.,msa,family
-4ed0e790,نُسِجَ الحُبُّ بينهما.,Love was woven between them.,msa,family
-3c5d27fd,جمعَ القدرُ بينهما.,Fate brought them together.,msa,family
-0bdcd22f,شاءَ القدرُ أن يلتقيا.,Fate willed that they should meet.,msa,family
-99b73ab5,بدأت قصةُ حُبِّهما في المُستشفى.,Their love story began in the hospital.,msa,family
-6ba07753,أَوَدُّ أَنْ أَتَحَدَّثَ عَنْ مَوْضُوعِ الدَّرْسِ الماضِي.,I would like to talk about the topic from the last lesson.,msa,work
-e83d600e,أَخَذَنِي إِلَى مَنْزِلِ صَدِيقِهِ.,He took me to his friend's house.,msa,people
-6815ed53,طِفْلَا هٰذَا الرَّجُلِ وُلِدَا فِي المَمْلَكَةِ المُتَّحِدَةِ، مِثْلِي.,"This man's two children were born in the United Kingdom, like me.",msa,family
-199a069c,وَالِدَتُهُمَا إِنْجِلِيزِيَّةٌ، وَوَالِدُهُمَا مِنَ الشَّرْقِ الأَوْسَطِ.,"Their mother is English, and their father is from the Middle East.",msa,family
-26a175bf,أَرَادَ وَالِدُهُمَا أَنْ يُعَلِّمَهُمَا اللُّغَةَ العَرَبِيَّةَ وَالثَّقَافَةَ العَرَبِيَّةَ.,Their father wanted to teach them the Arabic language and Arab culture.,msa,culture
-2114e53b,جَاءَ رَجُلٌ مُتَدَيِّنٌ.,A devout man came.,msa,culture
-8c2ed3f5,أَعْطَانَا دَرْسًا بِالعَرَبِيَّةِ.,He gave us a lesson in Arabic.,msa,language
-1745b72b,كَانَ يُعَلِّمُنَا أَسْمَاءَ أَجْزَاءِ الجِسْمِ.,He was teaching us the names of the parts of the body.,msa,health
-f61a9511,كَانَ يَلْبَسُ مَلَابِسَ سَوْدَاءَ فَقَطْ، وَكَانَتْ لَهُ لِحْيَةٌ كَبِيرَةٌ.,"He wore only black clothes, and he had a big beard.",msa,people
-a6d34ca1,شَعَرْتُ بِالخَوْفِ مِنْهُ.,I felt afraid of him.,msa,emotions
-c7dcc482,قُلْتُ لِوَالِدِي: لَا أُرِيدُ أَنْ أَتَعَلَّمَ العَرَبِيَّةَ.,I said to my father: I don't want to learn Arabic.,msa,language
-46796019,لَدَيَّ مَا يَكْفِينِي مِنَ الدُّرُوسِ.,I've had enough lessons.,msa,work
-397e2769,لَدَيَّ مَا يَكْفِينِي مِنَ الدِّرَاسَةِ.,I've had enough studying.,msa,work
-4f8e8e5b,الفُرَصُ وَالإِمْكانِيّاتُ لَمْ تَكُنْ مُتاحَةً أَوْ مُتَوَفِّرَةً كَما الآنَ.,The opportunities and possibilities weren't available as they are now.,msa,daily_life
-73baf633,تَطَوَّرَتِ التِّكْنولوجْيا كَثيرًا في آخِرِ ثَلاثينَ سَنَةً.,Technology has developed a lot in the last thirty years.,msa,daily_life
-ce185113,اَلرَّقَمُ المَطْلوبُ حالِيًّا لَيْسَ مُتاحًا.,The number you have dialled is currently unavailable.,msa,daily_life
-7fdd1445,هَلْ هذا الهاتِفُ مُتَوَفِّرٌ في الأَسْواقِ؟,Is this phone available in the shops?,msa,daily_life
-760b3940,هَلْ أَنْتَ مُتَفَرِّغٌ؟,Are you free / available (as a person)?,msa,daily_life
-255895eb,منذ فترةٍ طويلةٍ,A long time ago,msa,family
-46acfda6,جَلَسَتْ مَعَنا امْرَأَةٌ أوكْرانِيَّةٌ في بَيْتِنا.,A Ukrainian woman stayed with us in our house.,msa,people
-b2d79dfe,كانَ عُمْري سِتًّا وَعِشْرينَ سَنَةً.,I was twenty-six years old.,msa,people
-2a925a96,حَصَلْنا عَلى التَّأْشيرَةِ.,We got the visa.,msa,travel
-7f481c16,سافَرْنا بَرًّا مِنَ الأُرْدُنِّ إِلى العِراقِ.,We travelled overland from Jordan to Iraq.,msa,travel
-5c2255ff,كانَتْ رِحْلَةً مُتْعِبَةً لكِنَّنا كُنّا مُتَحَمِّسَيْنِ.,"It was a tiring journey, but we were excited.",msa,travel
-e819ec85,لَمْ نَسْتَطِعْ أَنْ نُسافِرَ بِالطّائِرَةِ.,We couldn't travel by plane.,msa,travel
-94ec24fe,كانَ يَجِبُ أَنْ نَذْهَبَ إِلى الأُرْدُنِّ.,We had to go to Jordan.,msa,travel
-4fb31b16,في طفولتي,In my childhood,msa,family
-eb7da4a7,خلال طفولتي,Throughout my childhood,msa,family
-beb8aa6e,منذ الولادة,Since birth,msa,family
-1545c605,ذَاتَ يَوْمٍ سَأَلْتُهُ...,One day I asked him...,msa,family
-b618faeb,أَجَابَنِي وَقَالَ...,He answered me and said...,msa,family
-867d0ccb,منذ طفولتي,Since my childhood,msa,family
-315752a0,كانَ أَفْرادُ العائِلَةِ يَأْتونَ وَيَذْهَبونَ كُلَّ يَوْمٍ لِلزِّيارَةِ.,Family members would come and go every day to visit.,msa,family
-780a4683,لَدَيْنا الكَثيرُ مِنْ أَبْناءِ العَمِّ وَبَناتِ العَمِّ.,We have lots of cousins.,msa,family
-f1605e6b,سَكَنّا في بَيْتِ جَدَّتي رَحِمَها اللهُ.,"We stayed in my grandmother's house, God rest her soul.",msa,family
-23e47ce1,العائِلَةُ العَرَبِيَّةُ كَبيرَةٌ جِدًّا.,The Arab family is very big.,msa,family
-dad37d09,سَأَلْتُ والِدي لكِنَّهُ كانَ مَشْغولًا.,"I asked my father, but he was busy.",msa,family
-2b1b7d00,شَعَرْتُ أَنَّني جُزْءٌ مِنْ شَيْءٍ كَبيرٍ.,I felt I was part of something big.,msa,emotions
-5478c10f,كُنّا مُتَحَمِّسَيْنِ، أَنا وَأَخي.,"We were excited, my brother and I.",msa,emotions
-f2aa93b7,كانَتْ صَدْمَةً ثَقافِيَّةً لي.,It was a culture shock for me.,msa,emotions
-bb9a65aa,عِنْدَمَا نَزَلَ الْقُرْآنُ...,When the Qur'an was revealed...,msa,culture
-51b31723,وَلِذٰلِكَ لَحْمُ الْخِنْزِيرِ مُحَرَّمٌ فِي الْقُرْآنِ.,"Therefore, pork is forbidden in the Qur'an.",msa,culture
-eeda8d1f,فِي الْإِنْجِيلِ يُقَالُ...,In the Gospel it says...,msa,culture
-77d5a918,رَحِمَها اللهُ.,God rest her soul.,msa,culture
-35f381b5,تَخْتَلِفُ عَنْ إِنْجِلْتِرا.,It's different from England.,msa,culture
-9726db55,كَانَ هُنَاكَ مَرَضٌ بَيْنَ الْخَنَازِيرِ.,At that time there was disease among pigs.,msa,health
-5ac0c8c6,دَعَتْهُ الحُكومَةُ العِراقِيَّةُ إِلى مُؤْتَمَرٍ.,The Iraqi government invited him to a conference.,msa,work
-78e40c10,لَمْ أَعْرِفْ نُقْطَةَ البِدايَةِ.,I didn't know the starting point.,msa,language
-cbe268a0,لَمْ أَسْتَطِعْ أَنْ أَبْدَأَ بِتَعَلُّمِ اللُّغَةِ.,I couldn't begin learning the language.,msa,language
-58d8e762,عادَتْ لِيَ الرَّغْبَةُ مُجَدَّدًا.,The desire came back to me again.,msa,language
-d9164300,كان لديَّ اهتمامٌ بـ...,I have been interested in...,msa,language
-429cbb0e,كان لديَّ فضولٌ حول...,I was curious about...,msa,language
-c837c0c1,رَغْبَتي في تَعَلُّمِ العَرَبِيَّةِ بَدَأَتْ تَتَلاشى.,My desire to learn Arabic began to fade.,msa,language
-2ac7ae2b,حاوَلْتُ أَنْ أَسْتَخْدِمَها.,I tried to use them.,msa,language
-1dcba544,بَعْضُهُمْ لَمْ يَسْتَطِعْ أَنْ يَتَحَدَّثَ بِالإِنْجْليزِيَّةِ.,Some of them couldn't speak English.,msa,language
-173b2f3f,لَمْ أَعْرِفْ مِنْ أَيْنَ أَبْدَأُ.,I didn't know where to begin.,msa,language
-15bf5d1a,عِنْدَما رَجَعْنا لَمْ أَجِدْ طَريقًا لِتَعَلُّمِ اللُّغَةِ.,"When we returned, I didn't find a way to learn the language.",msa,language
-8807647d,اللُّغَةُ العَرَبِيَّةُ مُخْتَلِفَةٌ جِدًّا عَنِ اللُّغاتِ الأورُوبِّيَّةِ.,Arabic is very different from European languages.,msa,language
-14f92d1d,اِحْتَجْتُ إِلى مُساعَدَةٍ.,I needed help.,msa,emotions
-af7b5b9c,إِذا اسْتَطَعْتَ أَنْ تَتَعَلَّمَ لُغَةً أَجْنَبِيَّةً مِثْلَ الرّوسِيَّةِ، فَلِمَ لا تَتَعَلَّمُ لُغَتَكَ الأُمَّ؟,"If you could learn a foreign language like Russian, why not learn your mother tongue?",msa,language
-46523188,اِسْتَصْعَبْتُ تَعَلُّمَ العَرَبِيَّةِ وَظَنَنْتُهُ شَيْئًا مُسْتَحيلًا,I found learning Arabic difficult and thought it impossible,msa,language
+id,arabic,english,register,concept_tag,priority
+0dc7e80b,السلام عليكم,Hello / Peace be upon you,egyptian,greetings,normal
+d984ee6d,وعليكم السلام,And upon you peace,egyptian,greetings,normal
+414b5835,صباح الخير,Good morning,egyptian,greetings,normal
+b5493e06,صباح النور,Good morning (reply),egyptian,greetings,normal
+b9ad361d,مساء الخير,Good evening,egyptian,greetings,normal
+cf69f1cf,مساء النور,Good evening (reply),egyptian,greetings,normal
+1a5eadb2,إزيك؟,How are you? (to a man),egyptian,greetings,normal
+a97f1e17,كويس، الحمد لله,"I'm fine, thanks be to God",egyptian,greetings,normal
+913e08ca,اسمك إيه؟,What's your name?,egyptian,greetings,normal
+54530d14,اسمي داوود,My name is David,egyptian,greetings,normal
+cc5ae71e,تشرفنا,Nice to meet you,egyptian,greetings,normal
+24083ab3,أهلاً وسهلاً,Welcome,egyptian,greetings,normal
+34ae8e09,أهلاً بيك,Welcome (reply),egyptian,greetings,normal
+4005bc81,إنت من فين؟,Where are you from?,egyptian,greetings,normal
+79c5d3bc,أنا من إنجلترا,I'm from England,egyptian,greetings,normal
+425b2a7e,أبويا عراقي,My father is Iraqi,egyptian,greetings,normal
+fed92bd2,بتكلم عربي شوية,I speak a little Arabic,egyptian,greetings,normal
+e3ee768f,بتعلم عربي,I'm learning Arabic,egyptian,greetings,normal
+cce0e2b4,اتكلم ببطء لو سمحت,Please speak slowly,egyptian,greetings,normal
+0916501f,عندك عيلة؟,Do you have family?,egyptian,smalltalk,normal
+869866d8,إنت متجوز؟,Are you married?,egyptian,smalltalk,normal
+a2d5c6e6,عندك كام ولد؟,How many children do you have?,egyptian,smalltalk,normal
+bd6a1d52,عندك كام سنة؟,How old are you?,egyptian,smalltalk,normal
+57966a8d,بتشتغل إيه؟,What work do you do?,egyptian,smalltalk,normal
+0f7bbe67,بشتغل في الكمبيوتر,I work in computers,egyptian,smalltalk,normal
+a22dfc22,بحب مصر أوي,I like Egypt very much,egyptian,smalltalk,normal
+7e7af097,الجو جميل,The weather is beautiful,egyptian,smalltalk,normal
+f0f1d18c,الأكل هنا لذيذ أوي,The food here is delicious,egyptian,smalltalk,normal
+e788adff,أنا هنا في إجازة,I'm here on holiday,egyptian,smalltalk,normal
+6466fdde,مصر جميلة أوي,Egypt is very beautiful,egyptian,smalltalk,normal
+e400f031,الناس هنا طيبين أوي,The people here are very kind,egyptian,smalltalk,normal
+dfd56081,أنا مبسوط إني هنا,I'm very happy to be here,egyptian,smalltalk,normal
+1e532702,إن شاء الله نتقابل تاني,God willing we will meet again,egyptian,smalltalk,normal
+a0ac96fe,مع السلامة,Goodbye,egyptian,smalltalk,normal
+5655533c,عندي حجز لاتنين,I have a reservation for two,egyptian,dining,normal
+d436c023,ممكن نقعد برة؟,Can we sit outside?,egyptian,dining,normal
+cbc468e8,ممكن نقعد جوه؟,Can we sit inside?,egyptian,dining,normal
+0198f74f,اتفضل,Please / Come through / Here you go,egyptian,dining,normal
+154efb27,طبعاً,Of course,egyptian,dining,normal
+5fdfcfcc,عايزين تشربوا إيه؟,What would you like to drink?,egyptian,dining,normal
+18987cf1,ممكن أشوف المنيو الأول؟,Can I see the menu first?,egyptian,dining,normal
+9b6071bf,شاي بلبن، بدون سكر,"Tea with milk, no sugar",egyptian,dining,normal
+8432d5ba,قهوة بشوية لبن,Coffee with a little milk,egyptian,dining,normal
+f1adb3c7,بدون ولا حاجة,Without anything / Nothing at all,egyptian,dining,normal
+5e44ba3d,والولاد؟,And the children?,egyptian,dining,normal
+e9a050bb,عصير برتقال,Orange juice,egyptian,dining,normal
+4cf4f5b8,حاضر,Sure / Right away,egyptian,dining,normal
+b1c2ca9e,عايزين تاكلوا حاجة؟,Would you like anything to eat?,egyptian,dining,normal
+c6e388f2,الكيك بتاعنا تحفة,Our cake is excellent,egyptian,dining,normal
+feb87172,السندوتشات كمان كويسة,The sandwiches are good too,egyptian,dining,normal
+923639d8,هاخد الكيك,I'll have the cake,egyptian,dining,normal
+e7b7abc7,هي هتاخد زيي,She'll have the same as me,egyptian,dining,normal
+e671d4e6,أيوه، أمر حضرتك؟,"Yes, what can I do for you?",egyptian,dining,normal
+dec6d152,ممكن شوية مية؟,Some water please,egyptian,dining,normal
+3f55e0b7,دي لذيذة أوي,That was really delicious,egyptian,dining,normal
+36d2359b,الأكل عجبكم؟,Did you enjoy the food?,egyptian,dining,normal
+6850969b,الأجواء هنا حلوة,The atmosphere here is lovely,egyptian,dining,normal
+cfa7c7cc,أنا بستمتع أوي,I'm really enjoying it,egyptian,dining,normal
+78179dc8,الحساب مية وخمسين جنيه,The bill is 150 pounds,egyptian,dining,normal
+379d6ff1,ممكن أدفع بكارت؟,Can I pay by card?,egyptian,dining,normal
+05f166f1,آسف، كاش بس,"Sorry, cash only",egyptian,dining,normal
+75490afa,خلي الباقي,Keep the change,egyptian,dining,normal
+cbfedbf6,هنرجع أكيد,We'll definitely be back,egyptian,dining,normal
+4badc4e9,بكام ده؟,How much does this cost?,egyptian,money,normal
+3a8ae052,بكام كله؟,How much does it all cost?,egyptian,money,normal
+8bf144ef,ده غالي أوي,That's too expensive,egyptian,money,normal
+d2fbeba4,تقدر تدي سعر أحسن؟,Can you give me a better price?,egyptian,money,normal
+ab6aa2e3,أحسن سعر إيه؟,What's the best price?,egyptian,money,normal
+992be3aa,هدي خمسين جنيه,I'll give you fifty pounds,egyptian,money,normal
+646312ac,عندك فكة؟,Do you have change?,egyptian,money,normal
+7d68f58a,أهلاً، تعال شوف,"Welcome, come in and look",egyptian,shopping,normal
+b02d39dd,بتدور على إيه؟,What are you looking for?,egyptian,shopping,normal
+3b5d739c,بس بتفرج,I'm just looking,egyptian,shopping,normal
+75ad9b66,اتفرج، مفيش مشكلة,"Have a look, no problem",egyptian,shopping,normal
+d06560c6,وده؟,And this one?,egyptian,shopping,normal
+515d18fc,ده بميتين جنيه,This one is two hundred pounds,egyptian,shopping,normal
+54ab0a45,ده غالي جداً,That's very expensive,egyptian,shopping,normal
+ba2368ad,لا، ده سعر كويس,"No, this is a good price",egyptian,shopping,normal
+de6201c3,ديني سعر كويس وهاخده,Give me a good price and I'll buy it,egyptian,shopping,normal
+ee26952c,قول سعرك,What's your price?,egyptian,shopping,normal
+f8be46b5,هدي مية جنيه,I'll give you one hundred,egyptian,shopping,normal
+63d8c3c5,لا، ده قليل أوي,"No, that's too low",egyptian,shopping,normal
+47e31933,هديك سعر خاص، مية وخمسين,"I'll give you a special price, one fifty",egyptian,shopping,normal
+25a384f5,شفته أرخص هناك,I saw it cheaper over there,egyptian,shopping,normal
+d0db8559,ده جودة أحسن,This is better quality,egyptian,shopping,normal
+375a5c9f,آخر كلام مية جنيه,My final offer is one hundred pounds,egyptian,shopping,normal
+34b68278,تمام، ماشي,"OK, agreed",egyptian,shopping,normal
+fcf26a07,يلا نتفق على مية وخمسين,OK let's agree on one fifty,egyptian,shopping,normal
+1fb0ad73,ده جلد أصلي؟,Is this real leather?,egyptian,shopping,normal
+d74fba4e,أيوه، مية في المية أصلي,"Yes, one hundred percent genuine",egyptian,shopping,normal
+12f6ecd5,عندك مقاس أصغر؟,Do you have a smaller size?,egyptian,shopping,normal
+151c6d85,عندك مقاس أكبر؟,Do you have a bigger size?,egyptian,shopping,normal
+27291b06,عندك لون تاني؟,Do you have another colour?,egyptian,shopping,normal
+b01ca302,هشوفلك,I'll check for you,egyptian,shopping,normal
+7733c98b,ممكن أجرب؟,Can I try it?,egyptian,shopping,normal
+40043aa4,ده باظ,This is broken,egyptian,shopping,normal
+e46ad581,هجيبلك واحد تاني,I'll get you another one,egyptian,shopping,normal
+cee3e2e3,تمام، هاخده,OK I'll take it,egyptian,shopping,normal
+f7e4c813,هاخد اتنين، ديني خصم,"I'll buy two, give me a discount",egyptian,shopping,normal
+5d634ee7,تمام، للاتنين هديك سعر كويس,"OK, for two I'll give you a good price",egyptian,shopping,normal
+5b308065,مش عايزه,I don't want it,egyptian,shopping,normal
+3f6563f0,هرجع بعدين,I'll come back later,egyptian,shopping,normal
+2c0b567e,تمام، إنت عارف مكاني,"OK, you know where to find me",egyptian,shopping,normal
+9149e5a7,عايز تاكسي,I want a taxi,egyptian,taxis,normal
+67c8aecc,رايح فين؟,Where are you going?,egyptian,taxis,normal
+985ac074,بكام للفندق؟,How much to the hotel?,egyptian,taxis,normal
+06d72372,بكام للسوق؟,How much to the market?,egyptian,taxis,normal
+d9f07f30,بكام للمطار؟,How much to the airport?,egyptian,taxis,normal
+a073818b,خمسين جنيه,Fifty pounds,egyptian,taxis,normal
+ad28f914,ده غالي أوي، هدي تلاتين,"That's too expensive, I'll give you thirty",egyptian,taxis,normal
+6a1bb3a7,لا، أربعين آخر حاجة,"No, forty is the lowest",egyptian,taxis,normal
+b6b8ddea,تمام، اتفقنا,OK agreed,egyptian,taxis,normal
+0f40721d,وديني على العنوان ده لو سمحت,Please take me to this address,egyptian,taxis,normal
+3f65d251,تمام، أنا عارفه,"OK, I know it",egyptian,taxis,normal
+1ed78b05,فين بالظبط؟,Where exactly?,egyptian,taxis,normal
+723bba52,لف يمين,Turn right,egyptian,taxis,normal
+e6d68d10,لف شمال,Turn left,egyptian,taxis,normal
+a51751d4,على طول,Go straight,egyptian,taxis,normal
+95f0a2c0,وقف هنا لو سمحت,Stop here please,egyptian,taxis,normal
+9e7c6600,هياخد قد إيه؟,How long will it take?,egyptian,taxis,normal
+56759f16,حوالي عشرين دقيقة,About twenty minutes,egyptian,taxis,normal
+7f95b3c0,في زحمة كتير,There's a lot of traffic,egyptian,taxis,normal
+b4a624df,أنا مستعجل,I'm in a hurry,egyptian,taxis,normal
+0c336f47,متسرعش أوي لو سمحت,Please don't go so fast,egyptian,taxis,normal
+7fb41084,تقدر تستناني؟,Can you wait for me?,egyptian,taxis,normal
+46ccfe58,قد إيه؟,How long?,egyptian,taxis,normal
+21afe7d7,هرجع في عشر دقايق,I'll be back in ten minutes,egyptian,taxis,normal
+a40ae6b5,تمام، هستنى,"OK, I'll wait",egyptian,taxis,normal
+e1825b7e,شكراً، ربنا يخليك,"Thank you, God bless you",egyptian,taxis,normal
+d081a4a8,لو سمحت، فين الفندق؟,"Excuse me, where is the hotel?",egyptian,directions,normal
+ca9ae36f,فين السوق؟,Where is the market?,egyptian,directions,normal
+fb5fef60,فين الشاطئ؟,Where is the beach?,egyptian,directions,normal
+2d7886e7,فين الصيدلية؟,Where is the pharmacy?,egyptian,directions,normal
+da224374,فين الصراف الآلي؟,Where is the ATM?,egyptian,directions,normal
+d28e1b5b,ده بعيد؟,Is it far?,egyptian,directions,normal
+3bb86915,لا، ده قريب,"No, it's close",egyptian,directions,normal
+b32f91f6,أيوه، ده بعيد شوية,"Yes, it's a bit far",egyptian,directions,normal
+dcec82f6,امشي على طول,Go straight ahead,egyptian,directions,normal
+9aa2a55b,وبعدين لف يمين,Then turn right,egyptian,directions,normal
+a499cdb1,وبعدين لف شمال,Then turn left,egyptian,directions,normal
+c22a2410,هتلاقيه على اليمين,It's on the right,egyptian,directions,normal
+3d5662cb,هتلاقيه على الشمال,It's on the left,egyptian,directions,normal
+9ebe6bff,ورا الفندق,It's behind the hotel,egyptian,directions,normal
+27aea229,قدام المطعم,It's in front of the restaurant,egyptian,directions,normal
+a734ed59,جنب الجامع,It's next to the mosque,egyptian,directions,normal
+13d7692f,كام دقيقة مشي؟,How many minutes on foot?,egyptian,directions,normal
+8807b621,حوالي خمس دقايق,About five minutes,egyptian,directions,normal
+03b9c60d,محتاج تاكسي، ده بعيد,"You need a taxi, it's far",egyptian,directions,normal
+89fe5c8e,تقدر تورني على الخريطة؟,Can you show me on the map?,egyptian,directions,normal
+57c81020,تعال، هوريك الطريق,"Come, I'll show you the way",egyptian,directions,normal
+df61dc36,أنا تاهت,I'm lost,egyptian,directions,normal
+69604a34,عايز تروح فين؟,Where do you want to go?,egyptian,directions,normal
+c0d9b161,ترابيزة لاتنين لو سمحت,A table for two please,egyptian,dining,normal
+0012afb0,كام واحد؟,How many people?,egyptian,dining,normal
+3a74e612,جوة ولا برة؟,Inside or outside?,egyptian,dining,normal
+31a86279,برة لو سمحت,Outside please,egyptian,dining,normal
+27314977,اتفضل، اقعد,"Please, sit down",egyptian,dining,normal
+d6df070b,اتفضل، المنيو,Here's the menu,egyptian,dining,normal
+312f51e8,ممكن المنيو؟,Can I have the menu?,egyptian,dining,normal
+1718676c,حضرتك جاهز تطلب؟,Are you ready to order?,egyptian,dining,normal
+0927be03,لسة، دقيقة لو سمحت,"Not yet, give us a minute",egyptian,dining,normal
+18fbb6a5,بتنصح بإيه؟,What do you recommend?,egyptian,dining,normal
+dbe949d1,الفراخ المشوية حلوة أوي,The grilled chicken is very good,egyptian,dining,normal
+0cba7214,طبق النهارده كفتة,Today's special is kofta,egyptian,dining,normal
+ea789138,عايزين تشربوا حاجة؟,Would you like anything to drink?,egyptian,dining,normal
+5f9a7209,مراتي بتفضل أكل نباتي,My wife prefers vegetarian food,egyptian,dining,normal
+0d488586,عندنا سلطات وخضار مشوي,We have salads and grilled vegetables,egyptian,dining,normal
+b53e7023,عندكم كحول؟,Do you have alcohol?,egyptian,dining,normal
+450b1f07,أيوه، عندنا نبيت وبيرة,"Yes, we have wine and beer",egyptian,dining,normal
+541e31ce,هي هتاخد كاس نبيت أبيض,She'll have a glass of white wine,egyptian,dining,normal
+5fcb4e0d,عندي حساسية من المكسرات,I'm allergic to nuts,egyptian,dining,normal
+3d3e9003,مفيش مشكلة، عندنا كتير من غير مكسرات,"No problem, we have plenty without nuts",egyptian,dining,normal
+eb93812c,الأكلة دي إيه؟,What is this dish?,egyptian,dining,normal
+a465ec0e,دي رز مع لحمة مشوية,It's rice with grilled meat,egyptian,dining,normal
+fe26f192,هاخد زيه,I'll have the same as him,egyptian,dining,normal
+036e29e0,حاجة تاني؟,Anything else?,egyptian,dining,normal
+474e6bf2,خلاص كده، شكراً,"That's everything, thanks",egyptian,dining,normal
+91626264,ممكن مية لو سمحت؟,Can I have some water please?,egyptian,dining,normal
+d5e55fb9,مية معدنية لو سمحت، مش من الحنفية,"Bottled water please, not tap",egyptian,dining,normal
+7131632b,من غير تلج لو سمحت,No ice please,egyptian,dining,normal
+c8937c6d,إزازة كبيرة ولا صغيرة؟,Large or small bottle?,egyptian,dining,normal
+675c51b4,كبيرة لو سمحت,Large please,egyptian,dining,normal
+b4adc65d,كله تمام؟,Is everything OK?,egyptian,dining,normal
+a28d6950,ده لذيذ أوي,This is delicious,egyptian,dining,normal
+5a028a45,شكراً، الحمد لله عجبكم,"Thank you, glad you like it",egyptian,dining,normal
+258cc0ef,ده بارد شوية، تسخنه لو سمحت؟,"It's a little cold, can you heat it up?",egyptian,dining,normal
+ab43fa42,إحنا مطلبناش ده,We didn't order this,egyptian,dining,normal
+08954cbd,آسف، هصلحها حالاً,"Sorry, I'll fix it right away",egyptian,dining,normal
+e1bead07,ممكن واحد تاني من ده؟,Can I have another one of these?,egyptian,dining,normal
+abb11ebb,طبعاً، حالاً,"Of course, right away",egyptian,dining,normal
+c7ad988e,الحساب لو سمحت,Can I have the bill please?,egyptian,dining,normal
+6c30f7be,اتفضل الحساب,Here's the bill,egyptian,dining,normal
+64380547,الخدمة داخلة؟,Is service included?,egyptian,dining,normal
+3d91205d,أيوه، الخدمة داخلة,"Yes, service is included",egyptian,dining,normal
+c723f8b1,لا، الخدمة مش داخلة,"No, service is not included",egyptian,dining,normal
+00e59738,شكراً، أهلاً بيكم تاني,"Thank you, come back again",egyptian,dining,normal
+95eb7d12,عايز تشتري حاجة؟,Want to buy something?,egyptian,beach_and_vendors,normal
+65131cce,عندي أسعار كويسة ليك,I have good prices for you,egyptian,beach_and_vendors,normal
+35b5e8c4,لا شكراً,No thank you,egyptian,beach_and_vendors,normal
+152bb274,مش عايز حاجة,I don't want anything,egyptian,beach_and_vendors,normal
+092ee7c4,يمكن بعدين,Maybe later,egyptian,beach_and_vendors,normal
+8034e4de,عندي واحد خلاص,I already have one,egyptian,beach_and_vendors,normal
+b84afe6f,بس شوف,Just have a look,egyptian,beach_and_vendors,normal
+96bc307a,سيبني لو سمحت,Please leave me alone,egyptian,beach_and_vendors,normal
+d50062c0,بكام الكرسي؟,How much for a sunbed?,egyptian,beach_and_vendors,normal
+bbeca218,بكام الشمسية؟,How much for an umbrella?,egyptian,beach_and_vendors,normal
+1210dfcc,خمسين جنيه للاتنين,Fifty pounds for both,egyptian,beach_and_vendors,normal
+d2952495,الشاطئ ده خاص؟,Is this beach private?,egyptian,beach_and_vendors,normal
+8e539758,أيوه، لنزلاء الفندق بس,"Yes, for hotel guests only",egyptian,beach_and_vendors,normal
+cb959bc6,لا، ده عام,"No, it's public",egyptian,beach_and_vendors,normal
+094bb5dd,آمن أنزل أعوم هنا؟,Is it safe to swim here?,egyptian,beach_and_vendors,normal
+142a91ce,أيوه، المية هادية,"Yes, the water is calm",egyptian,beach_and_vendors,normal
+dde4dbff,خلي بالك، في تيار,"Be careful, there's a current",egyptian,beach_and_vendors,normal
+63ccfd51,المية عميقة قد إيه؟,How deep is the water?,egyptian,beach_and_vendors,normal
+9b32f267,في منقذ هنا؟,Is there a lifeguard?,egyptian,beach_and_vendors,normal
+c36dd73c,فين أستأجر عدة غطس؟,Where can I hire a snorkel?,egyptian,beach_and_vendors,normal
+4781b20e,هناك عند الاستقبال,Over there by the reception,egyptian,beach_and_vendors,normal
+39138d6c,ممكن أحجز رحلة بالقارب؟,Can I book a boat trip?,egyptian,beach_and_vendors,normal
+90196f6b,أيوه، بيمشي الساعة عشرة,"Yes, it leaves at ten",egyptian,beach_and_vendors,normal
+279320b4,بيمشي إمتى؟,What time does it leave?,egyptian,beach_and_vendors,normal
+739585ef,عايز عصير طازج لو سمحت,I'd like some fresh juice please,egyptian,beach_and_vendors,normal
+f3df94ef,مانجو ولا برتقال؟,Mango or orange?,egyptian,beach_and_vendors,normal
+9cb10088,عندي حجز,I have a reservation,egyptian,hotel,normal
+20626f0a,اسم حضرتك إيه؟,What's your name?,egyptian,hotel,normal
+e1857423,أهلاً بيك، اتفضل المفتاح,"Welcome, here's your key",egyptian,hotel,normal
+6eaa2c58,أوضتك في الدور التالت,Your room is on the third floor,egyptian,hotel,normal
+a31d06d0,الأسانسير هناك,The lift is over there,egyptian,hotel,normal
+daafb3fb,الفطار داخل؟,Is breakfast included?,egyptian,hotel,normal
+016d8802,أيوه، من سبعة لعشرة,"Yes, from seven to ten",egyptian,hotel,normal
+2ac02894,الفطار إمتى؟,What time is breakfast?,egyptian,hotel,normal
+10b8b081,في واي فاي؟,Is there wifi?,egyptian,hotel,normal
+c2498364,أيوه، الباسورد على الكارت,"Yes, the password is on the card",egyptian,hotel,normal
+57bfb0b0,باسورد الواي فاي إيه؟,What is the wifi password?,egyptian,hotel,normal
+785cdbc4,التكييف مش شغال,The air conditioning isn't working,egyptian,hotel,normal
+6026680e,هبعتلك حد يبص عليه,I'll send someone to look at it,egyptian,hotel,normal
+fb2d1c90,المية السخنة مش شغالة,The hot water isn't working,egyptian,hotel,normal
+9d40d06b,آسفين، هنصلحها حالاً,"Sorry, we'll fix it right away",egyptian,hotel,normal
+7297c4a6,ممكن فوط زيادة؟,Can I have more towels?,egyptian,hotel,normal
+333ae2b6,ممكن مخدات زيادة؟,Can I have extra pillows?,egyptian,hotel,normal
+bff0f607,طبعاً، هجيبهم دلوقتي,"Of course, I'll bring them now",egyptian,hotel,normal
+353f00ee,نضف الأوضة لو سمحت,Please clean the room,egyptian,hotel,normal
+65426eca,إمتى يناسبك؟,What time suits you?,egyptian,hotel,normal
+4c9356f6,ممكن توقظني الساعة سبعة؟,Can I have a wake up call at seven?,egyptian,hotel,normal
+df80ad57,مفيش مشكلة,No problem,egyptian,hotel,normal
+09bab8b1,إمتى موعد المغادرة؟,What time is check out?,egyptian,hotel,normal
+0f4269bd,المغادرة الساعة اتناشر,Check out is at twelve,egyptian,hotel,normal
+773e55e3,ممكن أتأخر في المغادرة؟,Can I have a late check out?,egyptian,hotel,normal
+d7d3870e,أيوه، لحد الساعة اتنين، من غير فلوس زيادة,"Yes, until two o'clock, no extra charge",egyptian,hotel,normal
+13047fc0,في فلوس زيادة مية جنيه,There's an extra charge of one hundred pounds,egyptian,hotel,normal
+9cfe4a59,ممكن أسيب شنطتي هنا؟,Can I leave my bags here?,egyptian,hotel,normal
+8c2ad71f,طبعاً، هنسيبهم عند الاستقبال,"Of course, we'll keep them at reception",egyptian,hotel,normal
+5f9e966b,شكراً، الإقامة كانت حلوة أوي,"Thank you, the stay was wonderful",egyptian,hotel,normal
+4f081bc5,شكراً، نتمنى نشوفك تاني,"Thank you, we hope to see you again",egyptian,hotel,normal
+852763a5,عايزين نزور البلد القديمة,We want to visit the old town,egyptian,sightseeing,normal
+71496069,فين السوق القديم؟,Where is the old market?,egyptian,sightseeing,normal
+527f4e8f,في البلد القديمة، هوريك,"It's in the old town, I'll show you",egyptian,sightseeing,normal
+103b2043,مفتوح دلوقتي؟,Is it open now?,egyptian,sightseeing,normal
+fb0ab91b,أيوه، مفتوح كل يوم,"Yes, it's open every day",egyptian,sightseeing,normal
+41ef64c8,بيقفل إمتى؟,What time does it close?,egyptian,sightseeing,normal
+e0d917af,الساعة عشرة بالليل,At ten in the evening,egyptian,sightseeing,normal
+eda3ea5b,فين الجامع؟,Where is the mosque?,egyptian,sightseeing,normal
+e8e5e90e,ممكن ندخل الجامع؟,Can we go inside the mosque?,egyptian,sightseeing,normal
+79552ea3,أيوه، بس لازم تقلع الجزمة,"Yes, but you need to take off your shoes",egyptian,sightseeing,normal
+0e9e8c40,الستات لازم يغطوا شعرهم,Women need to cover their hair,egyptian,sightseeing,normal
+8cbbec6d,عندكم غطاء للرأس ممكن نستعيره؟,Do you have a headscarf we can borrow?,egyptian,sightseeing,normal
+0b4e0423,أيوه، اتفضلي,"Yes, here you go",egyptian,sightseeing,normal
+ef111395,ممكن نصور جوة؟,Is it OK to take photos inside?,egyptian,sightseeing,normal
+1e395dbb,أيوه، مفيش مشكلة,"Yes, no problem",egyptian,sightseeing,normal
+e986b3a0,لا، آسف، التصوير ممنوع,"No, sorry, photos are not allowed",egyptian,sightseeing,normal
+a273e9e3,الجامع ده جميل أوي,This mosque is beautiful,egyptian,sightseeing,normal
+55549572,المكان ده إيه؟,What is this place?,egyptian,sightseeing,normal
+01ec6af0,دي كنيسة قديمة أوي,This is a very old church,egyptian,sightseeing,normal
+6a4ef4ca,عمرها قد إيه؟,How old is it?,egyptian,sightseeing,normal
+7f539a8a,ممكن ندخل؟,Can we go in?,egyptian,sightseeing,normal
+cfc6a84f,أيوه، الدخول مجاني,"Yes, the entrance is free",egyptian,sightseeing,normal
+1626ad40,في رسم دخول، عشرين جنيه,"There's an entrance fee, twenty pounds",egyptian,sightseeing,normal
+54400e1e,أربع تذاكر لو سمحت، اتنين كبار واتنين أطفال,"Four tickets please, two adults and two children",egyptian,sightseeing,normal
+6cd25129,الأطفال تحت عشر سنين ببلاش,Children under ten are free,egyptian,sightseeing,normal
+d26fe16b,في مرشد بيتكلم إنجليزي؟,Is there a guide who speaks English?,egyptian,sightseeing,normal
+65be1368,أيوه، هناك,"Yes, he's over there",egyptian,sightseeing,normal
+54bc8ea3,عايزين نتمشى في البلد القديمة,We want to walk around the old town,egyptian,sightseeing,normal
+91f4b517,خلي بالك في الشوارع الضيقة,Be careful in the narrow streets,egyptian,sightseeing,normal
+502c06ce,تنصحنا بمكان كويس نقعد نشرب شاي؟,Can you recommend a good place to sit and have tea?,egyptian,sightseeing,normal
+c80b325d,في قهوة حلوة على الناصية,There's a nice café around the corner,egyptian,sightseeing,normal
+111e0e7a,عايزين نحجز رحلة بالمركب,We want to book a boat trip,egyptian,sightseeing,normal
+aa51f5a1,أهلاً، عايزين رحلة إيه؟,"Welcome, what kind of trip do you want?",egyptian,sightseeing,normal
+deacbaf0,عايزين نروح غطس,We want to go snorkelling,egyptian,sightseeing,normal
+e28df09e,عندنا رحلة نص يوم أو يوم كامل,We have a half day or full day trip,egyptian,sightseeing,normal
+ef3bbd60,بكام رحلة نص اليوم؟,How much is the half day trip?,egyptian,sightseeing,normal
+2c8d83a5,تلتمية جنيه للواحد,Three hundred pounds per person,egyptian,sightseeing,normal
+d0f2db14,ده غالي، إحنا عيلة أربع أفراد,"That's expensive, we're a family of four",egyptian,sightseeing,normal
+c08bfa54,للعيلة هديكم سعر خاص,For a family I'll give you a special price,egyptian,sightseeing,normal
+039e48fe,سعر العيلة كام؟,What's the family price?,egyptian,sightseeing,normal
+de072f1d,تمنمية ليكم كلكم,Eight hundred for all of you,egyptian,sightseeing,normal
+531aea2e,ممكن سبعمية؟,Can you do seven hundred?,egyptian,sightseeing,normal
+ddce8bf9,تمام، سبعمية وخمسين واتفقنا,"OK, seven fifty and we have a deal",egyptian,sightseeing,normal
+2c82ff86,بتمشي إمتى؟,What time does it leave?,egyptian,sightseeing,normal
+697b3afd,الساعة تسعة الصبح,At nine in the morning,egyptian,sightseeing,normal
+aa5da688,هنرجع إمتى؟,What time do we get back?,egyptian,sightseeing,normal
+d61756aa,حوالي تلاتة بعد الضهر,Around three in the afternoon,egyptian,sightseeing,normal
+8482a33a,الغداء داخل؟,Is lunch included?,egyptian,sightseeing,normal
+5443f5da,أيوه، سمك ورز على المركب,"Yes, fish and rice on the boat",egyptian,sightseeing,normal
+c8fe353b,عدة الغطس داخلة؟,Is the snorkelling equipment included?,egyptian,sightseeing,normal
+bfeed48c,أيوه، كل حاجة داخلة,"Yes, everything is included",egyptian,sightseeing,normal
+d5839e11,في جاكتات نجاة للأطفال؟,Are there life jackets for the children?,egyptian,sightseeing,normal
+087f308d,أيوه، متقلقش,"Yes, don't worry",egyptian,sightseeing,normal
+78c4484c,نقابلك فين؟,Where do we meet you?,egyptian,sightseeing,normal
+e63447f1,عند المارينا، هكون هناك الساعة تمانية ونص,"At the marina, I'll be there at half eight",egyptian,sightseeing,normal
+cf658a59,هنوقف في تلات أماكن,We're going to stop at three places,egyptian,sightseeing,normal
+8a648690,الأطفال يقدروا يعوموا هنا؟,Can the children swim here?,egyptian,sightseeing,normal
+f33b8dc0,أيوه، المية ضحلة وآمنة,"Yes, the water is shallow and safe",egyptian,sightseeing,normal
+5937ab0b,هنقعد قد إيه في كل مكان؟,How long do we stay at each place?,egyptian,sightseeing,normal
+6e647de0,حوالي خمسة وأربعين دقيقة,About forty-five minutes,egyptian,sightseeing,normal
+07c802d0,ده جميل أوي، المية صافية,"This is amazing, the water is so clear",egyptian,sightseeing,normal
+e76f84f6,استنى لما تشوف المرجان,Wait till you see the coral,egyptian,sightseeing,normal
+9d57ff13,أَتَّبِعُ نِظامًا غِذائِيًّا صِحِّيًّا مُنْذُ شَهْرٍ.,I have been following a healthy diet for a month.,msa,health,normal
+2c7af453,أَتَجَنَّبُ نَوْعًا مُعَيَّنًا مِنَ الطَّعامِ الدَّسِمِ.,I avoid a specific kind of fatty food.,msa,food,normal
+238a5a6e,فِي الماضِي كُنْتُ أَلْعَبُ كُرَةَ القَدَمِ كَثيرًا.,In the past I used to play football a lot.,msa,leisure,normal
+0dfae1a6,كَثَّرْتُ مِنْ أَكْلِ الخُضارِ بَعْدَ مَرَضي.,I increased my vegetable intake after my illness.,msa,health,normal
+adba8560,قَلَّلْتُ مِنَ السُّكَّرِ لِأُحافِظَ عَلى صِحَّتي.,I reduced sugar to keep my health.,msa,health,normal
+637550e0,أُحاوِلُ أَنْ آكُلَ طَعامًا مُتَوازِنًا كُلَّ يَوْمٍ.,I try to eat balanced food every day.,msa,health,normal
+2124b08e,أَتَحَكَّمُ بِكَمِّيَّةِ الطَّعامِ الَّتي آكُلُها.,I control the amount of food I eat.,msa,health,normal
+e52b052a,أُحافِظُ عَلى وَزْني بِالرِّياضَةِ وَالطَّعامِ الصِّحِّيِّ.,I maintain my weight with exercise and healthy food.,msa,health,normal
+6f6a7951,أَنا مُتَعَوِّدٌ عَلى الاسْتيقاظِ مُبَكِّرًا.,I'm used to waking up early.,msa,daily_life,normal
+c0a71bb7,أَنا أَمْزَحُ مَعَكَ فَقَطْ.,I'm only joking with you.,msa,emotions,normal
+33d44025,لا أَشْرَبُ الكُحُولَ لِأَسْبابٍ صِحِّيَّةٍ وَدينِيَّةٍ.,I don't drink alcohol for health and religious reasons.,msa,culture,normal
+86a7f5ba,حاوَلْتُ أَنْ أَتَّبِعَ نِظامًا غِذائِيًّا,I tried to follow a diet,msa,health,normal
+fd68ff71,أُقَلِّلُ مِنَ المِلْحِ في طَعامي هَذِهِ الأَيّامَ.,I'm cutting down on salt in my food these days.,msa,health,normal
+7e68d5a9,عادَةً آكُلُ غَداءً خَفيفًا.,I usually eat a light lunch.,msa,daily_life,normal
+1f84b6db,أَقَمْتُ في الفُنْدُقِ ثَلاثَةَ أَيّامٍ فَقَطْ.,I stayed at the hotel for only three days.,msa,travel,normal
+97e35ed5,الحافِلاتُ هُنا أَرْخَصُ مِنْ سَيّاراتِ الأُجْرَةِ.,The buses here are cheaper than taxis.,msa,travel,normal
+ba0e0671,القِطاراتُ السَّريعَةُ تَرْبِطُ المُدُنَ الكَبيرَةَ.,Fast trains connect the big cities.,msa,travel,normal
+1abde1a0,جَميعُ وَسائِلِ المُواصَلاتِ,All means of transportation,msa,travel,normal
+34acaf9a,احْتَجْتُ إِلى تَأْشيرَةٍ لِدُخولِ البِلادِ.,I needed a visa to enter the country.,msa,travel,normal
+1d694e10,حَرَكَةُ التَّنَقُّلِ مُقَيَّدَةٌ في تِلْكَ المِنْطَقَةِ.,Movement is restricted in that area.,msa,travel,normal
+2eee4b5c,سَأُريكَ أَجْمَلَ الأَماكِنِ في المَدينَةِ غَدًا.,I will show you the most beautiful places in the city tomorrow.,msa,travel,normal
+f907ff65,ذَهَبْنا إِلى الشّاطِئِ في عُطْلَةِ نِهايَةِ الأُسْبوعِ.,We went to the beach over the weekend.,msa,leisure,normal
+d34c5f31,الدَّليلُ جَعَلَنا نَرى تاريخَ المَدينَةِ الحَقيقِيَّ.,The guide made us see the city's real history.,msa,travel,normal
+88ab694d,أَعْطَيْناهُ بَقْشيشًا لِأَنَّهُ ساعَدَنا كَثيرًا.,We gave him a tip because he helped us a lot.,msa,travel,normal
+1eb26e5e,أُفَضِّلُ الاسْتِعانَةَ بِمُرْشِدٍ سِياحِيٍّ مَحَلِّيٍّ.,I prefer to use a local tour guide.,msa,travel,normal
+1ba28958,اخْتَرْنا وَسيلَةَ نَقْلٍ اقْتِصادِيَّةً وَمُريحَةً.,We chose an economical and comfortable means of transport.,msa,travel,normal
+d1c408b7,تَرَكَتِ المَدينَةُ انْطِباعًا جَميلًا في نَفْسي.,The city left a beautiful impression on me.,msa,travel,normal
+c8dda121,مِعْمارُ المَساجِدِ القَديمَةِ يُبْهِرُ كُلَّ زائِرٍ.,The architecture of old mosques amazes every visitor.,msa,culture,normal
+fcddbc41,قَريبونَ مِنَ القَلْبِ,Close to the heart,msa,emotions,normal
+d3375e29,أَحْتاجُ كوبَ قَهْوَةٍ في الصَّباحِ لِأَسْتَيْقِظَ.,I need a cup of coffee in the morning to wake up.,msa,daily_life,normal
+a9b681c0,هَذِهِ الحَديقَةُ تُشْبِهُ الجَنَّةَ في الرَّبيعِ.,This garden looks like paradise in spring.,msa,culture,normal
+d9c0798b,أَنا صاحِبُ شَرِكَةٍ صَغيرَةٍ لِلْبَرْمَجَةِ.,I am the owner of a small software company.,msa,work,normal
+97b82ad5,مَنْ جَدَّ وَجَدَ,"Whoever strives, succeeds",msa,culture,normal
+aeceb678,مَنْ سارَ عَلى الدَّرْبِ وَصَلَ,Whoever follows the path will arrive,msa,culture,normal
+9fb0a445,شَعَرْتُ أَنَّني ضائِعٌ في شَوارِعِ المَدينَةِ.,I felt lost in the city's streets.,msa,travel,normal
+25b56e15,أُفَضِّلُ السَّمَكَ الطّازَجَ عَلى المُجَمَّدِ.,I prefer fresh fish over frozen.,msa,food,normal
+be3c9ef5,نادِرًا ما أُشاهِدُ التِّلْفازَ هَذِهِ الأَيّامَ.,I rarely watch TV these days.,msa,daily_life,normal
+1d4afac4,جَرَّبْتُ المُحارَ بِضْعَ مَرّاتٍ.,I've tried oysters a few times.,msa,food,normal
+972ce0a7,تَحْتَوي عَلى البُروتينِ,Contains protein,msa,food,normal
+6a62b37c,غَنِيَّةٌ بِالدُّهونِ الصِّحِّيَّةِ,Rich in healthy fats,msa,food,normal
+bfddc738,أَخي أَصْغَرُ مِنّي بِثَلاثِ سَنَواتٍ.,My brother is three years younger than me.,msa,family,normal
+7b37353a,والِدي دَرَسَ الطِّبَّ في لَنْدَنَ.,My father studied medicine in London.,msa,family,normal
+4a43fe0b,أَعَدَّتْ أُمّي وَجْبَةً خاصَّةً لِلضُّيوفِ.,My mother prepared a special meal for the guests.,msa,family,normal
+edcce825,أُحِبُّ الكوسا المَحْشِيَّ بِالأَرُزِّ وَاللَّحْمِ.,I love zucchini stuffed with rice and meat.,msa,food,normal
+5fa962f4,طَلَبْنا دَجاجًا مَشْوِيًّا مَعَ الأَرُزِّ.,We ordered grilled chicken with rice.,msa,food,normal
+402856ba,عَصَرْتُ أَرْبَعَ حَبّاتٍ,I squeezed four fruits,msa,food,normal
+8053a9a6,أُحِبُّ القِراءَةَ، خاصَّةً في الشِّتاءِ.,"I love reading, especially in winter.",msa,leisure,normal
+c607733a,اِلْتَقَيْنا في مَطْعَمٍ قَريبٍ لِتَناوُلِ الغَداءِ.,We met at a nearby restaurant for lunch.,msa,food,normal
+37c8ad01,اخْتَرْتُ فيلْمًا كوميدِيًّا لِنُشاهِدَهُ مَعًا.,I chose a comedy film for us to watch together.,msa,leisure,normal
+b5620e06,الجَميعُ حَضَرَ الاجْتِماعَ في الوَقْتِ المُحَدَّدِ.,Everyone attended the meeting on time.,msa,people,normal
+85e812fa,سَأَحْكي لَكَ عَنِ الرِّحْلَةِ بِالتَّفْصيلِ.,I'll tell you about the trip in detail.,msa,travel,normal
+c02fe585,يُحَرَّمُ عَلى المُسْلِمينَ أَكْلُ لَحْمِ الخِنْزيرِ.,Muslims are forbidden to eat pork.,msa,culture,normal
+4bff5304,يَبْدَأُ المَطَرُ عادَةً في كانونَ الأَوَّلِ.,Rain usually starts in December.,msa,leisure,normal
+38e55b1c,الجَوُّ بارِدٌ جِدًّا في كانونَ الثّاني.,The weather is very cold in January.,msa,leisure,normal
+8b8de007,كُنّا أصحاباً مُنْذُ أَيّامِ المَدْرَسَةِ.,We've been friends since school days,msa,people,normal
+b0e5f631,والِدايَ,My parents,msa,family,normal
+cd45e329,الجِبالُ مُحيطَةٌ بِالقَرْيَةِ مِنْ كُلِّ جِهَةٍ.,The mountains surround the village from every side.,msa,leisure,normal
+3af73a41,المَطْعَمُ في الجِهَةِ المُقابِلَةِ لِلْفُنْدُقِ.,The restaurant is on the side opposite the hotel.,msa,travel,normal
+09aba255,نَسْكُنُ جَنوبَ كامبريدج قُرْبَ الطَّريقِ السَّريعِ.,We live to the south of Cambridge near the motorway.,msa,daily_life,normal
+df06676f,شَواطِئُ هَذِهِ الجَزيرَةِ نَظيفَةٌ وَهادِئَةٌ.,This island's beaches are clean and quiet.,msa,leisure,normal
+5ebb274c,الطَّقْسُ دافِئٌ وَمُناسِبٌ لِلتَّنَزُّهِ اليَوْمَ.,The weather is warm and good for a walk today.,msa,leisure,normal
+6b40d619,كانَتِ الرِّحْلَةُ مُمْتِعَةً حَقًّا.,The trip was really enjoyable.,msa,travel,normal
+ade6bd57,المَشْيُ اليَوْمِيُّ مُفيدٌ جِدًّا لِلصِّحَّةِ.,Daily walking is very good for health.,msa,health,normal
+cd569374,عَنْ طَريقِ البَرِّ,By land,msa,travel,normal
+87733188,الخَريفُ أَجْمَلُ الفُصولِ في رَأْيي.,Autumn is the most beautiful of the seasons in my opinion.,msa,leisure,normal
+8ca3e5d4,آسِفٌ عَلى التَّأَخُّرِ، كانَ الزِّحامُ فَظيعًا.,"Sorry I'm late, the traffic was terrible.",msa,travel,normal
+dce73858,تَأْتي الحافِلَةُ كُلَّ نِصْفِ ساعَةٍ تَقْريبًا.,The bus comes roughly every half hour.,msa,travel,normal
+5154a010,الرِّياحُ القادِمَةُ مِنَ البَحْرِ تَجْلِبُ المَطَرَ في بَريطانِيا.,Wind from the sea brings rain in the UK.,msa,leisure,normal
+fdcacd5c,في هَذِهِ المَدينَةِ تَنَوُّعٌ ثَقافِيٌّ كَبيرٌ.,In this city there is great cultural diversity.,msa,culture,normal
+8c4dbaed,مِنَ الضَّروريِّ أَنْ نُنْهِيَ المَشْروعَ هَذا الأُسْبوعَ.,It is necessary to finish the project this week.,msa,work,normal
+3d082d83,وَصَلَني بَريدٌ عاجِلٌ مِنَ المُديرِ صَباحًا.,I received an urgent email from the manager this morning.,msa,work,normal
+18942e49,قُمْ بِالشَّيْءِ المُهِمِّ قَبْلَ الشَّيْءِ العاجِلِ,Do the important thing before the urgent one,msa,work,normal
+da535a82,شَعَرْتُ بِالمَلَلِ في الاجْتِماعِ الطَّويلِ.,I felt bored in the long meeting.,msa,work,normal
+c902a580,يَرْوي جَدّي لَنا قِصَصَ جُحا المُضْحِكَةَ.,My grandfather tells us Juha's funny stories.,msa,family,normal
+91e95b21,تَعَرَّفْنا عَلى سُيّاحٍ مَغْرِبِيِّينَ في الرِّحْلَةِ.,We met Moroccan tourists on the trip.,msa,travel,normal
+b477b5c7,سَأَلونا عَنْ جِنْسِيَّتِنا عِنْدَ الحُدودِ.,They asked about our nationality at the border.,msa,travel,normal
+5385af55,دائِمًا يَسْأَلونَنا مِنْ أَيْنَ نَحْنُ.,They always ask us where we are from.,msa,travel,normal
+77e6a88e,أَزْعَجَني الضَّجيجُ طَوالَ اللَّيْلِ.,The noise annoyed me all night.,msa,emotions,normal
+3f1a6fad,الجيرانُ كانوا مُزْعِجينَ في عُطْلَةِ الأُسْبوعِ.,The neighbors were annoying over the weekend.,msa,daily_life,normal
+8311b210,البائِعونَ في السّوقِ يُنادونَ عَلى بَضائِعِهِمْ.,The sellers in the market call out about their goods.,msa,travel,normal
+39c1ccf0,نادى عَلَيَّ صَديقي مِنْ بَعيدٍ.,My friend called to me from afar.,msa,people,normal
+f6e1295f,أَصْرَرْتُ عَلى دَفْعِ الحِسابِ كامِلاً.,I insisted on paying the whole bill.,msa,people,normal
+9efe2604,اشْتَرَيْتُ تِذْكارًا صَغيرًا لِأُمّي مِنَ السّوقِ.,I bought a small souvenir for my mother from the market.,msa,travel,normal
+69e5c17e,حَصَلْتُ عَلى خَصْمٍ جَيِّدٍ عَلى تَذْكِرَةِ الطّائِرَةِ.,I got a good discount on the plane ticket.,msa,travel,normal
+da0ca99d,في بَريطانِيا عادَةً نَقْضي إِجازَتَنا في الصَّيْفِ.,"In the UK, we usually holiday in summer.",msa,leisure,normal
+d5879b7c,وَصَلْنا إِلى القَرْيَةِ عَبْرَ طَريقٍ جَبَلِيٍّ.,We reached the village through a mountain road.,msa,travel,normal
+f5160acc,سَمِعْتُ صَوْتًا غَريبًا في مُنْتَصَفِ اللَّيْلِ.,I heard a strange sound in the middle of the night.,msa,daily_life,normal
+23de3d47,كانَتْ تَجْرِبَةً مُمَيَّزَةً لَنْ أَنْساها.,It was a special experience I won't forget.,msa,travel,normal
+31c5099c,كانَتِ الأَجْواءُ رائِعَةً في الحَفْلَةِ أَمْسِ.,The atmosphere was wonderful at the party yesterday.,msa,leisure,normal
+2c8a5003,أَشْرَبُ فِنْجانَ قَهْوَةٍ أَوَّلَ شَيْءٍ في الصَّباحِ.,I drink a cup of coffee first thing in the morning.,msa,daily_life,normal
+1f1a1c97,اسْتَقْبَلْنا الضُّيوفَ مَساءَ أَمْسِ.,Yesterday we welcomed guests in the evening.,msa,leisure,normal
+30d9bcd4,اهْرُبْ بِسُرْعَةٍ قَبْلَ أَنْ يَبْدَأَ المَطَرُ!,Run quickly before the rain starts!,msa,leisure,normal
+a7a0eb27,بِطَريقَةٍ ما نَجَحْنا في حَلِّ المُشْكِلَةِ.,Somehow we managed to solve the problem.,msa,work,normal
+86708e03,التَّعَلُّمُ أَسْهَلُ عِنْدَما تَكونُ مُسْتَمْتِعًا.,Learning is easier when you are enjoying it.,msa,emotions,normal
+e34995d6,كانَ الكِتابُ مُمْتِعًا مِنْ أَوَّلِ صَفْحَةٍ.,The book was enjoyable from the first page.,msa,leisure,normal
+d3825b5e,نَقْضي العُطْلَةَ في الرّيفِ بَعيدًا عَنِ المَدينَةِ.,We spend the holiday in the countryside away from the city.,msa,leisure,normal
+0db4ff59,شَعَرْتُ بِحُزْنٍ عَميقٍ عِنْدَ سَماعِ الخَبَرِ.,I felt deep sadness when I heard the news.,msa,emotions,normal
+a0cae53a,أُحِبُّ هُدوءَ الصَّباحِ قَبْلَ اسْتيقاظِ الجَميعِ.,I love the calm of the morning before everyone wakes.,msa,daily_life,normal
+7761f3ba,وَصَلْنا إِلى البَيْتِ في مُنْتَصَفِ اللَّيْلِ.,We got home at midnight.,msa,daily_life,normal
+5d4f4d92,أَتَكَلَّمُ عَنِ تَعَلُّمِ العَرَبِيَّةِ بِشَغَفٍ كَبيرٍ.,I talk about learning Arabic with great passion.,msa,language,normal
+d49bfc98,حُلْمي أَنْ أَزورَ بَغْدادَ يَوْمًا ما.,My dream is to visit Baghdad one day.,msa,travel,normal
+fe26767f,حَقَّقْتُ حُلْمي بَعْدَ سَنَواتٍ مِنَ العَمَلِ.,I achieved my dream after years of work.,msa,work,normal
+744e4719,قَدَّمْتُ عَرْضًا قَصيرًا أَمامَ الفَريقِ.,I gave a short presentation in front of the team.,msa,work,normal
+23925c79,الكِبارُ يَجْلِسونَ هُنا وَالأَطْفالُ يَلْعَبونَ هُناكَ.,The adults sit here and the children play there.,msa,people,normal
+4e4bded9,خَطَرَ بِخاطِري أَنْ أَتَّصِلَ بِكَ.,It crossed my mind to call you.,msa,emotions,normal
+f74b3d1e,أُحِبُّ تَسَلُّقَ الصُّخورِ في وَقْتِ فَراغي.,I like to rock climb in my spare time.,msa,leisure,normal
+12b507b0,وَجَدَ مِفْتاحَهُ تَحْتَ الكُرْسِيِّ أَخيرًا.,He finally found his key under the chair.,msa,daily_life,normal
+6496c4f4,أَصْبَحْتُ مُهَنْدِسًا بَعْدَ تَخَرُّجي بِسَنَةٍ.,I became an engineer a year after graduating.,msa,work,normal
+325e5c1c,تَقَبُّلُ النَّقْدِ صَعْبٌ لَكِنَّهُ مُفيدٌ.,Accepting criticism is hard but useful.,msa,emotions,normal
+823c5bf0,تَتْرُكُ شَيْئًا مِنْكَ,To leave something of yourself,msa,people,normal
+eaf0684d,وَجَّهَ إِلَيَّ انْتِقادًا بَنّاءً حَوْلَ عَمَلي.,He gave me constructive criticism about my work.,msa,work,normal
+7aaf550d,تَنْتَشِرُ المَقاهي القَديمَةُ في وَسَطِ المَدينَةِ.,Old cafés are spread throughout the city center.,msa,travel,normal
+97505f3d,اسْتَقْبَلْنا ضَيْفًا عَزيزًا مِنَ العِراقِ.,We welcomed a dear guest from Iraq.,msa,family,normal
+bd7312b8,يُعامِلُ الجَميعَ بِاحْتِرامٍ وَلُطْفٍ.,He treats everyone with respect and kindness.,msa,people,normal
+00c2bb33,احْتَرَمَ رَأْيي رَغْمَ اخْتِلافِنا.,He respected my opinion despite our disagreement.,msa,people,normal
+72d3240d,يَأْكُلُ المُسْلِمونَ طَعامًا تَقْليدِيًّا في يَوْمِ العيدِ.,Muslims eat traditional food on the day of Eid.,msa,culture,normal
+34153abb,خَطَرَتْ لي فِكْرَةٌ رائِعَةٌ لِلْمَشْروعِ.,A great idea for the project occurred to me.,msa,work,normal
+ba2ee68d,الحُبُّ الحَقيقِيُّ يَحْتاجُ إِلى صَبْرٍ.,True love needs patience.,msa,emotions,normal
+5b5fbe01,الدّافِعُ القَوِيُّ يُساعِدُ عَلى النَّجاحِ.,Strong motivation helps with success.,msa,work,normal
+3b862ed7,غَطّى الغُبارُ السَّيّاراتِ بَعْدَ العاصِفَةِ.,Dust covered the cars after the storm.,msa,leisure,normal
+035f783e,مِنْ أَيِّ ناحِيَةٍ,From which aspect,msa,people,normal
+9e17a836,تَأَقْلَمَتْ بِسُرْعَةٍ مَعَ الحَياةِ الجَديدَةِ.,She adapted quickly to the new life.,msa,people,normal
+6810c37c,واجَهْتُ صُعوبَةً في فَهْمِ اللَّهْجَةِ المَحَلِّيَّةِ.,I faced difficulty understanding the local dialect.,msa,language,normal
+6f82e290,تَحْتاجُ إِلى رُؤْيَةِ طَبيبِ الأَسْنانِ,You need to see a dentist,msa,health,normal
+95957cc4,بِسَبَبِ زِيارَتِها تَعَلَّمْتُ لُغَةً جَديدَةً,"Because of her visit, I learned a new language",msa,language,normal
+d687519d,عِنْدَما وَصَلْتُ لَمْ أَكُنْ أَفْهَمُ اللَّهْجَةَ المَحَلِّيَّةَ.,When I arrived I didn't understand the local dialect.,msa,language,normal
+c35c244a,لَمْ تَكُنِ القاهِرَةُ كَما تَخَيَّلْتُها.,Cairo was not as I had imagined it.,msa,travel,normal
+3be005d6,تَعَلَّمْتُ الحُروفَ العَرَبِيَّةَ قَبْلَ الكَلِماتِ.,I learned the Arabic letters before words.,msa,language,normal
+fdafb127,الجَميعُ ساعَدوا، حَتّى الأَطْفالُ الصِّغارُ.,"Everyone helped, even the little children.",msa,culture,normal
+1a41beab,وافَقْتُ عَلى العَمَلِ بِشَرْطٍ واحِدٍ.,I agreed to the work on one condition.,msa,work,normal
+4940d4d3,كُنْتُ أَحْتاجُ إِلى مُساعَدَتِها,I needed her help,msa,people,normal
+7c8fd34d,فَهِمْتُ كَلامَهُ بِصُعوبَةٍ بِسَبَبِ سُرْعَتِهِ.,I understood his speech with difficulty because of his speed.,msa,language,normal
+8b93340b,والِدي جاءَ مِنَ العِراقِ بَحْثًا عَنْ حَياةٍ أَفْضَلَ.,My father came from Iraq in search of a better life.,msa,family,normal
+3cb7ded6,كَرَمُ أَهْلِ العِراقِ مَعْروفٌ لِلْجَميعِ.,The generosity of Iraqis is known to everyone.,msa,culture,normal
+a0a0be54,التَّطَوُّعُ يَمْنَحُ الإِنْسانَ شُعورًا بِالمَعْنى.,Volunteering gives a person a sense of meaning.,msa,people,normal
+fb7375d8,تُزْهِرُ الأَشْجارُ في فَصْلِ الرَّبيعِ.,The trees blossom in the spring season.,msa,leisure,normal
+1b6fedb4,تُحَلِّقُ الطُّيورُ عالِيًا فَوْقَ البَحْرِ.,The birds fly high above the sea.,msa,leisure,normal
+ec7e528b,وَقَفَتْ فَراشَةٌ مُلَوَّنَةٌ عَلى الزَّهْرَةِ.,A colorful butterfly landed on the flower.,msa,leisure,normal
+76913a78,كَمْ مِنَ الوَقْتِ تَعْمَلُ في هَذِهِ الشَّرِكَةِ؟,How long have you been working at this company?,msa,work,normal
+bbb9b815,فَريقُنا يَجْتَمِعُ كُلَّ صَباحٍ لِخَمْسِ دَقائِقَ.,Our team meets every morning for five minutes.,msa,work,normal
+cf859e60,طَرَحْنا أَفْكارًا كَثيرَةً في الاجْتِماعِ.,We put forward many ideas in the meeting.,msa,work,normal
+4f488b13,أَعْتَقِدُ أَنَّكَ عَلى حَقٍّ في هَذِهِ المَسْأَلَةِ.,I think you are right on this matter.,msa,work,normal
+46240ff8,عِنْدي سُؤالٌ واحِدٌ قَبْلَ أَنْ نَبْدَأَ.,I have one question before we begin.,msa,work,normal
+83afa602,أَقَمْنا في مُخَيَّمٍ صَحْراوِيٍّ لَيْلَةً واحِدَةً.,We stayed in a desert camp for one night.,msa,travel,normal
+e2435bb8,نِمْنا في خَيْمَةٍ عادِيَّةٍ تَحْتَ النُّجومِ.,We slept in a regular tent under the stars.,msa,travel,normal
+c7bb471c,أُحِبُّ رائِحَةَ التُّرابِ بَعْدَ المَطَرِ.,I love the smell of soil after rain.,msa,leisure,normal
+b6d6d3e1,جَلَساتُ العائِلَةِ المَسائِيَّةُ هِيَ أَجْمَلُ الأَوْقاتِ.,The family's evening gatherings are the best of times.,msa,family,normal
+627c755e,شاهَدْنا فيلْمًا مُخيفًا لَيْلَةَ أَمْسِ.,We watched a scary film last night.,msa,leisure,normal
+4740a153,كانَتْ جَدَّتي، رَحِمَها اللهُ، تَرْتَدي عَباءَةً سَوْداءَ دائِمًا.,My grandmother (peace be upon her) wore a black abaya all the time.,msa,family,normal
+fe8cec69,كانَتْ امْرَأَةً قَوِيَّةً جِدًّا.,She was a very strong woman.,msa,people,normal
+3c9affec,اشْتَرى ثَوْبًا تَقْليدِيًّا مِنَ السّوقِ القَديمِ.,He bought a traditional garment from the old market.,msa,culture,normal
+77b3e712,طَريقَةُ العَيْشِ في القَرْيَةِ بَسيطَةٌ وَهادِئَةٌ.,The way of living in the village is simple and quiet.,msa,daily_life,normal
+040358a4,نَزورُ مَزْرَعَةَ جَدّي في كُلِّ صَيْفٍ.,We visit my grandfather's farm every summer.,msa,family,normal
+4c1b00ca,الوَضْعُ الآنَ أَفْضَلُ مِمّا كانَ قَبْلَ سَنَةٍ.,The situation now is better than it was a year ago.,msa,leisure,normal
+909a5822,أَمامَنا ثَلاثَةُ خِياراتٍ لِحَلِّ المُشْكِلَةِ.,We have three options to solve the problem.,msa,work,normal
+1d21e136,نُقَدِّمُ السّاعَةَ في التَّوْقيتِ الصَّيْفِيِّ.,We move the clock forward for daylight saving time.,msa,daily_life,normal
+8653998d,يَبْدَأُ التَّوْقيتُ الشِّتَوِيُّ في نِهايَةِ تِشْرينَ الأَوَّلِ.,Standard time begins at the end of October.,msa,leisure,normal
+42be033b,هَلْ تَشْعُرونَ بِفَصْلِ الرَّبيعِ؟,Do you feel the spring season?,msa,leisure,normal
+9855356f,أَرْسَلْتِ لي,You (female) sent me,msa,people,normal
+6402eb25,حَجْزُ رِحْلَةٍ مَعَ شَرِكَةٍ سِياحِيَّةٍ,Booking a trip with a travel agency,msa,travel,normal
+8bc80c74,نَحْنُ مُخْتَلِفانِ في الرَّأْيِ لَكِنَّنا صَديقانِ.,We are different in opinion but we are friends.,msa,people,normal
+309e4c02,أُفَضِّلُ أَنْ أَحْجِزَ وَأُخَطِّطَ مُسْبَقًا.,I prefer to book and plan in advance.,msa,travel,normal
+90cf374f,أُخَطِّطُ لِرِحْلَةٍ طَويلَةٍ إِلى آسْيا.,I'm planning a long trip to Asia.,msa,travel,normal
+57a4ae23,أُحِبُّ السَّفَرَ العَفْوِيَّ دونَ خَطَّةٍ مُسْبَقَةٍ.,I love spontaneous travel without a prior plan.,msa,travel,normal
+494770ad,أَنا مُتَّفِقٌ مَعَكَ تَمامًا في هَذِهِ النُّقْطَةِ.,I completely agree with you on this point.,msa,emotions,normal
+89d1ec40,المَسْأَلَةُ مُعَقَّدَةٌ أَكْثَرَ مِمّا تَبْدو.,The matter is more complicated than it seems.,msa,emotions,normal
+94a8244b,سَنُسافِرُ إِلى مِصْرَ قَريبًا إِنْ شاءَ اللهُ.,"We will travel to Egypt soon, God willing.",msa,travel,normal
+af765ea8,مُتَعَطِّلٌ عَنِ العَمَلِ,Out of work,msa,work,normal
+ca68d4a5,أَطْوَلُ مِنْ ذَلِكَ,Longer than that,msa,leisure,normal
+5a86402f,إزَّيَّك يا صاحْبي، إيه الأَخْبار؟,"How are you, my friend? What's up?",egyptian,greetings,normal
+29e90aaa,كُلّ حاجة تَمام,Everything is fine,egyptian,greetings,normal
+270d0d65,أنا كْوَيِّس الحَمْدُ لِلَّه، وإنْتَ؟,"I'm good, thank God, and you?",egyptian,greetings,normal
+3bbd3bbb,صَباح الخير، إزَّيَّك النَّهارْده؟,"Good morning, how are you today?",egyptian,greetings,normal
+6e3cd9ee,كُلّ حاجة زَيّ الفُلّ مَعايا.,Everything's perfect with me.,egyptian,greetings,normal
+c084f6bf,أهلاً وسَهْلاً، اتْفَضَّل اقْعُد.,"Welcome, please sit down.",egyptian,greetings,normal
+22a9763c,لو سَمَحْت، أنا عايِز مَيّة باردة.,"Excuse me, I want cold water.",egyptian,greetings,normal
+16d9ec81,واحِد شاي,One tea,egyptian,dining,normal
+cfd5cb68,لو سَمَحْت، فين أقْرَب صَيْدَلِيّة؟,"Excuse me, where's the nearest pharmacy?",egyptian,greetings,normal
+c06e7a2b,مِن فَضْلَك، مُمْكِن الحِساب؟,"Please, may I have the bill?",egyptian,greetings,normal
+da421106,زَيّ,Like / Similar to,egyptian,greetings,normal
+107f8ddb,تَمام ماشي، نِتْقابِل بُكْرَة.,"Okay, alright, we'll meet tomorrow.",egyptian,greetings,normal
+e60e27c8,مَصْر هِيَّ أُمّ الدُّنْيا زَيّ ما بِيْقولوا.,"Egypt is the mother of the world, as they say.",egyptian,smalltalk,normal
+d38f0635,أَيْوَه,Yes,egyptian,greetings,normal
+5c95d34a,أهلاً يا صاحبي، نوّرتنا!,"Welcome my friend, you've brightened our place!",egyptian,greetings,normal
+e3fabd0a,فين؟,Where?,egyptian,greetings,normal
+15f80a7f,عايِز أي حاجة يا أفَنْدِم؟,"Do you want anything, sir?",egyptian,greetings,normal
+a4d71f06,الطَّعْمِيَّةُ الطّازَجَةُ أَلَذُّ مِنَ الجاهِزَةِ.,Fresh falafel is tastier than the ready-made.,msa,food,normal
+a604a4e6,اعْتَذَرْتُ عَنِ الحُضورِ بِسَبَبِ ضيقِ الوَقْتِ.,I apologized for not attending because of time pressure.,msa,work,normal
+cd8d5c09,طَلَبَ الطَّبيبُ مِنّي تَحْليلَ دَمٍ شامِلًا.,The doctor asked me for a comprehensive blood test.,msa,health,normal
+e3dae5d8,كانَ الخَبَرُ صَدْمَةً كَبيرَةً لِلْعائِلَةِ.,The news was a big shock to the family.,msa,emotions,normal
+ee7e48bc,نَصَحَني الطَّبيبُ بِتَقْليلِ القَهْوَةِ مَساءً.,The doctor advised me to reduce coffee in the evening.,msa,health,normal
+76dad366,أُضيفُ الزَّنْجَبيلَ إِلى الشّايِ في الشِّتاءِ.,I add ginger to the tea in winter.,msa,daily_life,normal
+5e294dea,كَبِدُ الدَّجاجِ وَسَبانِخ,Chicken liver and spinach,msa,food,normal
+aad27a61,لِلْمَشْيِ فَوائِدُ كَثيرَةٌ لِلْقَلْبِ.,Walking has many benefits for the heart.,msa,health,normal
+c0422ea0,كَيْفَ تَطْبُخينَ هَذا الطَّبَقَ اللَّذيذَ؟,How do you cook this delicious dish?,msa,food,normal
+d58be3ef,أَضَعُ قَليلًا مِنَ الخَلِّ عَلى السَّلَطَةِ.,I put a little vinegar on the salad.,msa,food,normal
+64e14173,يَحْتوي عَلى الحَديدِ,Contains iron,msa,food,normal
+df4a2d0e,يَتَكَوَّنُ الطَّبَقُ مِنَ الأَرُزِّ وَالعَدَسِ.,The dish consists of rice and lentils.,msa,food,normal
+77cf9e52,المِصْرِيّونَ مَعْروفونَ بِحُبِّهِمْ لِلنُّكْتَةِ.,Egyptians are known for their love of jokes.,msa,people,normal
+1a5aab89,أَبْطِئْ قَليلًا، الطَّريقُ زَلِقٌ اليَوْمَ.,"Slow down a little, the road is slippery today.",msa,leisure,normal
+26db0e42,نَشْتَري الطَّعْمِيَّةَ مِنَ المَحَلِّ القَريبِ صَباحًا.,We buy falafel from the nearby shop in the morning.,msa,daily_life,normal
+77148f44,أَبْحَرَ القارِبُ الصَّغيرُ نَحْوَ الجَزيرَةِ.,The small boat sailed toward the island.,msa,travel,normal
+e42ae971,الكُشَرِيُّ أَكْلَةٌ مِصْرِيَّةٌ شَعْبِيَّةٌ وَرَخيصَةٌ.,Koshari is a popular and cheap Egyptian dish.,msa,food,normal
+81352afe,أَكَلَتْ زَوْجَتي الفولَ عَلى الغَداءِ.,My wife ate fava beans at lunch.,msa,food,normal
+6c636ca0,المانْجا المِصْرِيَّةُ حُلْوَةٌ جِدًّا في الصَّيْفِ.,Egyptian mango is very sweet in summer.,msa,food,normal
+338123f2,جَرَّبْتُ الجَوافَةَ في مِصْرَ.,I tried guava in Egypt.,msa,food,normal
+d2c1f300,شايُ الكَرْكَديهِ مَشْروبٌ مُهَدِّئٌ.,Hibiscus tea is a calming drink.,msa,food,normal
+fbf12faa,نُفْطِرُ عَلى التَّمْرِ وَالماءِ في رَمَضانَ.,We break our fast with dates and water in Ramadan.,msa,culture,normal
+069e70c3,بابا غَنّوج يُؤْكَلُ مَعَ الخُبْزِ السّاخِنِ.,Baba ghanoush is eaten with hot bread.,msa,food,normal
+41461073,التَّبّولَةُ سَلَطَةٌ خَفيفَةٌ مِنَ البَقْدونِسِ وَالبُرْغُلِ.,Tabbouleh is a light salad of parsley and bulgur.,msa,food,normal
+35099843,الفَتّوشُ يَحْتوي عَلى خُبْزٍ مُحَمَّصٍ وَخُضارٍ.,Fattoush contains toasted bread and vegetables.,msa,food,normal
+a4d25675,تَزَوَّجْتُ امْرَأَةً رائِعَةً.,I married a wonderful woman.,msa,family,normal
+ee0a7d6e,يَحْتَفِلُ المَسيحِيّونَ بِعيدِ الميلادِ في كانونَ الأَوَّلِ.,Christians celebrate Christmas in December.,msa,culture,normal
+c26fdaed,وُلِدَ المَسيحُ عَلَيْهِ السَّلامُ في بَيْتَ لَحْمَ.,"Christ, peace be upon him, was born in Bethlehem.",msa,culture,normal
+56d0ae01,عيدٌ مُبارَكٌ لَكُمْ وَلِعائِلَتِكُمْ.,A blessed Eid to you and your family.,msa,culture,normal
+c6f959f5,صَلّى المُسْلِمونَ صَلاةَ العيدِ في السّاحَةِ.,The Muslims prayed the Eid prayer in the square.,msa,culture,normal
+18317f63,وَضَعَ الكِتابَ عَلى الطّاوِلَةِ وَخَرَجَ.,He put the book on the table and left.,msa,leisure,normal
+bef475cd,سافَرْنا بَرًّا مِنْ عَمّانَ إِلى دِمَشْقَ.,We traveled by land from Amman to Damascus.,msa,travel,normal
+9217dfa0,حَضَرْنا عُرْسًا كَبيرًا في القَرْيَةِ أَمْسِ.,We attended a big wedding in the village yesterday.,msa,family,normal
+9bb6d7f0,قَرَأْتُ مَقالًا مُثيرًا لِلاهْتِمامِ عَنِ التّاريخِ.,I read an interesting article about history.,msa,culture,normal
+372d4e39,مُعَقَّدٌ بِالنِّسْبَةِ لي لِلْحَديثِ عَنْهُ,It's complicated for me to talk about,msa,culture,normal
+0ea680fd,مُسْتَوايَ في العَرَبِيَّةِ يَتَحَسَّنُ شَيْئًا فَشَيْئًا.,My level in Arabic is improving little by little.,msa,language,normal
+d8e79be3,لِهَذا السَّبَبِ تَعَرَّفْتُ عَلَيْهِ,For this reason I got to know him,msa,people,normal
+fb1c34ab,أَشْياءُ مُشْتَرَكَةٌ لِلْحَديثِ عَنْها,Common things to talk about,msa,culture,normal
+1a538272,النّاسُ لا يَتَوَقَّعونَ أَنّي أَتَكَلَّمُ العَرَبِيَّةَ.,People don't expect that I speak Arabic.,msa,language,normal
+59196b36,أَجَبْتُهُ بِصِدْقٍ عَنْ كُلِّ أَسْئِلَتِهِ.,I answered him honestly about all his questions.,msa,people,normal
+d70de5e0,الأَهَمُّ أَنْ نَبْقى أَصْحابًا مَهْما حَدَثَ.,The most important thing is to stay friends no matter what.,msa,people,normal
+cb6a9a81,القِراءَةُ اليَوْمِيَّةُ تُوَسِّعُ مَعْرِفَةَ الإِنْسانِ.,Daily reading widens a person's knowledge.,msa,culture,normal
+eff8d894,سافَرَ في الدَّرَجَةِ الأولى لِأَوَّلِ مَرَّةٍ.,He traveled in first class for the first time.,msa,travel,normal
+02316648,تَذْكِرَةُ الدَّرَجَةِ الثّانِيَةِ أَرْخَصُ بِكَثيرٍ.,A second-class ticket is much cheaper.,msa,travel,normal
+4a4cc001,لاحَظْتُ تَحَسُّنًا واضِحًا في لُغَتِكَ.,I noticed a clear improvement in your language.,msa,language,normal
+b9e550fe,أَعْطاني المُعَلِّمُ نَصائِحَ مُفيدَةً لِلدِّراسَةِ.,The teacher gave me useful advice for studying.,msa,culture,normal
+c9c26555,أَنا في البَيْتِ كَالعادَةِ,I am at home as usual,msa,daily_life,normal
+7d3bca6f,الجَوُّ مُشْمِسٌ وَدافِئٌ، لِنَخْرُجْ لِلتَّنَزُّهِ.,"The weather is sunny and warm, let's go out for a walk.",msa,leisure,normal
+78dba13d,نَتَناوَلُ العَشاءَ مَعًا كُلَّ لَيْلَةِ جُمُعَةٍ.,We have dinner together every Friday night.,msa,family,normal
+345d26d9,أَغادِرُ في السّاعَةِ التّاسِعَةِ.,I leave at nine o'clock.,msa,daily_life,normal
+ab6eb697,يَلْعَبُ الأَطْفالُ بِطائِرَةٍ وَرَقِيَّةٍ عَلى الشّاطِئِ.,The children play with a paper kite on the beach.,msa,leisure,normal
+41e39ef7,كانَتِ اللُّعْبَةُ مُمْتِعَةً وَمُثيرَةً حَتّى النِّهايَةِ.,The game was fun and exciting until the end.,msa,leisure,normal
+cff0bcd0,أَشْعُرُ بِضَغْطٍ كَبيرٍ في العَمَلِ هَذا الشَّهْرَ.,I feel a lot of pressure at work this month.,msa,work,normal
+c3aa0da4,لَدَيْكِ الكَثيرُ مِنَ الدُّروسِ,You have a lot of lessons,msa,leisure,normal
+3786ea6b,شَعَرْتُ بِالإِرْهاقِ بَعْدَ يَوْمِ عَمَلٍ طَويلٍ.,I felt exhausted after a long workday.,msa,work,normal
+b6908bf3,مُرْهَق,Exhausted,msa,emotions,normal
+5dcf24ab,الاسْتِمْرارِيَّةُ أَهَمُّ مِنَ السُّرْعَةِ في التَّعَلُّمِ.,Continuity is more important than speed in learning.,msa,work,normal
+69ca825d,التَّدْريسُ مِهْنَةٌ تَحْتاجُ إِلى صَبْرٍ كَبيرٍ.,Teaching is a profession that needs great patience.,msa,work,normal
+5211311f,المَوْضوعُ مُعَقَّدٌ وَيَحْتاجُ إِلى وَقْتٍ لِفَهْمِهِ.,The topic is complicated and needs time to understand.,msa,emotions,normal
+cf22ead4,زُرْنا والِدَ زَوْجَتي,We visited my wife's father,msa,family,normal
+593ec1bd,خَمْسونَ كيلومِتْرًا,Fifty kilometers,msa,travel,normal
+e302ce1b,المَطارُ يَبْعُدُ ساعَةً بِالسَّيّارَةِ عَنِ البَيْتِ.,The airport is an hour by car from home.,msa,travel,normal
+1cde2e0c,تَحَسَّنَتْ صِحَّةُ أُمّي كَثيرًا بَعْدَ العَمَلِيَّةِ.,My mother's health improved a lot after the operation.,msa,health,normal
+d359bdbc,بِالتَّمارينِ المُنْتَظِمَةِ سَتُصْبِحُ أَقْوى.,With regular exercise you will become stronger.,msa,health,normal
+c9809172,نَتَمَشّى في المُنْتَزَهِ كُلَّ مَساءٍ.,We walk in the park every evening.,msa,leisure,normal
+7f1c5bab,يَلْعَبُ الأَطْفالُ في الحَديقَةِ العامَّةِ بَعْدَ المَدْرَسَةِ.,The children play in the public garden after school.,msa,family,normal
+c018ff35,شَعَرْتُ بِضَعْفٍ بَعْدَ أَيّامٍ مِنَ المَرَضِ.,I felt weak after days of illness.,msa,health,normal
+0c716de9,كانَتْ أَوَّلَ مَرَّةٍ يَزورُ الحَديقَةَ مُنْذُ شَهْرَيْنِ,It was the first time he visited the park in two months,msa,leisure,normal
+f0b8497f,قُمْنا بِزِيارَةِ لَهْوٍ إِلى المَدينَةِ القَديمَةِ.,We made a leisure visit to the old city.,msa,leisure,normal
+52f0a53d,أَنا شَخْصٌ هادِئٌ لا أُحِبُّ الضَّجيجَ.,I am a calm person who dislikes noise.,msa,emotions,normal
+8bc72dc7,لا أَتَكَلَّمُ كَثيرًا.,I don't talk much.,msa,emotions,normal
+55908ceb,كِلاهُما يُشاهِدانِ المُبارَياتِ مَعًا كُلَّ سَبْتٍ.,Both of them watch the matches together every Saturday.,msa,leisure,normal
+ecbe6223,غَدًا عُطْلَةٌ رَسْمِيَّةٌ بِمُناسَبَةِ العيدِ.,Tomorrow is an official holiday for the Eid.,msa,culture,normal
+e543c3f8,لا أَرْتَدي مَلابِسَ رَسْمِيَّةً حَتّى في الاجْتِماعاتِ المُهِمَّةِ.,I don't even wear formal clothes in important meetings.,msa,work,normal
+51f47edf,لا أُحِبُّ الحَديثَ في السِّياسَةِ مَعَ الغُرَباءِ.,I don't like talking politics with strangers.,msa,people,normal
+044b2226,أَتَوَقَّفُ عَنِ العَمَلِ في السّاعَةِ الخامِسَةِ مَساءً.,I stop working at five in the evening.,msa,work,normal
+9b6c2cd6,آخُذُ اسْتِراحَةً مِنَ العَمَلِ,I take a break from work,msa,work,normal
+23a41d61,أَجْلِسُ في الطَّبيعَةِ لِأُريحَ ذِهْني.,I sit in nature to rest my mind.,msa,leisure,normal
+77789cdb,الحَياةُ الرِّيفِيَّةُ أَهْدَأُ مِنْ حَياةِ المُدُنِ.,Rural life is calmer than city life.,msa,leisure,normal
+9b111462,الأَمْواجُ عالِيَةٌ اليَوْمَ، فَالسِّباحَةُ خَطِرَةٌ.,"The waves are high today, so swimming is dangerous.",msa,leisure,normal
+86b695de,نَرى قُوَّةَ الخالِقِ في جَمالِ الطَّبيعَةِ.,We see the power of the Creator in the beauty of nature.,msa,culture,normal
+170f6d5b,عَشان أنا هِنا,Because I'm here,egyptian,dining,normal
+85748702,مِن فَضْلَك، هاتْ لي فِنْجان قَهْوة.,"Please, bring me a cup of coffee.",egyptian,dining,normal
+dbdcfafa,عايِز تِشْرَب إيه,What do you want to drink,egyptian,dining,normal
+d5dd62cc,مِش عايِز أَشْرَب حاجة,I don't want to drink anything,egyptian,dining,normal
+ad9936f2,مْراتي بِتْحِبّ القَهْوة بِاللَّبَن.,My wife likes coffee with milk.,egyptian,dining,normal
+c3400dee,مراتي طلبت شاي بسكر زيادة.,My wife ordered tea with extra sugar.,egyptian,dining,normal
+5ea06365,مُمْكِن شْوَيّة لَبَن مَع القَهْوة؟,Can I get a little milk with the coffee?,egyptian,dining,normal
+88e2d68e,عايْزة تِشْرَب شاي بِلَبَن,She wants to drink tea with milk,egyptian,dining,normal
+19e60243,أنا بَشْرَب الشاي مِن غير سُكَّر.,I drink tea without sugar.,egyptian,dining,normal
+682a3dea,وِالوِلاد عايْزين,And the kids want,egyptian,dining,normal
+89abb787,عايْزين يِشْرَبوا عَصير بُرْتُقال,They want to drink orange juice,egyptian,dining,normal
+ddab1176,أي خِدْمة تانْية؟,Any other service?,egyptian,dining,normal
+a4839506,عايِز شْوَيّة سُكَّر,I want a little sugar,egyptian,dining,normal
+90339722,قُرَيِّب مِن هِنا,Close to here,egyptian,directions,normal
+66c27b5f,امْشي مِن هِنا وِتْلاقي,Walk from here and you'll find,egyptian,directions,normal
+c2c50f45,كَم مِن الوَقْت قَضّيتي؟,How long did you spend?,egyptian,smalltalk,normal
+5f3e0bed,دي أَوِّل زِيارة لي هِنا,This is my first visit here,egyptian,smalltalk,normal
+2db31240,جيت مَصْر مِن قَبْل,I came to Egypt before,egyptian,smalltalk,normal
+5c1d2d6f,أنا حَبّيت الجَوّ في الإسْكِنْدِرِيّة قَوي.,I really loved the atmosphere in Alexandria.,egyptian,smalltalk,normal
+de067056,الأَجْواء في القاهْرة بِاللَّيْل حِلْوة قَوي.,The atmosphere in Cairo at night is really nice.,egyptian,smalltalk,normal
+9aad7556,شِرِبْنا عَصير قَصَب فِ وِسْط البَلَد.,We drank sugarcane juice downtown.,egyptian,dining,normal
+27e97324,رُحْنا الأَهْرامات أَوِّل يوم فِ مَصْر.,We went to the pyramids on the first day in Egypt.,egyptian,sightseeing,normal
+0cc9ced2,عَمَلْتو إيه إمْبارِح بِاللَّيْل؟,What did you do last night?,egyptian,greetings,normal
+555847f0,اتْمَشّينا فِ وِسْط البَلَد لِحَدّ المَغْرِب.,We walked around downtown until sunset.,egyptian,sightseeing,normal
+7dc93f66,زُرْنا جامِع مُحَمَّد عَلي فوق القَلْعة.,We visited the Mosque of Muhammad Ali up at the Citadel.,egyptian,sightseeing,normal
+f15af660,المَحَلّات هِنا بِتِفْتَح لِحَدّ بِاللَّيْل.,The shops here stay open until late at night.,egyptian,smalltalk,normal
+cd7e35a6,أَحَبُّ الأَعْمَالِ إِلَى اللهِ أَدْوَمُهَا وَإِنْ قَلَّ,"The most beloved deeds to Allah are those done consistently, even if small",msa,culture,normal
+b0533902,مِنَ العَقَبَةِ إِلى شَرْمِ الشَّيْخِ بِالقارِبِ,From Aqaba to Sharm el-Sheikh by boat,msa,travel,normal
+f1e46cad,سَنَتَقابَلُ في شَرْمِ الشَّيْخِ,We will meet in Sharm el-Sheikh,msa,travel,normal
+f4daee1f,سَأَكونُ في شَرْمِ الشَّيْخِ يَوْمَيْنِ فَقَطْ,I will be in Sharm el-Sheikh for only two days,msa,travel,normal
+0b84aeb8,بَعْدَ ذَلِكَ سَأَذْهَبُ إِلى دَهَبَ,After that I will go to Dahab,msa,travel,normal
+5ef2b2a6,أُريدُ أَنْ أَتَجَوَّلَ حَوْلَ المَدينَةِ القَديمَةِ,I want to wander around the old city,msa,travel,normal
+bf22f72a,أُريدُ أَنْ أَكْتَشِفَ الثَّقافَةَ,I want to discover the culture,msa,culture,normal
+f0b88028,هَلْ تُحِبُّ السِّباحَةَ؟,Do you like swimming?,msa,leisure,normal
+dbb6bb81,سَنَسْبَحُ أَمامَ الفُنْدُقِ,We will swim in front of the hotel,msa,leisure,normal
+b001377b,هَلْ يوجَدُ شاطِئٌ خاصٌّ؟,Is there a private beach?,msa,travel,normal
+2a01e5cc,مارَسْتُ اللَّهْجَةَ المِصْرِيَّةَ,I practised the Egyptian dialect,msa,language,normal
+53dd0b03,يَجِبُ عَلَيْكَ الغَوْصُ,You must go diving,msa,leisure,normal
+ff65e35b,الغَوْصُ لَيْسَ مُناسِبًا لِلأَطْفالِ,Diving is not suitable for children,msa,leisure,normal
+8310e1a4,سَنَفْعَلُ إِنْ شاءَ اللهُ,We will do it God willing,msa,leisure,normal
+90039be0,أَنا أَكْتَشِفُ، أَنا أَتَجَوَّلُ,I explore / I wander,msa,travel,normal
+bf7ecd39,دي أَوِّل زِيارَة في مَصْر,This is my first visit to Egypt,egyptian,smalltalk,normal
+05c8c70e,دي أَوِّل مَرَّة في مَصْر,This is my first time in Egypt,egyptian,smalltalk,normal
+de4b2df4,عايْزين نِجْلِس بَرَّة,We want to sit outside,egyptian,dining,normal
+07632afc,عايِز أَشوف الأَطْعِمة دي,I want to see this food,egyptian,dining,normal
+f3b79d22,الأَطْعِمة دي بِكام؟,How much is this food?,egyptian,dining,normal
+7cd4356c,أَنا جاهِزٌ لِلسَّفَرِ,I'm ready to travel,msa,travel,normal
+9483e9c3,أُريدُ أَنْ أُمارِسَ اللَّهْجَةَ المِصْرِيَّةَ,I want to practise the Egyptian dialect,msa,language,normal
+30e9db21,أَتَمَنّى أَنْ تَسْتَعْمِلَ هَذِهِ الكَلِماتِ في الزِّيارَةِ,I hope you use these words on the visit,msa,travel,normal
+365c0264,أَتَمَنّى لَكَ إِجازَةً سَعيدَةً,I wish you a happy holiday,msa,greetings,normal
+dfd496d8,شُكْرًا عَلى الدَّرْسِ,Thank you for the lesson,msa,greetings,normal
+ae4f86e5,أَيْنَ الشّاطِئُ الخاصُّ بِالفُنْدُقِ؟,Where is the hotel's private beach?,msa,travel,normal
+12abfa57,هَذا مُفيدٌ جِدًّا,This is very useful,msa,emotions,normal
+444d075e,أَنا لَدَيَّ فُضولٌ,I'm curious,msa,emotions,normal
+094fa073,أَنا وَعائِلَتي نُحِبُّ السَّفَرَ كَثيراً,Me and my family love to travel a lot,msa,family,normal
+7540cc0f,اكْتِشافُ أَماكِنَ جَديدَةٍ يُوَسِّعُ آفاقَكَ,Discovering new places broadens your outlook,msa,travel,normal
+2c60c385,السِّباحَةُ في البَحْرِ رائِعَةٌ,Swimming in the sea is wonderful,msa,leisure,normal
+68495752,أُريدُ السِّباحَةَ في المُسْبَحِ غَداً,I want to swim in the pool tomorrow,msa,leisure,normal
+740a4547,الماءُ الدّافِئُ مُريحٌ لِلْجِسْمِ,Warm water is comfortable for the body,msa,leisure,normal
+b94d01a3,السِّباحَةُ في الماءِ البارِدِ مُنْعِشَةٌ,Cold water swimming is invigorating,msa,leisure,normal
+5f041816,المَرْجانُ في البَحْرِ الأَحْمَرِ جَميلٌ,The coral in the Red Sea is beautiful,msa,leisure,normal
+239a6bf3,السنوركلينج نَشاطٌ مُمْتِعٌ في الإِجازَةِ,Snorkelling is a fun activity on vacation,msa,leisure,normal
+ea1ab5db,الفِنْجانُ عَلى الطّاوِلَةِ فارِغٌ,The cup on the table is empty,msa,food,normal
+f01468f0,شُكْراً لَكَ، إِلى اللِّقاءِ!,"Thank you, goodbye!",msa,greetings,normal
+8c0a76c9,أَيْنَ المَطْبَخُ في هٰذا البَيْتِ؟,Where is the kitchen in this house?,msa,daily_life,normal
+056c9a80,ما رَقْمُ الهاتِفِ الخاصُّ بِكَ؟,What is your phone number?,msa,daily_life,normal
+f1f5f5bf,القِطارُ يَصِلُ في السّاعَةِ الثّالِثَةِ,The train arrives at three o'clock,msa,travel,normal
+a81ee49c,الطّائِرَةُ تُقْلِعُ بَعْدَ عَشْرِ دَقائِقَ,The plane takes off in ten minutes,msa,travel,normal
+8c1db032,التَّجَوُّلُ في المَدينَةِ القَديمَةِ مُمْتِعٌ,Strolling in the old city is enjoyable,msa,travel,normal
+63e1a9fb,هٰذِهِ جَوْلَةٌ جَميلَةٌ في المَتْحَفِ,This is a nice tour of the museum,msa,travel,normal
+32352b0d,بَحِبّ مَصْر,I love Egypt,egyptian,smalltalk,normal
+9d8e755f,الأَكْل حِلْو,The food is tasty,egyptian,smalltalk,normal
+06ce002d,النّاس لَطيفين,The people are nice,egyptian,smalltalk,normal
+6122e839,الجَوّ حَرّ,The weather is hot,egyptian,smalltalk,normal
+216a5525,الأَطْفال مَبْسوطين,The kids are happy,egyptian,smalltalk,normal
+f1722c29,خَلاص اتَّفَقْنا,"Okay, we're agreed",egyptian,smalltalk,normal
+37575fcd,عايْزين حاجَة,We want something,egyptian,dining,normal
+b0c2229d,عايْزين ناكُل حاجَة,We want to eat something,egyptian,dining,normal
+01f266f7,عايْزين نِشْتِري مَيَّة,We want to buy water,egyptian,dining,normal
+441013c6,عايِز كوباية,I want a mug (of coffee),egyptian,dining,normal
+de853df8,الفِنْجان ده بِكام؟,How much is this cup?,egyptian,dining,normal
+61ee381f,فيه شاطِئ خاصّ لِلفُنْدُق؟,Is there a private beach for the hotel?,egyptian,hotel,normal
+d3782e6c,فين المَسْبَح؟,Where's the pool?,egyptian,hotel,normal
+276e3b42,عايِز أَسْبَح في المَسْبَح,I want to swim in the pool,egyptian,hotel,normal
+cf9a0759,عايِز مَنْشَفَة,I want a towel,egyptian,beach_and_vendors,normal
+2d7c4d8f,عايِز أَروح الشَّطّ,I want to go to the beach,egyptian,beach_and_vendors,normal
+1aa8da97,يا أَفَنْدَم، فين الشّاطِئ لَوْ سَمَحْت؟,"Sir, where's the beach, please?",egyptian,directions,normal
+b581b522,عايِز أَشوف القِطْعَة دي,I want to see this piece,egyptian,shopping,normal
+0d2db113,القِطْعَة دي بِكام؟,How much is this piece?,egyptian,shopping,normal
+3df754f7,التي-شيرت دي بِكام؟,How much is this T-shirt?,egyptian,shopping,normal
+dc32b6ad,إِدّيني خَصْم لَوْ سَمَحْت,"Give me a discount, please",egyptian,shopping,normal
+f0b7183a,ده آخِر كَلام,That's the final word,egyptian,shopping,normal
+666f3ec6,عايْزين نِشْتِري حاجَة لِلأَوْلاد,We want to buy something for the children,egyptian,shopping,normal
+8aa3cfa9,ما يِنْفَعْش,No deal / it won't work,egyptian,shopping,normal
+da545ab5,أَدّ إيه؟,How much?,egyptian,money,normal
+bd8faf41,خَلّي السِّعْر خَمَسْتاشَر جِنيه,Make the price fifteen pounds,egyptian,money,normal
+5e635ddf,أَدْرُسُ اللُّغَةَ مُنْذُ سَنَتَيْنِ,I have been studying the language for two years,msa,language,normal
+08686465,أَنا شَخْصٌ بَيْنَ جِنْسِيَّتَيْنِ,I am a person between two nationalities,msa,culture,normal
+bfc8a4d9,وُلِدْتُ في إِنْجِلْتِرا وَأَعيشُ هُنا، وَوالِدي مِنَ العِراقِ,"I was born in England and live here, and my father is from Iraq",msa,family,normal
+a08eed1a,مُنْذُ الوِلادَةِ عِشْتُ حَياةً إِنْجِليزِيَّةً,Since birth I have lived an English life,msa,culture,normal
+08b7c376,لَيْسَتْ هِوايَةً، إِنَّها واجِبي,It is not a hobby; it is my duty.,msa,emotions,normal
+3f22630e,أُحِبُّ الثَّقافَةَ العَرَبِيَّةَ وَأَحْلُمُ بِالسَّفَرِ,I love Arab culture and dream of travel,msa,culture,normal
+894f7b52,الكَلامُ السَّريعُ سَهْلٌ، تَقولُ فيهِ ما تَشاءُ؛ أَمّا الكِتابَةُ فَأَصْعَبُ,Quick speech is easy — you say what you want; but writing is harder,msa,culture,normal
+cf2c83c5,مُنْذُ الطُّفولَةِ سَمِعْتُ صَوْتَ اللُّغَةِ مِنْ والِدي وَمِنَ الرّاديو,Since childhood I heard the sound of the language from my father and the radio,msa,culture,normal
+374f438d,كانَ والِدي يَسْتَمِعُ إِلى الأَغاني التَّقْليدِيَّةِ وَيُشاهِدُ التِّلْفازَ العَرَبِيَّ,My father used to listen to traditional songs and watch Arabic television,msa,family,normal
+730e12cd,وَمَرَّةً أَعْطاني الهاتِفَ فَسَمِعْتُ جَدَّتي وَلَمْ أَفْهَمْ شَيْئاً,Once he handed me the phone and I heard my grandmother but understood nothing,msa,language,normal
+676a0ee5,كُنْتُ أُريدُ أَنْ أَتَحَدَّثَ مَعَ جَدَّتي وَأَنْ أَفْهَمَ هٰذِهِ اللُّغَةَ,I wanted to talk with my grandmother and understand this language,msa,language,normal
+ca00ddfe,كَبِرْتُ في مَدينَةٍ صَغيرَةٍ تَقْليدِيَّةٍ لَيْسَ فيها أَشْخاصٌ عَرَبٌ,"I grew up in a small, traditional town with no Arab people",msa,culture,normal
+7054c0aa,وَلَمْ نَكُنْ نَتَحَدَّثُ العَرَبِيَّةَ في المَنْزِلِ بِسَبَبِ والِدَتي,We didn't speak Arabic at home because of my mother,msa,language,normal
+e3629892,كانَ هُناكَ نَقْصٌ في الفَهْمِ حَقّاً,There was truly a lack of understanding,msa,emotions,normal
+3d3f84df,أَظُنُّني قَرَّرْتُ أَنْ أَبْقى إِنْجِليزِيّاً,I think I decided to stay English,msa,culture,normal
+f09a56df,كانَ لَدَيَّ فُضولٌ تِجاهَ الثَّقافَةِ وَالدّينِ وَالحَياةِ في الدُّوَلِ العَرَبِيَّةِ,"I had curiosity about the culture, religion, and life in Arab countries",msa,culture,normal
+c6c22c02,كانَ لَدَيَّ أَسْئِلَةٌ كَثيرَةٌ سَأَلْتُها لِوالِدي,I had many questions which I asked my father,msa,family,normal
+663673c6,وَحينَ جِئْتُ كانَ عَلَيَّ أَنْ أَنْدَمِجَ في المُجْتَمَعِ وَأَنْ أَعيشَ حَياةً بِريطانِيَّةً,When I came I had to integrate into society and live a British life,msa,people,normal
+59981b63,أَنْتِ تَفْهَمينَني جَيِّداً,You understand me well,msa,emotions,normal
+5a94e1b9,الأَطْفالُ يَتَعَلَّمونَ جَيِّداً عِنْدَما تَكونُ الدِّراسَةُ مُمْتِعَةً,Children learn well when study is enjoyable,msa,leisure,normal
+42e8f341,كُلُّ شَخْصٍ يَخْتَلِفُ,Everyone is different,msa,people,normal
+2104193f,إِنْ شاءَ اللهُ نَلْتَقي يَوْمَ الخَميسِ القادِمِ,God willing we'll meet next Thursday,msa,greetings,normal
+aa9be8e3,كُلَّ عامٍ وَأَنْتَ بِخَيْرٍ، وَأَراكَ قَريباً,"May you be well always, and see you soon",msa,greetings,normal
+71209cd0,أَنا الآنَ مَشْغولٌ بِالأَعْمالِ,I'm busy with work now,msa,work,normal
+f4839747,أُساعِدُهُمْ بِقَدْرِ اسْتِطاعَتي,I help them as much as I can,msa,people,normal
+0411943c,حالِيّاً خَطَرَتْ عَلى عَقْلي فِكْرَةٌ,Just now an idea occurred to my mind,msa,emotions,normal
+05765e3c,أَنا أَصْلي عَرَبِيٌّ,My origin is Arab,msa,culture,normal
+ba138369,أَحْياناً أَشْعُرُ أَنَّ الدَّمَ عَرَبِيٌّ,Sometimes I feel the blood is Arab,msa,culture,normal
+b5f91e4b,هٰذا جُزْءٌ مِنّي,This is a part of me,msa,emotions,normal
+4f18071b,أَنْتَ أَبٌ، صَحيحٌ؟,"You are a father, correct?",msa,family,normal
+9e21918a,أَعْتَقِدُ أَنَّ اللُّغَةَ العَرَبِيَّةَ شَيْءٌ مُهِمٌّ جِدّاً لي,I think the Arabic language is something very important to me,msa,language,normal
+12b0a5b3,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ واجِبٌ عَلَيْكَ وَلَيْسَ هِوايَةً,"Learning Arabic is a duty upon you, not a hobby",msa,language,normal
+9eeddec3,هَلْ لَدَيْكَ إِخْوَةٌ وَأَخَواتٌ؟,Do you have brothers and sisters?,msa,family,normal
+f912fc72,لَدَيَّ أَخٌ واحِدٌ,I have one brother,msa,family,normal
+c34c0f16,عائِلَتُنا مِنَ الشَّرْقِ الأَوْسَطِ,Our family is from the Middle East,msa,family,normal
+03462bab,نَسينا صِلَتَنا بِأَقارِبِنا في الشَّرْقِ الأَوْسَطِ,We forgot our bond with our relatives in the Middle East,msa,family,normal
+b6fbb434,أَحْياناً أَشْعُرُ أَنَّني ضائِعٌ، أَنا بِلا انْتِماءٍ,"Sometimes I feel that I am lost, that I have no belonging",msa,emotions,normal
+fad8bf36,أَيْنَ أَنْتَمي؟ أَشْعُرُ أَنّي أَنْتَمي إِلَيْهِ,Where do I belong? I feel that I belong to it,msa,emotions,normal
+07217e87,هٰذا الشُّعورُ طَبيعِيٌّ عِنْدَ أَيِّ شَخْصٍ وُلِدَ ابْناً لِثَقافَةٍ أُخْرى,This feeling is natural in anyone born a child of another culture,msa,culture,normal
+2f6eedea,سَأَكونُ رَجُلاً ذا ثَقافَتَيْنِ,I will be a man with two cultures,msa,culture,normal
+21ae532c,أَشْعُرُ أَنَّني أَعيشُ في عالَمَيْنِ مُخْتَلِفَيْنِ,I feel that I live in two different worlds,msa,emotions,normal
+9b08ff75,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ يَحْتاجُ وَقْتاً أَطْوَلَ,Learning Arabic needs a longer time,msa,language,normal
+d88a943f,اللَّهْجَةُ المِصْرِيَّةُ غَريبَةٌ عَنّي,The Egyptian dialect is strange to me,msa,language,normal
+8d450652,قَرَأْتُ قِصَّةً عَنْ جُحا مُضْحِكَةً,I read a funny story about Joha,msa,leisure,normal
+809b1104,لا شُكْرَ عَلى الواجِبِ,No thanks are due for a duty,msa,greetings,normal
+38ea457c,أَتَمَنّى لَكَ يَوْماً سَعيداً,I wish you a happy day,msa,greetings,normal
+1c42ced3,إِلى اللِّقاءِ، مَعَ السَّلامَةِ,"Goodbye, take care",msa,greetings,normal
+c3a65f88,كُنْتُ مَريضاً قَليلاً,I was a little sick,msa,health,normal
+04760a89,لا أَعْرِفُ السَّبَبَ — رُبَّما اخْتِلافُ الماءِ أَوِ الطَّعامِ,I don't know the reason — maybe the difference in water or food,msa,health,normal
+a8211558,كُنّا مَرْضى لِفَتْرَةٍ طَويلَةٍ، حَوالَيْ أُسْبوعٍ,"We were sick for a long time, about a week",msa,health,normal
+51833e9f,كُلَّ يَوْمٍ لَحْمٌ مَشْوِيٌّ، خُضْرَواتٌ مَشْوِيَّةٌ، سَلَطَةٌ مِصْرِيَّةٌ، سَمَكٌ,"Every day grilled meat, grilled vegetables, Egyptian salad, fish",msa,food,normal
+730a0e8b,اشْتَرِ مِياهاً مَعْدِنِيَّةً غالِيَةً مِنَ المارْكِت وَاشْرَبْها,Buy expensive mineral water from the market and drink it,msa,health,normal
+4108a2ff,تَعَلَّمْتُ كَلِماتٍ أَكْثَرَ في اللَّهْجَةِ,I learned more words in the dialect,msa,language,normal
+1c656bd5,حَتّى في مِصْرَ تَكَلَّمْتُ كَثيراً مَعَ النّاسِ بِالعَرَبِيَّةِ,Even in Egypt I spoke a lot with people in Arabic,msa,language,normal
+a399890e,حاوَلْتُ أَنْ أَتَكَلَّمَ بِاللَّهْجَةِ المِصْرِيَّةِ لٰكِنْ كانَ عَلَيَّ أَنْ أَتَحَدَّثَ بَعْضَ الفُصْحى,I tried to speak in the Egyptian dialect but had to speak some Fusha,msa,language,normal
+ab6f9a90,النّاسُ دائِماً يَفْهَمونَكَ لٰكِنْ لا يَسْتَطيعونَ الإِجابَةَ، لِأَنَّهُمْ غَيْرُ مُتَعَوِّدينَ,"People always understand you but can't answer, because they aren't used to it",msa,language,normal
+1861c938,الفُصْحى جَميلَةٌ، لٰكِنْ إِذا أَرَدْتَ أَنْ تَتَواصَلَ مَعَ النّاسِ فَرُبَّما تَخْتارُ لَهْجَةً,"Fusha is beautiful, but if you want to communicate with people, perhaps choose a dialect",msa,language,normal
+11bbf8af,الغَوْصُ في رَأْيي أَفْضَلُ شَيْءٍ في شَرْمَ,"Diving, in my opinion, is the best thing in Sharm",msa,leisure,normal
+0571a2c1,نَزَلْنا إِلى البَحْرِ، أَنا وَعائِلَتي، وَرَأَيْنا تَحْتَ الماءِ جَنَّةً,"We went down into the sea, my family and I, and saw a paradise underwater",msa,leisure,normal
+d2a79fd0,اكْتَشَفْنا عالَماً مُخْتَلِفاً,We discovered a different world,msa,leisure,normal
+27daca3f,الماءُ دافِئٌ، لَمْ أَحْتَجْ بَدْلَةَ غَطْسٍ,"The water is warm, I didn't need a diving suit",msa,leisure,normal
+6e75392f,وَأَخَذْنا رِحْلَةً بِالمَرْكَبِ — كانَتْ رائِعَةً,We took a boat trip — it was wonderful,msa,leisure,normal
+102a2fa4,كانَتْ أَسْماكاً بِأَحْجامٍ مُخْتَلِفَةٍ وَأَلْوانٍ كَثيرَةٍ,They were fish of different sizes and many colors,msa,leisure,normal
+2af7d6e1,مَعَ السْنوركِل أَشْعُرُ بِحُرِّيَّةٍ,With the snorkel I feel free,msa,leisure,normal
+65cf9e35,ذَهَبْتُ مِنَ الأُرْدُنِّ إِلى مِصْرَ بِالقارِبِ، لَيْسَ بِالطّائِرَةِ,"I went from Jordan to Egypt by boat, not by plane",msa,travel,normal
+f8d91663,رِحْلَةٌ طَويلَةٌ: حافِلَتانِ وَقارِبٌ,A long trip: two buses and a boat,msa,travel,normal
+bf626f5a,بَقينا سِتَّةَ أَيّامٍ: أَرْبَعَةً في دهب وَيَوْمَيْنِ في شَرْمَ,We stayed six days: four in Dahab and two in Sharm,msa,travel,normal
+abb3410d,وَاشْتَرَيْتُ هَدايا لِعائِلَتي، لِأَنَّ القُطْنَ مَشْهورٌ جِدّاً في مِصْرَ,"I bought gifts for my family, because cotton is very famous in Egypt",msa,travel,normal
+1e8e8387,وَبَقيتُ بِجانِبِ البَحْرِ أَسْتَرْخي,I stayed beside the sea relaxing,msa,leisure,normal
+9fe59d8d,شُكْراً جَزيلاً لِمُساعَدَتِكِ، حَقّاً,"Thank you very much for your help, truly",msa,greetings,normal
+54c1a19a,سَلامٌ لِلْعائِلَةِ وَلِلْأَطْفالِ، وَأَراكَ الأُسْبوعَ القادِمَ,"Greetings to the family and the children, and I'll see you next week",msa,greetings,normal
+78898883,مِشْ عايْزينْ حاجَة، سيبْني لو سَمَحْت,"We don't want anything, leave me alone please",egyptian,shopping,normal
+54def6c9,أَنْتَ مِنينْ؟ فينْ تَعَلَّمْتَ عَرَبي؟,Where are you from? Where did you learn Arabic?,egyptian,smalltalk,normal
+5f6075d5,لَقَدْ خَرَجْتُ لِلتَّوِّ,I've just left.,msa,leisure,normal
+ee0e1490,كانوا يَجْتَمِعونَ لِيَتَسامَروا,They used to meet to socialise.,msa,people,normal
+3db73e13,ما زالَ المَكانُ مُهِمّاً,The place is still important.,msa,leisure,normal
+0aae5643,أَسْتَطيعُ أَنْ أَسْمَعَ غِناءَ الطُّيورِ,I can hear the birdsong.,msa,leisure,normal
+f85e0d16,أَنْوي أَنْ أَمْشِيَ إلى نِهايَةِ الشّارِعِ,I plan to walk to the end of the street.,msa,leisure,normal
+ef16c9ab,كانَ البَيْتُ العامُّ مُهِمّاً لِلْمُجْتَمَعِ,The pub was important to the community.,msa,people,normal
+6c8ed988,هٰذِهِ رِحْلَةٌ طَوِيلَةٌ,This is a long journey.,msa,travel,normal
+e6f827e0,أُرِيدُ مَزِيدًا مِنَ العِبَارَاتِ,I want more phrases.,msa,language,normal
+4d3de6c7,لَدَيَّ شَيْءٌ لِنُنَاقِشَهُ,I have something for us to discuss.,msa,work,normal
+57602b4e,هٰذَا حَدَثَ لِابْنِي,This happened to my son.,msa,family,normal
+e4091988,رَجَعَ ابْنِي إِلَى المَنْزِلِ لِلتَّوِّ,My son has just come home.,msa,family,normal
+faa4e008,رَجَعَ مِنْ رِحْلَةِ تَخْيِيمٍ,He came back from a camping trip.,msa,leisure,normal
+122b2c00,كَانَ مُتَّسِخًا جِدًّا وَمُتْعَبًا,He was very dirty and tired.,msa,emotions,normal
+040b5281,كَانَ عِيدُ مِيلَادِهِ قَبْلَ يَوْمَيْنِ,It was his birthday two days ago.,msa,family,normal
+21e2eeaa,كَانَ بَعِيدًا عَنَّا,He was far away from us.,msa,family,normal
+0ec134f9,لَمْ نَسْتَطِعْ أَنْ نَتَوَاصَلَ مَعَهُ,We couldn't contact him.,msa,family,normal
+800040aa,لَمْ يَكُنْ لَدَيْهِ هَاتِفٌ,He didn't have a phone.,msa,family,normal
+57755edc,لَمْ يَسْتَطِعْ أَنْ يَتَّصِلَ بِنَا,He couldn't call us.,msa,family,normal
+07a266ee,اِشْتَقْنَا إِلَيْهِ,We missed him.,msa,emotions,normal
+54a58f4c,اِشْتَقْنَا إِلَيْهِ وَلَمْ نَسْتَطِعْ أَنْ نَتَوَاصَلَ مَعَهُ,We missed him and couldn't contact him.,msa,emotions,normal
+cbb7edcb,لَمْ تَكُنْ هُنَاكَ طَرِيقَةٌ أُخْرَى,There was no other way.,msa,emotions,normal
+d03d78c0,سَأُغَادِرُ الآنَ,I'm leaving now.,msa,travel,normal
+60d7c7bf,مَزِيدٌ مِنَ الوَقْتِ,More time.,msa,leisure,normal
+f82166f5,مَزِيدٌ مِنَ المَعْلُومَاتِ,More information.,msa,work,normal
+0fda98a7,مَزِيدٌ مِنَ العِبَارَاتِ,More phrases.,msa,language,normal
+750013a0,حَدَثَ لِي,It happened to me.,msa,emotions,normal
+a26fe39e,حَدَثَ لَهَا,It happened to her.,msa,emotions,normal
+237dd03c,حَدَثَ لِابْنِي,It happened to my son.,msa,family,normal
+1e37a0f9,وَصَلَ لِلتَّوِّ,Just arrived.,msa,travel,normal
+46acd600,رَجَعَ لِلتَّوِّ,Just returned.,msa,travel,normal
+0b60edf0,حَدَثَ لِلتَّوِّ,Just happened.,msa,leisure,normal
+8cd2956a,اِشْتَقْنَا إِلَيْهَا,We missed her.,msa,emotions,normal
+b5a0465a,اِشْتَقْنَا إِلَيْهِمْ,We missed them.,msa,emotions,normal
+2982ffb8,لَمْ نَسْتَطِعْ أَنْ نَرَاهُ,We couldn't see him.,msa,family,normal
+85400ab1,لَمْ نَسْتَطِعْ أَنْ نَزُورَهُ,We couldn't visit him.,msa,family,normal
+3ffff6ce,كان والدي يتحدث مع جدتي.,My father used to speak to my grandmother.,msa,family,normal
+265159a7,أحيانًا كان يناولني الهاتف.,Sometimes he would hand me the phone.,msa,family,normal
+f81de177,وكنت أتحدث مع جدتي.,I would speak to my grandmother.,msa,family,normal
+f1dde12c,كان والدي يترجم بيني وبين جدتي.,My father would translate between me and my grandmother.,msa,family,normal
+1a37e101,كنا نشاهد الأخبار على التلفاز.,We used to watch the news on television.,msa,daily_life,normal
+1226770d,كنا نستمع إلى الأغاني العربية الجميلة.,We used to listen to beautiful Arabic songs.,msa,culture,normal
+5a752458,كنا نستمع إلى ترتيل القرآن الكريم.,We used to listen to the recitation of the Holy Qur'an.,msa,culture,normal
+5a2eede4,كنا نشاهد الطواف حول الكعبة.,We used to watch the circumambulation around the Kaaba.,msa,culture,normal
+612cc24a,وعبر كل ذلك، كنت أستمع إلى أصوات اللغة.,"Through all of that, I was listening to the sounds of the language.",msa,language,normal
+36443844,لم أفهم شيئًا، لكن أذني اعتادت على أصوات اللغة.,"I didn't understand anything, but my ears became accustomed to the sounds of the language.",msa,language,normal
+c0b82cea,منذ الولادة وخلال طفولتي، كنت أتحدث الإنجليزية.,"Since birth and throughout my childhood, I spoke English.",msa,language,normal
+2bc7339a,وبسبب أن والدتي كانت إنجليزية، كنا نتحدث الإنجليزية في المنزل.,"Because my mother was English, we spoke English at home.",msa,language,normal
+73cf3502,ولذلك لم أتعلم اللغة العربية حتى الآن.,Therefore I didn't learn Arabic until now.,msa,language,normal
+7bcad6b2,مَوْضُوعُ هٰذَا الْمَشْرُوعِ عَنِّي.,The topic of this project is about me.,msa,work,normal
+0cd4b4a2,يَجِبُ أَنْ أَتَحَدَّثَ عَنْ نَفْسِي.,I have to talk about myself.,msa,work,normal
+5a51c938,إِنَّهَا قِصَّةُ حَيَاتِي.,It's the story of my life.,msa,people,normal
+ef52c2e4,مُنْذُ الطُّفُولَةِ، كَانَ لَدَيَّ فُضُولٌ حَوْلَ الثَّقَافَةِ الْعَرَبِيَّةِ.,"Since childhood, I was curious about Arabic culture.",msa,culture,normal
+3c1e8c62,كَانَ لَدَيَّ فُضُولٌ بِسَبَبِ أَصْلِ وَالِدِي.,I was curious because of my father's background.,msa,culture,normal
+d3793383,وَالِدِي عِرَاقِيٌّ.,My father is Iraqi.,msa,family,normal
+8b63d9e5,كُنْتُ أَسْمَعُ اللُّغَةَ الْعَرَبِيَّةَ مِنْ وَالِدِي.,I used to hear the Arabic language from my father.,msa,language,normal
+4fadf750,كَانَ يَسْتَمِعُ إِلَى تِلَاوَةِ الْقُرْآنِ الْكَرِيمِ.,He used to listen to Qur'an recitation.,msa,culture,normal
+8b40f87b,كَانَ يُشَاهِدُ الْأَخْبَارَ بِاللُّغَةِ الْعَرَبِيَّةِ.,He used to watch the Arabic news.,msa,daily_life,normal
+9bfb02a2,كُنْتُ أَسْمَعُهُ عِنْدَمَا كَانَ يَتَحَدَّثُ مَعَ أَقَارِبِنَا عَبْرَ الْهَاتِفِ.,I used to hear him when he spoke to our relatives on the phone.,msa,family,normal
+25926932,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً.,I used to ask him many questions.,msa,family,normal
+19c9edb0,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً عَنِ الدِّينِ.,I asked him many questions about religion.,msa,culture,normal
+a844e371,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً عَنِ الثَّقَافَةِ الْعَرَبِيَّةِ.,I asked him many questions about Arab culture.,msa,culture,normal
+eb912cca,كُنْتُ أَحْضُرُ مَدْرَسَةً مَسِيحِيَّةً.,I attended a Christian school.,msa,culture,normal
+7c0b4dbf,وَفِيهَا كُنَّا نَتَعَلَّمُ عَنْ عِيسَى عَلَيْهِ السَّلَامُ.,There we learned about Jesus.,msa,culture,normal
+c1783d10,هل يمكننا أن نناقش هذا؟,Can we discuss this?,msa,work,normal
+3a611f13,هل يمكننا أن نناقش هذا الموضوع؟,Can we discuss this topic?,msa,work,normal
+69fdaee1,دعنا نُكْمِل.,Let's continue.,msa,work,normal
+6b9fe3b8,كَرِّرِ السُّؤالَ.,Repeat the question.,msa,work,normal
+66ec5fd4,أَعِدِ السُّؤالَ مَرَّةً أُخْرَى.,Repeat the question again.,msa,work,normal
+12641d83,نصفُ عائلتي إنجليزي، والنصفُ الآخر عراقي.,Half of my family is English and the other half is Iraqi.,msa,family,normal
+5c32ad9a,جاء والدي إلى بريطانيا منذ فترةٍ طويلةٍ.,He came to Britain a long time ago.,msa,family,normal
+7fd1b875,جاء ليدرس الطِّبَّ.,He came to study medicine.,msa,work,normal
+bb9a2f83,أصبح طبيبًا.,He became a doctor.,msa,work,normal
+0b8a8aa0,أصبح طبيبًا رائعًا.,He became an excellent doctor.,msa,work,normal
+9ecf1eef,لم يُخَطِّطْ لِلْبَقاءِ في بريطانيا.,He didn't plan to stay in Britain.,msa,family,normal
+772ea962,أراد أن يعود.,He wanted to return.,msa,family,normal
+a525bbf0,أراد أن يعود إلى بلده.,He wanted to return to his home country.,msa,family,normal
+7b4d6263,تَقابَلا في المُستشفى.,They met in the hospital.,msa,family,normal
+c57a84e7,تَعارَفا.,They got to know each other.,msa,family,normal
+ee38578c,وَقَعا في الحُبِّ.,They fell in love.,msa,family,normal
+7542c9df,تعارفا ثم وقعَا في الحُبِّ.,They got to know each other and fell in love.,msa,family,normal
+4ed0e790,نُسِجَ الحُبُّ بينهما.,Love was woven between them.,msa,family,normal
+3c5d27fd,جمعَ القدرُ بينهما.,Fate brought them together.,msa,family,normal
+0bdcd22f,شاءَ القدرُ أن يلتقيا.,Fate willed that they should meet.,msa,family,normal
+99b73ab5,بدأت قصةُ حُبِّهما في المُستشفى.,Their love story began in the hospital.,msa,family,normal
+6ba07753,أَوَدُّ أَنْ أَتَحَدَّثَ عَنْ مَوْضُوعِ الدَّرْسِ الماضِي.,I would like to talk about the topic from the last lesson.,msa,work,normal
+e83d600e,أَخَذَنِي إِلَى مَنْزِلِ صَدِيقِهِ.,He took me to his friend's house.,msa,people,normal
+6815ed53,طِفْلَا هٰذَا الرَّجُلِ وُلِدَا فِي المَمْلَكَةِ المُتَّحِدَةِ، مِثْلِي.,"This man's two children were born in the United Kingdom, like me.",msa,family,normal
+199a069c,وَالِدَتُهُمَا إِنْجِلِيزِيَّةٌ، وَوَالِدُهُمَا مِنَ الشَّرْقِ الأَوْسَطِ.,"Their mother is English, and their father is from the Middle East.",msa,family,normal
+26a175bf,أَرَادَ وَالِدُهُمَا أَنْ يُعَلِّمَهُمَا اللُّغَةَ العَرَبِيَّةَ وَالثَّقَافَةَ العَرَبِيَّةَ.,Their father wanted to teach them the Arabic language and Arab culture.,msa,culture,normal
+2114e53b,جَاءَ رَجُلٌ مُتَدَيِّنٌ.,A devout man came.,msa,culture,normal
+8c2ed3f5,أَعْطَانَا دَرْسًا بِالعَرَبِيَّةِ.,He gave us a lesson in Arabic.,msa,language,normal
+1745b72b,كَانَ يُعَلِّمُنَا أَسْمَاءَ أَجْزَاءِ الجِسْمِ.,He was teaching us the names of the parts of the body.,msa,health,normal
+f61a9511,كَانَ يَلْبَسُ مَلَابِسَ سَوْدَاءَ فَقَطْ، وَكَانَتْ لَهُ لِحْيَةٌ كَبِيرَةٌ.,"He wore only black clothes, and he had a big beard.",msa,people,normal
+a6d34ca1,شَعَرْتُ بِالخَوْفِ مِنْهُ.,I felt afraid of him.,msa,emotions,normal
+c7dcc482,قُلْتُ لِوَالِدِي: لَا أُرِيدُ أَنْ أَتَعَلَّمَ العَرَبِيَّةَ.,I said to my father: I don't want to learn Arabic.,msa,language,normal
+46796019,لَدَيَّ مَا يَكْفِينِي مِنَ الدُّرُوسِ.,I've had enough lessons.,msa,work,normal
+397e2769,لَدَيَّ مَا يَكْفِينِي مِنَ الدِّرَاسَةِ.,I've had enough studying.,msa,work,normal
+4f8e8e5b,الفُرَصُ وَالإِمْكانِيّاتُ لَمْ تَكُنْ مُتاحَةً أَوْ مُتَوَفِّرَةً كَما الآنَ.,The opportunities and possibilities weren't available as they are now.,msa,daily_life,normal
+73baf633,تَطَوَّرَتِ التِّكْنولوجْيا كَثيرًا في آخِرِ ثَلاثينَ سَنَةً.,Technology has developed a lot in the last thirty years.,msa,daily_life,normal
+ce185113,اَلرَّقَمُ المَطْلوبُ حالِيًّا لَيْسَ مُتاحًا.,The number you have dialled is currently unavailable.,msa,daily_life,normal
+7fdd1445,هَلْ هذا الهاتِفُ مُتَوَفِّرٌ في الأَسْواقِ؟,Is this phone available in the shops?,msa,daily_life,normal
+760b3940,هَلْ أَنْتَ مُتَفَرِّغٌ؟,Are you free / available (as a person)?,msa,daily_life,normal
+255895eb,منذ فترةٍ طويلةٍ,A long time ago,msa,family,normal
+46acfda6,جَلَسَتْ مَعَنا امْرَأَةٌ أوكْرانِيَّةٌ في بَيْتِنا.,A Ukrainian woman stayed with us in our house.,msa,people,normal
+b2d79dfe,كانَ عُمْري سِتًّا وَعِشْرينَ سَنَةً.,I was twenty-six years old.,msa,people,normal
+2a925a96,حَصَلْنا عَلى التَّأْشيرَةِ.,We got the visa.,msa,travel,normal
+7f481c16,سافَرْنا بَرًّا مِنَ الأُرْدُنِّ إِلى العِراقِ.,We travelled overland from Jordan to Iraq.,msa,travel,normal
+5c2255ff,كانَتْ رِحْلَةً مُتْعِبَةً لكِنَّنا كُنّا مُتَحَمِّسَيْنِ.,"It was a tiring journey, but we were excited.",msa,travel,normal
+e819ec85,لَمْ نَسْتَطِعْ أَنْ نُسافِرَ بِالطّائِرَةِ.,We couldn't travel by plane.,msa,travel,normal
+94ec24fe,كانَ يَجِبُ أَنْ نَذْهَبَ إِلى الأُرْدُنِّ.,We had to go to Jordan.,msa,travel,normal
+4fb31b16,في طفولتي,In my childhood,msa,family,normal
+eb7da4a7,خلال طفولتي,Throughout my childhood,msa,family,normal
+beb8aa6e,منذ الولادة,Since birth,msa,family,normal
+1545c605,ذَاتَ يَوْمٍ سَأَلْتُهُ...,One day I asked him...,msa,family,high
+b618faeb,أَجَابَنِي وَقَالَ...,He answered me and said...,msa,family,high
+867d0ccb,منذ طفولتي,Since my childhood,msa,family,normal
+315752a0,كانَ أَفْرادُ العائِلَةِ يَأْتونَ وَيَذْهَبونَ كُلَّ يَوْمٍ لِلزِّيارَةِ.,Family members would come and go every day to visit.,msa,family,normal
+780a4683,لَدَيْنا الكَثيرُ مِنْ أَبْناءِ العَمِّ وَبَناتِ العَمِّ.,We have lots of cousins.,msa,family,normal
+f1605e6b,سَكَنّا في بَيْتِ جَدَّتي رَحِمَها اللهُ.,"We stayed in my grandmother's house, God rest her soul.",msa,family,normal
+23e47ce1,العائِلَةُ العَرَبِيَّةُ كَبيرَةٌ جِدًّا.,The Arab family is very big.,msa,family,normal
+dad37d09,سَأَلْتُ والِدي لكِنَّهُ كانَ مَشْغولًا.,"I asked my father, but he was busy.",msa,family,normal
+2b1b7d00,شَعَرْتُ أَنَّني جُزْءٌ مِنْ شَيْءٍ كَبيرٍ.,I felt I was part of something big.,msa,emotions,normal
+5478c10f,كُنّا مُتَحَمِّسَيْنِ، أَنا وَأَخي.,"We were excited, my brother and I.",msa,emotions,normal
+f2aa93b7,كانَتْ صَدْمَةً ثَقافِيَّةً لي.,It was a culture shock for me.,msa,emotions,normal
+bb9a65aa,عِنْدَمَا نَزَلَ الْقُرْآنُ...,When the Qur'an was revealed...,msa,culture,normal
+51b31723,وَلِذٰلِكَ لَحْمُ الْخِنْزِيرِ مُحَرَّمٌ فِي الْقُرْآنِ.,"Therefore, pork is forbidden in the Qur'an.",msa,culture,normal
+eeda8d1f,فِي الْإِنْجِيلِ يُقَالُ...,In the Gospel it says...,msa,culture,normal
+77d5a918,رَحِمَها اللهُ.,God rest her soul.,msa,culture,normal
+35f381b5,تَخْتَلِفُ عَنْ إِنْجِلْتِرا.,It's different from England.,msa,culture,normal
+9726db55,كَانَ هُنَاكَ مَرَضٌ بَيْنَ الْخَنَازِيرِ.,At that time there was disease among pigs.,msa,health,normal
+5ac0c8c6,دَعَتْهُ الحُكومَةُ العِراقِيَّةُ إِلى مُؤْتَمَرٍ.,The Iraqi government invited him to a conference.,msa,work,normal
+78e40c10,لَمْ أَعْرِفْ نُقْطَةَ البِدايَةِ.,I didn't know the starting point.,msa,language,normal
+cbe268a0,لَمْ أَسْتَطِعْ أَنْ أَبْدَأَ بِتَعَلُّمِ اللُّغَةِ.,I couldn't begin learning the language.,msa,language,normal
+58d8e762,عادَتْ لِيَ الرَّغْبَةُ مُجَدَّدًا.,The desire came back to me again.,msa,language,normal
+d9164300,كان لديَّ اهتمامٌ بـ...,I have been interested in...,msa,language,high
+429cbb0e,كان لديَّ فضولٌ حول...,I was curious about...,msa,language,high
+c837c0c1,رَغْبَتي في تَعَلُّمِ العَرَبِيَّةِ بَدَأَتْ تَتَلاشى.,My desire to learn Arabic began to fade.,msa,language,normal
+2ac7ae2b,حاوَلْتُ أَنْ أَسْتَخْدِمَها.,I tried to use them.,msa,language,normal
+1dcba544,بَعْضُهُمْ لَمْ يَسْتَطِعْ أَنْ يَتَحَدَّثَ بِالإِنْجْليزِيَّةِ.,Some of them couldn't speak English.,msa,language,normal
+173b2f3f,لَمْ أَعْرِفْ مِنْ أَيْنَ أَبْدَأُ.,I didn't know where to begin.,msa,language,normal
+15bf5d1a,عِنْدَما رَجَعْنا لَمْ أَجِدْ طَريقًا لِتَعَلُّمِ اللُّغَةِ.,"When we returned, I didn't find a way to learn the language.",msa,language,normal
+8807647d,اللُّغَةُ العَرَبِيَّةُ مُخْتَلِفَةٌ جِدًّا عَنِ اللُّغاتِ الأورُوبِّيَّةِ.,Arabic is very different from European languages.,msa,language,normal
+14f92d1d,اِحْتَجْتُ إِلى مُساعَدَةٍ.,I needed help.,msa,emotions,normal
+af7b5b9c,إِذا اسْتَطَعْتَ أَنْ تَتَعَلَّمَ لُغَةً أَجْنَبِيَّةً مِثْلَ الرّوسِيَّةِ، فَلِمَ لا تَتَعَلَّمُ لُغَتَكَ الأُمَّ؟,"If you could learn a foreign language like Russian, why not learn your mother tongue?",msa,language,normal
+46523188,اِسْتَصْعَبْتُ تَعَلُّمَ العَرَبِيَّةِ وَظَنَنْتُهُ شَيْئًا مُسْتَحيلًا,I found learning Arabic difficult and thought it impossible,msa,language,normal
+46e3c331,قُلْتُ لِنَفْسِي: أَسْتَطِيعُ أَنْ أُخَصِّصَ وَقْتًا لِدِرَاسَةِ العَرَبِيَّةِ.,I said to myself: I can set aside time for studying Arabic.,msa,language,normal
+56079506,يَجِبُ أَنْ أَكْتَسِبَ عَادَاتٍ جَيِّدَةً.,I must acquire good habits.,msa,daily_life,normal
+64b05595,الأَطْفَالُ يَكْتَسِبُونَ العَادَاتِ وَالتَّقَالِيدَ مِنَ الأَهْلِ.,Children acquire habits and traditions from the family.,msa,culture,normal
+a77c566d,وَأَنَا أَنْتَظِرُ الحَافِلَةَ، لَدَيَّ وَقْتُ فَرَاغٍ.,"While I'm waiting for the bus, I have free time.",msa,leisure,normal
+41edd4ec,عِنْدَمَا أَجْمَعُ هٰذَا الوَقْتَ، لَرُبَّمَا يَكُونُ سَاعَةً.,"When I add up this time, it might be an hour.",msa,daily_life,normal
+588d85c6,يَجِبُ عَلَيَّ أَنْ أَسْتَغِلَّ هٰذَا الوَقْتَ.,I must make the most of this time.,msa,daily_life,normal
+225d4e3a,كُنْتُ أُضَيِّعُ الكَثِيرَ مِنَ الوَقْتِ فِي الهَاتِفِ.,I used to waste a lot of time on my phone.,msa,daily_life,normal
+f7cc2e9d,وَعَدْتُ نَفْسِي: سَأَتَعَلَّمُ هٰذِهِ اللُّغَةَ.,I promised myself: I will learn this language.,msa,language,normal
+9f43eb89,وَهٰكَذَا كَانَتْ نِهَايَةُ البِدَايَةِ.,And so it was the end of the beginning.,msa,language,normal
+d69ec025,وَجَدْتُ صُعُوبَةً فِي إِيجَادِ مَصَادِرَ تَعْلِيمِيَّةٍ جَيِّدَةٍ.,I found it hard to find good learning resources.,msa,language,normal
+9967d3ef,كُنْتُ أَسْتَخْدِمُ الكُرُوتَ التَّعْلِيمِيَّةَ لِحِفْظِ الكَلِمَاتِ الجَدِيدَةِ.,I used flashcards to memorise new words.,msa,language,normal
+e6a0a763,وَجَدْتُ قَنَوَاتٍ عَلَى اليُوتْيُوب وَكُنْتُ أُكَرِّرُ الجُمَلَ مِرَارًا وَتَكْرَارًا.,I found YouTube channels and repeated the sentences over and over.,msa,language,normal
+2772191f,كُنْتُ أُقَلِّدُ مِثْلَ البَبَّغَاءِ، كَمَا يَتَعَلَّمُ الأَطْفَالُ.,"I imitated like a parrot, the way children learn.",msa,language,normal
+5c331f27,كُنْتُ أُبْطِئُ سُرْعَةَ الفِيدْيُو وَأُعِيدُ المَقْطَعَ.,I'd slow the video speed and replay the clip.,msa,language,normal
+6d526fc3,تَعَوَّدْتُ عَلَى الاِسْتِمَاعِ اليَوْمِيِّ.,I got used to daily listening.,msa,language,normal
+849b9298,أُذُنِي مُتَعَوِّدَةٌ عَلَى أَصْوَاتِ الفُصْحَى.,My ear is accustomed to the sounds of Fusha.,msa,language,normal
+00dfb172,كُنْتُ أُبْطِئُ السُّرْعَةَ لِأَجْعَلَ أُذُنِي تَتَعَوَّدُ عَلَى أَصْوَاتِ اللُّغَةِ.,I slowed the speed to get my ear accustomed to the sounds of the language.,msa,language,normal
+4a157df6,كُنْتُ أَسْتَطِيعُ أَنْ أَصِفَ شَيْئًا بَسِيطًا فَقَطْ.,I could only describe simple things.,msa,language,normal
+769b7597,كَانَ لَدَيَّ مُشْكِلَةٌ فِي مَهَارَةِ الاِسْتِمَاعِ وَفِي الفَهْمِ.,I had a problem with listening and comprehension.,msa,language,normal
+4695322c,شَعَرْتُ أَنَّنِي عَلِقْتُ فِي مُسْتَوًى مَا.,I felt stuck at a certain level.,msa,language,normal
+f1e24ea4,شَعَرْتُ أَنَّنِي بِحَاجَةٍ لِتَوْجِيهٍ مِنْ مُعَلِّمٍ.,I felt I needed guidance from a teacher.,msa,language,normal
+cc0e8313,ثَمَانُونَ بِالمِئَةِ مِنْ تَعَلُّمِي كَانَ جُهْدًا ذَاتِيًّا.,Eighty percent of my learning was self-directed effort.,msa,language,normal
+662190b2,سَآخُذُ هٰذَا بِعَيْنِ الاِعْتِبَارِ.,I'll take this into consideration.,msa,daily_life,normal
+1a31603a,كُنْتُ مُهْتَمًّا بِالثَّقَافَةِ العَرَبِيَّةِ مُنْذُ طُفُولَتِي.,I'd been interested in Arab culture since my childhood.,msa,culture,normal
+a98b0a0f,اِهْتَمَمْتُ بِتَعَلُّمِ اللُّغَاتِ قَبْلَ العَرَبِيَّةِ.,I took an interest in learning languages before Arabic.,msa,language,normal
+6a51581a,اِلْتَقَيا لِأَوَّلِ مَرَّةٍ في المُسْتَشْفى.,They met for the first time in the hospital.,msa,family,normal
+532bd33c,شاءَ القَدَرُ أَنْ يَلْتَقِيا لِأَوَّلِ مَرَّةٍ في المُسْتَشْفى.,Fate willed that they meet for the first time in the hospital.,msa,family,normal
+715fb294,تَعَوَّدْتُ عَلَى...,I became accustomed to...,msa,language,high
+5655c052,اِهْتَمَمْتُ بِـ...,I took an interest in...,msa,language,high
+f38e1bc7,كُنْتُ مُهْتَمًّا بِـ...,I had been interested in...,msa,language,high
+e58e6e14,وَجَدْتُ صُعُوبَةً فِي...,I found it hard to...,msa,language,high
+6a6fa354,قُلْتُ لِنَفْسِي...,I said to myself...,msa,daily_life,high
+2ec1ce66,خَصَّصْتُ وَقْتًا لِـ...,I set aside time for...,msa,daily_life,high
+d474de26,شَعَرْتُ أَنَّنِي...,I felt that I...,msa,emotions,high
+ec94d236,وَعَدْتُ نَفْسِي أَنْ...,I promised myself that...,msa,daily_life,high
+b6e9a07d,يَجِبُ أَنْ أَكْتَسِبَ...,I must acquire...,msa,daily_life,high
+6a8591cd,مِرَارًا وَتَكْرَارًا,over and over,msa,language,high
+95781855,كَانَ فِي مَكَانٍ بَعِيدٍ عَنَّا,He was in a place far from us.,msa,family,normal
+3ecef965,حاوَلْتُ أَنْ...,I tried to...,msa,language,high
+21a878ef,أُريدُ أَنْ...,I want to...,msa,daily_life,high
+31e60ec6,لَمْ نَسْتَطِعْ أَنْ...,We couldn't...,msa,family,high
