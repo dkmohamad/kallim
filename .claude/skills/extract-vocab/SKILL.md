@@ -66,8 +66,8 @@ sub-agent tags against the live taxonomy, not a copy.
 Dispatch a `Task` sub-agent with `model: sonnet`, passing the fetched source
 text, that tag menu, and the extraction rules. Ask it to **write
 `scratch/vocab_pairs.csv`** (columns
-`arabic,english,register,concept_tag`, **no `id`**) and to **return only a
-short count summary** — this keeps the long transcript out of the main
+`arabic,english,register,concept_tag,priority`, **no `id`**) and to **return
+only a short count summary** — this keeps the long transcript out of the main
 context.
 
 The sub-agent's brief:
@@ -92,10 +92,21 @@ anything doubtful rather than pass it through.
 
 | Field | How to decide |
 |-------|---------------|
-| `arabic` | The Arabic text, cleaned of stray formatting; keep the transcript's tashkeel |
+| `arabic` | The Arabic text, cleaned of stray formatting; keep the transcript's tashkeel. **One surface form only** — never slash-alternates like عايز/عايزة (lint rejects them); emit each variant as its own row if both matter |
 | `english` | Reuse the transcript's italic gloss if present, else translate |
 | `register` | **Per phrase:** `egyptian` for Egyptian colloquial, `msa` for Fusha, `iraqi` for Iraqi — one lesson mixes registers, so decide line by line |
 | `concept_tag` | A tag from the scheme matching the register — fetched via `kallim tags`, see below |
+| `priority` | `high` only for small frame chunks (see below); everything else `normal` (may be omitted — ingest defaults it) |
+
+**Frame sub-chunks (`priority=high`).** When a sentence is built on a
+high-utility, generally applicable frame — one you'd reach for constantly in
+conversation, regardless of topic — ALSO emit the bare frame as its own row:
+Arabic frame + `...`, English gloss + `...`, `priority=high`. The full
+sentence stays `normal`. Example already in chunks.csv: `d9164300 · كان لديَّ
+اهتمامٌ بـ... · "I have been interested in..." · high`. Full sentences are
+never `high` — only small, often-used, broadly applicable frames (or short
+fixed phrases like مِرَارًا وَتَكْرَارًا) earn it. Emit a frame row once even
+if several sentences share the frame; dedup guards re-ingest anyway.
 
 **Concept tag taxonomy.** Two schemes — the *situational* scheme for
 `egyptian`, the *topical* scheme for `msa` / `iraqi` (`greetings` is shared).
@@ -122,7 +133,7 @@ Run the deterministic ingest command over the sub-agent's candidates:
 
 This dedups each candidate against `chunks.csv` (diacritics-insensitive —
 vocalized and bare spellings of the same phrase collapse to one), assigns a
-new id, validates the register/tag against the taxonomy, and writes
+new id, validates the register/tag/priority against the taxonomy, and writes
 `scratch/vocab_chunks_review.csv`. It never calls an external API or invents text.
 
 ### 4. Show the summary and wait for approval

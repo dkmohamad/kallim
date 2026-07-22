@@ -142,6 +142,7 @@ def _note(
         tags=[
             f"topic::{chunk.concept_tag}",
             f"register::{chunk.arabic.register}",
+            f"priority::{chunk.priority}",
         ],
         guid=genanki.guid_for(chunk.id),
     )

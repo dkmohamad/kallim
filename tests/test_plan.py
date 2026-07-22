@@ -7,10 +7,10 @@ from scripts.chunks import Chunks
 from scripts.model import Chunk
 from scripts.plan import plan_synthesis
 
-# (id, arabic, english, register, concept_tag) — Chunk.FIELDS order.
+# (id, arabic, english, register, concept_tag, priority) — Chunk.FIELDS order.
 _ROWS = [
-    ["a1", "السلام عليكم", "Hello", "egyptian", "greetings"],
-    ["a2", "صباح الخير", "Good morning", "egyptian", "greetings"],
+    ["a1", "السلام عليكم", "Hello", "egyptian", "greetings", "normal"],
+    ["a2", "صباح الخير", "Good morning", "egyptian", "greetings", "normal"],
 ]
 
 
@@ -71,8 +71,8 @@ def test_plan_bills_a_repeated_utterance_once_unless_forced(tmp_path: Path) -> N
     summed every occurrence, over-stating the credit cost).
     """
     rows = [
-        ["d1", "أهلا", "Welcome", "egyptian", "greetings"],
-        ["d2", "مرحبا", "Welcome", "egyptian", "greetings"],
+        ["d1", "أهلا", "Welcome", "egyptian", "greetings", "normal"],
+        ["d2", "مرحبا", "Welcome", "egyptian", "greetings", "normal"],
     ]
     chunks = [Chunk.from_row(row) for row in rows]
     cache = AudioCache(tmp_path)

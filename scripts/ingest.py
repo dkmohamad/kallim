@@ -40,10 +40,11 @@ logger = logging.getLogger("kallim.ingest")
 
 
 def load_vocab_pairs(path: Path) -> list[VocabEntry]:
-    """Load vocab candidates from a CSV (arabic,english,register,concept_tag).
+    """Load vocab candidates from a CSV in ``VocabEntry.FIELDS`` order.
 
     Args:
-        path: Path to a ``.csv`` with the four vocab columns and a header.
+        path: Path to a ``.csv`` with the vocab columns (the trailing
+            ``priority`` may be omitted) and a header.
 
     Returns:
         One VocabEntry per row, with register/concept_tag as taxonomy members.

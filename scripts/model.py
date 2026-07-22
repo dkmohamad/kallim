@@ -22,6 +22,7 @@ __all__ = [
     "Chunk",
     "ConceptTag",
     "PlayableAudio",
+    "Priority",
     "Register",
     "Scheme",
     "SITUATIONAL_TAGS",
@@ -63,6 +64,18 @@ class Register(StrEnum):
     def label(self) -> str:
         """Full human-readable register name (for prompts and display)."""
         return _REGISTER_LABELS[self]
+
+
+class Priority(StrEnum):
+    """How broadly useful a chunk is in live conversation.
+
+    ``HIGH`` marks chunks used constantly — high-utility, generally applicable
+    across topics — so drills and decks can foreground them. Everything else is
+    ``NORMAL``.
+    """
+
+    NORMAL = "normal"
+    HIGH = "high"
 
 
 class ConceptTag(StrEnum):
@@ -130,33 +143,51 @@ _TOP = frozenset({Scheme.TOPICAL})
 # never drift out of sync with a hand-copied table.
 _TAXONOMY: dict[ConceptTag, _TagInfo] = {
     ConceptTag.GREETINGS: _TagInfo(_BOTH, "hello, goodbye, pleasantries"),
-    ConceptTag.SMALLTALK: _TagInfo(_SIT, "casual chit-chat — first-time-here, the weather, traffic"),
+    ConceptTag.SMALLTALK: _TagInfo(
+        _SIT, "casual chit-chat — first-time-here, the weather, traffic"
+    ),
     ConceptTag.DINING: _TagInfo(_SIT, "cafe/restaurant: ordering, menus, the bill"),
     ConceptTag.HOTEL: _TagInfo(_SIT, "check-in, rooms, hotel amenities"),
     ConceptTag.TAXIS: _TagInfo(_SIT, "hailing and agreeing rides, fares"),
-    ConceptTag.DIRECTIONS: _TagInfo(_SIT, "asking the way, finding places, 'walk from here'"),
-    ConceptTag.SIGHTSEEING: _TagInfo(_SIT, "landmarks, mosques, tours, excursions, boat trips"),
+    ConceptTag.DIRECTIONS: _TagInfo(
+        _SIT, "asking the way, finding places, 'walk from here'"
+    ),
+    ConceptTag.SIGHTSEEING: _TagInfo(
+        _SIT, "landmarks, mosques, tours, excursions, boat trips"
+    ),
     ConceptTag.BEACH_AND_VENDORS: _TagInfo(_SIT, "the beach, sellers and hawkers"),
-    ConceptTag.SHOPPING: _TagInfo(_SIT, "shops, markets, haggling, 'too expensive', 'best price?'"),
+    ConceptTag.SHOPPING: _TagInfo(
+        _SIT, "shops, markets, haggling, 'too expensive', 'best price?'"
+    ),
     ConceptTag.MONEY: _TagInfo(_SIT, "prices, change, paying amounts"),
-    ConceptTag.FOOD: _TagInfo(_TOP, "diet, cooking, ingredients, meals, cafes and drinks"),
+    ConceptTag.FOOD: _TagInfo(
+        _TOP, "diet, cooking, ingredients, meals, cafes and drinks"
+    ),
     ConceptTag.TRAVEL: _TagInfo(_TOP, "transport, journeys, directions, sightseeing"),
-    ConceptTag.PEOPLE: _TagInfo(_TOP, "society, community, and relationships beyond one's own family"),
+    ConceptTag.PEOPLE: _TagInfo(
+        _TOP, "society, community, and relationships beyond one's own family"
+    ),
     ConceptTag.FAMILY: _TagInfo(
         _TOP,
         "kin and relatives — parents, grandparents, cousins, marriage, childhood at home",
     ),
     ConceptTag.EMOTIONS: _TagInfo(_TOP, "feelings, moods, dreams, personality traits"),
     ConceptTag.LEISURE: _TagInfo(_TOP, "nature, parks, weather, hobbies, free time"),
-    ConceptTag.DAILY_LIFE: _TagInfo(_TOP, "everyday routine — home, technology, phones, errands"),
-    ConceptTag.CULTURE: _TagInfo(_TOP, "religion, traditions, proverbs, history, the arts"),
+    ConceptTag.DAILY_LIFE: _TagInfo(
+        _TOP, "everyday routine — home, technology, phones, errands"
+    ),
+    ConceptTag.CULTURE: _TagInfo(
+        _TOP, "religion, traditions, proverbs, history, the arts"
+    ),
     ConceptTag.LANGUAGE: _TagInfo(
         _TOP,
         "the language-learning journey — mother tongue, translation, foreign "
         "languages, self-discovery through language",
     ),
     ConceptTag.WORK: _TagInfo(_TOP, "business, career, professional life, pressure"),
-    ConceptTag.HEALTH: _TagInfo(_TOP, "the health system, the body, exercise, medicine"),
+    ConceptTag.HEALTH: _TagInfo(
+        _TOP, "the health system, the body, exercise, medicine"
+    ),
 }
 
 # Fail early on drift: every ConceptTag needs exactly one _TAXONOMY entry (with
@@ -213,6 +244,7 @@ class Chunk:
     english: Utterance
     arabic: Utterance
     concept_tag: ConceptTag
+    priority: Priority = Priority.NORMAL
 
     # The chunks.csv schema — the single source of truth for column order,
     # shared by from_row (read) and to_row (write).
@@ -222,6 +254,7 @@ class Chunk:
         "english",
         "register",
         "concept_tag",
+        "priority",
     )
 
     def __str__(self) -> str:
@@ -240,6 +273,7 @@ class Chunk:
             self.english.text,
             self.arabic.register,
             self.concept_tag,
+            self.priority,
         ]
 
     def __post_init__(self) -> None:
@@ -249,22 +283,34 @@ class Chunk:
                 f"concept_tag {self.concept_tag.value!r} not allowed for "
                 f"register {self.arabic.register.value!r}"
             )
+        # One surface form per chunk: slash-alternates (عايز/عايزة) aren't a
+        # drillable unit and read badly in TTS — store each variant as its own
+        # chunk instead.
+        if "/" in self.arabic.text:
+            raise ValueError(
+                f"arabic carries a slash-alternate {self.arabic.text!r}; "
+                "store one surface form per chunk"
+            )
 
     @classmethod
     def from_row(cls, row: list[str]) -> Chunk:
-        """Build a Chunk from a raw CSV row (id, arabic, english, register, tag).
+        """Build a Chunk from a raw CSV row in ``FIELDS`` order.
 
         Raises:
-            ValueError: If the row has the wrong field count, or its register or
-                concept_tag is outside the taxonomy.
+            ValueError: If the row has the wrong field count, or its register,
+                concept_tag, or priority is outside the taxonomy.
         """
         try:
-            cid, arabic, english, register, concept_tag = row
+            cid, arabic, english, register, concept_tag, priority = row
         except ValueError:
-            raise ValueError(f"expected 5 fields, got {len(row)}: {row!r}") from None
+            raise ValueError(f"expected 6 fields, got {len(row)}: {row!r}") from None
         reg, tag = _parse_taxonomy(register, concept_tag)
         return cls(
-            cid, Utterance(english, Register.ENGLISH), Utterance(arabic, reg), tag
+            cid,
+            Utterance(english, Register.ENGLISH),
+            Utterance(arabic, reg),
+            tag,
+            _parse_priority(priority),
         )
 
 
@@ -283,14 +329,28 @@ class VocabEntry:
     english: str
     register: Register
     concept_tag: ConceptTag
+    priority: Priority = Priority.NORMAL
 
     # The vocab_pairs.csv schema — the single source of truth for column order,
-    # shared by from_row (read) and to_row (write).
-    FIELDS: ClassVar[tuple[str, ...]] = ("arabic", "english", "register", "concept_tag")
+    # shared by from_row (read) and to_row (write). ``priority`` is optional on
+    # read (an extraction agent may omit the column) but always written.
+    FIELDS: ClassVar[tuple[str, ...]] = (
+        "arabic",
+        "english",
+        "register",
+        "concept_tag",
+        "priority",
+    )
 
     def to_row(self) -> list[str]:
         """Serialise to a vocab_pairs.csv row, in ``FIELDS`` order."""
-        return [self.arabic, self.english, self.register, self.concept_tag]
+        return [
+            self.arabic,
+            self.english,
+            self.register,
+            self.concept_tag,
+            self.priority,
+        ]
 
     def to_chunk(self, chunk_id: str) -> Chunk:
         """Build a validated Chunk from this entry.
@@ -309,24 +369,50 @@ class VocabEntry:
             english=Utterance(self.english, Register.ENGLISH),
             arabic=Utterance(self.arabic, self.register),
             concept_tag=self.concept_tag,
+            priority=self.priority,
         )
 
     @classmethod
     def from_row(cls, row: list[str]) -> VocabEntry:
         """Build a VocabEntry from a vocab_pairs.csv row (arabic, english, …).
 
-        Mirrors ``Chunk.from_row``: a positional row in ``FIELDS`` order.
+        Mirrors ``Chunk.from_row``: a positional row in ``FIELDS`` order, except
+        that ``priority`` may be omitted or blank (defaults to normal) so
+        extraction agents that don't classify priority still produce valid
+        candidates.
 
         Raises:
-            ValueError: If the row has the wrong field count, or its register or
-                concept_tag is off-taxonomy.
+            ValueError: If the row has the wrong field count, or its register,
+                concept_tag, or priority is off-taxonomy.
         """
-        try:
+        if len(row) == 4:
             arabic, english, register, concept_tag = row
-        except ValueError:
-            raise ValueError(f"expected 4 fields, got {len(row)}: {row!r}") from None
+            priority = Priority.NORMAL
+        elif len(row) == 5:
+            arabic, english, register, concept_tag, raw_priority = row
+            # A blank cell means "unclassified", same as an omitted column.
+            priority = (
+                _parse_priority(raw_priority) if raw_priority else Priority.NORMAL
+            )
+        else:
+            raise ValueError(f"expected 4 or 5 fields, got {len(row)}: {row!r}")
         reg, tag = _parse_taxonomy(register, concept_tag)
-        return cls(arabic, english, reg, tag)
+        return cls(arabic, english, reg, tag, priority)
+
+
+def _parse_priority(priority: str) -> Priority:
+    """Parse a raw priority value into its enum member.
+
+    Shared by ``Chunk.from_row`` and ``VocabEntry.from_row`` so the CSV
+    priority-decode lives in one place.
+
+    Raises:
+        ValueError: If ``priority`` is outside the enum.
+    """
+    try:
+        return Priority(priority)
+    except ValueError:
+        raise ValueError(f"unknown priority {priority!r}") from None
 
 
 def _parse_taxonomy(register: str, concept_tag: str) -> tuple[Register, ConceptTag]:

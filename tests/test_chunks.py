@@ -9,8 +9,8 @@ from scripts.model import Chunk, ConceptTag
 
 # One phrase in two spellings (vocalized + bare) sharing an English gloss.
 _ROWS = [
-    ["c1", "عايِز مَنْشَفَة", "I want a towel", "egyptian", "hotel"],
-    ["c2", "عايز منشفة", "I want a towel", "egyptian", "hotel"],
+    ["c1", "عايِز مَنْشَفَة", "I want a towel", "egyptian", "hotel", "normal"],
+    ["c2", "عايز منشفة", "I want a towel", "egyptian", "hotel", "normal"],
 ]
 
 
@@ -42,6 +42,18 @@ def test_audio_keys_are_content_keys_deduped_across_chunks() -> None:
     assert len(_chunks().audio_keys()) == 3
 
 
+def test_chunk_should_reject_slash_alternate_arabic() -> None:
+    """A slash-double like عايز/عايزة is not one drillable surface form.
+
+    Guards the one-surface-form rule: Chunk construction (and therefore lint
+    and ingest) must fail loudly on Arabic text carrying '/', instead of
+    letting a two-variant row through to TTS and the deck.
+    """
+    row = ["x1", "عايز/عايزة قهوة", "I want coffee", "egyptian", "dining", "normal"]
+    with pytest.raises(ValueError, match="slash-alternate"):
+        Chunk.from_row(row)
+
+
 def test_section_narrows_by_tag_and_sections_group_by_tag_and_register() -> None:
     """`section` filters to one concept_tag; `sections` groups tag+register.
 
@@ -50,9 +62,9 @@ def test_section_narrows_by_tag_and_sections_group_by_tag_and_register() -> None
     one Section per (tag, register) with the label the real run and dry run share.
     """
     rows = [
-        ["s1", "السلام عليكم", "Hello", "egyptian", "greetings"],
-        ["s2", "صباح الخير", "Good morning", "egyptian", "greetings"],
-        ["s3", "أنا بخير", "I am fine", "msa", "greetings"],
+        ["s1", "السلام عليكم", "Hello", "egyptian", "greetings", "normal"],
+        ["s2", "صباح الخير", "Good morning", "egyptian", "greetings", "high"],
+        ["s3", "أنا بخير", "I am fine", "msa", "greetings", "normal"],
     ]
     chunks = Chunks(Chunk.from_row(row) for row in rows)
 
