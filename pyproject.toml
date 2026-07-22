@@ -27,7 +27,9 @@ packages = ["scripts"]
 [tool.ruff.lint]
 # PLC0415: keep imports at module top-level (no lazy in-function imports).
 # T20: ban print() — logic returns strings; only the CLI layer prints.
-select = ["PLC0415", "T20"]
+# E501: enforce the 88-char limit in `ruff check` itself — the formatter only
+# fixes wrappable code, so this also catches long strings/comments it can't.
+select = ["E501", "PLC0415", "T20"]
 
 [tool.ruff.lint.per-file-ignores]
 # The one sanctioned exception: audio.py and cache.py lazily import their heavy

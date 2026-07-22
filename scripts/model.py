@@ -169,7 +169,8 @@ _TAXONOMY: dict[ConceptTag, _TagInfo] = {
     ),
     ConceptTag.FAMILY: _TagInfo(
         _TOP,
-        "kin and relatives — parents, grandparents, cousins, marriage, childhood at home",
+        "kin and relatives — parents, grandparents, cousins, marriage, "
+        "childhood at home",
     ),
     ConceptTag.EMOTIONS: _TagInfo(_TOP, "feelings, moods, dreams, personality traits"),
     ConceptTag.LEISURE: _TagInfo(_TOP, "nature, parks, weather, hobbies, free time"),
