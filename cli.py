@@ -7,7 +7,7 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import generate, generate_anki, ingest, lint, migrate, prune, tags
+from scripts import generate, generate_anki, ingest, lint, prune, tags
 from scripts.config import CHUNKS_CSV
 from scripts.model import Scheme
 
@@ -73,11 +73,6 @@ def main() -> None:
     )
     anki.set_defaults(func=generate_anki.run)
 
-    mig = sub.add_parser(
-        "migrate", help="One-time migration: phrases.txt -> chunks.csv"
-    )
-    mig.set_defaults(func=migrate.run)
-
     ing = sub.add_parser(
         "ingest",
         help="Dedup + id + validate extracted vocab candidates into a review CSV",
@@ -85,8 +80,8 @@ def main() -> None:
     ing.add_argument(
         "candidates",
         nargs="?",
-        help="Path to candidates CSV (arabic,english,register,concept_tag). "
-        "Defaults to vocab_pairs.csv.",
+        help="Path to candidates CSV (arabic,english,register,concept_tag and "
+        "optionally priority). Defaults to vocab_pairs.csv.",
     )
     ing.add_argument(
         "--append",

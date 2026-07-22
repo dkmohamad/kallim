@@ -6,7 +6,6 @@ __all__ = [
     "AUDIO_DIR",
     "CHUNKS_CSV",
     "OUTPUT_DIR",
-    "PHRASES_TXT",
     "PROJECT_ROOT",
     "SCRATCH_DIR",
     "TTS_MODEL_ID",
@@ -27,7 +26,6 @@ OUTPUT_DIR = PROJECT_ROOT / "output"
 SCRATCH_DIR = PROJECT_ROOT / "scratch"  # gitignored; transient working files
 CHUNKS_CSV = PROJECT_ROOT / "chunks.csv"
 VOICES_JSON = PROJECT_ROOT / "voices.json"
-PHRASES_TXT = PROJECT_ROOT / "phrases.txt"  # migrate input (a real input, not temp)
 
 # Vocab pipeline (transient, under scratch/): extract-vocab agent writes
 # vocab_pairs.csv (candidates) -> kallim ingest dedups/ids/validates ->
