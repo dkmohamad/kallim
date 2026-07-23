@@ -13,7 +13,7 @@ from .utils import make_run_dir, setup_logging
 
 __all__ = ["list_installed_voices", "run"]
 
-logger = logging.getLogger("kallim")
+logger = logging.getLogger(__name__)
 
 
 def list_installed_voices(_args: argparse.Namespace) -> str | None:
@@ -56,7 +56,12 @@ def run(args: argparse.Namespace) -> str | None:
         for chunk in section.chunks:
             logger.info("  %s", chunk)
             ensure_cached(chunk, synth, cache, force=args.force)
-            clips.extend(cache[utt.key] for utt in chunk.utterances)
+            for utt in chunk.utterances:
+                try:
+                    clip = cache[utt.key]
+                except KeyError:  # no audio — a content-blocked text
+                    continue
+                clips.append(clip)
 
         mp3_path = run_dir / f"{prefix}.mp3"
         codec.encode(stitch(clips, pause_ms), mp3_path)

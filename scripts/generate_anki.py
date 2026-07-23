@@ -16,7 +16,7 @@ from .utils import make_run_dir, setup_logging
 
 __all__ = ["make_model", "run"]
 
-logger = logging.getLogger("kallim.anki")
+logger = logging.getLogger(__name__)
 
 # Fixed IDs so re-runs update existing cards rather than creating duplicates.
 DECK_ID = 2059400110
@@ -102,9 +102,9 @@ def run(args: argparse.Namespace) -> str | None:
         if synth is not None:
             logger.info("  %s", chunk)
             ensure_cached(chunk, synth, cache, force=args.force)
-            media_files.extend(str(cache.path(utt.key)) for utt in chunk.utterances)
-            en_sound = _sound_ref(cache, chunk.english)
-            ar_sound = _sound_ref(cache, chunk.arabic)
+            en_sound, en_file = _sound_ref(cache, chunk.english)
+            ar_sound, ar_file = _sound_ref(cache, chunk.arabic)
+            media_files.extend(str(f) for f in (en_file, ar_file) if f is not None)
 
         deck.add_note(_note(chunk, model, en_sound, ar_sound))
         total_cards += 1
@@ -121,9 +121,17 @@ def run(args: argparse.Namespace) -> str | None:
     )
 
 
-def _sound_ref(cache: AudioCache, utt: Utterance) -> str:
-    """The Anki ``[sound:…]`` reference for an utterance's cached audio file."""
-    return f"[sound:{cache.path(utt.key).name}]"
+def _sound_ref(cache: AudioCache, utt: Utterance) -> tuple[str, Path | None]:
+    """The Anki ``[sound:…]`` ref and media file for an utterance's cached audio.
+
+    An utterance with no audio (a content-blocked text) gets ``("", None)`` —
+    an empty sound field and nothing to package.
+    """
+    try:
+        path = cache.file(utt.key)
+    except KeyError:
+        return "", None
+    return f"[sound:{path.name}]", path
 
 
 def _note(

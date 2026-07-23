@@ -125,12 +125,14 @@ def make_run_dir() -> Path:
 
 
 def setup_logging(run_dir: Path | None = None) -> None:
-    """Configure the 'kallim' logger to write to stderr.
+    """Configure this package's root logger to write to stderr.
 
-    If ``run_dir`` is given, also write a DEBUG-level run_dir/generate.log;
-    commands without a run directory (e.g. ingest) just pass nothing.
+    Modules log via ``logging.getLogger(__name__)``, so everything propagates
+    to the package logger configured here. If ``run_dir`` is given, also write
+    a DEBUG-level run_dir/generate.log; commands without a run directory
+    (e.g. ingest) just pass nothing.
     """
-    logger = logging.getLogger("kallim")
+    logger = logging.getLogger(__package__)
     logger.setLevel(logging.DEBUG)
     fmt = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
 

@@ -36,7 +36,7 @@ __all__ = [
     "run",
 ]
 
-logger = logging.getLogger("kallim.ingest")
+logger = logging.getLogger(__name__)
 
 
 def load_vocab_pairs(path: Path) -> list[VocabEntry]:

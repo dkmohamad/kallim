@@ -21,6 +21,7 @@ __all__ = [
     "ALLOWED_TAGS_BY_REGISTER",
     "Chunk",
     "ConceptTag",
+    "ContentBlockedError",
     "PlayableAudio",
     "Priority",
     "Register",
@@ -50,6 +51,15 @@ class PlayableAudio(Protocol):
 # caller (e.g. to ensure_cached), so the model declares the capability without
 # importing any audio library. Just a Callable — the port has a single operation.
 type Synthesiser = Callable[[Utterance], PlayableAudio]
+
+
+class ContentBlockedError(RuntimeError):
+    """The TTS provider refused an utterance's text on content-policy grounds.
+
+    Raised by a Synthesiser in place of the provider-specific error so callers
+    can skip that utterance's audio — the block is deterministic per text, so
+    retrying won't clear it — while every other failure still stops the run.
+    """
 
 
 class Register(StrEnum):

@@ -10,13 +10,14 @@ import. The chunk-side loader/grouping lives in ``scripts.chunks``.
 
 from __future__ import annotations
 
+import logging
 from collections.abc import Iterator, MutableMapping
 from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from .config import AUDIO_DIR
-from .model import Chunk, PlayableAudio, Synthesiser, Utterance
+from .model import Chunk, ContentBlockedError, PlayableAudio, Synthesiser, Utterance
 
 if TYPE_CHECKING:
     from pydub import AudioSegment
@@ -27,6 +28,8 @@ __all__ = [
     "ensure_cached",
     "needs_synth",
 ]
+
+logger = logging.getLogger(__name__)
 
 
 class Codec:
@@ -71,11 +74,15 @@ class AudioCache(MutableMapping[str, PlayableAudio]):
     def path(self, key: str) -> Path:
         return self._dir / f"{key}.mp3"
 
-    def __getitem__(self, key: str) -> PlayableAudio:
+    def file(self, key: str) -> Path:
+        """The cached audio file for ``key``; KeyError when it has no audio."""
         path = self.path(key)
         if not path.exists():
             raise KeyError(key)
-        return self._codec.decode(path)
+        return path
+
+    def __getitem__(self, key: str) -> PlayableAudio:
+        return self._codec.decode(self.file(key))
 
     def __setitem__(self, key: str, audio: PlayableAudio) -> None:
         self._dir.mkdir(exist_ok=True)
@@ -116,8 +123,12 @@ def ensure_cached(
     """Ensure both of a chunk's utterances have audio in the cache.
 
     Synthesises (via ``synth``) any utterance that is missing, or every one when
-    ``force`` is set. The caller then reads back what it needs — the decoded
-    clip (``cache[key]``) or the file path (``cache.path(key)``).
+    ``force`` is set. An utterance the provider refuses on content-policy
+    grounds is skipped with a warning — it simply stays out of the cache, and
+    consumers pass over utterances that have no audio. Any other synthesis
+    failure still propagates. The caller then reads back what it needs — the
+    decoded clip (``cache[key]``) or the file (``cache.file(key)``), both of
+    which raise KeyError for an utterance left without audio.
 
     Args:
         chunk: The chunk whose English + Arabic audio to materialise.
@@ -127,4 +138,7 @@ def ensure_cached(
     """
     for utt in chunk.utterances:
         if needs_synth(utt, cache, force=force):
-            cache[utt.key] = synth(utt)
+            try:
+                cache[utt.key] = synth(utt)
+            except ContentBlockedError:
+                logger.warning("  blocked by TTS content policy: %s", utt)

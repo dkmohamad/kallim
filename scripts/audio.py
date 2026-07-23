@@ -23,7 +23,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, cast
 
 from .config import TTS_MODEL_ID, VOICES_JSON
-from .model import PlayableAudio, Synthesiser, Utterance
+from .model import ContentBlockedError, PlayableAudio, Synthesiser, Utterance
 
 if TYPE_CHECKING:
     from elevenlabs.client import ElevenLabs
@@ -38,7 +38,7 @@ __all__ = [
     "stitch",
 ]
 
-logger = logging.getLogger("kallim")
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, slots=True)
@@ -115,16 +115,33 @@ class ElevenLabsSynthesiser:
     def _tts(self, text: str, voice_id: str) -> bytes:
         """Generate TTS audio bytes via the ElevenLabs API.
 
-        Raises on API failure — a failed utterance stops the run.
+        Raises ContentBlockedError when ElevenLabs refuses the text on
+        content-policy grounds; any other API failure stops the run.
         """
+        from elevenlabs.core.api_error import ApiError
+
         # NOTE: no retry. Add a retry/backoff here if transient API errors crop up.
-        audio_iter = self._client.text_to_speech.convert(
-            text=text,
-            voice_id=voice_id,
-            model_id=TTS_MODEL_ID,
-            output_format="mp3_44100_128",
-        )
-        return b"".join(audio_iter)
+        try:
+            audio_iter = self._client.text_to_speech.convert(
+                text=text,
+                voice_id=voice_id,
+                model_id=TTS_MODEL_ID,
+                output_format="mp3_44100_128",
+            )
+            return b"".join(audio_iter)
+        except ApiError as e:
+            if self._is_content_block(e.body):
+                raise ContentBlockedError(text) from e
+            raise
+
+    @staticmethod
+    def _is_content_block(body: object) -> bool:
+        """Whether an ElevenLabs error body reports a content-policy refusal."""
+        match body:
+            case {"detail": {"status": "content_against_policy"}}:
+                return True
+            case _:
+                return False
 
     @staticmethod
     def _normalize(segment: AudioSegment, target_dbfs: float = -20.0) -> AudioSegment:
