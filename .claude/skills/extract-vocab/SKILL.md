@@ -60,13 +60,13 @@ Follow these steps in order. Do NOT skip or reorder steps.
 
 ### 2. First-pass extraction (Sonnet sub-agent)
 
-First, fetch the current tag menu (see **Concept tag taxonomy** below) so the
-sub-agent tags against the live taxonomy, not a copy.
+First, fetch the current topic registry (see **Topic** below) so the sub-agent
+files against the live registry, not a copy.
 
 Dispatch a `Task` sub-agent with `model: sonnet`, passing the fetched source
 text, that tag menu, and the extraction rules. Ask it to **write
 `scratch/vocab_pairs.csv`** (columns
-`arabic,english,register,concept_tag,priority`, **no `id`**) and to **return
+`arabic,english,register,topic,priority`, **no `id`**) and to **return
 only a short count summary** — this keeps the long transcript out of the main
 context.
 
@@ -95,33 +95,59 @@ anything doubtful rather than pass it through.
 | `arabic` | The Arabic text, cleaned of stray formatting; keep the transcript's tashkeel. **One surface form only** — never slash-alternates like عايز/عايزة (lint rejects them); emit each variant as its own row if both matter |
 | `english` | Reuse the transcript's italic gloss if present, else translate |
 | `register` | **Per phrase:** `egyptian` for Egyptian colloquial, `msa` for Fusha, `iraqi` for Iraqi — one lesson mixes registers, so decide line by line |
-| `concept_tag` | A tag from the scheme matching the register — fetched via `kallim tags`, see below |
-| `priority` | `high` only for small frame chunks (see below); everything else `normal` (may be omitted — ingest defaults it) |
+| `topic` | What it is about. Must be a topic `kallim tags` lists — an unregistered one is rejected by ingest. If the source is a genuinely new dossier, say so in the summary rather than coining a slug |
+| `priority` | `high` only for frames and discourse operators (see below); everything else `normal` (may be omitted — ingest defaults it) |
 
-**Frame sub-chunks (`priority=high`).** When a sentence is built on a
-high-utility, generally applicable frame — one you'd reach for constantly in
-conversation, regardless of topic — ALSO emit the bare frame as its own row:
-Arabic frame + `...`, English gloss + `...`, `priority=high`. The full
-sentence stays `normal`. Example already in chunks.csv: `d9164300 · كان لديَّ
-اهتمامٌ بـ... · "I have been interested in..." · high`. Full sentences are
-never `high` — only small, often-used, broadly applicable frames (or short
-fixed phrases like مِرَارًا وَتَكْرَارًا) earn it. Emit a frame row once even
-if several sentences share the frame; dedup guards re-ingest anyway.
+**Emit the frames, not just the sentences.** This is the highest-value thing the
+extraction does, and the easiest to get wrong.
 
-**Concept tag taxonomy.** Two schemes — the *situational* scheme for
-`egyptian`, the *topical* scheme for `msa` / `iraqi` (`greetings` is shared).
-The tags and their descriptions are **not copied here** — fetch them live so
-this skill can never drift from the code. Run this and paste the output into
-the sub-agent's brief as its tag menu:
+A corpus review of 2026-08-25 found the bank running at roughly 4% in-speech
+discourse operators against 26% topic-bound content sentences, with most core
+operators — `فِي الوَاقِعِ`, `بِصَرَاحَةٍ`, `عَلَى سَبِيلِ المِثَالِ`,
+`مِنْ نَاحِيَةٍ أُخْرَى` — appearing **zero** times. It diagnosed the cause as this
+brief: *the extractor selects for things that look like sentences, and the
+highest-leverage material in any language does not look like a sentence.* The
+material is in the lessons; it was being discarded.
+
+So, alongside the sentences:
+
+- **Discourse and stance operators** — `يَعْنِي`, `أَيْضًا`, `إِذَنْ`, `مَثَلًا`,
+  `فِي الوَاقِعِ`, `بِالمُنَاسَبَةِ`, `بِالمُقَارَنَةِ مَعَ …`, `أَعْتَقِدُ أَنَّ …`. These
+  manage the conversation itself and are topic-free. Take them even when they
+  are a single word in the middle of a turn. `priority=high`.
+- **Repair and metalinguistic phrases** — `كَيْفَ أَقُولُ …؟`, `مَا مَعْنَى …؟`,
+  `لَمْ أَفْهَمْ، أَعِدْ مِنْ فَضْلِكَ`. Maximal use in a lesson, and the bank has
+  almost none. `priority=high`.
+- **Reusable frames trapped inside a sentence.** When a sentence is built on a
+  generally applicable frame, emit the bare frame as its own row *in addition*
+  to the sentence: Arabic + `...`, gloss + `...`, `priority=high`. The full
+  sentence stays `normal`. Example in the bank: `كان لديَّ اهتمامٌ بـ...` —
+  "I have been interested in...". Emit a frame once even if several sentences
+  share it; dedup guards re-ingest.
+
+**What `high` means, precisely.** That a chunk is *structurally* high-leverage
+for building an argument — a frame, a connector, a stance marker. It is a fact
+about the chunk, true whether or not David knows it yet. It does **not** mean
+"he needs to learn this": that is learning state, it lives as a flag in Anki,
+and per `DESIGN.md` it must never enter the CSV. A full sentence is essentially
+never `high`.
+
+**Topic.** One registered slug. Fetch the registry live so this skill can never
+drift from the code — the hardcoded tag table that used to live here drifted and
+mis-tagged a run, which is why it was removed:
 
 ```bash
 .venv/bin/kallim tags
 ```
 
-(Use `--scheme topical` or `--scheme situational` to show just one.) Source of
-truth: `ConceptTag` / `_TAXONOMY` in `scripts/model.py`; `kallim lint`
-validates chunks against it. If no tag fits well, pick the closest match within
-the register's scheme.
+Topics marked `*` are under current study. Source of truth: `TOPICS` in
+`scripts/model.py`; ingest rejects anything else, so if the source really is a
+new dossier, report it rather than inventing a slug — it needs a line in
+`TOPICS` first.
+
+**Register fidelity.** Egyptian rows keep their colloquial forms verbatim
+(`عايز`, `بكام`, `ما ينفعش`). Never convert dialect to Fusha: in a dialect
+lesson the dialect *is* the target, not an error.
 
 ### 3. Ingest — dedup, id, validate
 
@@ -133,10 +159,26 @@ Run the deterministic ingest command over the sub-agent's candidates:
 
 This dedups each candidate against `chunks.csv` (diacritics-insensitive —
 vocalized and bare spellings of the same phrase collapse to one), assigns a
-new id, validates the register/tag/priority against the taxonomy, and writes
+new id, validates the register, topic and priority, and writes
 `scratch/vocab_chunks_review.csv`. It never calls an external API or invents text.
 
-### 4. Show the summary and wait for approval
+> `ingest` rewrites that file wholesale each run, so don't run it again over a
+> different candidates file while rows are waiting there — the unreviewed batch
+> is lost.
+
+### 4. Review the batch
+
+Dispatch the `chunk-review` agent on `scratch/vocab_chunks_review.csv`.
+
+This is the cheapest possible moment to catch a wrong topic, an unearned
+`priority`, a gloss that drifts from the Arabic, or a frame left trapped inside
+a sentence: nothing has been appended, so a fix costs an edit to a scratch file.
+The same mistake found after `--append` costs a migration over `chunks.csv`.
+
+Fold its proposals into the summary in step 5 rather than reporting them
+separately — the user is deciding about one batch, not reading two reports.
+
+### 5. Show the summary and wait for approval
 
 Read `scratch/vocab_chunks_review.csv` and present a markdown table of the new
 chunks with counts:
@@ -144,13 +186,16 @@ chunks with counts:
 - New chunks written
 - Duplicates skipped (from the ingest log)
 - By register
-- By concept_tag
+- By topic
+- **The review agent's proposals**, with reasons — and in particular any frame
+  it says is still trapped inside a sentence, since those are new rows to add
+  rather than edits to existing ones
 
 **Stop and wait for the user to review.** They may edit
 `scratch/vocab_chunks_review.csv` directly — add, remove, retag, or fix Arabic.
 Do NOT proceed until they explicitly approve.
 
-### 5. Append and validate
+### 6. Append and validate
 
 On approval, commit the reviewed rows and lint:
 
@@ -160,8 +205,8 @@ On approval, commit the reviewed rows and lint:
 ```
 
 `--append` writes the reviewed chunks into `chunks.csv` (matching its
-CRLF + minimal-quoting dialect); `lint` confirms the taxonomy. Report the
-result. Regenerating audio / the Anki deck is left to the user.
+CRLF + minimal-quoting dialect); `lint` confirms register, topic and priority.
+Report the result. Regenerating audio / the Anki deck is left to the user.
 
 ## Error handling
 

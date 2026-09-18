@@ -9,7 +9,6 @@ import argparse
 
 from scripts import generate, generate_anki, ingest, lint, prune, tags
 from scripts.config import CHUNKS_CSV
-from scripts.model import Scheme
 
 __all__ = ["main"]
 
@@ -25,9 +24,7 @@ def main() -> None:
     gen.add_argument(
         "--input", "-i", default=str(CHUNKS_CSV), help="Path to chunks CSV file"
     )
-    gen.add_argument(
-        "--section", "-s", help="Process only chunks with this concept_tag"
-    )
+    gen.add_argument("--section", "-s", help="Process only chunks with this topic")
     gen.add_argument(
         "--pause",
         type=float,
@@ -55,9 +52,7 @@ def main() -> None:
         "-o",
         help="Output .apkg path (default: <run_dir>/kallim_arabic.apkg)",
     )
-    anki.add_argument(
-        "--section", "-s", help="Process only chunks with this concept_tag"
-    )
+    anki.add_argument("--section", "-s", help="Process only chunks with this topic")
     anki.add_argument(
         "--no-audio", action="store_true", help="Generate text-only cards (no TTS)"
     )
@@ -80,7 +75,7 @@ def main() -> None:
     ing.add_argument(
         "candidates",
         nargs="?",
-        help="Path to candidates CSV (arabic,english,register,concept_tag and "
+        help="Path to candidates CSV (arabic,english,register,topic and "
         "optionally priority). Defaults to vocab_pairs.csv.",
     )
     ing.add_argument(
@@ -94,17 +89,12 @@ def main() -> None:
     voices.set_defaults(func=generate.list_installed_voices)
 
     tag = sub.add_parser(
-        "tags", help="List the concept_tag taxonomy and each tag's description"
-    )
-    tag.add_argument(
-        "--scheme",
-        choices=[s.value for s in Scheme],
-        help="Show only one scheme (default: both)",
+        "tags", help="List the topic registry and each topic's description"
     )
     tag.set_defaults(func=tags.run)
 
     lnt = sub.add_parser(
-        "lint", help="Validate chunks.csv against the canonical taxonomy"
+        "lint", help="Validate a chunk bank: register, topic and priority"
     )
     lnt.add_argument(
         "input", nargs="?", help="Path to chunks CSV file. Defaults to chunks.csv."

@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from scripts.chunks import Chunks
-from scripts.model import Chunk, ConceptTag
+from scripts.model import Chunk
 
 # One phrase in two spellings (vocalized + bare) sharing an English gloss.
 _ROWS = [
@@ -49,26 +49,40 @@ def test_chunk_should_reject_slash_alternate_arabic() -> None:
     and ingest) must fail loudly on Arabic text carrying '/', instead of
     letting a two-variant row through to TTS and the deck.
     """
-    row = ["x1", "عايز/عايزة قهوة", "I want coffee", "egyptian", "dining", "normal"]
+    row = [
+        "x1",
+        "عايز/عايزة قهوة",
+        "I want coffee",
+        "egyptian",
+        "dining",
+        "normal",
+    ]
     with pytest.raises(ValueError, match="slash-alternate"):
         Chunk.from_row(row)
 
 
-def test_section_narrows_by_tag_and_sections_group_by_tag_and_register() -> None:
-    """`section` filters to one concept_tag; `sections` groups tag+register.
+def test_section_narrows_by_topic_and_sections_group_by_topic_and_register() -> None:
+    """`section` filters to one topic; `sections` groups topic+register.
 
     Guards the collection operations moved onto Chunks in the restructure: a
-    concept_tag not present raises, a present one narrows, and grouping yields
-    one Section per (tag, register) with the label the real run and dry run share.
+    topic not present raises, a present one narrows, and grouping yields one
+    Section per (topic, register) with the label the real run and dry run share.
     """
     rows = [
         ["s1", "السلام عليكم", "Hello", "egyptian", "greetings", "normal"],
-        ["s2", "صباح الخير", "Good morning", "egyptian", "greetings", "high"],
+        [
+            "s2",
+            "صباح الخير",
+            "Good morning",
+            "egyptian",
+            "greetings",
+            "high",
+        ],
         ["s3", "أنا بخير", "I am fine", "msa", "greetings", "normal"],
     ]
     chunks = Chunks(Chunk.from_row(row) for row in rows)
 
-    assert len(chunks.section(ConceptTag.GREETINGS)) == 3
+    assert len(chunks.section("greetings")) == 3
     assert chunks.section(None) is chunks
 
     sections = chunks.sections()

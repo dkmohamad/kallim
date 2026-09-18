@@ -7,3 +7,7 @@ pending/
 audio/
 output/
 scratch/
+
+# Lesson transcripts: private content — the teacher is named throughout and the
+# pages link a private Notion workspace. This repo is public, so they stay local.
+transcripts/

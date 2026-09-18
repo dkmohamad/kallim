@@ -19,7 +19,6 @@ from . import plan
 from .audio import get_quota
 from .cache import AudioCache
 from .chunks import Chunks
-from .model import ConceptTag
 
 __all__ = ["dry_run_report", "scoped_chunks"]
 
@@ -27,15 +26,15 @@ __all__ = ["dry_run_report", "scoped_chunks"]
 def scoped_chunks(args: argparse.Namespace) -> Chunks:
     """Load the .env and chunks.csv, narrowed to ``--section``.
 
-    Parses ``--section`` into a ``ConceptTag`` at this CLI boundary, so a value
-    off the taxonomy is rejected as such (not as a silent "section not found").
+    ``--section`` names a topic. Topics are free text, so an unknown one is
+    reported by ``Chunks.section`` as "section not found" rather than rejected
+    against an enum.
     Exits (via ``sys.exit``) with a message on either error.
     """
     load_dotenv()
     chunks = Chunks.load(Path(args.input))
     try:
-        tag = None if args.section is None else ConceptTag(args.section)
-        return chunks.section(tag)
+        return chunks.section(args.section)
     except ValueError as exc:
         sys.exit(f"Error: {exc}")
 

@@ -6,7 +6,7 @@ from scripts.ingest import append_review, build_review
 from scripts.model import Chunk, Priority, VocabEntry
 from scripts.utils import read_csv_rows, write_csv_rows
 
-# The legacy 4-column candidate shape (no priority), relative to the source of
+# The candidate shape without a priority column (no priority), relative to the source of
 # truth so a schema change flows into these tests instead of passing stale.
 _CANDIDATE_HEADER = VocabEntry.FIELDS[:-1]
 
@@ -64,7 +64,13 @@ def test_build_review_should_carry_candidate_priority_through(tmp_path: Path) ->
         candidates,
         VocabEntry.FIELDS,
         [
-            ["تَعَوَّدْتُ عَلَى...", "I became accustomed to...", "msa", "language", "high"],
+            [
+                "تَعَوَّدْتُ عَلَى...",
+                "I became accustomed to...",
+                "msa",
+                "language",
+                "high",
+            ],
             ["سلام عليكم", "hello", "egyptian", "greetings"],
             ["مع السلامة", "goodbye", "egyptian", "greetings", ""],
         ],
@@ -95,7 +101,16 @@ def test_append_review_should_be_idempotent(tmp_path: Path) -> None:
     _write(
         review,
         Chunk.FIELDS,
-        [["id1", "شكرا جزيلا", "thank you very much", "egyptian", "greetings", "high"]],
+        [
+            [
+                "id1",
+                "شكرا جزيلا",
+                "thank you very much",
+                "egyptian",
+                "greetings",
+                "high",
+            ]
+        ],
     )
 
     first = append_review(review, chunks)

@@ -7,7 +7,7 @@ from scripts.chunks import Chunks
 from scripts.model import Chunk
 from scripts.plan import plan_synthesis
 
-# (id, arabic, english, register, concept_tag, priority) — Chunk.FIELDS order.
+# (id, arabic, english, register, topic, priority) — Chunk.FIELDS order.
 _ROWS = [
     ["a1", "السلام عليكم", "Hello", "egyptian", "greetings", "normal"],
     ["a2", "صباح الخير", "Good morning", "egyptian", "greetings", "normal"],

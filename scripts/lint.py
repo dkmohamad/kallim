@@ -1,9 +1,9 @@
-"""Kallim — Validate chunks.csv against the canonical taxonomy.
+"""Kallim — Validate a chunk bank row by row.
 
 Builds a Chunk from every row; rows that fail construction (malformed, unknown
-register/tag, or a tag outside the register's scheme — the rules live on Chunk
-in scripts.model) are reported with their line number. Exits non-zero if any
-row is invalid, so it can gate commits.
+register or tag, or a topic that isn't a slug — the rules live on Chunk in
+scripts.model) are reported with their line number. Exits non-zero if any row
+is invalid, so it can gate commits.
 """
 
 import argparse

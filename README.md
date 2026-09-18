@@ -48,7 +48,7 @@ kallim anki
 # Text-only Anki cards (no API calls)
 kallim anki --no-audio
 
-# Validate chunks.csv against the concept_tag taxonomy
+# Validate chunks.csv (register + tag are enums, topic is a slug)
 kallim lint
 
 # Delete orphaned audio cache files (dry run; add --apply to delete)
@@ -93,49 +93,48 @@ hand in Anki.
 The source of truth is `chunks.csv` — one phrase pair per row:
 
 ```
-id,arabic,english,register,concept_tag
-0dc7e80b,السلام عليكم,Hello / Peace be upon you,egyptian,greetings
+id,arabic,english,register,tag,topic,priority
+0dc7e80b,السلام عليكم,Hello / Peace be upon you,egyptian,general,greetings,normal
 ```
 
-### Concept tags
+### Topic
 
-`concept_tag` is drawn from the `ConceptTag` taxonomy (`scripts/generate.py`),
-split into two register-scoped schemes. `greetings` is shared; otherwise a
-tag belongs to one scheme only.
+**`topic`** — what the chunk is *about*. One slug, lowercase with underscores,
+and it must be **registered** in `TOPICS` (`scripts/model.py`). Adding one costs
+a line there.
 
-Run `kallim lint` to check every row against the taxonomy; it fails on an
-unknown register/tag or a tag used outside its register's scheme.
+It is checked rather than free because an unregistered value is far more often a
+typo than a new dossier, and an unnoticed typo silently splits a section, drops
+rows from `--section`, and opens a second Anki namespace. `kallim ingest` fails
+loudly on one, naming the topic and saying what to do.
 
-#### Situational (`egyptian` — travel-phrasebook situations)
+**What is *not* a column:** which topic you are currently studying. That is a
+property of the syllabus, not of a chunk — `--section history` is how you drill
+it, and when the focus moves nothing about a row changes.
 
-| Tag | Description |
-|---|---|
-| `greetings` | Hellos, goodbyes, and first-contact phrases |
-| `smalltalk` | Light conversation: origins, impressions, compliments |
-| `dining` | Ordering food and drinks, asking about dishes, paying the bill |
-| `hotel` | Check-in/out, room requests, facilities |
-| `taxis` | Hailing, negotiating fares, giving directions to a driver |
-| `directions` | Asking for and giving directions on foot |
-| `sightseeing` | Visiting attractions, booking trips, asking about places |
-| `beach_and_vendors` | Beach vendors, hiring equipment, water safety |
-| `shopping` | Market bargaining, asking about stock, sizes, and prices |
-| `money` | Prices, change, payment |
+Nor is "I need to learn this" a column. Per the rule in `DESIGN.md`, the CSV owns
+**content** and Anki owns **learning state**; flagging a card is Anki's job and
+must never be synced back. `priority=high` is a different claim — that a chunk is
+structurally high-leverage for building an argument — which is true whether or
+not you know it yet, so it belongs here.
 
-#### Topical (`msa` / `iraqi` — conversation topics)
+`kallim lint` validates every row: the register must be an enum member and the
+topic must be registered. It does **not** judge whether the topic is *right* —
+that is `/review-chunks`.
 
-| Tag | Description |
-|---|---|
-| `greetings` | Hellos, goodbyes, and first-contact phrases (shared with Situational) |
-| `food` | Specific dishes, ingredients, cooking, eating preferences |
-| `travel` | Trips, transport, navigation, accommodation |
-| `people` | Describing or talking about other people; social interactions |
-| `family` | Immediate and extended family; family relationships and gatherings |
-| `emotions` | Feelings, reactions, opinions, agreement and disagreement |
-| `leisure` | Hobbies, sports, nature, free time, weather as backdrop |
-| `daily_life` | Everyday routines: waking, meals, commuting, habits |
-| `culture` | Religion, traditions, language learning, cultural observations |
-| `work` | Jobs, meetings, projects, professional life |
-| `health` | Fitness, diet, illness, medical appointments |
+### The two banks
+
+| File | Rows | What it is |
+|---|---|---|
+| `chunks.csv` | 642 | MSA. The live bank: drilled, rendered, added to. |
+| `egyptian.csv` | 391 | Egyptian, frozen. Kept for **reception** — songs, media, a future trip — not production. |
+
+`generate`, `anki` and `lint` default to `chunks.csv`. Reach the frozen bank
+explicitly with `--input egyptian.csv`.
+
+`kallim prune` reads **both**, so freezing a bank never makes its audio look
+orphaned. Pruning against `chunks.csv` alone would report all 780 Egyptian
+files as deletable.
 
 ## Adding vocabulary
 
@@ -162,7 +161,7 @@ entries you captured yourself — into `chunks.csv`. Nothing is synthesised.
 kallim ingest scratch/vocab_pairs.csv   # dedup + id + validate -> review CSV
 # ... review scratch/vocab_chunks_review.csv ...
 kallim ingest --append             # commit reviewed rows into chunks.csv
-kallim lint                        # validate concept_tags
+kallim lint                        # validate tags and topics
 kallim anki                        # generate Anki deck
 ```
 
@@ -190,7 +189,7 @@ Anki owns scheduling state. You can re-export and re-import safely at any time.
   state is preserved. If you updated the English or Arabic text in the CSV,
   the card content will be updated.
 - **No duplicates** — Anki deduplicates by note ID, which is deterministic.
-- **Tags** are updated to match the current `concept_tag` values.
+- **Tags** are updated to match the current `topic` and `priority` values.
 
 ## Troubleshooting
 
@@ -234,4 +233,5 @@ The project includes [Claude Code](https://claude.com/claude-code) skills in
 | Skill | Invocation | What it does |
 |-------|------------|--------------|
 | **extract-vocab** | `/extract-vocab <source>` | Mines authentic Arabic chunks from a cleaned Notion transcript, the Scratchpad, or a text file (Sonnet sub-agent), then `kallim ingest` dedups, ids, and validates them into `vocab_chunks_review.csv`. |
+| **review-chunks** | `/review-chunks --topic history` | Audits a slice of a bank for the judgement `kallim lint` can't reach — drifted topic, unearned priority, a gloss that doesn't match the Arabic, and reusable frames trapped inside topic-bound sentences. Dispatches the `chunk-review` agent, which proposes with reasons and never edits a bank. |
 | **commit** | `/commit [message]` | Runs pyright type checks, stages files explicitly, shows the diff for approval, then commits. |

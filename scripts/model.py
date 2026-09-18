@@ -1,4 +1,4 @@
-"""Kallim domain model — utterances, chunks, and the concept_tag taxonomy.
+"""Kallim domain model — utterances, chunks, and the topic registry.
 
 Pure data types with no audio/pipeline dependencies (no pydub, no ElevenLabs).
 A Chunk pairs an English and an Arabic Utterance; an Utterance is text + the
@@ -10,28 +10,24 @@ candidate row on its way to becoming a ``Chunk`` (see ``ingest``).
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable
 from dataclasses import dataclass
 from enum import StrEnum
-from typing import ClassVar, NamedTuple, Protocol
+from typing import ClassVar, Protocol
 
 from .utils import content_hash
 
 __all__ = [
-    "ALLOWED_TAGS_BY_REGISTER",
     "Chunk",
-    "ConceptTag",
     "ContentBlockedError",
     "PlayableAudio",
     "Priority",
     "Register",
-    "Scheme",
-    "SITUATIONAL_TAGS",
     "Synthesiser",
-    "TOPICAL_TAGS",
+    "TOPICS",
     "Utterance",
     "VocabEntry",
-    "tags_for",
 ]
 
 
@@ -88,143 +84,47 @@ class Priority(StrEnum):
     HIGH = "high"
 
 
-class ConceptTag(StrEnum):
-    """Canonical concept_tag values — the source of truth for chunks.csv.
-
-    Two co-existing schemes (see ``SITUATIONAL_TAGS`` / ``TOPICAL_TAGS``):
-    Egyptian chunks use situational travel-phrasebook tags; MSA/Iraqi chunks
-    use abstract conversation topics. ``greetings`` is shared by both.
-    """
-
-    # Situational (Egyptian travel-phrasebook situations)
-    GREETINGS = "greetings"
-    SMALLTALK = "smalltalk"
-    DINING = "dining"
-    HOTEL = "hotel"
-    TAXIS = "taxis"
-    DIRECTIONS = "directions"
-    SIGHTSEEING = "sightseeing"
-    BEACH_AND_VENDORS = "beach_and_vendors"
-    SHOPPING = "shopping"
-    MONEY = "money"
-    # Topical (MSA / Iraqi conversation topics)
-    FOOD = "food"
-    TRAVEL = "travel"
-    PEOPLE = "people"
-    FAMILY = "family"
-    EMOTIONS = "emotions"
-    LEISURE = "leisure"
-    DAILY_LIFE = "daily_life"
-    CULTURE = "culture"
-    LANGUAGE = "language"
-    WORK = "work"
-    HEALTH = "health"
-
-    @property
-    def description(self) -> str:
-        """One-line 'covers…' gloss (for prompts, display, and ``kallim tags``)."""
-        return _TAXONOMY[self].description
-
-
-class Scheme(StrEnum):
-    """The two co-existing concept_tag schemes (see ``ConceptTag``)."""
-
-    SITUATIONAL = "situational"  # Egyptian travel-phrasebook situations
-    TOPICAL = "topical"  # MSA / Iraqi conversation topics
-
-
-class _TagInfo(NamedTuple):
-    """What the taxonomy records per tag: its scheme(s) and a 'covers' gloss."""
-
-    schemes: frozenset[Scheme]
-    description: str
-
-
-# Scheme-membership shorthands, kept terse so the taxonomy table stays scannable
-# (``_SIT``/``_TOP`` = the tag lives in that scheme only; ``_BOTH`` = shared).
-_BOTH = frozenset({Scheme.SITUATIONAL, Scheme.TOPICAL})
-_SIT = frozenset({Scheme.SITUATIONAL})
-_TOP = frozenset({Scheme.TOPICAL})
-
-# The concept_tag taxonomy — the single source of truth. Each tag maps to the
-# scheme(s) it belongs to and a one-line description of what it covers.
-# ``kallim tags`` renders this for the extract-vocab skill, and the frozensets
-# and ``ConceptTag.description`` below all derive from it, so the taxonomy can
-# never drift out of sync with a hand-copied table.
-_TAXONOMY: dict[ConceptTag, _TagInfo] = {
-    ConceptTag.GREETINGS: _TagInfo(_BOTH, "hello, goodbye, pleasantries"),
-    ConceptTag.SMALLTALK: _TagInfo(
-        _SIT, "casual chit-chat — first-time-here, the weather, traffic"
-    ),
-    ConceptTag.DINING: _TagInfo(_SIT, "cafe/restaurant: ordering, menus, the bill"),
-    ConceptTag.HOTEL: _TagInfo(_SIT, "check-in, rooms, hotel amenities"),
-    ConceptTag.TAXIS: _TagInfo(_SIT, "hailing and agreeing rides, fares"),
-    ConceptTag.DIRECTIONS: _TagInfo(
-        _SIT, "asking the way, finding places, 'walk from here'"
-    ),
-    ConceptTag.SIGHTSEEING: _TagInfo(
-        _SIT, "landmarks, mosques, tours, excursions, boat trips"
-    ),
-    ConceptTag.BEACH_AND_VENDORS: _TagInfo(_SIT, "the beach, sellers and hawkers"),
-    ConceptTag.SHOPPING: _TagInfo(
-        _SIT, "shops, markets, haggling, 'too expensive', 'best price?'"
-    ),
-    ConceptTag.MONEY: _TagInfo(_SIT, "prices, change, paying amounts"),
-    ConceptTag.FOOD: _TagInfo(
-        _TOP, "diet, cooking, ingredients, meals, cafes and drinks"
-    ),
-    ConceptTag.TRAVEL: _TagInfo(_TOP, "transport, journeys, directions, sightseeing"),
-    ConceptTag.PEOPLE: _TagInfo(
-        _TOP, "society, community, and relationships beyond one's own family"
-    ),
-    ConceptTag.FAMILY: _TagInfo(
-        _TOP,
+# a registry rather than an enum: adding a topic costs one line here instead of
+# an enum member plus a scheme entry, which is
+# the friction that makes people file things under a near-enough label. It is
+# also what ``kallim tags`` reads to describe a topic to the extraction agent,
+# so the entry has to exist regardless.
+TOPICS: dict[str, str] = {
+    "greetings": "hello, goodbye, pleasantries",
+    "smalltalk": "casual chit-chat — first-time-here, the weather, traffic",
+    "dining": "cafe/restaurant: ordering, menus, the bill",
+    "hotel": "check-in, rooms, hotel amenities",
+    "taxis": "hailing and agreeing rides, fares",
+    "directions": "asking the way, finding places, 'walk from here'",
+    "sightseeing": "landmarks, mosques, tours, excursions, boat trips",
+    "beach_and_vendors": "the beach, sellers and hawkers",
+    "shopping": "shops, markets, haggling, 'too expensive', 'best price?'",
+    "money": "prices, change, paying amounts",
+    "food": "diet, cooking, ingredients, meals, cafes and drinks",
+    "travel": "transport, journeys, directions, sightseeing",
+    "people": "society, community, and relationships beyond one's own family",
+    "family": (
         "kin and relatives — parents, grandparents, cousins, marriage, "
-        "childhood at home",
+        "childhood at home"
     ),
-    ConceptTag.EMOTIONS: _TagInfo(_TOP, "feelings, moods, dreams, personality traits"),
-    ConceptTag.LEISURE: _TagInfo(_TOP, "nature, parks, weather, hobbies, free time"),
-    ConceptTag.DAILY_LIFE: _TagInfo(
-        _TOP, "everyday routine — home, technology, phones, errands"
-    ),
-    ConceptTag.CULTURE: _TagInfo(
-        _TOP, "religion, traditions, proverbs, history, the arts"
-    ),
-    ConceptTag.LANGUAGE: _TagInfo(
-        _TOP,
+    "emotions": "feelings, moods, dreams, personality traits",
+    "leisure": "nature, parks, weather, hobbies, free time",
+    "daily_life": "everyday routine — home, technology, phones, errands",
+    "culture": "religion, traditions, proverbs, the arts",
+    "language": (
         "the language-learning journey — mother tongue, translation, foreign "
-        "languages, self-discovery through language",
+        "languages, self-discovery through language"
     ),
-    ConceptTag.WORK: _TagInfo(_TOP, "business, career, professional life, pressure"),
-    ConceptTag.HEALTH: _TagInfo(
-        _TOP, "the health system, the body, exercise, medicine"
-    ),
+    "work": "business, career, professional life, pressure",
+    "health": "the health system, the body, exercise, medicine",
+    "history": "the Arab and Islamic past — events, dynasties, rulers, battles",
 }
 
-# Fail early on drift: every ConceptTag needs exactly one _TAXONOMY entry (with
-# its scheme membership and description), so a new tag can't be half-added. An
-# explicit raise (not ``assert``) so the guard survives ``python -O``.
-if set(_TAXONOMY) != set(ConceptTag):
-    raise RuntimeError(
-        f"_TAXONOMY out of sync with ConceptTag: {set(ConceptTag) ^ set(_TAXONOMY)}"
-    )
-
-
-def tags_for(scheme: Scheme) -> frozenset[ConceptTag]:
-    """The set of tags valid in ``scheme``, derived from the taxonomy above."""
-    return frozenset(tag for tag, info in _TAXONOMY.items() if scheme in info.schemes)
-
-
-# Tags valid for each scheme, derived from the taxonomy above.
-SITUATIONAL_TAGS = tags_for(Scheme.SITUATIONAL)
-TOPICAL_TAGS = tags_for(Scheme.TOPICAL)
-
-# Which tag scheme each register is allowed to draw from.
-ALLOWED_TAGS_BY_REGISTER = {
-    Register.EGYPTIAN: SITUATIONAL_TAGS,
-    Register.MSA: TOPICAL_TAGS,
-    Register.IRAQI: TOPICAL_TAGS,
-}
+# Registered, not unchecked: an unregistered value is far more often a typo
+# than a new dossier, and an unnoticed typo silently splits a section, drops
+# rows from --section, and opens a second Anki namespace.
+# One separator, underscore — daily-life and daily_life read identically.
+_TOPIC_RE = re.compile(r"^[a-z0-9][a-z0-9_]*$")
 
 
 @dataclass(frozen=True, slots=True)
@@ -247,14 +147,15 @@ class Utterance:
 class Chunk:
     """An English/Arabic phrase pair from chunks.csv.
 
-    Validates concept_tag against the Arabic register's tag scheme, so a Chunk
-    can't carry a tag outside its taxonomy (see ALLOWED_TAGS_BY_REGISTER).
+    ``topic`` says what it is about. Which topic is under current study is a
+    property of the syllabus, not of a chunk, so it is a question for
+    ``--section`` rather than a column here.
     """
 
     id: str
     english: Utterance
     arabic: Utterance
-    concept_tag: ConceptTag
+    topic: str
     priority: Priority = Priority.NORMAL
 
     # The chunks.csv schema — the single source of truth for column order,
@@ -264,7 +165,7 @@ class Chunk:
         "arabic",
         "english",
         "register",
-        "concept_tag",
+        "topic",
         "priority",
     )
 
@@ -283,17 +184,12 @@ class Chunk:
             self.arabic.text,
             self.english.text,
             self.arabic.register,
-            self.concept_tag,
+            self.topic,
             self.priority,
         ]
 
     def __post_init__(self) -> None:
-        allowed = ALLOWED_TAGS_BY_REGISTER.get(self.arabic.register)
-        if allowed is not None and self.concept_tag not in allowed:
-            raise ValueError(
-                f"concept_tag {self.concept_tag.value!r} not allowed for "
-                f"register {self.arabic.register.value!r}"
-            )
+        _validate_topic(self.topic)
         # One surface form per chunk: slash-alternates (عايز/عايزة) aren't a
         # drillable unit and read badly in TTS — store each variant as its own
         # chunk instead.
@@ -309,18 +205,17 @@ class Chunk:
 
         Raises:
             ValueError: If the row has the wrong field count, or its register,
-                concept_tag, or priority is outside the taxonomy.
+                tag, topic or priority is invalid.
         """
         try:
-            cid, arabic, english, register, concept_tag, priority = row
+            cid, arabic, english, register, topic, priority = row
         except ValueError:
             raise ValueError(f"expected 6 fields, got {len(row)}: {row!r}") from None
-        reg, tag = _parse_taxonomy(register, concept_tag)
         return cls(
             cid,
             Utterance(english, Register.ENGLISH),
-            Utterance(arabic, reg),
-            tag,
+            Utterance(arabic, _parse_register(register)),
+            topic,
             _parse_priority(priority),
         )
 
@@ -331,16 +226,19 @@ class VocabEntry:
 
     Produced by the ``extract-vocab`` skill's first-pass agent and consumed by
     ``kallim ingest``, which dedups, assigns an id, and validates it into a
-    ``Chunk``. The ``register`` and ``concept_tag`` are taxonomy members.
-    Validation of the tag against the register's scheme lives on ``Chunk`` —
-    call ``to_chunk`` for a validated one.
+    ``Chunk``. ``register`` is an enum member; ``topic`` is a registered slug,
+    validated here on construction just as it is on ``Chunk`` so a candidate
+    can't carry a shape a chunk would reject.
     """
 
     arabic: str
     english: str
     register: Register
-    concept_tag: ConceptTag
+    topic: str
     priority: Priority = Priority.NORMAL
+
+    def __post_init__(self) -> None:
+        _validate_topic(self.topic)
 
     # The vocab_pairs.csv schema — the single source of truth for column order,
     # shared by from_row (read) and to_row (write). ``priority`` is optional on
@@ -349,7 +247,7 @@ class VocabEntry:
         "arabic",
         "english",
         "register",
-        "concept_tag",
+        "topic",
         "priority",
     )
 
@@ -359,7 +257,7 @@ class VocabEntry:
             self.arabic,
             self.english,
             self.register,
-            self.concept_tag,
+            self.topic,
             self.priority,
         ]
 
@@ -373,13 +271,13 @@ class VocabEntry:
             A Chunk carrying this entry's Arabic/English text and tag.
 
         Raises:
-            ValueError: If ``concept_tag`` is outside ``register``'s scheme.
+            ValueError: If the row is invalid.
         """
         return Chunk(
             id=chunk_id,
             english=Utterance(self.english, Register.ENGLISH),
             arabic=Utterance(self.arabic, self.register),
-            concept_tag=self.concept_tag,
+            topic=self.topic,
             priority=self.priority,
         )
 
@@ -394,21 +292,39 @@ class VocabEntry:
 
         Raises:
             ValueError: If the row has the wrong field count, or its register,
-                concept_tag, or priority is off-taxonomy.
+                tag or priority is invalid.
         """
         if len(row) == 4:
-            arabic, english, register, concept_tag = row
+            arabic, english, register, topic = row
             priority = Priority.NORMAL
         elif len(row) == 5:
-            arabic, english, register, concept_tag, raw_priority = row
+            arabic, english, register, topic, raw_priority = row
             # A blank cell means "unclassified", same as an omitted column.
             priority = (
                 _parse_priority(raw_priority) if raw_priority else Priority.NORMAL
             )
         else:
             raise ValueError(f"expected 4 or 5 fields, got {len(row)}: {row!r}")
-        reg, tag = _parse_taxonomy(register, concept_tag)
-        return cls(arabic, english, reg, tag, priority)
+        return cls(arabic, english, _parse_register(register), topic, priority)
+
+
+def _validate_topic(topic: str) -> None:
+    """Check a topic is a registered slug.
+
+    Shared by ``Chunk`` and ``VocabEntry`` so one policy governs both.
+
+    Raises:
+        ValueError: If the topic isn't a slug, or isn't registered in TOPICS.
+    """
+    if not _TOPIC_RE.match(topic):
+        raise ValueError(
+            f"topic {topic!r} is not a slug (lowercase letters, digits and _)"
+        )
+    if topic not in TOPICS:
+        raise ValueError(
+            f"unknown topic {topic!r} — add it to TOPICS with a description if "
+            "it is a real dossier, or fix the typo"
+        )
 
 
 def _parse_priority(priority: str) -> Priority:
@@ -426,24 +342,19 @@ def _parse_priority(priority: str) -> Priority:
         raise ValueError(f"unknown priority {priority!r}") from None
 
 
-def _parse_taxonomy(register: str, concept_tag: str) -> tuple[Register, ConceptTag]:
-    """Parse a raw register + concept_tag pair into their enum members.
+def _parse_register(register: str) -> Register:
+    """Parse a raw register into its enum member.
 
     Shared by ``Chunk.from_row`` and ``VocabEntry.from_row`` so the CSV
-    taxonomy-decode lives in one place.
+    enum-decode lives in one place.
 
     Raises:
-        ValueError: If ``register`` or ``concept_tag`` is outside its enum.
+        ValueError: If ``register`` is outside the enum.
     """
     try:
-        reg = Register(register)
+        return Register(register)
     except ValueError:
         raise ValueError(f"unknown register {register!r}") from None
-    try:
-        tag = ConceptTag(concept_tag)
-    except ValueError:
-        raise ValueError(f"unknown concept_tag {concept_tag!r}") from None
-    return reg, tag
 
 
 # Full register names for prompts / display (read by ``Register.label``).

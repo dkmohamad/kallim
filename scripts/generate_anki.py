@@ -116,7 +116,7 @@ def run(args: argparse.Namespace) -> str | None:
     logger.info(
         "Done. %d cards across %d section(s) → %s",
         total_cards,
-        len({c.concept_tag for c in chunks}),
+        len(chunks.sections()),
         output,
     )
 
@@ -148,7 +148,7 @@ def _note(
             chunk.arabic.register,
         ],
         tags=[
-            f"topic::{chunk.concept_tag}",
+            f"topic::{chunk.topic}",
             f"register::{chunk.arabic.register}",
             f"priority::{chunk.priority}",
         ],

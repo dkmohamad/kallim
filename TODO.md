@@ -37,26 +37,26 @@ manual step remains:
    card in Anki** (search by the English/Arabic text, or by tag). _Still manual —
    no automation for this._
 2. **Orphaned audio files — now handled by `kallim prune`.** Audio is cached per
-   chunk as `audio/{id}_en.mp3` / `{id}_ar.mp3`. Deleting a row leaves those files
-   behind. `kallim prune` lists them (dry run) and `kallim prune --apply` deletes
-   any `audio/{id}_*.mp3` whose `id` is gone from `chunks.csv`, and drops the dead
-   `manifest.json` entries.
-3. **Stale-but-live audio — now handled by the content-aware cache.** The cache
-   used to short-circuit on `id` alone (content-blind), so a chunk edited in place
-   (the أقام hotel fix, the female→first-person/male reframes, the
-   third-person→first/second reframes) kept serving its **old** audio forever.
-   `generate`/`anki` now record a text hash per side in `audio/manifest.json`, so
-   an edited chunk regenerates only the changed side on the next run. `--force`
-   overrides the cache (e.g. after a `voices.json` change the hash can't see).
-   - **One-time cost:** the manifest starts empty, so the *next* full
-     `generate`/`anki` run regenerates everything once (~756×2 TTS calls) to seed
-     it and clear all current staleness; every run after that is incremental.
-     Scope with `--section` to spread the cost.
+   *utterance*, content-addressed as `audio/<hash>.mp3`. Removing or editing a row
+   leaves its old file behind. `kallim prune` lists orphans (dry run) and
+   `--apply` deletes them, counting a key live if **any** bank still produces it.
+3. **Stale-but-live audio — handled by content-addressing.** The cache is keyed
+   by a hash of the utterance's text, so a present file is correct by construction:
+   editing a chunk changes its key and the next run synthesises the new side. There
+   is no manifest and no staleness to clear. (Earlier revisions of this file
+   described an `audio/manifest.json` and a one-time seed regen of ~756×2 calls —
+   neither exists. `audio/` holds 2063 content-hash mp3s covering every current
+   chunk bar one, plausibly the `ContentBlockedError` case in `3a92dd2`.)
 
-## 1. Reclassify, re-tag, and thin the chunk set  _(done)_
+## 1. Reclassify, re-tag, and thin the chunk set  _(done; schema since replaced)_
 
-Goal: keep only chunks **I would actually say**, and make the `concept_tag`
-taxonomy clear and well-documented.
+Goal: keep only chunks **I would actually say**, and make the tag taxonomy
+clear and well-documented.
+
+> Historical. The `concept_tag` column described below was renamed to `topic`
+> and a two-value `tag` (`history`/`general`) added; `ConceptTag` and its two
+> schemes are gone. Left as the record of what was done at the time — see
+> README and SPEC for the live schema.
 
 - [x] **Thin `chunks.csv`** — reviewed and dropped chunks I wouldn't actually say
   (Anki + audio orphan gotchas above apply to any future removals).
@@ -126,19 +126,21 @@ Two related pain points around regenerating and getting audio onto my phone.
 
 Both pain points are resolved by the content-aware cache + `prune`:
 
-- [x] **Content-aware cache** — `get_or_generate_chunk_audio` now records a text
-  hash per side in `audio/manifest.json` (`{id: {en, ar}}`); the `ar` key folds in
-  the register. An edited chunk regenerates only the changed side; unedited chunks
-  stay cached. `generate --force` / `anki --force` overrides the cache. Both
-  commands share the one function, so both paths are covered.
+- [x] **Content-addressed cache** — each utterance's audio is stored at
+  `audio/<hash of register + text>.mp3`, so a present file is correct by
+  construction: editing a chunk changes its key and only the changed side is
+  synthesised next run. `--force` re-synthesises regardless. _(An intermediate
+  design using `audio/manifest.json` was described here; it was superseded by
+  content-addressing and no manifest exists.)_
 - [x] **`kallim prune`** — new subcommand (`scripts/prune.py`): dry-run by default,
-  `--apply` deletes orphan `audio/{id}_*.mp3` files and dead manifest entries.
-  Cleared the 126 orphans.
+  `--apply` deletes any `audio/<key>.mp3` no bank still produces. Cleared the
+  126 orphans. Reads **every** bank (`chunks.csv` + `egyptian.csv`), so freezing
+  a register can't make its audio look deletable.
 
-The chosen design (content-aware cache + prune) supersedes the "full fresh regen"
-and "prune orphans only" options that were on the table. The one residual cost is
-the seed regen noted in gotcha #3 — a single full run after which everything is
-incremental.
+The chosen design (content-addressed cache + prune) supersedes the "full fresh
+regen" and "prune orphans only" options that were on the table. The seed regen
+this section once warned about has long since run: `audio/` holds 2063 clips
+covering every current chunk bar one.
 
 ### 3b. Incremental output + Google Drive sync
 
@@ -152,13 +154,21 @@ Wanted (someday):
 - **Sync to Google Drive via `rsync`** (or rclone for Drive) so only changed files
   transfer — no manual full-folder copy.
 
+## Backlog: an optional era tag  _(not needed yet)_
+
+All Arab/Islamic history sits under one `history` topic. Splitting it per era —
+`andalus`, `ottoman`, `golden_age` — was built and then removed as unnecessary:
+it made every row carry a judgement that belongs to the syllabus, and nothing
+currently needs to drill one era apart from another.
+
+If that changes, the shape to reach for is an **optional** second label, empty
+for most rows, rather than a required column or a re-tag of the bank. Worth
+having only when there is a real reason to slice `history` — not before.
+
 ## Loose ends right now
 
 - §1 (re-tag/thin), §2a (remove scene pipeline) **done** (`fa40600`); §2b text→chunks
   MVP **done** ad hoc (`47f4316`, 101 authentic chunks); §3a (cache correctness)
   **done** (content-aware cache + `kallim prune`).
-- **Operational, not yet run:** the one-time seed regen — `kallim generate` /
-  `kallim anki` to (a) clear current stale audio and (b) give the 101 new authentic
-  chunks their audio. Costs ElevenLabs credits; scope with `--section` to spread it.
 - **Still open:** §2b "attach whole source-audio file" half, and §3b (incremental
   output + Google Drive `rsync`/rclone sync — still flagged, not started).

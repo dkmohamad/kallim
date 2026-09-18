@@ -1,8 +1,8 @@
 """Kallim — Arabic language-learning content pipeline.
 
 Re-exports the pure domain model — chunks, utterances, vocab entries, and the
-register / concept-tag enums — as the package's public API. (The taxonomy
-frozensets stay internal to ``model``; ``ConceptTag`` is the exported surface.)
+register enum — as the package's public API. (``TOPICS`` is an open
+registry rather than a type, so it stays in ``model`` for the tags command.)
 The command modules (``generate``, ``ingest``, …) and the audio layer are
 imported directly by the CLI rather than re-exported here, so importing the
 package stays cheap (no pydub / genanki / elevenlabs).
@@ -10,7 +10,6 @@ package stays cheap (no pydub / genanki / elevenlabs).
 
 from .model import (
     Chunk,
-    ConceptTag,
     PlayableAudio,
     Register,
     Synthesiser,
@@ -20,7 +19,6 @@ from .model import (
 
 __all__ = [
     "Chunk",
-    "ConceptTag",
     "PlayableAudio",
     "Register",
     "Synthesiser",

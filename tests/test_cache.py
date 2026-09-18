@@ -18,7 +18,7 @@ class _FakeClip:
 
 
 def _chunk() -> Chunk:
-    # (id, arabic, english, register, concept_tag, priority) — Chunk.FIELDS order.
+    # (id, arabic, english, register, topic, priority) — Chunk.FIELDS order.
     return Chunk.from_row(["b1", "قَتَلُوا", "They killed", "msa", "culture", "normal"])
 
 

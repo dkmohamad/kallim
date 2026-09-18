@@ -1,6 +1,6 @@
 """Ingest extracted vocab candidates into review-ready chunks.
 
-Reads a candidates CSV (arabic,english,register,concept_tag) written by the
+Reads a candidates CSV (arabic,english,register,topic) written by the
 ``extract-vocab`` skill's first-pass agent and, deduping against chunks.csv:
 assigns each new candidate an id, validates it against the taxonomy, and writes
 ``vocab_chunks_review.csv`` for human review. With ``--append`` it commits the
@@ -47,16 +47,17 @@ def load_vocab_pairs(path: Path) -> list[VocabEntry]:
             ``priority`` may be omitted) and a header.
 
     Returns:
-        One VocabEntry per row, with register/concept_tag as taxonomy members.
+        One VocabEntry per row, with register as an enum member.
 
     Raises:
-        ValueError: If ``path`` isn't a CSV (a bare word list has no register or
-            concept_tag, so it can't become chunks), or a row is off-taxonomy.
+        ValueError: If ``path`` isn't a CSV (a bare word list has no register
+            or topic, so it can't become chunks), or a row is invalid.
     """
     if path.suffix != ".csv":
         raise ValueError(
-            f"{path} is not a .csv; candidates need arabic,english,register,"
-            "concept_tag columns (a plain word list carries no register/tag)"
+            f"{path} is not a .csv; candidates need "
+            + ", ".join(VocabEntry.FIELDS[:-1])
+            + " columns (a plain word list carries no register or topic)"
         )
     return read_csv_rows(path, VocabEntry.from_row)
 

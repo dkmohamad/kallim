@@ -1,45 +1,34 @@
-"""Kallim — Render the concept_tag taxonomy from the canonical source.
+"""Kallim — Render the topic registry from the canonical source.
 
-The taxonomy lives once, in ``scripts.model`` (``ConceptTag`` + ``_TAXONOMY``).
-This command renders it so the extract-vocab skill can fetch tags and their
-descriptions at run time instead of carrying its own copy that could drift.
+``TOPICS`` lives once, in ``scripts.model``. This command renders it so the
+extract-vocab skill can fetch topics and their descriptions at run time instead
+of carrying its own copy that could drift.
 """
 
 import argparse
 
-from .model import ConceptTag, Scheme, tags_for
+from .model import TOPICS
 
 __all__ = ["render_tags", "run"]
 
-# Presentation only — the heading per scheme. The tag membership itself comes
-# from the model (``tags_for``), so it can't drift from the taxonomy.
-_HEADINGS = {
-    Scheme.SITUATIONAL: "Situational — for `egyptian` (travel-phrasebook situations)",
-    Scheme.TOPICAL: "Topical — for `msa` / `iraqi` (conversation topics)",
-}
 
+def render_tags() -> str:
+    """Listing of every registered topic with its description.
 
-def render_tags(scheme: Scheme | None = None) -> str:
-    """Markdown-ish listing of each tag and its description, grouped by scheme.
-
-    With ``scheme`` given, only that scheme's tags are shown; otherwise both.
-    Tags are listed in ``ConceptTag`` declaration order for a stable diff.
+    Listed in registry order, which is declaration order, for a stable diff.
     """
-    schemes = list(_HEADINGS) if scheme is None else [scheme]
-    blocks: list[str] = []
-    for sch in schemes:
-        tags = tags_for(sch)
-        width = max(len(tag.value) for tag in tags)
-        rows = [
-            f"  {tag.value:<{width}}  {tag.description}"
-            for tag in ConceptTag
-            if tag in tags
+    width = max(len(name) for name in TOPICS)
+    rows = [f"  {name:<{width}}  {desc}" for name, desc in TOPICS.items()]
+    return "\n".join(
+        [
+            "Topic — what a chunk is about. One registered slug per chunk;",
+            "adding one costs a line in TOPICS (scripts/model.py).",
+            "",
+            *rows,
         ]
-        blocks.append("\n".join([f"{_HEADINGS[sch]}:", *rows]))
-    return "\n\n".join(blocks)
+    )
 
 
-def run(args: argparse.Namespace) -> str:
-    """Render the taxonomy (optionally one scheme) for display / the skill."""
-    scheme = None if args.scheme is None else Scheme(args.scheme)
-    return render_tags(scheme)
+def run(_args: argparse.Namespace) -> str:
+    """Render the topic registry for display / the extract-vocab skill."""
+    return render_tags()

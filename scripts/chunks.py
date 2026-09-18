@@ -1,7 +1,7 @@
 """The chunks.csv loader and the Chunks collection — the chunk side of persistence.
 
 ``Chunks`` is the domain collection of chunks: it loads chunks.csv
-(``Chunks.load``), narrows to a concept_tag (``section``), groups into ``Section``
+(``Chunks.load``), narrows to a topic (``section``), groups into ``Section``
 output units (``sections``), and owns the identity lookups ingest/prune dedup on
 (``arabic_keys``/``audio_keys``). No audio dependencies live here — the
 content-addressed audio cache is ``scripts.cache``.
@@ -13,7 +13,7 @@ from collections.abc import Collection, Iterable, Iterator
 from dataclasses import dataclass
 from pathlib import Path
 
-from .model import Chunk, ConceptTag, Register
+from .model import Chunk, Register
 from .utils import normalize_arabic, read_csv_rows
 
 __all__ = ["Chunks", "Section"]
@@ -21,25 +21,25 @@ __all__ = ["Chunks", "Section"]
 
 @dataclass(frozen=True, slots=True)
 class Section:
-    """Chunks sharing a concept_tag and Arabic register — one output unit.
+    """Chunks sharing a topic and Arabic register — one output unit.
 
     The group ``generate`` writes a single MP3 (and transcript) per, and the
     dry-run report tallies per. Owns its own ``label`` so the real run and the
     dry run can't format it differently.
     """
 
-    tag: ConceptTag
+    topic: str
     register: Register
     chunks: list[Chunk]
 
     @property
     def label(self) -> str:
         """Human label for the section, e.g. ``greetings (egyptian)``."""
-        return f"{self.tag} ({self.register})"
+        return f"{self.topic} ({self.register})"
 
     def slug(self, index: int) -> str:
         """Filename stem for this section's outputs, e.g. ``03_dining_egyptian``."""
-        return f"{index:02d}_{self.tag}_{self.register}"
+        return f"{index:02d}_{self.topic}_{self.register}"
 
     def transcript(self) -> str:
         """The section transcript: a title then numbered english/arabic pairs."""
@@ -54,7 +54,7 @@ class Section:
 class Chunks(Collection[Chunk]):
     """The collection of chunks, owning the chunk-set operations callers need.
 
-    Loads from CSV (``load``), narrows to one concept_tag (``section``), groups
+    Loads from CSV (``load``), narrows to one topic (``section``), groups
     into ``Section`` output units (``sections``), and derives the identity sets
     ingest and prune dedup on: ``arabic_keys`` (diacritics-insensitive dedup) and
     ``audio_keys`` (every utterance's audio content key, for orphan detection).
@@ -85,31 +85,31 @@ class Chunks(Collection[Chunk]):
     def __len__(self) -> int:
         return len(self._chunks)
 
-    def section(self, tag: ConceptTag | None) -> Chunks:
-        """Narrow to a single concept_tag; all chunks when ``tag`` is None.
+    def section(self, topic: str | None) -> Chunks:
+        """Narrow to a single topic; all chunks when ``topic`` is None.
 
         Raises:
-            ValueError: If ``tag`` is given but no chunk carries it.
+            ValueError: If ``topic`` is given but no chunk carries it.
         """
-        if tag is None:
+        if topic is None:
             return self
-        selected = Chunks(c for c in self if c.concept_tag == tag)
+        selected = Chunks(c for c in self if c.topic == topic)
         if not selected:
-            raise ValueError(f"section {tag!r} not found")
+            raise ValueError(f"section {topic!r} not found")
         return selected
 
     def sections(self) -> list[Section]:
-        """Group into ``Section`` units by (concept_tag, Arabic register).
+        """Group into ``Section`` units by (topic, Arabic register).
 
         Preserves first-seen order, so the output sections follow the CSV. Shared
         by the real run (``generate``) and the dry-run report (``plan``) so both
         see the same sectioning.
         """
-        groups: dict[tuple[ConceptTag, Register], list[Chunk]] = {}
+        groups: dict[tuple[str, Register], list[Chunk]] = {}
         for chunk in self:
-            key = (chunk.concept_tag, chunk.arabic.register)
+            key = (chunk.topic, chunk.arabic.register)
             groups.setdefault(key, []).append(chunk)
-        return [Section(tag, reg, cs) for (tag, reg), cs in groups.items()]
+        return [Section(topic, reg, cs) for (topic, reg), cs in groups.items()]
 
     def arabic_keys(self) -> set[str]:
         """Diacritics-insensitive Arabic identities, for dedup."""

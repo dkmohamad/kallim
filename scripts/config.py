@@ -4,7 +4,9 @@ from pathlib import Path
 
 __all__ = [
     "AUDIO_DIR",
+    "BANK_CSVS",
     "CHUNKS_CSV",
+    "EGYPTIAN_CSV",
     "OUTPUT_DIR",
     "PROJECT_ROOT",
     "SCRATCH_DIR",
@@ -25,6 +27,17 @@ AUDIO_DIR = PROJECT_ROOT / "audio"
 OUTPUT_DIR = PROJECT_ROOT / "output"
 SCRATCH_DIR = PROJECT_ROOT / "scratch"  # gitignored; transient working files
 CHUNKS_CSV = PROJECT_ROOT / "chunks.csv"
+
+# The Egyptian bank, frozen and out of the default scope. Its job is reception —
+# understanding songs, media, and a future trip — not production, so it is not
+# drilled and not rendered by default. Reach it with ``--input egyptian.csv``.
+EGYPTIAN_CSV = PROJECT_ROOT / "egyptian.csv"
+
+# Every chunk file whose audio must stay in the cache. ``prune`` unions these:
+# a key live in *any* bank is not an orphan, so freezing a register can't make
+# its audio look deletable.
+BANK_CSVS = (CHUNKS_CSV, EGYPTIAN_CSV)
+
 VOICES_JSON = PROJECT_ROOT / "voices.json"
 
 # Vocab pipeline (transient, under scratch/): extract-vocab agent writes

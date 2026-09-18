@@ -53,17 +53,28 @@ Flat CSV (`chunks.csv`). One chunk per row. Columns:
 | `arabic`       | string   | The chunk, full tashkeel for MSA, natural form for dialect.   |
 | `english`      | string   | Gloss / translation.                                         |
 | `register`     | enum     | `msa` / `egyptian` / `iraqi`                                 |
-| `concept_tag`  | enum     | Thematic grouping from the `ConceptTag` taxonomy (`scripts/generate.py`). Two schemes: Egyptian uses *situational* tags (`dining`, `hotel`, `taxis`, `sightseeing`, `money`, …), MSA/Iraqi use *topical* tags (`food`, `travel`, `people`, `emotions`, …); `greetings` is shared. Run `kallim lint` to validate. |
+| `topic`        | string   | What the chunk is *about*: one registered slug. `TOPICS` (`scripts/model.py`) maps each to a description and is rendered by `kallim tags`; a value outside it is rejected on construction. Adding one costs a line there. Which topic is under current study is **not** a column — that is a syllabus question, answered by `--section`. |
 
 ### Example
 
 ```csv
-id,arabic,english,register,concept_tag
-7f3a1b2c,السلام عليكم,Peace be upon you,egyptian,greetings
-a9e4d8f1,وعليكم السلام,And upon you peace,egyptian,greetings
-2b8c6e03,ممكن أشوف المنيو الأول؟,Can I see the menu first?,egyptian,cafe
-8c1b3a5e,أَنَا أَتَعَلَّمُ اللُّغَةَ الْعَرَبِيَّةَ,I am learning Arabic,msa,learning
+id,arabic,english,register,topic,priority
+0dc7e80b,السلام عليكم,Hello / Peace be upon you,egyptian,greetings,normal
+2b8c6e03,ممكن أشوف المنيو الأول؟,Can I see the menu first?,egyptian,dining,normal
+8c1b3a5e,أَنَا أَتَعَلَّمُ اللُّغَةَ الْعَرَبِيَّةَ,I am learning Arabic,msa,language,normal
+f3a6ec53,قَاتَلَ أَبْنَاؤُهُ مَعَهُ فِي المَعْرَكَةِ,His sons fought alongside him in battle,msa,history,normal
 ```
+
+### The two banks
+
+`chunks.csv` holds the live MSA bank — drilled, rendered, added to. `egyptian.csv`
+holds the Egyptian rows, frozen: its job is **reception** (songs, media, a future
+trip), not production, so it is out of the default scope and reached with
+`--input egyptian.csv`.
+
+`kallim prune` reads **both**, and a missing bank is an error rather than an empty
+contribution — otherwise every key only that bank produces would look orphaned and
+`prune --apply` would delete audio that is still wanted.
 
 ### Why CSV
 
@@ -76,7 +87,7 @@ a9e4d8f1,وعليكم السلام,And upon you peace,egyptian,greetings
 ### Migration from phrases.txt
 
 The existing `phrases.txt` (300+ phrases across 12 sections) will be migrated
-to `chunks.csv`. The section names become the basis for `concept_tag` or can be
+to `chunks.csv`. The section names become the basis for `topic` or can be
 embedded in the `id` prefix. Speaker labels (YOU:, STAFF:, etc.) are stripped
 during migration.
 
@@ -84,7 +95,9 @@ during migration.
 
 ## Single source of truth
 
-The CSV owns **content**. Anki owns **scheduling state** ("do I know it"). Never
+The CSV owns **content**. Anki owns **scheduling state** ("do I know it") — and
+that includes flagging a card as one you need to work on, which is why no flag is
+ever synced back into the CSV. Never
 store a learning score in the CSV — that recreates the original drift problem
 inside the solution.
 
@@ -214,14 +227,19 @@ kallim anki --section dining
 kallim ingest scratch/vocab_pairs.csv
 kallim ingest --append   # commit scratch/vocab_chunks_review.csv into chunks.csv
 
-# Validate chunks.csv against the concept_tag taxonomy
+# List the two tags and the registry of known topics
+kallim tags
+kallim tags --topics-only
+
+# Delete orphaned audio (dry run; --apply to delete). Reads every bank.
+kallim prune
+
+# Validate chunks.csv (register + tag are enums, topic is a slug)
 kallim lint
 
 # List ElevenLabs voices
 kallim voices
 
-# One-time migration from phrases.txt
-kallim migrate
 ```
 
 ---
@@ -268,7 +286,7 @@ kallim/
 ├── cli.py               # unified CLI entrypoint (kallim command)
 ├── pyproject.toml       # package config + console_scripts
 ├── pyrightconfig.json   # pyright strict type checking
-├── SPEC.md              # this file
+├── DESIGN.md              # this file
 ├── CLAUDE.md            # project instructions for Claude
 ├── README.md            # user-facing docs
 ├── chunks.csv           # THE source of truth
@@ -295,7 +313,7 @@ use = the avoidance trap. The product idea stays parked until it works for Dave.
 
 ## Build order
 
-1. Write `SPEC.md` (this file).
+1. Write `DESIGN.md` (this file).
 2. Write `migrate.py` — convert `phrases.txt` → `chunks.csv`.
 3. Refactor `generate.py` to read from `chunks.csv` and use single voice.
 4. Refactor `generate_anki.py` to read from `chunks.csv`, use single voice,
