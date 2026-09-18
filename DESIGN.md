@@ -320,9 +320,7 @@ kallim/
 ├── README.md            # user-facing docs
 ├── chunks.csv           # THE source of truth (MSA)
 ├── egyptian.csv         # the frozen Egyptian bank
-├── voices.json          # register -> ElevenLabs voice id
-├── speakers.json        # speaker -> ElevenLabs voice id (scripts only)
-├── .env                 # API keys (gitignored)
+├── .env                 # API keys + ElevenLabs voice ids (gitignored)
 ├── .env.example         # template
 ├── scripts/             # all Python modules
 │   ├── model.py         # domain types: Utterance, Chunk, Speaker, Speech

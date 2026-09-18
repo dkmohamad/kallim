@@ -11,11 +11,9 @@ __all__ = [
     "PROJECT_ROOT",
     "SCRATCH_DIR",
     "SCRIPT_AUDIO_DIR",
-    "SPEAKERS_JSON",
     "TTS_MODEL_ID",
     "VOCAB_CHUNKS_REVIEW_CSV",
     "VOCAB_PAIRS_CSV",
-    "VOICES_JSON",
 ]
 
 # The ElevenLabs model every utterance is synthesised with. It bills one credit
@@ -39,14 +37,6 @@ EGYPTIAN_CSV = PROJECT_ROOT / "egyptian.csv"
 # a key live in *any* bank is not an orphan, so freezing a register can't make
 # its audio look deletable.
 BANK_CSVS = (CHUNKS_CSV, EGYPTIAN_CSV)
-
-VOICES_JSON = PROJECT_ROOT / "voices.json"
-
-# The script feature's voice map: speaker -> ElevenLabs voice id. Separate from
-# voices.json because it is a different axis — that file answers "which dialect",
-# this one answers "which of the two people talking". Folding them into one map
-# would let a speaker be passed where a register is meant.
-SPEAKERS_JSON = PROJECT_ROOT / "speakers.json"
 
 # Script audio is cached apart from the bank audio, and this is load-bearing:
 # ``prune`` deletes every file in AUDIO_DIR whose key no chunk produces, so a

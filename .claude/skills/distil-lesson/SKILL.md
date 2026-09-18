@@ -155,8 +155,8 @@ already cached, and the exact credit cost of the rest. **Report that before
 spending.** Expect 6–8k characters for a 50-minute lesson, and 10–15 minutes of
 audio. Editing one turn on the page re-bills only that turn.
 
-The voices live in `speakers.json` and the clips cache in `audio-scripts/`,
-which `prune` deliberately never walks.
+The two voices are `ELEVENLABS_VOICE_TEACHER` and `ELEVENLABS_VOICE_DAVID` in
+`.env`; the clips cache in `audio-scripts/`, which `prune` never walks.
 
 Then upload to Drive (`Arabic/kallim/scripts`, named `YYYY-MM-DD-<slug>.mp3`)
 and put the link on the page as `**الصوت:**`. The Drive tool only reads from

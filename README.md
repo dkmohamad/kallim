@@ -84,7 +84,7 @@ by construction — editing a chunk's English or Arabic (or changing its registe
 changes the hash, so the next run regenerates only the affected side and leaves
 the old file behind; identical text across chunks shares one file. Use
 `kallim generate --force` to regenerate regardless (the hash can't see voice-id
-changes in `voices.json`).
+changes in `.env`).
 
 Both removing a row and editing one leave orphaned files (the old hash is no
 longer produced by any chunk). Run `kallim prune` to list them and
@@ -207,27 +207,25 @@ attached to any notes.
 
 ## Configuration
 
-API keys live in `.env` (gitignored):
+API keys **and voice ids** live in `.env` (gitignored) — see `.env.example`:
 
 ```
 ELEVENLABS_API_KEY=...
+
+ELEVENLABS_VOICE_ENGLISH=...    # the four bank voices, one per register
+ELEVENLABS_VOICE_EGYPTIAN=...
+ELEVENLABS_VOICE_MSA=...
+ELEVENLABS_VOICE_IRAQI=...
+
+ELEVENLABS_VOICE_TEACHER=...    # the two script voices, one per speaker
+ELEVENLABS_VOICE_DAVID=...
 ```
 
-Voice IDs live in `voices.json` (committed):
+One convention, `ELEVENLABS_VOICE_<MEMBER>`, covers both axes: a `Register`
+picks a bank voice, a `Speaker` picks a script voice. A missing one is reported
+up front, naming the variable, rather than failing part-way through a paid run.
 
-```json
-{
-  "english": "...",
-  "egyptian": "...",
-  "msa": "...",
-  "iraqi": "..."
-}
-```
-
-- `english`, `egyptian`, `msa`, `iraqi` — per-register TTS voices for
-  shadowing audio and Anki decks.
-
-Run `kallim voices` to list available ElevenLabs voice IDs.
+Run `kallim voices` to list the voice IDs available on your account.
 
 ## Claude Code skills
 

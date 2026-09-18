@@ -21,7 +21,6 @@ section break. Page order is audio order — the whole point is following along.
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import re
 from dataclasses import dataclass
@@ -30,9 +29,9 @@ from typing import TYPE_CHECKING, cast
 
 from dotenv import load_dotenv
 
-from .audio import ElevenLabsSynthesiser, get_quota
+from .audio import ElevenLabsSynthesiser, get_quota, voice_map
 from .cache import AudioCache, needs_synth
-from .config import SCRIPT_AUDIO_DIR, SPEAKERS_JSON, TTS_MODEL_ID
+from .config import SCRIPT_AUDIO_DIR, TTS_MODEL_ID
 from .model import PlayableAudio, Speaker, Synthesiser
 from .utils import content_hash, make_run_dir
 
@@ -206,23 +205,6 @@ class Script:
         return "\n".join(out)
 
 
-def load_speakers() -> dict[str, str]:
-    """The speaker -> voice id map from speakers.json.
-
-    Raises:
-        FileNotFoundError: If speakers.json is absent.
-        ValueError: If a speaker has no voice, which would otherwise surface as
-            a bare KeyError partway through a paid run.
-    """
-    try:
-        voices: dict[str, str] = json.loads(SPEAKERS_JSON.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        raise FileNotFoundError(f"voice map not found: {SPEAKERS_JSON}") from None
-    if missing := [s.value for s in Speaker if not voices.get(s.value)]:
-        raise ValueError(f"{SPEAKERS_JSON}: no voice id for {', '.join(missing)}")
-    return voices
-
-
 def synthesise(
     lines: list[Line], synth: Synthesiser, cache: AudioCache, *, force: bool
 ) -> list[PlayableAudio]:
@@ -276,7 +258,7 @@ def run(args: argparse.Namespace) -> str:
             + "\n\nDry run — nothing synthesised. Re-run with --render to build it."
         )
 
-    synth = ElevenLabsSynthesiser(_client(), load_speakers())
+    synth = ElevenLabsSynthesiser(_client(), voice_map(Speaker))
     clips = synthesise(script.lines, synth, cache, force=args.force)
     track = stitch(script, clips)
 

@@ -15,15 +15,15 @@ load them. PLC0415 is waived here in pyproject for exactly this.
 from __future__ import annotations
 
 import io
-import json
 import logging
 import os
 from collections.abc import Iterable
 from dataclasses import dataclass
+from enum import StrEnum
 from typing import TYPE_CHECKING, cast
 
-from .config import TTS_MODEL_ID, VOICES_JSON
-from .model import ContentBlockedError, PlayableAudio, Speech, Synthesiser
+from .config import TTS_MODEL_ID
+from .model import ContentBlockedError, PlayableAudio, Register, Speech, Synthesiser
 
 if TYPE_CHECKING:
     from elevenlabs.client import ElevenLabs
@@ -36,6 +36,7 @@ __all__ = [
     "list_voices",
     "make_synthesiser",
     "stitch",
+    "voice_map",
 ]
 
 logger = logging.getLogger(__name__)
@@ -78,7 +79,7 @@ def get_quota() -> Quota | None:
 
 
 def list_voices() -> str:
-    """Return a listing of all available ElevenLabs voices (for voices.json)."""
+    """Return a listing of all available ElevenLabs voices (to set in .env)."""
     from elevenlabs.client import ElevenLabs
 
     client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
@@ -151,19 +152,41 @@ class ElevenLabsSynthesiser:
         return segment.apply_gain(target_dbfs - segment.dBFS)
 
 
-def make_synthesiser() -> Synthesiser:
-    """Build a synthesiser from the environment + config.
+def voice_map(voices: type[StrEnum]) -> dict[str, str]:
+    """The voice id for every member of a voice enum, read from the environment.
 
-    Reads ELEVENLABS_API_KEY and voices.json and returns the ready engine for
-    the caller to inject (e.g. into ``ensure_cached``). Raises if either input
-    is absent — FileNotFoundError for voices.json, KeyError for the API key (and
-    for a register whose voice isn't listed, when it's first synthesised).
+    Each member is looked up as ``ELEVENLABS_VOICE_<MEMBER>`` — so ``Register``
+    gives the bank voices and ``Speaker`` the script ones, on one convention.
+    Voice ids are account-specific credentials-adjacent config, so they live in
+    .env beside the API key rather than in a committed file.
+
+    Raises:
+        ValueError: If any member has no voice set, naming every missing one.
+            Checked up front: discovering it mid-run means a half-synthesised
+            batch that has already been billed.
+    """
+    found = {
+        v.value: os.environ.get(f"ELEVENLABS_VOICE_{v.value.upper()}", "")
+        for v in voices
+    }
+    if missing := sorted(k for k, v in found.items() if not v):
+        names = ", ".join(f"ELEVENLABS_VOICE_{k.upper()}" for k in missing)
+        raise ValueError(f"no voice id set in .env for: {names}")
+    return found
+
+
+def make_synthesiser() -> Synthesiser:
+    """Build a synthesiser for the chunk banks, from the environment.
+
+    Reads ELEVENLABS_API_KEY and the per-register voice ids, and returns the
+    ready engine for the caller to inject (e.g. into ``ensure_cached``). Raises
+    if either is absent — KeyError for the API key, ValueError naming the
+    missing voice variables.
     """
     from elevenlabs.client import ElevenLabs
 
-    voice_map: dict[str, str] = json.loads(VOICES_JSON.read_text(encoding="utf-8"))
     client = ElevenLabs(api_key=os.environ["ELEVENLABS_API_KEY"])
-    return ElevenLabsSynthesiser(client, voice_map)
+    return ElevenLabsSynthesiser(client, voice_map(Register))
 
 
 def stitch(clips: Iterable[PlayableAudio], pause_ms: int) -> PlayableAudio:
