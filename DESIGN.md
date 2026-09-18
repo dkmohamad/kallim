@@ -163,14 +163,15 @@ audio/
 
 ## Render targets
 
-Same chunks, one source, three downstream consumers:
+Three of these consume the chunk bank; the fourth, lesson scripts, comes from a
+different source and is listed here because it shares the audio machinery.
 
 ### 1. Shadowing audio
 
-Long-form MP3s grouped by section/tag. Turn-taking, recall-then-confirm — active
+Long-form MP3s grouped by section. Turn-taking, recall-then-confirm — active
 production. Correctly i+0 by design.
 
-- Generated from `chunks.csv` rows filtered by register/tag.
+- Generated from `chunks.csv` rows filtered by register/topic.
 - Output: `output/{section}.mp3` + `output/{section}.txt` transcript.
 
 ### 2. Anki cards with audio
@@ -184,7 +185,25 @@ Active recall / testing. Also i+0 by design.
 - Anki keeps scheduling state; CSV keeps content.
 - AnkiConnect requires desktop Anki running; AnkiWeb sync carries adds to mobile.
 
-### 3. Podcast-style CI (future)
+### 3. Lesson scripts (`kallim script`)
+
+A recorded lesson distilled into a clean two-voice dialogue: shadowable Arabic
+at conversation length, rather than isolated chunks. **Its source is a lesson
+recording, not `chunks.csv`** — the same distillation pass also harvests chunks,
+but the two outputs are independent and are not derived from each other.
+
+- Input: a script page written to the convention in
+  `.claude/skills/distil-lesson`, exported to markdown.
+- Two voices in one dialect, so the voice is selected by `Speaker`, not
+  `Register`. That is the reason the synthesiser depends on the `Speech` port
+  rather than on `Utterance`.
+- Arabic only. The English gloss is on the page for reading and is never voiced,
+  so a script's credit cost is its Arabic character count.
+- Cached in `audio-scripts/`, deliberately apart from `audio/`: `prune` deletes
+  anything in `audio/` that no chunk produces, which would be every script clip.
+- Output: `output/<run>/<name>.mp3` + a numbered transcript 1:1 with the page.
+
+### 4. Podcast-style CI (future)
 
 Passive listening — comprehensible input with scaffolding. The bank is a
 to-learn pile, so the podcast generates *around* the chunks with settled
@@ -198,13 +217,20 @@ Anki are battle-tested.
 ```
 Scrappy inbox (recordings, notes, docs)
     ↓
-chunks.csv (structured store — single source of truth)
-    ↓
-┌───────────────────┬──────────────────┬──────────────────┐
-│ Shadowing audio   │ Anki cards       │ Podcast CI       │
-│ (active production)│ (active recall) │ (passive listen) │
-└───────────────────┴──────────────────┴──────────────────┘
+    ├─────────────────────────────────────────┐
+    ↓                                         ↓
+chunks.csv (single source of truth)     lesson script page
+    ↓                                         ↓
+┌───────────────────┬──────────────────┐  ┌──────────────────┐
+│ Shadowing audio   │ Anki cards       │  │ Script MP3       │
+│ (active production)│ (active recall) │  │ (shadowing)      │
+└───────────────────┴──────────────────┘  └──────────────────┘
 ```
+
+One recorded lesson feeds both arms — chunks from its repair points, a script
+from its substance — but each is distilled from the raw transcript directly.
+Deriving the chunks from the finished script instead would lose every correction
+the distillation smoothed away, which is the material worth keeping.
 
 ---
 
@@ -227,14 +253,17 @@ kallim anki --section dining
 kallim ingest scratch/vocab_pairs.csv
 kallim ingest --append   # commit scratch/vocab_chunks_review.csv into chunks.csv
 
-# List the two tags and the registry of known topics
+# List the registry of known topics and their descriptions
 kallim tags
-kallim tags --topics-only
+
+# Render a distilled lesson script into a two-voice MP3 (dry run by default)
+kallim script scratch/damascus.md
+kallim script scratch/damascus.md --render
 
 # Delete orphaned audio (dry run; --apply to delete). Reads every bank.
 kallim prune
 
-# Validate chunks.csv (register + tag are enums, topic is a slug)
+# Validate chunks.csv (register is an enum, topic is a registered slug)
 kallim lint
 
 # List ElevenLabs voices
@@ -289,14 +318,27 @@ kallim/
 ├── DESIGN.md              # this file
 ├── CLAUDE.md            # project instructions for Claude
 ├── README.md            # user-facing docs
-├── chunks.csv           # THE source of truth
+├── chunks.csv           # THE source of truth (MSA)
+├── egyptian.csv         # the frozen Egyptian bank
+├── voices.json          # register -> ElevenLabs voice id
+├── speakers.json        # speaker -> ElevenLabs voice id (scripts only)
 ├── .env                 # API keys (gitignored)
 ├── .env.example         # template
 ├── scripts/             # all Python modules
+│   ├── model.py         # domain types: Utterance, Chunk, Speaker, Speech
+│   ├── chunks.py        # the chunks.csv loader and the Chunks collection
+│   ├── cache.py         # content-addressed audio cache + mp3 codec
+│   ├── audio.py         # ElevenLabs adapter, quota, stitching
 │   ├── generate.py      # shadowing audio generation
 │   ├── generate_anki.py # Anki deck generation
-│   └── migrate.py       # one-time phrases.txt → chunks.csv migration
-├── audio/               # cached per-chunk MP3s (keyed by row id)
+│   ├── script.py        # lesson script -> two-voice dialogue MP3
+│   ├── ingest.py        # vocab candidates -> review-ready chunks
+│   ├── lint.py          # bank validation
+│   ├── plan.py          # dry-run cost reporting
+│   ├── prune.py         # orphaned-audio deletion
+│   └── tags.py          # the topic registry, rendered
+├── audio/               # cached bank MP3s (content-addressed; prune walks this)
+├── audio-scripts/       # cached script MP3s (prune never walks this)
 ├── output/              # all generated artefacts
 │   └── YYYYMMDD_HHMMSS/ # one flat dir per run (MP3s, transcripts, .apkg, log)
 └── .venv/               # virtual environment

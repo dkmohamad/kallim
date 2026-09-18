@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
 from .config import AUDIO_DIR
-from .model import Chunk, ContentBlockedError, PlayableAudio, Synthesiser, Utterance
+from .model import Chunk, ContentBlockedError, PlayableAudio, Speech, Synthesiser
 
 if TYPE_CHECKING:
     from pydub import AudioSegment
@@ -104,8 +104,8 @@ class AudioCache(MutableMapping[str, PlayableAudio]):
         return sum(1 for _ in self._dir.glob("*.mp3"))
 
 
-def needs_synth(utt: Utterance, cache: AudioCache, *, force: bool) -> bool:
-    """Whether an utterance must be synthesised: a cache miss, or ``force``.
+def needs_synth(utt: Speech, cache: AudioCache, *, force: bool) -> bool:
+    """Whether a line must be synthesised: a cache miss, or ``force``.
 
     The one place the synth-vs-reuse decision lives, so the dry-run plan and the
     real run can't drift on it.

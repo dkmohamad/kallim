@@ -39,6 +39,10 @@ select = ["E501", "PLC0415", "T20"]
 # decode cached clips.
 "scripts/audio.py" = ["PLC0415"]
 "scripts/cache.py" = ["PLC0415"]
+# script.py renders a script page to audio, so it lazy-imports pydub and
+# elevenlabs for the same reason: `kallim script` without --render is a pure
+# parse-and-cost pass and must not pay to load either.
+"scripts/script.py" = ["PLC0415"]
 # cli.py is the single place user-facing output is printed; everything else
 # returns strings for it to print. This is the only sanctioned print() site.
 "cli.py" = ["T20"]

@@ -49,8 +49,8 @@ Follow these steps in order. Do NOT skip or reorder steps.
   title/date, then fetch it with `include_transcript: true`.
 
   **Fail-fast — cleaned transcripts only.** The extractor needs a cleaned
-  transcript: bold **named** speaker labels (`**المعلِّمة:**` for teacher
-  Haya, `**ديفيد:**` for David) with a per-line italic English gloss. If
+  transcript: bold **named** speaker labels (`**المعلِّمة:**` for the teacher,
+  `**ديفيد:**` for David) with a per-line italic English gloss. If
   the fetched body lacks that format — raw ASR, `SPEAKER S2/S3` labels, no
   labels, or a non-lesson recording (the Recordings DB also holds coaching
   and debugging sessions) — **stop** and tell the user to run the

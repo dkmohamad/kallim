@@ -10,6 +10,8 @@ __all__ = [
     "OUTPUT_DIR",
     "PROJECT_ROOT",
     "SCRATCH_DIR",
+    "SCRIPT_AUDIO_DIR",
+    "SPEAKERS_JSON",
     "TTS_MODEL_ID",
     "VOCAB_CHUNKS_REVIEW_CSV",
     "VOCAB_PAIRS_CSV",
@@ -39,6 +41,18 @@ EGYPTIAN_CSV = PROJECT_ROOT / "egyptian.csv"
 BANK_CSVS = (CHUNKS_CSV, EGYPTIAN_CSV)
 
 VOICES_JSON = PROJECT_ROOT / "voices.json"
+
+# The script feature's voice map: speaker -> ElevenLabs voice id. Separate from
+# voices.json because it is a different axis — that file answers "which dialect",
+# this one answers "which of the two people talking". Folding them into one map
+# would let a speaker be passed where a register is meant.
+SPEAKERS_JSON = PROJECT_ROOT / "speakers.json"
+
+# Script audio is cached apart from the bank audio, and this is load-bearing:
+# ``prune`` deletes every file in AUDIO_DIR whose key no chunk produces, so a
+# script clip living there would be read as an orphan and deleted on the next
+# ``prune --apply``. A separate directory is never walked by prune.
+SCRIPT_AUDIO_DIR = PROJECT_ROOT / "audio-scripts"
 
 # Vocab pipeline (transient, under scratch/): extract-vocab agent writes
 # vocab_pairs.csv (candidates) -> kallim ingest dedups/ids/validates ->

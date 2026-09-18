@@ -1,11 +1,11 @@
 """ElevenLabs TTS synthesis and playable-clip composition.
 
-``ElevenLabsSynthesiser`` turns an Utterance into playable audio (generation
-only, no I/O) and is the callable adapter for the model's ``Synthesiser`` port;
-``make_synthesiser`` builds it and returns it for the caller to inject (e.g. into
-``ensure_cached``). ``stitch`` concatenates clips for the shadowing layout. (The
-audio cache and the mp3 codec live in ``scripts.cache`` with the other
-persistence.)
+``ElevenLabsSynthesiser`` turns a line of ``Speech`` into playable audio
+(generation only, no I/O) and is the callable adapter for the model's
+``Synthesiser`` port; ``make_synthesiser`` builds it and returns it for the
+caller to inject (e.g. into ``ensure_cached``). ``stitch`` concatenates clips
+for the shadowing layout. (The audio cache and the mp3 codec live in
+``scripts.cache`` with the other persistence.)
 
 This module imports pydub/elevenlabs *lazily* (inside the functions that use
 them) so commands that don't make audio — lint, prune, --help — don't pay to
@@ -23,7 +23,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, cast
 
 from .config import TTS_MODEL_ID, VOICES_JSON
-from .model import ContentBlockedError, PlayableAudio, Synthesiser, Utterance
+from .model import ContentBlockedError, PlayableAudio, Speech, Synthesiser
 
 if TYPE_CHECKING:
     from elevenlabs.client import ElevenLabs
@@ -91,25 +91,27 @@ def list_voices() -> str:
 
 
 class ElevenLabsSynthesiser:
-    """Generates an utterance's audio via ElevenLabs TTS — generation only.
+    """Generates audio for a line of speech via ElevenLabs TTS — no I/O.
 
     The callable adapter for the model's ``Synthesiser`` port (``__call__``
-    takes an Utterance and returns a clip). Persistence is the AudioCache's job;
-    the caller decides when to synthesise (missing / --force) vs. load.
+    takes anything satisfying ``Speech`` and returns a clip). It depends on the
+    port, not on ``Utterance``, so a bank chunk (voice = register) and a script
+    line (voice = speaker) both go through this one adapter. Persistence is the
+    AudioCache's job; the caller decides when to synthesise vs. load.
     """
 
     def __init__(self, client: ElevenLabs, voice_map: dict[str, str]) -> None:
         self._client = client
         self._voice_map = voice_map
 
-    def __call__(self, utterance: Utterance) -> PlayableAudio:
+    def __call__(self, speech: Speech) -> PlayableAudio:
         from pydub import AudioSegment
 
-        audio_bytes = self._tts(utterance.text, self._voice_map[utterance.register])
+        audio_bytes = self._tts(speech.text, self._voice_map[speech.voice])
         seg = self._normalize(
             AudioSegment.from_file(io.BytesIO(audio_bytes), format="mp3")
         )
-        logger.info("  synth %s", utterance.key)
+        logger.info("  synth %s", speech.key)
         return cast(PlayableAudio, seg)
 
     def _tts(self, text: str, voice_id: str) -> bytes:

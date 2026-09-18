@@ -17,8 +17,8 @@ allowed-tools:
 
 # Review Chunks Skill
 
-`kallim lint` checks mechanics: the register and tag are enum members, the
-topic is a slug, the Arabic carries no slash-alternate. It cannot tell you that
+`kallim lint` checks mechanics: the register is an enum member, the topic is a
+registered slug, the Arabic carries no slash-alternate. It cannot tell you that
 *"We don't have palm trees in Britain"* is not history, or that a `high`
 priority was never earned. That judgement is this skill.
 
@@ -32,7 +32,7 @@ not supported: it produces a wall of proposals nobody reads.
 
 - `--topic history` — every row carrying that topic.
 - `review` — `scratch/vocab_chunks_review.csv`, the batch waiting to be
-  appended. **The highest-value moment to run this**: a wrong tag caught here
+  appended. **The highest-value moment to run this**: a wrong topic caught here
   costs nothing, and caught after `--append` costs a migration.
 - a path to any chunks-shaped CSV.
 
@@ -59,8 +59,8 @@ worse in a way that is hard to see.
 ### 2. Dispatch the review agent
 
 One `Task` call, `subagent_type: chunk-review`. Hand it the slice path and the
-`kallim tags` output. The rubric — leverage class, tag, topic, priority, gloss,
-authenticity, register fidelity — lives in the agent definition
+`kallim tags` output. The rubric — leverage class, topic, priority, gloss, authenticity and register
+fidelity — lives in the agent definition
 (`.claude/agents/chunk-review.md`), which is the single source of truth for the
 durable chunk rules. Do not restate it here; a second copy will drift.
 
@@ -71,9 +71,12 @@ and returns a report. Relay the report: the leverage census, the proposals
 grouped by field with their reasons, and what it deliberately did not flag.
 
 The **discourse-operator share** in the census is the number to watch: it is what
-the rubric exists to move. Record it each run so the trend is visible. For where
-the baseline came from and how it was measured, see the corpus leverage review
-(`scratch/leverage-review.md`, 2026-08-25) rather than carrying its figures here.
+the rubric exists to move. Record it each run so the trend is visible.
+
+A corpus-wide census of 2026-08-25 measured the baseline and is the origin of
+the leverage classes in the agent's rubric. It is **not** in the repo — it
+quotes lesson material and names the teacher, and this repo is public. Ask Dave
+for it rather than looking for a path.
 
 ### 4. Applying
 

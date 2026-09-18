@@ -7,7 +7,7 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import generate, generate_anki, ingest, lint, prune, tags
+from scripts import generate, generate_anki, ingest, lint, prune, script, tags
 from scripts.config import CHUNKS_CSV
 
 __all__ = ["main"]
@@ -84,6 +84,22 @@ def main() -> None:
         help="Commit the reviewed vocab_chunks_review.csv into chunks.csv",
     )
     ing.set_defaults(func=ingest.run)
+
+    scr = sub.add_parser(
+        "script", help="Render a distilled lesson script into a two-voice MP3"
+    )
+    scr.add_argument("script", help="Path to the script page exported as markdown")
+    scr.add_argument(
+        "--render",
+        action="store_true",
+        help="Actually synthesise and stitch (default is a dry run with costs)",
+    )
+    scr.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-synthesise every turn even when the cached clip exists",
+    )
+    scr.set_defaults(func=script.run)
 
     voices = sub.add_parser("voices", help="List available ElevenLabs voices")
     voices.set_defaults(func=generate.list_installed_voices)

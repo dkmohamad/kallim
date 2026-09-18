@@ -48,7 +48,11 @@ kallim anki
 # Text-only Anki cards (no API calls)
 kallim anki --no-audio
 
-# Validate chunks.csv (register + tag are enums, topic is a slug)
+# Render a distilled lesson script to a two-voice MP3 (dry run shows the cost)
+kallim script scratch/damascus.md
+kallim script scratch/damascus.md --render
+
+# Validate chunks.csv (register is an enum, topic is a registered slug)
 kallim lint
 
 # Delete orphaned audio cache files (dry run; add --apply to delete)
@@ -234,4 +238,5 @@ The project includes [Claude Code](https://claude.com/claude-code) skills in
 |-------|------------|--------------|
 | **extract-vocab** | `/extract-vocab <source>` | Mines authentic Arabic chunks from a cleaned Notion transcript, the Scratchpad, or a text file (Sonnet sub-agent), then `kallim ingest` dedups, ids, and validates them into `vocab_chunks_review.csv`. |
 | **review-chunks** | `/review-chunks --topic history` | Audits a slice of a bank for the judgement `kallim lint` can't reach — drifted topic, unearned priority, a gloss that doesn't match the Arabic, and reusable frames trapped inside topic-bound sentences. Dispatches the `chunk-review` agent, which proposes with reasons and never edits a bank. |
+| **distil-lesson** | `/distil-lesson <recording>` | Turns one recorded lesson into a shadowable two-voice script page plus vocab candidates, in a single pass over the **raw** transcript. `kallim script` renders the page to audio. |
 | **commit** | `/commit [message]` | Runs pyright type checks, stages files explicitly, shows the diff for approval, then commits. |

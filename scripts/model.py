@@ -24,6 +24,8 @@ __all__ = [
     "PlayableAudio",
     "Priority",
     "Register",
+    "Speaker",
+    "Speech",
     "Synthesiser",
     "TOPICS",
     "Utterance",
@@ -42,11 +44,39 @@ class PlayableAudio(Protocol):
     def __add__(self, other: PlayableAudio) -> PlayableAudio: ...
 
 
-# The model's port for text-to-speech: an utterance -> playable audio. The
+class Speech(Protocol):
+    """Anything sayable: some text, the voice to say it in, and its identity.
+
+    What the synthesiser and the cache actually need, which is less than a whole
+    ``Utterance``. Two things satisfy it and they choose a voice differently: a
+    bank ``Utterance``, whose voice is its dialect ``Register``, and a script
+    line, whose voice is a ``Speaker`` because both people speak one dialect.
+    Depending on this rather than on ``Utterance`` is what lets a script reuse
+    the TTS adapter and the cache without ``Register`` having to grow a member
+    that is not a register.
+    """
+
+    @property
+    def text(self) -> str:
+        """The words to be spoken."""
+        ...
+
+    @property
+    def voice(self) -> str:
+        """The voice-map key selecting who says it."""
+        ...
+
+    @property
+    def key(self) -> str:
+        """Content hash identifying this speech (and its cached audio)."""
+        ...
+
+
+# The model's port for text-to-speech: something sayable -> playable audio. The
 # concrete engine (ElevenLabs) lives in the audio layer and is *passed in* by the
 # caller (e.g. to ensure_cached), so the model declares the capability without
 # importing any audio library. Just a Callable — the port has a single operation.
-type Synthesiser = Callable[[Utterance], PlayableAudio]
+type Synthesiser = Callable[[Speech], PlayableAudio]
 
 
 class ContentBlockedError(RuntimeError):
@@ -70,6 +100,46 @@ class Register(StrEnum):
     def label(self) -> str:
         """Full human-readable register name (for prompts and display)."""
         return _REGISTER_LABELS[self]
+
+
+class Speaker(StrEnum):
+    """Who is talking in a two-voice lesson script.
+
+    A script is one dialect spoken by two people, so ``Register`` cannot tell
+    the voices apart — teacher and student are both ``MSA``. This is the second
+    way of naming a voice, used only by ``script``; the chunk banks never build
+    one. The value is both the voice-map key and what enters the cache key, so
+    two speakers saying the same sentence cache separately.
+    """
+
+    TEACHER = "teacher"
+    DAVID = "david"
+
+    @property
+    def label(self) -> str:
+        """The Arabic name this speaker is written under in a script page."""
+        return _SPEAKER_LABELS[self]
+
+    @classmethod
+    def from_label(cls, label: str) -> Speaker:
+        """The speaker written under ``label`` in a script page.
+
+        Raises:
+            ValueError: If no speaker uses that label, listing the ones that do.
+        """
+        for speaker in cls:
+            if speaker.label == label:
+                return speaker
+        known = ", ".join(f"{s.label!r}" for s in cls)
+        raise ValueError(f"unknown speaker {label!r} — expected one of {known}")
+
+
+# The teacher is named by role, never by name: the repo is public and the
+# recordings are private. Her name must not enter a script, a page or a filename.
+_SPEAKER_LABELS: dict[Speaker, str] = {
+    Speaker.TEACHER: "المعلِّمة",
+    Speaker.DAVID: "ديفيد",
+}
 
 
 class Priority(StrEnum):
@@ -136,6 +206,16 @@ class Utterance:
 
     def __str__(self) -> str:
         return self.text
+
+    @property
+    def voice(self) -> str:
+        """The voice-map key selecting who says it — here, the register.
+
+        Satisfies ``Speech``. A bank utterance picks its voice by dialect, so
+        this is just the register under another name; a script line picks its
+        voice by speaker instead.
+        """
+        return self.register
 
     @property
     def key(self) -> str:
