@@ -2,7 +2,9 @@
 
 from pathlib import Path
 
-from scripts.ingest import append_review, build_review
+import pytest
+
+from scripts.ingest import append_review, build_review, pending_review_rows
 from scripts.model import Chunk, Priority, VocabEntry
 from scripts.utils import read_csv_rows, write_csv_rows
 
@@ -119,3 +121,69 @@ def test_append_review_should_be_idempotent(tmp_path: Path) -> None:
     assert (first, second) == (1, 0)
     data_rows = chunks.read_text(encoding="utf-8").splitlines()[1:]
     assert len(data_rows) == 2  # the pre-existing row + the reviewed row, once
+
+
+def test_build_refuses_to_overwrite_a_review_csv_holding_rows(tmp_path: Path) -> None:
+    """A build stops rather than discarding rows already awaiting review.
+
+    The review CSV is the one file in the pipeline a human edits, and a build
+    rewrites it wholesale. This exact sequence destroyed 19 hand-filed rows
+    once: a one-row test ingest silently replaced the batch. The candidates
+    file that produced them has already been consumed, so there is nothing to
+    rebuild them from — the loss is total and silent.
+    """
+    candidates = tmp_path / "vocab_pairs.csv"
+    candidates.write_text(
+        "arabic,english,register,topic\nجَدِيد,new,msa,history\n", encoding="utf-8"
+    )
+    review = tmp_path / "vocab_chunks_review.csv"
+    review.write_text(
+        "id,arabic,english,register,topic,priority\n"
+        "aaaaaaaa,قَدِيم,old,msa,history,normal\n",
+        encoding="utf-8",
+    )
+    before = review.read_text(encoding="utf-8")
+
+    with pytest.raises(FileExistsError, match="still holds 1 row"):
+        build_review(candidates, tmp_path / "chunks.csv", review)
+
+    assert review.read_text(encoding="utf-8") == before
+
+
+def test_force_overwrites_the_review_csv_deliberately(tmp_path: Path) -> None:
+    """--force is the deliberate discard, so the guard is not a dead end."""
+    candidates = tmp_path / "vocab_pairs.csv"
+    candidates.write_text(
+        "arabic,english,register,topic\nجَدِيد,new,msa,history\n", encoding="utf-8"
+    )
+    review = tmp_path / "vocab_chunks_review.csv"
+    review.write_text(
+        "id,arabic,english,register,topic,priority\n"
+        "aaaaaaaa,قَدِيم,old,msa,history,normal\n",
+        encoding="utf-8",
+    )
+
+    assert build_review(candidates, tmp_path / "chunks.csv", review, force=True) == 1
+    assert "قَدِيم" not in review.read_text(encoding="utf-8")
+
+
+def test_build_proceeds_when_the_review_csv_is_header_only(tmp_path: Path) -> None:
+    """An emptied review CSV holds no work, so it is not something to protect.
+
+    Guards against the opposite failure: a guard that fires on a file with
+    nothing in it would force --force into the normal path, and a flag used
+    every time stops being read as a warning.
+    """
+    candidates = tmp_path / "vocab_pairs.csv"
+    candidates.write_text(
+        "arabic,english,register,topic\nجَدِيد,new,msa,history\n", encoding="utf-8"
+    )
+    review = tmp_path / "vocab_chunks_review.csv"
+    review.write_text("id,arabic,english,register,topic,priority\n", encoding="utf-8")
+
+    assert build_review(candidates, tmp_path / "chunks.csv", review) == 1
+
+
+def test_pending_rows_is_zero_for_an_absent_review_csv(tmp_path: Path) -> None:
+    """A first run has no review file, and that must not read as pending work."""
+    assert pending_review_rows(tmp_path / "nope.csv") == 0

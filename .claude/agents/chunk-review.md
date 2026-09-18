@@ -54,8 +54,8 @@ of you.
 
 So:
 
-- **Flag every `T` row where a reusable frame is trapped inside it** and name the
-  frame that should be emitted as its own row. This is the single highest-value
+- **Flag every `T` row where a reusable frame is trapped inside it** and write
+  the frame to `chunk_frames.csv` (see Output). This is the single highest-value
   thing you do. The review's diagnosis was that the extractor "selects for things
   that look like sentences, and the highest-leverage material in any language
   does not look like a sentence."
@@ -140,18 +140,66 @@ news-bulletin register either. The target is spoken Fuṣḥā.
 
 ## Output
 
-Write proposals to `scratch/chunk_review.csv`:
+You write **two** files, because you produce two different kinds of thing and
+they travel by different routes.
+
+### Edits to existing rows — `scratch/chunk_review.csv`
 
 ```
-id,field,current,proposed,reason
+id,arabic,english,field,current,proposed,reason
 ```
 
-`field` is one of `topic`, `priority`, `gloss`, `arabic-flag`,
-`emit-frame`, `drillability`. One row per proposed change, so a chunk with two
-problems gets two rows. For `emit-frame`, `proposed` is the frame to add as a
-new chunk and `current` is the row it is trapped in.
+**`arabic` and `english` are the row's own text, copied verbatim from the bank,
+and they are not optional.** A proposals file keyed only by id cannot be
+reviewed: Dave has to join 50 ids against the bank by hand before he can judge
+a single one, so the file that was meant to save him work costs him more. Carry
+the text even though it is redundant with the bank — the file has to stand on
+its own.
+
+`field` is one of `topic`, `priority`, `gloss`, `arabic-flag`, `drillability` —
+every one of them a column on a row that already exists. One row per proposed
+change, so a chunk with two problems gets two rows.
+
+Never propose against a column that does not exist. Check the bank's header
+first: the schema has changed before, and a proposal naming a dropped column is
+undecidable rather than merely wrong.
+
+### Frames to add — `scratch/chunk_frames.csv`
+
+A frame you lift out of a sentence is **not an edit to that sentence** — the
+sentence stays exactly as it is. It is a new chunk, so write it in candidate
+shape, ready for the pipeline that already exists:
+
+```
+arabic,english,register,topic,priority
+```
+
+The Arabic and English go in their own columns, and you fill in register, topic
+and priority as you would for any new chunk. Put the id of the row it came out
+of nowhere: the parent is where you *found* it, not a property of it.
+
+**One surface form per frame — never a slash-alternate.** `كَانَ/كَانَتْ … سَبَبًا فِي …`
+is not a chunk, it is two chunks and a piece of notation. `Chunk.from_row`
+rejects it, so a frame written that way cannot be ingested at all; on one run 11
+of 19 frames were unusable for exactly this reason.
+
+When agreement varies, **write the frame in the form the parent sentence
+actually used.** The teacher said `كَانَتِ الإِمْبَرَاطُورِيَّةُ مَوْجُودَةً`, so the frame is
+`كَانَتْ … مَوْجُودَةً`. That keeps the authentic-only rule intact: you are lifting
+attested Arabic, not composing a paradigm. If both genders are genuinely worth
+drilling, emit two rows — and say in the report that you did.
+
+**Do not put frames in `chunk_review.csv`.** They were there once and it made
+that file unreadable in two ways: `id` meant the row being changed on some
+lines and the row being quoted on others, and the frame's Arabic and gloss were
+jammed into one `proposed` cell. Worse, nothing deduped them — one proposed
+frame was already in the bank verbatim, and there was no step that would have
+caught it. In candidate shape they go through `kallim ingest`, which dedups
+against every bank row, assigns ids and validates the topic.
 
 Then return a report:
+
+0. **Both file paths and their row counts**, so it is obvious there are two.
 
 1. **Census** — how many rows reviewed, and the count in each leverage class.
    State the discourse-operator share, since that is the number being tracked.

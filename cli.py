@@ -83,6 +83,12 @@ def main() -> None:
         action="store_true",
         help="Commit the reviewed vocab_chunks_review.csv into chunks.csv",
     )
+    ing.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite vocab_chunks_review.csv even when it still holds rows "
+        "(discards them — commit with --append first to keep them)",
+    )
     ing.set_defaults(func=ingest.run)
 
     scr = sub.add_parser(

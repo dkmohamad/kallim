@@ -66,8 +66,9 @@ durable chunk rules. Do not restate it here; a second copy will drift.
 
 ### 3. The proposals
 
-The agent writes `scratch/chunk_review.csv` (`id,field,current,proposed,reason`)
-and returns a report. Relay the report: the leverage census, the proposals
+The agent writes `scratch/chunk_review.csv`
+(`id,arabic,english,field,current,proposed,reason` — the text is carried so the
+file can be read without joining it back against the bank) and returns a report. Relay the report: the leverage census, the proposals
 grouped by field with their reasons, and what it deliberately did not flag.
 
 The **discourse-operator share** in the census is the number to watch: it is what
