@@ -161,8 +161,10 @@ ever wanted — **but read the cache warning below first.**
 > any voice setting. So changing the speed, swapping a voice id in `.env`, or
 > moving to another model leaves every cached clip in place and silently wrong:
 > the text did not change, so nothing regenerates. Fixing that means `--force`
-> and paying for the whole bank again. If a synthesis parameter is ever added,
-> it belongs in the cache key in the same change.
+> and paying for the whole bank again — about 75,000 credits across both banks.
+> If a synthesis parameter is ever added, it belongs in the cache key in the same
+> change. `TODO.md` carries the durable fix, including the re-key migration that
+> avoids paying for a rebuild at all.
 
 ---
 

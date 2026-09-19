@@ -53,6 +53,27 @@ removes are all in README under *Output* and *Anki workflow*.
   row carry a syllabus judgement, and nothing needs to drill one era apart from
   another. If that changes, reach for an *optional* second label, empty for most
   rows — not a required column or a re-tag of the bank.
+- **Hash the full synthesis parameter set into the cache key.** The key is
+  `content_hash(voice + text)` and nothing else — not the model, not the output
+  format, not any voice setting, and not even the voice *id* (it hashes the
+  register or speaker *name*, so swapping `ELEVENLABS_VOICE_MSA` in `.env`
+  changes nothing). Anything that alters the bytes but not the text therefore
+  leaves every cached clip in place and silently wrong: you change a setting,
+  nothing regenerates, and you conclude it had no effect. README currently warns
+  about the voice-id case and `--force` is the only escape.
+
+  The fix is to include everything that determines the audio — model id, output
+  format, resolved voice id and any voice settings — in the hashed string.
+
+  **Do it with a re-key migration, not a re-render.** A naive change invalidates
+  all 2,454 cached clips and costs roughly **75,000 credits** to rebuild both
+  banks. Instead compute each row's new key under the *current* parameters and
+  rename the existing file to it: the bytes are already correct, only the name
+  is wrong. That is exactly how the 83 teacher clips were re-keyed when the
+  speaker key moved from a name to a role — 83 renames, zero credits.
+
+  Worth doing before any synthesis parameter is added, not after. Adding `speed`
+  first and the key second means paying for the rebuild twice.
 
 ## Done
 
