@@ -1,174 +1,72 @@
 # TODO
 
-Tracking in-flight work on the kallim chunk set and pipeline.
+In-flight work on the kallim chunk set and pipeline. **Open** is live,
+**Backlog** is decided-but-not-needed, **Done** is kept only for the reasoning
+that stops a rejected option being re-proposed.
 
-## Startup performance — lazy-dispatch in cli.py  _(recommended, not done)_
+Behaviour that is true of the tool rather than pending belongs in `README.md`
+and `DESIGN.md`, not here — what a deleted row leaves behind, how the
+content-addressed cache decides what to regenerate, and what `kallim prune`
+removes are all in README under *Output* and *Anki workflow*.
 
-`pydub` and `elevenlabs` are already fully deferred: `audio.py` (synth, `stitch`)
-and `store.py` (the `AudioCache` `Codec`) lazy-import pydub inside the methods
-that use it, and `audio.py` lazy-imports elevenlabs in `make_synthesiser` /
-`list_voices` (`PLC0415` per-file-ignored in both — the one sanctioned deviation
-so far). `generate.py` is pydub-free: it composes `PlayableAudio` via
-`audio.stitch` and writes via the store `Codec` (`make_codec`). So no command
-loads them on startup.
+## Open
 
-The remaining cost is `cli.py`: it imports all six command `main`s at module
-top, so running *any* command transitively loads **`genanki`** (via
-`generate_anki.py`) whether needed or not. (The old `anthropic` load via
-`promote.py` is gone — `promote` was retired and its LLM work moved into the
-`/extract-vocab` skill.) Measured historically: `kallim lint` ≈ **0.46 s** vs
-≈ **0.03 s** for importing the `lint` module alone.
-
-**Next stage:** lazy-dispatch — move each `from scripts.<cmd> import main` into
-its `if args.command == …` branch in `cli.py`, so e.g. `lint`/`prune`/`voices`/
-`migrate` import only what they use (≈ 0.1 s; a ~0.35 s win per invocation). Cost:
-a second `PLC0415` per-file-ignore (`"cli.py"`). Deferred deliberately to keep
-the lazy-import deviation list short.
-
-## ⚠️ Gotchas to remember (read before thinning chunks)
-
-Deleting a row from `chunks.csv` is **not** fully self-contained. The CSV is the
-source of truth for *generation*; the tail has mostly been automated, but one
-manual step remains:
-
-1. **Anki keeps orphaned cards.** genanki/Anki only *add or update* notes by GUID
-   on import — they never delete. So a chunk removed from `chunks.csv` leaves its
-   card alive in the Anki collection. Removing it means **manually deleting that
-   card in Anki** (search by the English/Arabic text, or by tag). _Still manual —
-   no automation for this._
-2. **Orphaned audio files — now handled by `kallim prune`.** Audio is cached per
-   *utterance*, content-addressed as `audio/<hash>.mp3`. Removing or editing a row
-   leaves its old file behind. `kallim prune` lists orphans (dry run) and
-   `--apply` deletes them, counting a key live if **any** bank still produces it.
-3. **Stale-but-live audio — handled by content-addressing.** The cache is keyed
-   by a hash of the utterance's text, so a present file is correct by construction:
-   editing a chunk changes its key and the next run synthesises the new side. There
-   is no manifest and no staleness to clear. (Earlier revisions of this file
-   described an `audio/manifest.json` and a one-time seed regen of ~756×2 calls —
-   neither exists. `audio/` holds 2063 content-hash mp3s covering every current
-   chunk bar one, plausibly the `ContentBlockedError` case in `3a92dd2`.)
-
-## 1. Reclassify, re-tag, and thin the chunk set  _(done; schema since replaced)_
-
-Goal: keep only chunks **I would actually say**, and make the tag taxonomy
-clear and well-documented.
-
-> Historical. The `concept_tag` column described below was renamed to `topic`
-> and a two-value `tag` (`history`/`general`) added; `ConceptTag` and its two
-> schemes are gone. Left as the record of what was done at the time — see
-> README and DESIGN.md for the live schema.
-
-- [x] **Thin `chunks.csv`** — reviewed and dropped chunks I wouldn't actually say
-  (Anki + audio orphan gotchas above apply to any future removals).
-- [x] **Re-tag** chunks to the right `concept_tag` — MSA/Egyptian passes completed,
-  reviewed, and lint-validated.
-- [x] **Document each tag with a description in `README.md`** — every tag now has a
-  one-line description, split per register-scheme (Situational / Topical).
-- [x] **Add missing tags** — added `family` and `daily_life` to the `ConceptTag`
-  enum, tag-scheme sets, and README.
-- [x] **Validate** — `kallim lint` reports 0 problems (756 chunks as of the
-  authentic-chunk additions; was 655 at the time of the thin/re-tag pass).
-
-## 2a. Remove the synthetic scene pipeline  _(done)_
-
-The generated scene conversations sounded a bit off / unnatural, so the synthetic
-pipeline was removed outright. `generate` / `anki` / `lint` were untouched.
-
-- [x] delete `scripts/scene.py`
-- [x] remove the `scene` subcommand from `cli.py` (parser + dispatch)
-- [x] strip scene references from `README.md` (feature bullet, usage examples,
-  output-file listing, cache note, `secondary` voice note)
-- [x] delete the `audio/scenes/` cache
-- [x] remove the now-unused `secondary` voice from `voices.json` /
-  `voices.json.example`, and `Register.SECONDARY` from `generate.py`
-- [x] hoist `cli.py`'s lazy subcommand imports to module top-level (cleared a
-  pre-existing `PLC0415` ruff failure) and dropped the now-needless per-file-ignore
-  from `pyproject.toml`; the `PLC0415` rule now enforces top-level imports project-wide
-- [x] reword the three descriptive "travel-phrasebook scenes" mentions
-  (`generate.py`, `README.md`, `SKILL.md`) → "situations", since they describe the
-  Egyptian situational register, not the deleted pipeline, and "scenes" is now ambiguous
-
-## 2b. Authentic-chunk ingestion  _(design first — this is the hard part)_
-
-Replace synthetic scenes with chunks derived from **real (truth-data) audio or
-text**, so everything practiced is authentic. Practice the chunks + listen to the
-authentic audio for deeper understanding.
-
-**Effort/risk depends entirely on one decision — per-chunk audio clips or not:**
-
-- **Text → chunks: moderate.** Segmenting real text into chunks is very doable;
-  use the `/extract-vocab` skill (a Sonnet sub-agent extracts + tags authentic
-  chunks in-Claude, then `kallim harvest` dedups/ids/validates/appends) and the "Adding
-  vocabulary" flow in README.
-- **Audio → per-chunk clips: hard.** Playing *this chunk's* authentic audio needs
-  ASR (transcription) **plus forced alignment** for chunk-level timestamps — and
-  Arabic forced alignment is genuinely fiddly. ElevenLabs is TTS, not STT, so this
-  is new infrastructure (Whisper-class model + alignment), not a refactor.
-
-- [x] **Decide ambition level** — went with the text-first MVP (no per-chunk audio).
-- [x] **Text → chunks** — done ad hoc: **101 authentic chunks** ingested from three
-  MSA lesson transcripts via the extract → ingest path (commit `47f4316`).
-  These are now live in `chunks.csv` and lint-clean.
-  - ⚠️ Those 101 chunks have **no generated audio yet** — they need a
-    `generate`/`anki` run (folds into the one-time regen noted in gotcha #3).
-- [ ] **Attach whole source-audio file** — the still-open half of the MVP: pair each
-  ingested batch with its (whole) source recording so you can practice the chunks
-  *and* listen back to the authentic audio. Not built.
-- [ ] **Later (optional):** per-chunk audio via ASR + forced alignment, only if the
+- **Lazy-dispatch in `cli.py`.** `pydub` and `elevenlabs` are already fully
+  deferred (`audio.py`, `cache.py`, `script.py` lazy-import them, `PLC0415`
+  per-file-ignored for exactly that). What remains is `cli.py` importing every
+  command module at the top, so any command transitively loads `genanki` via
+  `generate_anki.py`: `kallim lint` ≈ 0.46 s against ≈ 0.03 s for the `lint`
+  module alone. Moving each import into its dispatch branch wins ~0.35 s per
+  invocation and costs a second per-file-ignore. Deferred to keep the
+  lazy-import deviation list short.
+- **Attach the source recording to an ingested batch**, so a chunk can be
+  drilled *and* heard in the voice that said it. Per-chunk clips are the harder
+  version and are not wanted yet: they need ASR plus forced alignment for
+  chunk-level timestamps, Arabic forced alignment is fiddly, and ElevenLabs is
+  TTS not STT — new infrastructure rather than a refactor. Revisit only if the
   whole-file approach proves insufficient.
+- **Incremental output and Drive sync.** Every `kallim generate` writes a new
+  timestamped `output/` directory even when one section changed, and getting it
+  onto a phone is a manual full-folder copy. Wanted: rebuild only the sections
+  whose chunks changed, and sync with `rsync`/rclone so only changed files move.
 
-## 3. Regeneration & output-sync workflow
+## Backlog
 
-Two related pain points around regenerating and getting audio onto my phone.
-**3a (cache correctness) is now done; 3b (output sync) is still flagged.**
+- **An `examples` field.** Ellipsis frames stay the drillable row, and the
+  sentence a frame was lifted from rides along on the Anki card back. Settled
+  during the 2026-09 history repointing and not built, so a frame and its parent
+  sentence are currently two unrelated rows and the card gives the frame with no
+  context. Needs a column on `Chunk`, a `lint` rule (an example must not itself
+  be a row), and a card-template change.
+- **`kallim export` / `apply-edits`.** Some rows were mined from
+  corrected-ChatGPT MSA and read as stilted. Making them idiomatic is a
+  qualitative judgement, better done interactively in claude.ai than by an agent
+  here — so **do not build a "teacher review" skill**. The only friction worth
+  tooling is the round-trip: `export --section <topic>` to a pasteable table,
+  `apply-edits` to read back `id → new_arabic` and edit in place by id. Editing
+  by id is safe because the Anki GUID is `genanki.guid_for(chunk.id)`, so a card
+  updates rather than orphaning, and the cache regenerates only the changed side.
+  Never Fuṣḥā-fy Egyptian. Build it only if the manual round-trip proves
+  annoying, which is a thing to find out rather than assume.
+- **An optional era tag.** All Arab/Islamic history sits under one `history`
+  topic. Splitting it per era was built and removed as unnecessary: it made every
+  row carry a syllabus judgement, and nothing needs to drill one era apart from
+  another. If that changes, reach for an *optional* second label, empty for most
+  rows — not a required column or a re-tag of the bank.
 
-### 3a. Regenerate only what changed (cache correctness)  _(done)_
+## Done
 
-Both pain points are resolved by the content-aware cache + `prune`:
-
-- [x] **Content-addressed cache** — each utterance's audio is stored at
-  `audio/<hash of register + text>.mp3`, so a present file is correct by
-  construction: editing a chunk changes its key and only the changed side is
-  synthesised next run. `--force` re-synthesises regardless. _(An intermediate
-  design using `audio/manifest.json` was described here; it was superseded by
-  content-addressing and no manifest exists.)_
-- [x] **`kallim prune`** — new subcommand (`scripts/prune.py`): dry-run by default,
-  `--apply` deletes any `audio/<key>.mp3` no bank still produces. Cleared the
-  126 orphans. Reads **every** bank (`chunks.csv` + `egyptian.csv`), so freezing
-  a register can't make its audio look deletable.
-
-The chosen design (content-addressed cache + prune) supersedes the "full fresh
-regen" and "prune orphans only" options that were on the table. The seed regen
-this section once warned about has long since run: `audio/` holds 2063 clips
-covering every current chunk bar one.
-
-### 3b. Incremental output + Google Drive sync
-
-Current friction: every `kallim generate` writes a **new timestamped `output/`
-directory**, even when only one section changed. I then manually copy the whole
-thing to Google Drive to access recordings/text from my phone.
-
-Wanted (someday):
-- Regenerate **only sections whose chunks changed** (and update the Anki deck only
-  when needed), rather than a full rebuild into a fresh dir each time.
-- **Sync to Google Drive via `rsync`** (or rclone for Drive) so only changed files
-  transfer — no manual full-folder copy.
-
-## Backlog: an optional era tag  _(not needed yet)_
-
-All Arab/Islamic history sits under one `history` topic. Splitting it per era —
-`andalus`, `ottoman`, `golden_age` — was built and then removed as unnecessary:
-it made every row carry a judgement that belongs to the syllabus, and nothing
-currently needs to drill one era apart from another.
-
-If that changes, the shape to reach for is an **optional** second label, empty
-for most rows, rather than a required column or a re-tag of the bank. Worth
-having only when there is a real reason to slice `history` — not before.
-
-## Loose ends right now
-
-- §1 (re-tag/thin), §2a (remove scene pipeline) **done** (`fa40600`); §2b text→chunks
-  MVP **done** ad hoc (`47f4316`, 101 authentic chunks); §3a (cache correctness)
-  **done** (content-aware cache + `kallim prune`).
-- **Still open:** §2b "attach whole source-audio file" half, and §3b (incremental
-  output + Google Drive `rsync`/rclone sync — still flagged, not started).
+- **Reclassified, re-tagged and thinned the chunk set.** `concept_tag` became
+  `topic`; the two-value `tag` that briefly joined it was removed again.
+  `DESIGN.md` has the live schema.
+- **Removed the synthetic scene pipeline** rather than tuning it — the generated
+  conversations sounded unnatural, and the answer was real lesson material, not
+  better prompts.
+- **Ingested the text half of authentic chunks** — 101 from three MSA lesson
+  transcripts (`47f4316`), without per-chunk audio.
+- **Content-addressed the audio cache and added `kallim prune`**, superseding
+  the two options on the table: a file named by the hash of its own text is
+  correct by construction, so neither a full fresh regen nor prune-orphans-only
+  is needed. `prune` reads every bank, so freezing a register cannot make its
+  audio look deletable. An `audio/manifest.json` design was written up here for
+  months and never built.

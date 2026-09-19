@@ -100,6 +100,10 @@ An ellipsis frame carrying a literal `…` is the canonical shape and is correct
 A full sentence is almost never `high`, however useful its content. A content
 word or topic-specific noun never is.
 
+**An Egyptian row is never `high`.** That bank is for reception rather than
+production — it is not drilled, so foregrounding a row in it means nothing.
+Priority is an MSA concern; propose a demotion for any Egyptian row carrying it.
+
 **Propose demotions as readily as promotions.** `high` misfires as often as it is
 missed: `اِمْتَدَّ مِن … إِلَى …` carries it, and it is a construction Dave will use
 approximately never. A `high` row that is class `B` or `W` is wrong by

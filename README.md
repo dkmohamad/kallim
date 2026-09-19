@@ -189,6 +189,17 @@ Anki owns scheduling state. You can re-export and re-import safely at any time.
 5. Anki will add the new cards. Existing cards keep their review history,
    intervals, and ease factors. No duplicates.
 
+### Removing vocabulary
+
+Deleting a row from `chunks.csv` is **not** self-contained — two things survive it:
+
+- **The Anki card.** genanki and Anki only ever *add or update* notes by GUID;
+  neither deletes. A removed chunk leaves its card alive in your collection, and
+  it has to be deleted by hand — search the English or Arabic text, or the tag.
+  There is no automation for this and there is unlikely to be: deleting cards
+  from a collection Anki owns is not the CSV's business.
+- **Its cached audio**, which `kallim prune --apply` clears.
+
 ### What happens on import
 
 - **New cards** (IDs Anki hasn't seen) are added to the deck.

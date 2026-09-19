@@ -56,9 +56,8 @@ Follow these steps in order. Do NOT skip or reorder steps.
   `**ديفيد:**` for David) with a per-line italic English gloss. If
   the fetched body lacks that format — raw ASR, `SPEAKER S2/S3` labels, no
   labels, or a non-lesson recording (the Recordings DB also holds coaching
-  and debugging sessions) — **stop** and tell the user to run the
-  transcript-cleanup workflow (verify speakers, add glosses, write back to
-  Notion) first. Do not guess speakers from unlabelled text.
+  and debugging sessions) — **stop** and tell the user to run
+  [clean-transcript](../clean-transcript/SKILL.md) first. Do not guess speakers from unlabelled text.
 - **A file path** → `Read` it. A file is taken as authoritative input.
 
 ### 2. First-pass extraction (Sonnet sub-agent)
@@ -99,7 +98,7 @@ anything doubtful rather than pass it through.
 | `english` | Reuse the transcript's italic gloss if present, else translate |
 | `register` | **Per phrase:** `egyptian` for Egyptian colloquial, `msa` for Fusha, `iraqi` for Iraqi — one lesson mixes registers, so decide line by line |
 | `topic` | What it is about. Must be a topic `kallim tags` lists — an unregistered one is rejected. If the source is a genuinely new dossier, say so in the summary rather than coining a slug |
-| `priority` | `high` only for frames and discourse operators (see below); everything else `normal` (may be omitted — it defaults) |
+| `priority` | `high` only for frames and discourse operators (see below); everything else `normal` (may be omitted — it defaults). **Egyptian rows are always `normal`** — that bank is for reception, not drilling, so `high` is an MSA concern | |
 
 **Emit the frames, not just the sentences.** This is the highest-value thing the
 extraction does, and the easiest to get wrong.
@@ -204,7 +203,7 @@ rows directly, and `git checkout chunks.csv` throws the batch away.
 
 - **Notion fetch fails / page not found** → tell the user and stop.
 - **Recording isn't a cleaned transcript** → fail-fast per step 1; point the
-  user at the transcript-cleanup workflow.
+  user at [clean-transcript](../clean-transcript/SKILL.md).
 - **Input file doesn't exist** → tell the user and stop.
 - **`chunks.csv` doesn't exist** → harvest stops and names it (nothing to
   compare against).
