@@ -210,17 +210,22 @@ staged copy afterwards.
 
 ## Guardrails
 
-- **Distil from a cleaned transcript.** See the top of this file.
-- **Name the teacher** in any output: page, script, audio, candidates, notes.
-- **Assert a fact the lesson left open**, or silently resolve a contradiction.
-- **Harvest chunks from the finished script.** The script is a listening
+Each of these carries its own negation, so the list cannot be inverted by
+renaming the heading above it — which is exactly what happened once.
+
+- **Never distil from a cleaned transcript.** See the top of this file.
+- **Never name the teacher** in any output: page, script, audio, candidates,
+  notes, filenames.
+- **Never assert a fact the lesson left open**, and never silently resolve a
+  contradiction — note it at the foot of the page instead.
+- **Never harvest chunks from the finished script.** The script is a listening
   artefact; chunks come from the repair points in the raw. Same recording, two
   outputs, two provenance rules.
-- **Commit anything.** The harvest lands in `chunks.csv` uncommitted and stops
-  there; the diff is Dave's to read. Reporting a commit you did not make is worse
-  than not committing.
-- **Use `--force` on `kallim script`.** It re-bills every turn at full cost,
-  defeating the per-turn caching that makes a page edit cheap.
+- **Never commit.** The harvest lands in `chunks.csv` uncommitted and stops
+  there; the diff is Dave's to read. Reporting a commit you did not make is
+  worse than not committing.
+- **Never use `--force` on `kallim script`.** It re-bills every turn at full
+  cost, defeating the per-turn caching that makes a page edit cheap.
 
 ## Known costs
 
