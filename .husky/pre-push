@@ -1,0 +1,4 @@
+# The house pre-push runs `npm run check`, which cannot work here: check-gates
+# reads package.json and demands eight named npm scripts, and this repo's
+# toolchain is uv. So call the real checks directly — same gate, right tooling.
+uv run ruff check && uv run ruff format --check && uv run pyright && uv run pytest -q

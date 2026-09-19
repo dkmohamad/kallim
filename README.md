@@ -27,6 +27,17 @@ cp .env.example .env
 
 Run commands with `uv run` (e.g. `uv run kallim generate`).
 
+One extra step per clone, which wires the shared commit-message and pre-push
+gates:
+
+```bash
+npm install
+```
+
+This is a dev-only npm layer (husky + `@casomoltd/tooling`) that exists solely
+to carry those hooks. uv remains the project toolchain — dependencies, checks
+and versioning all go through it.
+
 ## Usage
 
 ```bash

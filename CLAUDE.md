@@ -13,7 +13,22 @@ Manage the environment with uv (the venv lives at `.venv/`):
 
 ## Commits
 
-- Do not include AI attribution or Co-Authored-By lines in commit messages
+One setup step per clone, beside `uv sync` — nothing forces it, so it is the
+only part worth stating here:
+
+```
+npm install
+```
+
+It installs a dev-only npm layer (husky + `@casomoltd/tooling`) whose sole job
+is to run the shared commitlint rules on every commit message, and a pre-push
+hook that runs `ruff`, `pyright` and `pytest`. uv remains the toolchain; there
+is deliberately no `npm run check`.
+
+**The commit rules themselves are not restated here.** They live in
+`@casomoltd/tooling/commitlint` and the hook names whichever one you broke.
+Copying them into this file would put one rule in two places, and this file
+would be the copy that goes stale.
 
 ## Working style
 
