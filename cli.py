@@ -7,7 +7,7 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import generate, generate_anki, ingest, lint, prune, script, tags
+from scripts import generate, generate_anki, harvest, lint, prune, script, tags
 from scripts.config import CHUNKS_CSV
 
 __all__ = ["main"]
@@ -68,28 +68,17 @@ def main() -> None:
     )
     anki.set_defaults(func=generate_anki.run)
 
-    ing = sub.add_parser(
-        "ingest",
-        help="Dedup + id + validate extracted vocab candidates into a review CSV",
+    har = sub.add_parser(
+        "harvest",
+        help="Dedup + id + validate vocab candidates into chunks.csv, then lint",
     )
-    ing.add_argument(
+    har.add_argument(
         "candidates",
         nargs="?",
         help="Path to candidates CSV (arabic,english,register,topic and "
         "optionally priority). Defaults to vocab_pairs.csv.",
     )
-    ing.add_argument(
-        "--append",
-        action="store_true",
-        help="Commit the reviewed vocab_chunks_review.csv into chunks.csv",
-    )
-    ing.add_argument(
-        "--force",
-        action="store_true",
-        help="Overwrite vocab_chunks_review.csv even when it still holds rows "
-        "(discards them — commit with --append first to keep them)",
-    )
-    ing.set_defaults(func=ingest.run)
+    har.set_defaults(func=harvest.run)
 
     scr = sub.add_parser(
         "script", help="Render a distilled lesson script into a two-voice MP3"

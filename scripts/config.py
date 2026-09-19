@@ -12,7 +12,6 @@ __all__ = [
     "SCRATCH_DIR",
     "SCRIPT_AUDIO_DIR",
     "TTS_MODEL_ID",
-    "VOCAB_CHUNKS_REVIEW_CSV",
     "VOCAB_PAIRS_CSV",
 ]
 
@@ -44,8 +43,8 @@ BANK_CSVS = (CHUNKS_CSV, EGYPTIAN_CSV)
 # ``prune --apply``. A separate directory is never walked by prune.
 SCRIPT_AUDIO_DIR = PROJECT_ROOT / "audio-scripts"
 
-# Vocab pipeline (transient, under scratch/): extract-vocab agent writes
-# vocab_pairs.csv (candidates) -> kallim ingest dedups/ids/validates ->
-# vocab_chunks_review.csv -> (append) -> chunks.csv.
+# Where an extraction skill drops its candidates. `kallim harvest` reads this,
+# dedups, ids and validates, and appends straight into a bank — there is no
+# staging CSV between the two, because git already distinguishes the rows that
+# have changed from the rows that are committed.
 VOCAB_PAIRS_CSV = SCRATCH_DIR / "vocab_pairs.csv"
-VOCAB_CHUNKS_REVIEW_CSV = SCRATCH_DIR / "vocab_chunks_review.csv"

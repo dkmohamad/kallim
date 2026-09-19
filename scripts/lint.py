@@ -5,7 +5,7 @@ register and an unregistered topic are reported with their line number (the
 rules live on Chunk in scripts.model). Across rows: duplicate ids, and two rows
 whose Arabic folds to the same identity once diacritics are stripped.
 
-The duplicate check lives **here** rather than only in ``ingest`` because a row
+The duplicate check lives **here** rather than in the harvest because a row
 can reach the bank by more than one route — an agent editing the file, a hand
 edit, a paste — and a check that only guards one of them guards nothing. Lint
 sees the finished file, so it catches a duplicate however it arrived.

@@ -5,7 +5,7 @@ A Chunk pairs an English and an Arabic Utterance; an Utterance is text + the
 voice it's said in, and owns its content-addressed audio *identity* (``key``).
 Synthesis itself is done by the ``Synthesiser`` port (a callable), passed in by
 the caller; the resulting bytes live in the audio cache. A ``VocabEntry`` is a
-candidate row on its way to becoming a ``Chunk`` (see ``ingest``).
+candidate row on its way to becoming a ``Chunk`` (see ``harvest``).
 """
 
 from __future__ import annotations
@@ -305,7 +305,7 @@ class VocabEntry:
     """A candidate vocab row on its way to becoming a Chunk.
 
     Produced by the ``extract-vocab`` skill's first-pass agent and consumed by
-    ``kallim ingest``, which dedups, assigns an id, and validates it into a
+    ``kallim harvest``, which dedups, assigns an id, and validates it into a
     ``Chunk``. ``register`` is an enum member; ``topic`` is a registered slug,
     validated here on construction just as it is on ``Chunk`` so a candidate
     can't carry a shape a chunk would reject.

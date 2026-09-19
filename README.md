@@ -109,7 +109,7 @@ a line there.
 
 It is checked rather than free because an unregistered value is far more often a
 typo than a new dossier, and an unnoticed typo silently splits a section, drops
-rows from `--section`, and opens a second Anki namespace. `kallim ingest` fails
+rows from `--section`, and opens a second Anki namespace. `kallim harvest` fails
 loudly on one, naming the topic and saying what to do.
 
 **What is *not* a column:** which topic you are currently studying. That is a
@@ -122,15 +122,19 @@ must never be synced back. `priority=high` is a different claim — that a chunk
 structurally high-leverage for building an argument — which is true whether or
 not you know it yet, so it belongs here.
 
-`kallim lint` validates every row: the register must be an enum member and the
-topic must be registered. It does **not** judge whether the topic is *right* —
-that is `/review-chunks`.
+`kallim lint` validates the whole bank. Per row: the register must be an enum
+member and the topic must be registered. Across rows: no duplicate ids, and no
+two rows whose Arabic folds to the same identity once diacritics are stripped —
+that check lives here rather than in `ingest` because a row can reach the bank
+by several routes and a check guarding only one of them guards nothing.
+
+It does **not** judge whether the topic is *right* — that is `/review-chunks`.
 
 ### The two banks
 
 | File | Rows | What it is |
 |---|---|---|
-| `chunks.csv` | 642 | MSA. The live bank: drilled, rendered, added to. |
+| `chunks.csv` | 679 | MSA. The live bank: drilled, rendered, added to. |
 | `egyptian.csv` | 391 | Egyptian, frozen. Kept for **reception** — songs, media, a future trip — not production. |
 
 `generate`, `anki` and `lint` default to `chunks.csv`. Reach the frozen bank
@@ -149,23 +153,22 @@ entries you captured yourself — into `chunks.csv`. Nothing is synthesised.
    + English glosses, written back to Notion), the Notion *Arabic — Scratchpad*
    page, or a local text file.
 2. **Extract** — run the `/extract-vocab <source>` skill. A Sonnet sub-agent
-   pulls high-authority chunks (teacher-said or teacher-corrected), tags each by
-   register + concept, and writes `scratch/vocab_pairs.csv`.
-3. **Ingest** — `kallim ingest scratch/vocab_pairs.csv` dedups against `chunks.csv`
-   (diacritics-insensitive), assigns ids, validates the taxonomy, and writes
-   `scratch/vocab_chunks_review.csv`. No API calls, no invented text.
-4. **Review** — open `scratch/vocab_chunks_review.csv` and edit/delete as needed.
-5. **Append + validate** — `kallim ingest --append` commits the reviewed rows
-   into `chunks.csv`, then `kallim lint` checks the taxonomy.
+   pulls high-authority chunks (teacher-said or teacher-corrected), assigns a
+   register and topic to each, and writes `scratch/vocab_pairs.csv`.
+3. **Harvest** — `kallim harvest scratch/vocab_pairs.csv` dedups against
+   `chunks.csv` (diacritics-insensitive), assigns ids, validates, appends the
+   survivors and lints the result. No API calls, no invented text.
+4. **Review** — the rows are in `chunks.csv` **uncommitted**, so `git diff` is
+   the review surface. `/review-chunks --new` puts the judgement agent over
+   them; `git checkout chunks.csv` throws a bad batch away.
+5. **Commit** — when the diff reads right.
 6. **Generate** — run `kallim generate` / `kallim anki` to produce audio and
    flashcards.
 
 ```bash
 # From a review CSV onward
-kallim ingest scratch/vocab_pairs.csv   # dedup + id + validate -> review CSV
-# ... review scratch/vocab_chunks_review.csv ...
-kallim ingest --append             # commit reviewed rows into chunks.csv
-kallim lint                        # validate tags and topics
+kallim harvest scratch/vocab_pairs.csv  # dedup + id + validate + append + lint
+git diff chunks.csv                # the review surface; checkout to discard
 kallim anki                        # generate Anki deck
 ```
 
@@ -234,7 +237,7 @@ The project includes [Claude Code](https://claude.com/claude-code) skills in
 
 | Skill | Invocation | What it does |
 |-------|------------|--------------|
-| **extract-vocab** | `/extract-vocab <source>` | Mines authentic Arabic chunks from a cleaned Notion transcript, the Scratchpad, or a text file (Sonnet sub-agent), then `kallim ingest` dedups, ids, and validates them into `vocab_chunks_review.csv`. |
+| **extract-vocab** | `/extract-vocab <source>` | Mines authentic Arabic chunks from a cleaned Notion transcript, the Scratchpad, or a text file (Sonnet sub-agent), then `kallim harvest` dedups, ids, validates and appends them to `chunks.csv`, uncommitted. |
 | **review-chunks** | `/review-chunks --topic history` | Audits a slice of a bank for the judgement `kallim lint` can't reach — drifted topic, unearned priority, a gloss that doesn't match the Arabic, and reusable frames trapped inside topic-bound sentences. Dispatches the `chunk-review` agent, which proposes with reasons and never edits a bank. |
-| **distil-lesson** | `/distil-lesson <recording>` | Turns one recorded lesson into a shadowable two-voice script page plus vocab candidates, in a single pass over the **raw** transcript. `kallim script` renders the page to audio. |
+| **distil-lesson** | `/distil-lesson <recording>` | Turns one recorded lesson into a shadowable two-voice script page plus vocab candidates, in a single pass over the **raw** transcript. `kallim script` renders the page to audio; the candidates go through the same `harvest` → review-the-diff pipeline as extract-vocab. |
 | **commit** | `/commit [message]` | Runs pyright type checks, stages files explicitly, shows the diff for approval, then commits. |

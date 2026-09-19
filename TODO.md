@@ -56,7 +56,7 @@ clear and well-documented.
 > Historical. The `concept_tag` column described below was renamed to `topic`
 > and a two-value `tag` (`history`/`general`) added; `ConceptTag` and its two
 > schemes are gone. Left as the record of what was done at the time — see
-> README and SPEC for the live schema.
+> README and DESIGN.md for the live schema.
 
 - [x] **Thin `chunks.csv`** — reviewed and dropped chunks I wouldn't actually say
   (Anki + audio orphan gotchas above apply to any future removals).
@@ -98,7 +98,7 @@ authentic audio for deeper understanding.
 
 - **Text → chunks: moderate.** Segmenting real text into chunks is very doable;
   use the `/extract-vocab` skill (a Sonnet sub-agent extracts + tags authentic
-  chunks in-Claude, then `kallim ingest` dedups/ids/validates) and the "Adding
+  chunks in-Claude, then `kallim harvest` dedups/ids/validates/appends) and the "Adding
   vocabulary" flow in README.
 - **Audio → per-chunk clips: hard.** Playing *this chunk's* authentic audio needs
   ASR (transcription) **plus forced alignment** for chunk-level timestamps — and

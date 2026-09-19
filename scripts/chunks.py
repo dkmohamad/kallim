@@ -2,7 +2,7 @@
 
 ``Chunks`` is the domain collection of chunks: it loads chunks.csv
 (``Chunks.load``), narrows to a topic (``section``), groups into ``Section``
-output units (``sections``), and owns the identity lookups ingest/prune dedup on
+output units (``sections``), and owns the identity lookups harvest/prune dedup on
 (``arabic_keys``/``audio_keys``). No audio dependencies live here — the
 content-addressed audio cache is ``scripts.cache``.
 """
@@ -56,7 +56,7 @@ class Chunks(Collection[Chunk]):
 
     Loads from CSV (``load``), narrows to one topic (``section``), groups
     into ``Section`` output units (``sections``), and derives the identity sets
-    ingest and prune dedup on: ``arabic_keys`` (diacritics-insensitive dedup) and
+    harvest and prune dedup on: ``arabic_keys`` (diacritics-insensitive dedup) and
     ``audio_keys`` (every utterance's audio content key, for orphan detection).
     """
 

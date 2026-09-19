@@ -118,6 +118,11 @@ selection is config.
 | `ELEVENLABS_VOICE_EGYPTIAN`   | Voice ID for Egyptian Arabic       |
 | `ELEVENLABS_VOICE_MSA`        | Voice ID for MSA Arabic            |
 | `ELEVENLABS_VOICE_IRAQI`      | Voice ID for Iraqi Arabic          |
+| `ELEVENLABS_VOICE_TEACHER`    | Voice ID for the teacher, in scripts |
+| `ELEVENLABS_VOICE_DAVID`      | Voice ID for David, in scripts     |
+
+The last two are selected by `Speaker`, not `Register` — a script is two people
+speaking one dialect, so the register cannot tell them apart.
 
 The scripts resolve `register` → voice ID at runtime. Adding a new register
 means adding one env variable.
@@ -249,9 +254,9 @@ kallim anki
 kallim anki --no-audio
 kallim anki --section dining
 
-# Ingest extracted vocab candidates into review-ready chunks (dedup + id + validate)
-kallim ingest scratch/vocab_pairs.csv
-kallim ingest --append   # commit scratch/vocab_chunks_review.csv into chunks.csv
+# Harvest extracted vocab candidates into chunks.csv (dedup + id + validate
+# + append + lint). The rows land uncommitted; `git diff` is the review.
+kallim harvest scratch/vocab_pairs.csv
 
 # List the registry of known topics and their descriptions
 kallim tags
@@ -263,7 +268,7 @@ kallim script scratch/damascus.md --render
 # Delete orphaned audio (dry run; --apply to delete). Reads every bank.
 kallim prune
 
-# Validate chunks.csv (register is an enum, topic is a registered slug)
+# Validate a bank: registers, topics, duplicate ids and duplicate Arabic
 kallim lint
 
 # List ElevenLabs voices
@@ -296,6 +301,8 @@ ELEVENLABS_VOICE_ENGLISH=...
 ELEVENLABS_VOICE_EGYPTIAN=...
 ELEVENLABS_VOICE_MSA=...
 ELEVENLABS_VOICE_IRAQI=...
+ELEVENLABS_VOICE_TEACHER=...
+ELEVENLABS_VOICE_DAVID=...
 ```
 
 ---
@@ -330,7 +337,7 @@ kallim/
 │   ├── generate.py      # shadowing audio generation
 │   ├── generate_anki.py # Anki deck generation
 │   ├── script.py        # lesson script -> two-voice dialogue MP3
-│   ├── ingest.py        # vocab candidates -> review-ready chunks
+│   ├── harvest.py       # vocab candidates -> appended, validated chunks
 │   ├── lint.py          # bank validation
 │   ├── plan.py          # dry-run cost reporting
 │   ├── prune.py         # orphaned-audio deletion

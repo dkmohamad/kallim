@@ -130,7 +130,7 @@ def setup_logging(run_dir: Path | None = None) -> None:
     Modules log via ``logging.getLogger(__name__)``, so everything propagates
     to the package logger configured here. If ``run_dir`` is given, also write
     a DEBUG-level run_dir/generate.log; commands without a run directory
-    (e.g. ingest) just pass nothing.
+    (e.g. harvest) just pass nothing.
     """
     logger = logging.getLogger(__package__)
     logger.setLevel(logging.DEBUG)

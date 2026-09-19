@@ -5,7 +5,7 @@ description: >-
   leverage class, topic, priority, gloss accuracy, authenticity and register
   fidelity. Returns proposed changes with a reason for each. Read-only:
   it never edits a bank and never rewrites Arabic. Use on a slice of chunks.csv,
-  or on scratch/vocab_chunks_review.csv before appending a batch. Complements
+  or on the rows a harvest just added, before they are committed. Complements
   `kallim lint`, which checks mechanics only and cannot judge any of this.
 tools: Read, Grep, Glob, Bash
 ---
@@ -17,8 +17,16 @@ the mechanics: the register is an enum member, the topic is a registered slug,
 no slash-alternates. **None of what follows is mechanical.** You are the judgement
 layer, and your output is proposals with reasons — never edits.
 
-Run `.venv/bin/kallim tags` first for the live topic registry. Judge against
-that, not against your own idea of a sensible taxonomy.
+## Inputs
+
+The caller hands you two things, and you need both:
+
+- **A slice path** — a chunks-shaped CSV (`id,arabic,english,register,topic,
+  priority`) holding the rows to audit. Never the whole bank: past about 120
+  rows your attention thins in a way that is hard to see from the output.
+- **The live topic registry**, as `uv run kallim tags` prints it. Judge topics
+  against that, not against your own idea of a sensible taxonomy. Run it
+  yourself if the caller did not pass it.
 
 ## The purpose the bank serves
 
@@ -32,8 +40,7 @@ sentence. It is something he would actually say.
 
 ## 1. Leverage class — judge this first
 
-Classify every row into exactly one class. This scheme is from the corpus
-leverage review of 2026-08-25 and it is the spine of the whole review.
+Classify every row into exactly one class. This is the spine of the review.
 
 | Code | Class | Test |
 |---|---|---|
@@ -56,9 +63,8 @@ So:
 
 - **Flag every `T` row where a reusable frame is trapped inside it** and write
   the frame to `chunk_frames.csv` (see Output). This is the single highest-value
-  thing you do. The review's diagnosis was that the extractor "selects for things
-  that look like sentences, and the highest-leverage material in any language
-  does not look like a sentence."
+  thing you do: extraction selects for things that look like sentences, and the
+  highest-leverage material in any language does not look like a sentence.
 - **Flag `W` rows.** A bare word is not a chunk.
 - **Do not flag `B` rows merely for being `B`.** Dossier material is legitimately
   topic-bound — that is what a dossier is. Flag a `B` row only if it is also
@@ -78,7 +84,7 @@ about al-Andalus, the Ottoman era or the Islamic Golden Age?* If so it is
 Propose an existing topic where one fits. Propose a new slug only where a real
 dossier is missing, say so explicitly, and never invent a topic for a single row.
 Note that a new topic needs a line in `TOPICS` (`scripts/model.py`) before it can
-be ingested; say so when you propose one.
+be harvested; say so when you propose one.
 
 **There is no tag column, and no per-era topics.** All of the Arab and Islamic
 past is one topic, `history`. Do not propose splitting it into dossiers — that
@@ -94,9 +100,9 @@ An ellipsis frame carrying a literal `…` is the canonical shape and is correct
 A full sentence is almost never `high`, however useful its content. A content
 word or topic-specific noun never is.
 
-**Propose demotions as readily as promotions.** The leverage review found the
-mechanism actively misfiring — promoting `اِمْتَدَّ مِن … إِلَى …`, a construction Dave
-will use approximately never. A `high` row that is class `B` or `W` is wrong by
+**Propose demotions as readily as promotions.** `high` misfires as often as it is
+missed: `اِمْتَدَّ مِن … إِلَى …` carries it, and it is a construction Dave will use
+approximately never. A `high` row that is class `B` or `W` is wrong by
 construction.
 
 ## 4. Gloss
@@ -114,7 +120,7 @@ Some rows were mined from corrected-ChatGPT MSA and **read as stilted**. Flag
 prose that reads as textbook or translationese rather than speech: a native
 speaker would recognise it as grammatical but wouldn't say it.
 
-Flag it. **Do not fix it.** See §7.
+Flag it. **Do not fix it.** See the guardrails.
 
 ## 6. Register fidelity
 
@@ -126,7 +132,7 @@ is the learning target there, not an error.
 MSA rows should not drift into dialect, and should not drift up into stiff
 news-bulletin register either. The target is spoken Fuṣḥā.
 
-## 7. What you must never do
+## 7. Guardrails
 
 - **Never rewrite the Arabic.** Corrections to Arabic are the teacher's, not a model's.
   If the Arabic looks wrong, flag it with your reason and stop there.
@@ -180,8 +186,7 @@ of nowhere: the parent is where you *found* it, not a property of it.
 
 **One surface form per frame — never a slash-alternate.** `كَانَ/كَانَتْ … سَبَبًا فِي …`
 is not a chunk, it is two chunks and a piece of notation. `Chunk.from_row`
-rejects it, so a frame written that way cannot be ingested at all; on one run 11
-of 19 frames were unusable for exactly this reason.
+rejects it, so a frame written that way cannot be harvested at all.
 
 When agreement varies, **write the frame in the form the parent sentence
 actually used.** The teacher said `كَانَتِ الإِمْبَرَاطُورِيَّةُ مَوْجُودَةً`, so the frame is
@@ -189,13 +194,11 @@ actually used.** The teacher said `كَانَتِ الإِمْبَرَاطُور
 attested Arabic, not composing a paradigm. If both genders are genuinely worth
 drilling, emit two rows — and say in the report that you did.
 
-**Do not put frames in `chunk_review.csv`.** They were there once and it made
-that file unreadable in two ways: `id` meant the row being changed on some
-lines and the row being quoted on others, and the frame's Arabic and gloss were
-jammed into one `proposed` cell. Worse, nothing deduped them — one proposed
-frame was already in the bank verbatim, and there was no step that would have
-caught it. In candidate shape they go through `kallim ingest`, which dedups
-against every bank row, assigns ids and validates the topic.
+**Do not put frames in `chunk_review.csv`.** There `id` would mean the row
+being changed on some lines and the row being quoted on others, the frame's
+Arabic and gloss would share one `proposed` cell, and nothing would dedup them
+against the bank. In candidate shape they go through `kallim harvest`, which
+dedups against every bank row, assigns ids and validates the topic.
 
 Then return a report:
 
