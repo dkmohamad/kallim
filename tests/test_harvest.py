@@ -6,13 +6,15 @@ things standing between a candidates file and the bank, so they are what these
 tests pin down.
 """
 
+from argparse import Namespace
 from pathlib import Path
 
 import pytest
 
-from scripts.harvest import harvest, load_candidates
+from scripts.harvest import BANKS, harvest, load_candidates
+from scripts.harvest import run as harvest_run
 from scripts.model import Chunk, Priority, Register, VocabEntry
-from scripts.utils import write_csv_rows
+from scripts.utils import read_csv_rows, write_csv_rows
 
 # The candidate shape without a priority column, taken from the source of truth
 # so a schema change flows into these tests instead of passing stale.
@@ -258,3 +260,92 @@ def test_dedup_consults_every_bank_not_just_the_destination(tmp_path: Path) -> N
     result = harvest(candidates, _banks(msa, egy))
 
     assert (len(result.added), result.duplicates) == (0, 1)
+
+
+# --- the default routing map -------------------------------------------------
+# Every test above supplies its own bank map, so none of them exercises the real
+# one. That gap is exactly where the routing bug lived: `harvest` sent every
+# register to chunks.csv and the suite was green, because no test ever used the
+# map the command actually runs with. These three cover it.
+
+
+def test_the_default_bank_map_covers_every_register() -> None:
+    """Every register has a bank, so no candidate can be unroutable.
+
+    A missing entry is a KeyError partway through a batch, after earlier rows
+    have already been appended — a half-written harvest rather than a refusal.
+    """
+    assert set(BANKS) == set(Register)
+
+
+def test_the_default_bank_map_keeps_egyptian_apart(tmp_path: Path) -> None:
+    """Egyptian is filed separately from everything else.
+
+    This is the invariant the banks are built on, and the one the original
+    routing bug broke: with every register pointing at chunks.csv the suite
+    stayed green because no test used the default map.
+    """
+    assert BANKS[Register.EGYPTIAN] != BANKS[Register.MSA]
+    assert BANKS[Register.EGYPTIAN].name == "egyptian.csv"
+    assert {BANKS[r].name for r in Register if r is not Register.EGYPTIAN} == {
+        "chunks.csv"
+    }
+
+
+def test_every_real_bank_holds_only_its_own_register() -> None:
+    """The committed banks match the partition the routing map asserts.
+
+    Reads the real banks, so it catches a misfiled row however it arrived — a
+    hand edit, a paste, or a harvest that routed wrongly. Read-only: it is the
+    standing version of the smoke test that found the routing bug, without the
+    smoke test's ability to write to tracked files.
+    """
+    for bank in set(BANKS.values()):
+        for line, chunk in enumerate(read_csv_rows(bank, Chunk.from_row), start=2):
+            assert BANKS[chunk.arabic.register] == bank, (
+                f"{bank.name}:{line} ({chunk.id}) is {chunk.arabic.register}, "
+                f"which belongs in {BANKS[chunk.arabic.register].name}"
+            )
+
+
+def test_run_harvests_end_to_end_against_substituted_banks(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The CLI path — harvest, route, lint, render — over real bank content.
+
+    The unit tests call `harvest` directly, so nothing covered `run`: the lint
+    of each written bank, and the report it composes from them. Substitutes the
+    banks for copies under tmp_path, so a routing mistake here cannot reach the
+    tracked files, which is how the manual smoke test once appended nine rows
+    to them.
+    """
+    banks = {}
+    for register, real in BANKS.items():
+        copy = tmp_path / real.name
+        if not copy.exists():
+            copy.write_bytes(real.read_bytes())
+        banks[register] = copy
+    monkeypatch.setattr("scripts.harvest.BANKS", banks)
+    monkeypatch.setattr("scripts.harvest.CHUNKS_CSV", banks[Register.MSA])
+
+    candidates = _candidates(
+        tmp_path,
+        VocabEntry.FIELDS,
+        [
+            ["هَذَا اِخْتِبَارٌ فَقَط", "This is only a test", "msa", "history", "high"],
+            [
+                "عايز حاجة تانية",
+                "something else entirely",
+                "egyptian",
+                "shopping",
+                "normal",
+            ],
+        ],
+    )
+    report = harvest_run(Namespace(candidates=str(candidates)))
+
+    assert "chunks.csv (1)" in report and "egyptian.csv (1)" in report
+    assert "no problems" in report
+    assert "git diff" in report
+    assert "عايز حاجة تانية" in banks[Register.EGYPTIAN].read_text(encoding="utf-8")
+    assert "عايز حاجة تانية" not in banks[Register.MSA].read_text(encoding="utf-8")

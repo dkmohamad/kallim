@@ -122,7 +122,9 @@ def load_candidates(path: Path) -> list[VocabEntry]:
         ) from None
 
 
-def harvest(candidates_path: Path, banks: Mapping[Register, Path] = BANKS) -> Harvest:
+def harvest(
+    candidates_path: Path, banks: Mapping[Register, Path] | None = None
+) -> Harvest:
     """Dedup, id and validate candidates, then append each to its own bank.
 
     Dedups against **every** bank and within the batch, so a vocalized row and
@@ -137,7 +139,9 @@ def harvest(candidates_path: Path, banks: Mapping[Register, Path] = BANKS) -> Ha
 
     Args:
         candidates_path: The skill-written candidates CSV.
-        banks: Where each register is filed. Defaults to the real banks.
+        banks: Where each register is filed. Defaults to ``BANKS``, resolved on
+            call rather than bound to the signature so a test can substitute it
+            and so exercise the real routing map instead of its own.
 
     Returns:
         The ``Harvest`` describing what landed, grouped by bank.
@@ -150,6 +154,7 @@ def harvest(candidates_path: Path, banks: Mapping[Register, Path] = BANKS) -> Ha
         ValueError: If a candidate is malformed or off-taxonomy, or if a row
             already in a bank is.
     """
+    banks = BANKS if banks is None else banks
     seen: set[str] = set()
     for bank in set(banks.values()):
         try:
