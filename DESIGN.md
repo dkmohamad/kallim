@@ -135,6 +135,35 @@ means adding one env variable.
 
 `mp3_44100_128` (44.1 kHz, 128 kbps). Sufficient for speech.
 
+### Speech rate — not set here
+
+`ElevenLabsSynthesiser._tts` sends exactly four things: the text, the voice id,
+the model and the output format. **No `voice_settings`, so no speed, stability
+or style parameter is passed at all.** Delivery is therefore whatever each voice
+has stored as its own default on the ElevenLabs side, and the place to change it
+is their dashboard, not this repo.
+
+Nor is anything slowed down afterwards. The only pydub operations in the
+codebase are `_normalize` (gain to −20 dBFS) and concatenation with
+`AudioSegment.silent()`. **No time-stretching anywhere.**
+
+Two things make a script *feel* slower than the speech actually is: the 700 ms
+gap between turns and the 1,600 ms gap at a section break (`scripts/script.py`),
+and fully vocalised Arabic, which gives the model every short vowel to
+articulate and tends to draw out delivery relative to bare script.
+
+The SDK does expose `VoiceSettings.speed`, so this is a one-line change if it is
+ever wanted — **but read the cache warning below first.**
+
+> **The cache cannot see synthesis parameters.** `Utterance.key` is
+> `content_hash(register + text)`, and a script `Line`'s key is
+> `content_hash(speaker + text)`. Neither covers the model, the output format or
+> any voice setting. So changing the speed, swapping a voice id in `.env`, or
+> moving to another model leaves every cached clip in place and silently wrong:
+> the text did not change, so nothing regenerates. Fixing that means `--force`
+> and paying for the whole bank again. If a synthesis parameter is ever added,
+> it belongs in the cache key in the same change.
+
 ---
 
 ## Audio

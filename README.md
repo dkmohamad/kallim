@@ -94,8 +94,13 @@ Per-chunk audio is **content-addressed**: each side is cached in `audio/` as
 by construction — editing a chunk's English or Arabic (or changing its register)
 changes the hash, so the next run regenerates only the affected side and leaves
 the old file behind; identical text across chunks shares one file. Use
-`kallim generate --force` to regenerate regardless (the hash can't see voice-id
-changes in `.env`).
+`kallim generate --force` to regenerate regardless — the hash covers the text
+and the voice key only, so it cannot see a voice-id change in `.env`, a model
+change, or any voice setting.
+
+**Speech rate is not configured here.** Nothing in this repo sets it and nothing
+slows the audio down afterwards; it is each voice's own default on the
+ElevenLabs side. See *Speech rate* in `DESIGN.md`.
 
 Both removing a row and editing one leave orphaned files (the old hash is no
 longer produced by any chunk). Run `kallim prune` to list them and
