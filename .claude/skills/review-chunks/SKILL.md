@@ -2,8 +2,9 @@
 name: review-chunks
 description: >-
   Audit a slice of the chunk bank for the judgement `kallim lint` can't reach —
-  drifted topic, unearned priority, a gloss that doesn't match the Arabic, and
-  reusable frames trapped inside topic-bound sentences. Proposes with reasons;
+  drifted topic, unearned priority, a gloss that doesn't match the Arabic,
+  reusable frames trapped inside topic-bound sentences, and cards too long to
+  drill, decomposed into frames and words. Proposes with reasons;
   never edits a bank.
 user-invocable: true
 argument-hint: "--new | --topic history | <path.csv>"
@@ -61,7 +62,7 @@ worse in a way that is hard to see.
 ### 2. Dispatch the review agent
 
 One `Task` call, `subagent_type: chunk-review`. Hand it the slice path and the
-`kallim tags` output. The rubric — leverage class, topic, priority, gloss, authenticity and register
+`kallim tags` output. The rubric — leverage class, drill load, topic, priority, gloss, authenticity and register
 fidelity — lives in the agent definition
 (`.claude/agents/chunk-review.md`), which is the single source of truth for the
 durable chunk rules. Do not restate it here; a second copy will drift.
