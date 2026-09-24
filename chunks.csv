@@ -1,260 +1,102 @@
 id,arabic,english,register,topic,priority
-9d57ff13,أَتَّبِعُ نِظامًا غِذائِيًّا صِحِّيًّا مُنْذُ شَهْرٍ.,I have been following a healthy diet for a month.,msa,health,normal
-2c7af453,أَتَجَنَّبُ نَوْعًا مُعَيَّنًا مِنَ الطَّعامِ الدَّسِمِ.,I avoid a specific kind of fatty food.,msa,food,normal
-238a5a6e,فِي الماضِي كُنْتُ أَلْعَبُ كُرَةَ القَدَمِ كَثيرًا.,In the past I used to play football a lot.,msa,leisure,normal
-0dfae1a6,كَثَّرْتُ مِنْ أَكْلِ الخُضارِ بَعْدَ مَرَضي.,I increased my vegetable intake after my illness.,msa,health,normal
-adba8560,قَلَّلْتُ مِنَ السُّكَّرِ لِأُحافِظَ عَلى صِحَّتي.,I reduced sugar to keep my health.,msa,health,normal
 637550e0,أُحاوِلُ أَنْ آكُلَ طَعامًا مُتَوازِنًا كُلَّ يَوْمٍ.,I try to eat balanced food every day.,msa,health,normal
-2124b08e,أَتَحَكَّمُ بِكَمِّيَّةِ الطَّعامِ الَّتي آكُلُها.,I control the amount of food I eat.,msa,health,normal
-e52b052a,أُحافِظُ عَلى وَزْني بِالرِّياضَةِ وَالطَّعامِ الصِّحِّيِّ.,I maintain my weight with exercise and healthy food.,msa,health,normal
-6f6a7951,أَنا مُتَعَوِّدٌ عَلى الاسْتيقاظِ مُبَكِّرًا.,I'm used to waking up early.,msa,daily_life,normal
 c0a71bb7,أَنا أَمْزَحُ مَعَكَ فَقَطْ.,I'm only joking with you.,msa,emotions,normal
-33d44025,لا أَشْرَبُ الكُحُولَ لِأَسْبابٍ صِحِّيَّةٍ وَدينِيَّةٍ.,I don't drink alcohol for health and religious reasons.,msa,culture,normal
 86a7f5ba,حاوَلْتُ أَنْ أَتَّبِعَ نِظامًا غِذائِيًّا,I tried to follow a diet,msa,health,normal
-fd68ff71,أُقَلِّلُ مِنَ المِلْحِ في طَعامي هَذِهِ الأَيّامَ.,I'm cutting down on salt in my food these days.,msa,health,normal
 7e68d5a9,عادَةً آكُلُ غَداءً خَفيفًا.,I usually eat a light lunch.,msa,daily_life,normal
-1f84b6db,أَقَمْتُ في الفُنْدُقِ ثَلاثَةَ أَيّامٍ فَقَطْ.,I stayed at the hotel for only three days.,msa,travel,normal
-97e35ed5,الحافِلاتُ هُنا أَرْخَصُ مِنْ سَيّاراتِ الأُجْرَةِ.,The buses here are cheaper than taxis.,msa,travel,normal
 ba0e0671,القِطاراتُ السَّريعَةُ تَرْبِطُ المُدُنَ الكَبيرَةَ.,Fast trains connect the big cities.,msa,travel,normal
 1abde1a0,جَميعُ وَسائِلِ المُواصَلاتِ,All means of transportation,msa,travel,normal
-34acaf9a,احْتَجْتُ إِلى تَأْشيرَةٍ لِدُخولِ البِلادِ.,I needed a visa to enter the country.,msa,travel,normal
 1d694e10,حَرَكَةُ التَّنَقُّلِ مُقَيَّدَةٌ في تِلْكَ المِنْطَقَةِ.,Movement is restricted in that area.,msa,travel,normal
-2eee4b5c,سَأُريكَ أَجْمَلَ الأَماكِنِ في المَدينَةِ غَدًا.,I will show you the most beautiful places in the city tomorrow.,msa,travel,normal
-f907ff65,ذَهَبْنا إِلى الشّاطِئِ في عُطْلَةِ نِهايَةِ الأُسْبوعِ.,We went to the beach over the weekend.,msa,leisure,normal
-d34c5f31,الدَّليلُ جَعَلَنا نَرى تاريخَ المَدينَةِ الحَقيقِيَّ.,The guide made us see the city's real history.,msa,travel,normal
-88ab694d,أَعْطَيْناهُ بَقْشيشًا لِأَنَّهُ ساعَدَنا كَثيرًا.,We gave him a tip because he helped us a lot.,msa,travel,normal
-1eb26e5e,أُفَضِّلُ الاسْتِعانَةَ بِمُرْشِدٍ سِياحِيٍّ مَحَلِّيٍّ.,I prefer to use a local tour guide.,msa,travel,normal
+2eee4b5c,سَأُريكَ أَجْمَلَ الأَماكِنِ في المَدينَةِ غَدًا.,I will show you the most beautiful places in the city tomorrow.,msa,sightseeing,normal
+d34c5f31,الدَّليلُ جَعَلَنا نَرى تاريخَ المَدينَةِ الحَقيقِيَّ.,The guide made us see the city's real history.,msa,sightseeing,normal
+1eb26e5e,أُفَضِّلُ الاسْتِعانَةَ بِمُرْشِدٍ سِياحِيٍّ مَحَلِّيٍّ.,I prefer to use a local tour guide.,msa,sightseeing,normal
 1ba28958,اخْتَرْنا وَسيلَةَ نَقْلٍ اقْتِصادِيَّةً وَمُريحَةً.,We chose an economical and comfortable means of transport.,msa,travel,normal
-d1c408b7,تَرَكَتِ المَدينَةُ انْطِباعًا جَميلًا في نَفْسي.,The city left a beautiful impression on me.,msa,travel,normal
-c8dda121,مِعْمارُ المَساجِدِ القَديمَةِ يُبْهِرُ كُلَّ زائِرٍ.,The architecture of old mosques amazes every visitor.,msa,culture,normal
 fcddbc41,قَريبونَ مِنَ القَلْبِ,Close to the heart,msa,emotions,normal
-d3375e29,أَحْتاجُ كوبَ قَهْوَةٍ في الصَّباحِ لِأَسْتَيْقِظَ.,I need a cup of coffee in the morning to wake up.,msa,daily_life,normal
-a9b681c0,هَذِهِ الحَديقَةُ تُشْبِهُ الجَنَّةَ في الرَّبيعِ.,This garden looks like paradise in spring.,msa,culture,normal
 d9c0798b,أَنا صاحِبُ شَرِكَةٍ صَغيرَةٍ لِلْبَرْمَجَةِ.,I am the owner of a small software company.,msa,work,normal
 97b82ad5,مَنْ جَدَّ وَجَدَ,"Whoever strives, succeeds",msa,culture,normal
 aeceb678,مَنْ سارَ عَلى الدَّرْبِ وَصَلَ,Whoever follows the path will arrive,msa,culture,normal
-9fb0a445,شَعَرْتُ أَنَّني ضائِعٌ في شَوارِعِ المَدينَةِ.,I felt lost in the city's streets.,msa,travel,normal
-25b56e15,أُفَضِّلُ السَّمَكَ الطّازَجَ عَلى المُجَمَّدِ.,I prefer fresh fish over frozen.,msa,food,normal
 be3c9ef5,نادِرًا ما أُشاهِدُ التِّلْفازَ هَذِهِ الأَيّامَ.,I rarely watch TV these days.,msa,daily_life,normal
-1d4afac4,جَرَّبْتُ المُحارَ بِضْعَ مَرّاتٍ.,I've tried oysters a few times.,msa,food,normal
-972ce0a7,تَحْتَوي عَلى البُروتينِ,Contains protein,msa,food,normal
-6a62b37c,غَنِيَّةٌ بِالدُّهونِ الصِّحِّيَّةِ,Rich in healthy fats,msa,food,normal
-bfddc738,أَخي أَصْغَرُ مِنّي بِثَلاثِ سَنَواتٍ.,My brother is three years younger than me.,msa,family,normal
-7b37353a,والِدي دَرَسَ الطِّبَّ في لَنْدَنَ.,My father studied medicine in London.,msa,family,normal
 4a43fe0b,أَعَدَّتْ أُمّي وَجْبَةً خاصَّةً لِلضُّيوفِ.,My mother prepared a special meal for the guests.,msa,family,normal
-edcce825,أُحِبُّ الكوسا المَحْشِيَّ بِالأَرُزِّ وَاللَّحْمِ.,I love zucchini stuffed with rice and meat.,msa,food,normal
-5fa962f4,طَلَبْنا دَجاجًا مَشْوِيًّا مَعَ الأَرُزِّ.,We ordered grilled chicken with rice.,msa,food,normal
-402856ba,عَصَرْتُ أَرْبَعَ حَبّاتٍ,I squeezed four fruits,msa,food,normal
-8053a9a6,أُحِبُّ القِراءَةَ، خاصَّةً في الشِّتاءِ.,"I love reading, especially in winter.",msa,leisure,normal
-c607733a,اِلْتَقَيْنا في مَطْعَمٍ قَريبٍ لِتَناوُلِ الغَداءِ.,We met at a nearby restaurant for lunch.,msa,food,normal
-37c8ad01,اخْتَرْتُ فيلْمًا كوميدِيًّا لِنُشاهِدَهُ مَعًا.,I chose a comedy film for us to watch together.,msa,leisure,normal
-b5620e06,الجَميعُ حَضَرَ الاجْتِماعَ في الوَقْتِ المُحَدَّدِ.,Everyone attended the meeting on time.,msa,people,normal
-85e812fa,سَأَحْكي لَكَ عَنِ الرِّحْلَةِ بِالتَّفْصيلِ.,I'll tell you about the trip in detail.,msa,travel,normal
-c02fe585,يُحَرَّمُ عَلى المُسْلِمينَ أَكْلُ لَحْمِ الخِنْزيرِ.,Muslims are forbidden to eat pork.,msa,culture,normal
-4bff5304,يَبْدَأُ المَطَرُ عادَةً في كانونَ الأَوَّلِ.,Rain usually starts in December.,msa,leisure,normal
-38e55b1c,الجَوُّ بارِدٌ جِدًّا في كانونَ الثّاني.,The weather is very cold in January.,msa,leisure,normal
 8b8de007,كُنّا أصحاباً مُنْذُ أَيّامِ المَدْرَسَةِ.,We've been friends since school days,msa,people,normal
 b0e5f631,والِدايَ,My parents,msa,family,normal
-cd45e329,الجِبالُ مُحيطَةٌ بِالقَرْيَةِ مِنْ كُلِّ جِهَةٍ.,The mountains surround the village from every side.,msa,leisure,normal
-3af73a41,المَطْعَمُ في الجِهَةِ المُقابِلَةِ لِلْفُنْدُقِ.,The restaurant is on the side opposite the hotel.,msa,travel,normal
-09aba255,نَسْكُنُ جَنوبَ كامبريدج قُرْبَ الطَّريقِ السَّريعِ.,We live to the south of Cambridge near the motorway.,msa,daily_life,normal
 df06676f,شَواطِئُ هَذِهِ الجَزيرَةِ نَظيفَةٌ وَهادِئَةٌ.,This island's beaches are clean and quiet.,msa,leisure,normal
 5ebb274c,الطَّقْسُ دافِئٌ وَمُناسِبٌ لِلتَّنَزُّهِ اليَوْمَ.,The weather is warm and good for a walk today.,msa,leisure,normal
 6b40d619,كانَتِ الرِّحْلَةُ مُمْتِعَةً حَقًّا.,The trip was really enjoyable.,msa,travel,normal
-ade6bd57,المَشْيُ اليَوْمِيُّ مُفيدٌ جِدًّا لِلصِّحَّةِ.,Daily walking is very good for health.,msa,health,normal
 cd569374,عَنْ طَريقِ البَرِّ,By land,msa,travel,normal
-87733188,الخَريفُ أَجْمَلُ الفُصولِ في رَأْيي.,Autumn is the most beautiful of the seasons in my opinion.,msa,leisure,normal
-8ca3e5d4,آسِفٌ عَلى التَّأَخُّرِ، كانَ الزِّحامُ فَظيعًا.,"Sorry I'm late, the traffic was terrible.",msa,travel,normal
-dce73858,تَأْتي الحافِلَةُ كُلَّ نِصْفِ ساعَةٍ تَقْريبًا.,The bus comes roughly every half hour.,msa,travel,normal
-5154a010,الرِّياحُ القادِمَةُ مِنَ البَحْرِ تَجْلِبُ المَطَرَ في بَريطانِيا.,Wind from the sea brings rain in the UK.,msa,leisure,normal
-fdcacd5c,في هَذِهِ المَدينَةِ تَنَوُّعٌ ثَقافِيٌّ كَبيرٌ.,In this city there is great cultural diversity.,msa,culture,normal
-8c4dbaed,مِنَ الضَّروريِّ أَنْ نُنْهِيَ المَشْروعَ هَذا الأُسْبوعَ.,It is necessary to finish the project this week.,msa,work,normal
-3d082d83,وَصَلَني بَريدٌ عاجِلٌ مِنَ المُديرِ صَباحًا.,I received an urgent email from the manager this morning.,msa,work,normal
 18942e49,قُمْ بِالشَّيْءِ المُهِمِّ قَبْلَ الشَّيْءِ العاجِلِ,Do the important thing before the urgent one,msa,work,normal
-da535a82,شَعَرْتُ بِالمَلَلِ في الاجْتِماعِ الطَّويلِ.,I felt bored in the long meeting.,msa,work,normal
-c902a580,يَرْوي جَدّي لَنا قِصَصَ جُحا المُضْحِكَةَ.,My grandfather tells us Juha's funny stories.,msa,family,normal
-91e95b21,تَعَرَّفْنا عَلى سُيّاحٍ مَغْرِبِيِّينَ في الرِّحْلَةِ.,We met Moroccan tourists on the trip.,msa,travel,normal
-b477b5c7,سَأَلونا عَنْ جِنْسِيَّتِنا عِنْدَ الحُدودِ.,They asked us about our nationality at the border.,msa,travel,normal
 5385af55,دائِمًا يَسْأَلونَنا مِنْ أَيْنَ نَحْنُ.,They always ask us where we are from.,msa,travel,normal
-77e6a88e,أَزْعَجَني الضَّجيجُ طَوالَ اللَّيْلِ.,The noise annoyed me all night.,msa,emotions,normal
 3f1a6fad,الجيرانُ كانوا مُزْعِجينَ في عُطْلَةِ الأُسْبوعِ.,The neighbors were annoying over the weekend.,msa,daily_life,normal
-8311b210,البائِعونَ في السّوقِ يُنادونَ عَلى بَضائِعِهِمْ.,The sellers in the market call out about their goods.,msa,travel,normal
+8311b210,البائِعونَ في السّوقِ يُنادونَ عَلى بَضائِعِهِمْ.,The sellers in the market call out about their goods.,msa,shopping,normal
 39c1ccf0,نادى عَلَيَّ صَديقي مِنْ بَعيدٍ.,My friend called to me from afar.,msa,people,normal
 f6e1295f,أَصْرَرْتُ عَلى دَفْعِ الحِسابِ كامِلاً.,I insisted on paying the whole bill.,msa,people,normal
-9efe2604,اشْتَرَيْتُ تِذْكارًا صَغيرًا لِأُمّي مِنَ السّوقِ.,I bought a small souvenir for my mother from the market.,msa,travel,normal
-69e5c17e,حَصَلْتُ عَلى خَصْمٍ جَيِّدٍ عَلى تَذْكِرَةِ الطّائِرَةِ.,I got a good discount on the plane ticket.,msa,travel,normal
-da0ca99d,في بَريطانِيا عادَةً نَقْضي إِجازَتَنا في الصَّيْفِ.,"In the UK, we usually holiday in summer.",msa,leisure,normal
-d5879b7c,وَصَلْنا إِلى القَرْيَةِ عَبْرَ طَريقٍ جَبَلِيٍّ.,We reached the village through a mountain road.,msa,travel,normal
 f5160acc,سَمِعْتُ صَوْتًا غَريبًا في مُنْتَصَفِ اللَّيْلِ.,I heard a strange sound in the middle of the night.,msa,daily_life,normal
-23de3d47,كانَتْ تَجْرِبَةً مُمَيَّزَةً لَنْ أَنْساها.,It was a special experience I won't forget.,msa,travel,normal
-31c5099c,كانَتِ الأَجْواءُ رائِعَةً في الحَفْلَةِ أَمْسِ.,The atmosphere was wonderful at the party yesterday.,msa,leisure,normal
-2c8a5003,أَشْرَبُ فِنْجانَ قَهْوَةٍ أَوَّلَ شَيْءٍ في الصَّباحِ.,I drink a cup of coffee first thing in the morning.,msa,daily_life,normal
 1f1a1c97,اسْتَقْبَلْنا الضُّيوفَ مَساءَ أَمْسِ.,Yesterday we welcomed guests in the evening.,msa,leisure,normal
-30d9bcd4,اهْرُبْ بِسُرْعَةٍ قَبْلَ أَنْ يَبْدَأَ المَطَرُ!,Run quickly before the rain starts!,msa,leisure,normal
-a7a0eb27,بِطَريقَةٍ ما نَجَحْنا في حَلِّ المُشْكِلَةِ.,Somehow we managed to solve the problem.,msa,work,normal
-86708e03,التَّعَلُّمُ أَسْهَلُ عِنْدَما تَكونُ مُسْتَمْتِعًا.,Learning is easier when you are enjoying it.,msa,emotions,normal
+30d9bcd4,اهْرُبْ بِسُرْعَةٍ قَبْلَ أَنْ يَبْدَأَ المَطَرُ!,Get away quickly before the rain starts!,msa,leisure,normal
 e34995d6,كانَ الكِتابُ مُمْتِعًا مِنْ أَوَّلِ صَفْحَةٍ.,The book was enjoyable from the first page.,msa,leisure,normal
-d3825b5e,نَقْضي العُطْلَةَ في الرّيفِ بَعيدًا عَنِ المَدينَةِ.,We spend the holiday in the countryside away from the city.,msa,leisure,normal
-0db4ff59,شَعَرْتُ بِحُزْنٍ عَميقٍ عِنْدَ سَماعِ الخَبَرِ.,I felt deep sadness when I heard the news.,msa,emotions,normal
 a0cae53a,أُحِبُّ هُدوءَ الصَّباحِ قَبْلَ اسْتيقاظِ الجَميعِ.,I love the calm of the morning before everyone wakes.,msa,daily_life,normal
 7761f3ba,وَصَلْنا إِلى البَيْتِ في مُنْتَصَفِ اللَّيْلِ.,We got home at midnight.,msa,daily_life,normal
 5d4f4d92,أَتَكَلَّمُ عَنِ تَعَلُّمِ العَرَبِيَّةِ بِشَغَفٍ كَبيرٍ.,I talk about learning Arabic with great passion.,msa,language,normal
-d49bfc98,حُلْمي أَنْ أَزورَ بَغْدادَ يَوْمًا ما.,My dream is to visit Baghdad one day.,msa,travel,normal
-fe26767f,حَقَّقْتُ حُلْمي بَعْدَ سَنَواتٍ مِنَ العَمَلِ.,I achieved my dream after years of work.,msa,work,normal
-744e4719,قَدَّمْتُ عَرْضًا قَصيرًا أَمامَ الفَريقِ.,I gave a short presentation in front of the team.,msa,work,normal
 23925c79,الكِبارُ يَجْلِسونَ هُنا وَالأَطْفالُ يَلْعَبونَ هُناكَ.,The adults sit here and the children play there.,msa,people,normal
-4e4bded9,خَطَرَ بِخاطِري أَنْ أَتَّصِلَ بِكَ.,It crossed my mind to call you.,msa,emotions,normal
-f74b3d1e,أُحِبُّ تَسَلُّقَ الصُّخورِ في وَقْتِ فَراغي.,I like to rock climb in my spare time.,msa,leisure,normal
 12b507b0,وَجَدَ مِفْتاحَهُ تَحْتَ الكُرْسِيِّ أَخيرًا.,He finally found his key under the chair.,msa,daily_life,normal
-6496c4f4,أَصْبَحْتُ مُهَنْدِسًا بَعْدَ تَخَرُّجي بِسَنَةٍ.,I became an engineer a year after graduating.,msa,work,normal
-325e5c1c,تَقَبُّلُ النَّقْدِ صَعْبٌ لَكِنَّهُ مُفيدٌ.,Accepting criticism is hard but useful.,msa,emotions,normal
 823c5bf0,تَتْرُكُ شَيْئًا مِنْكَ,To leave something of yourself,msa,people,normal
-eaf0684d,وَجَّهَ إِلَيَّ انْتِقادًا بَنّاءً حَوْلَ عَمَلي.,He gave me constructive criticism about my work.,msa,work,normal
-7aaf550d,تَنْتَشِرُ المَقاهي القَديمَةُ في وَسَطِ المَدينَةِ.,Old cafés are spread throughout the city center.,msa,travel,normal
-97505f3d,اسْتَقْبَلْنا ضَيْفًا عَزيزًا مِنَ العِراقِ.,We welcomed a dear guest from Iraq.,msa,family,normal
 bd7312b8,يُعامِلُ الجَميعَ بِاحْتِرامٍ وَلُطْفٍ.,He treats everyone with respect and kindness.,msa,people,normal
 00c2bb33,احْتَرَمَ رَأْيي رَغْمَ اخْتِلافِنا.,He respected my opinion despite our disagreement.,msa,people,normal
 72d3240d,يَأْكُلُ المُسْلِمونَ طَعامًا تَقْليدِيًّا في يَوْمِ العيدِ.,Muslims eat traditional food on the day of Eid.,msa,culture,normal
-34153abb,خَطَرَتْ لي فِكْرَةٌ رائِعَةٌ لِلْمَشْروعِ.,A great idea for the project occurred to me.,msa,work,normal
 ba2ee68d,الحُبُّ الحَقيقِيُّ يَحْتاجُ إِلى صَبْرٍ.,True love needs patience.,msa,emotions,normal
 5b5fbe01,الدّافِعُ القَوِيُّ يُساعِدُ عَلى النَّجاحِ.,Strong motivation helps with success.,msa,work,normal
 3b862ed7,غَطّى الغُبارُ السَّيّاراتِ بَعْدَ العاصِفَةِ.,Dust covered the cars after the storm.,msa,leisure,normal
-035f783e,مِنْ أَيِّ ناحِيَةٍ,From which aspect,msa,people,normal
+035f783e,مِنْ أَيِّ ناحِيَةٍ,In what respect?,msa,people,high
 9e17a836,تَأَقْلَمَتْ بِسُرْعَةٍ مَعَ الحَياةِ الجَديدَةِ.,She adapted quickly to the new life.,msa,people,normal
-6810c37c,واجَهْتُ صُعوبَةً في فَهْمِ اللَّهْجَةِ المَحَلِّيَّةِ.,I faced difficulty understanding the local dialect.,msa,language,normal
 6f82e290,تَحْتاجُ إِلى رُؤْيَةِ طَبيبِ الأَسْنانِ,You need to see a dentist,msa,health,normal
 95957cc4,بِسَبَبِ زِيارَتِها تَعَلَّمْتُ لُغَةً جَديدَةً,"Because of her visit, I learned a new language",msa,language,normal
-d687519d,عِنْدَما وَصَلْتُ لَمْ أَكُنْ أَفْهَمُ اللَّهْجَةَ المَحَلِّيَّةَ.,When I arrived I didn't understand the local dialect.,msa,language,normal
-c35c244a,لَمْ تَكُنِ القاهِرَةُ كَما تَخَيَّلْتُها.,Cairo was not as I had imagined it.,msa,travel,normal
 3be005d6,تَعَلَّمْتُ الحُروفَ العَرَبِيَّةَ قَبْلَ الكَلِماتِ.,I learned the Arabic letters before words.,msa,language,normal
-fdafb127,الجَميعُ ساعَدوا، حَتّى الأَطْفالُ الصِّغارُ.,"Everyone helped, even the little children.",msa,culture,normal
-1a41beab,وافَقْتُ عَلى العَمَلِ بِشَرْطٍ واحِدٍ.,I agreed to the work on one condition.,msa,work,normal
 4940d4d3,كُنْتُ أَحْتاجُ إِلى مُساعَدَتِها,I needed her help,msa,people,normal
-7c8fd34d,فَهِمْتُ كَلامَهُ بِصُعوبَةٍ بِسَبَبِ سُرْعَتِهِ.,I understood his speech with difficulty because of his speed.,msa,language,normal
-8b93340b,والِدي جاءَ مِنَ العِراقِ بَحْثًا عَنْ حَياةٍ أَفْضَلَ.,My father came from Iraq in search of a better life.,msa,family,normal
-3cb7ded6,كَرَمُ أَهْلِ العِراقِ مَعْروفٌ لِلْجَميعِ.,The generosity of Iraqis is known to everyone.,msa,culture,normal
 a0a0be54,التَّطَوُّعُ يَمْنَحُ الإِنْسانَ شُعورًا بِالمَعْنى.,Volunteering gives a person a sense of meaning.,msa,people,normal
 fb7375d8,تُزْهِرُ الأَشْجارُ في فَصْلِ الرَّبيعِ.,The trees blossom in the spring season.,msa,leisure,normal
 1b6fedb4,تُحَلِّقُ الطُّيورُ عالِيًا فَوْقَ البَحْرِ.,The birds fly high above the sea.,msa,leisure,normal
 ec7e528b,وَقَفَتْ فَراشَةٌ مُلَوَّنَةٌ عَلى الزَّهْرَةِ.,A colorful butterfly landed on the flower.,msa,leisure,normal
-76913a78,كَمْ مِنَ الوَقْتِ تَعْمَلُ في هَذِهِ الشَّرِكَةِ؟,How long have you been working at this company?,msa,work,normal
-bbb9b815,فَريقُنا يَجْتَمِعُ كُلَّ صَباحٍ لِخَمْسِ دَقائِقَ.,Our team meets every morning for five minutes.,msa,work,normal
 cf859e60,طَرَحْنا أَفْكارًا كَثيرَةً في الاجْتِماعِ.,We put forward many ideas in the meeting.,msa,work,normal
-4f488b13,أَعْتَقِدُ أَنَّكَ عَلى حَقٍّ في هَذِهِ المَسْأَلَةِ.,I think you are right on this matter.,msa,work,normal
-46240ff8,عِنْدي سُؤالٌ واحِدٌ قَبْلَ أَنْ نَبْدَأَ.,I have one question before we begin.,msa,work,normal
-83afa602,أَقَمْنا في مُخَيَّمٍ صَحْراوِيٍّ لَيْلَةً واحِدَةً.,We stayed in a desert camp for one night.,msa,travel,normal
 e2435bb8,نِمْنا في خَيْمَةٍ عادِيَّةٍ تَحْتَ النُّجومِ.,We slept in a regular tent under the stars.,msa,travel,normal
 c7bb471c,أُحِبُّ رائِحَةَ التُّرابِ بَعْدَ المَطَرِ.,I love the smell of soil after rain.,msa,leisure,normal
-b6d6d3e1,جَلَساتُ العائِلَةِ المَسائِيَّةُ هِيَ أَجْمَلُ الأَوْقاتِ.,The family's evening gatherings are the best of times.,msa,family,normal
 627c755e,شاهَدْنا فيلْمًا مُخيفًا لَيْلَةَ أَمْسِ.,We watched a scary film last night.,msa,leisure,normal
-4740a153,كانَتْ جَدَّتي، رَحِمَها اللهُ، تَرْتَدي عَباءَةً سَوْداءَ دائِمًا.,My grandmother (peace be upon her) wore a black abaya all the time.,msa,family,normal
 fe8cec69,كانَتْ امْرَأَةً قَوِيَّةً جِدًّا.,She was a very strong woman.,msa,people,normal
-3c9affec,اشْتَرى ثَوْبًا تَقْليدِيًّا مِنَ السّوقِ القَديمِ.,He bought a traditional garment from the old market.,msa,culture,normal
-77b3e712,طَريقَةُ العَيْشِ في القَرْيَةِ بَسيطَةٌ وَهادِئَةٌ.,The way of living in the village is simple and quiet.,msa,daily_life,normal
-040358a4,نَزورُ مَزْرَعَةَ جَدّي في كُلِّ صَيْفٍ.,We visit my grandfather's farm every summer.,msa,family,normal
-4c1b00ca,الوَضْعُ الآنَ أَفْضَلُ مِمّا كانَ قَبْلَ سَنَةٍ.,The situation now is better than it was a year ago.,msa,leisure,normal
-909a5822,أَمامَنا ثَلاثَةُ خِياراتٍ لِحَلِّ المُشْكِلَةِ.,We have three options to solve the problem.,msa,work,normal
 1d21e136,نُقَدِّمُ السّاعَةَ في التَّوْقيتِ الصَّيْفِيِّ.,We move the clock forward for daylight saving time.,msa,daily_life,normal
-8653998d,يَبْدَأُ التَّوْقيتُ الشِّتَوِيُّ في نِهايَةِ تِشْرينَ الأَوَّلِ.,Standard time begins at the end of October.,msa,leisure,normal
 42be033b,هَلْ تَشْعُرونَ بِفَصْلِ الرَّبيعِ؟,Do you feel the spring season?,msa,leisure,normal
 9855356f,أَرْسَلْتِ لي,You (female) sent me,msa,people,normal
 6402eb25,حَجْزُ رِحْلَةٍ مَعَ شَرِكَةٍ سِياحِيَّةٍ,Booking a trip with a travel agency,msa,travel,normal
-8bc80c74,نَحْنُ مُخْتَلِفانِ في الرَّأْيِ لَكِنَّنا صَديقانِ.,We are different in opinion but we are friends.,msa,people,normal
-309e4c02,أُفَضِّلُ أَنْ أَحْجِزَ وَأُخَطِّطَ مُسْبَقًا.,I prefer to book and plan in advance.,msa,travel,normal
-90cf374f,أُخَطِّطُ لِرِحْلَةٍ طَويلَةٍ إِلى آسْيا.,I'm planning a long trip to Asia.,msa,travel,normal
 57a4ae23,أُحِبُّ السَّفَرَ العَفْوِيَّ دونَ خَطَّةٍ مُسْبَقَةٍ.,I love spontaneous travel without a prior plan.,msa,travel,normal
-494770ad,أَنا مُتَّفِقٌ مَعَكَ تَمامًا في هَذِهِ النُّقْطَةِ.,I completely agree with you on this point.,msa,emotions,normal
-89d1ec40,المَسْأَلَةُ مُعَقَّدَةٌ أَكْثَرَ مِمّا تَبْدو.,The matter is more complicated than it seems.,msa,emotions,normal
-94a8244b,سَنُسافِرُ إِلى مِصْرَ قَريبًا إِنْ شاءَ اللهُ.,"We will travel to Egypt soon, God willing.",msa,travel,normal
+89d1ec40,المَسْأَلَةُ مُعَقَّدَةٌ أَكْثَرَ مِمّا تَبْدو.,The matter is more complicated than it seems.,msa,emotions,high
 af765ea8,مُتَعَطِّلٌ عَنِ العَمَلِ,Out of work,msa,work,normal
 ca68d4a5,أَطْوَلُ مِنْ ذَلِكَ,Longer than that,msa,leisure,normal
-a4d71f06,الطَّعْمِيَّةُ الطّازَجَةُ أَلَذُّ مِنَ الجاهِزَةِ.,Fresh falafel is tastier than the ready-made.,msa,food,normal
-a604a4e6,اعْتَذَرْتُ عَنِ الحُضورِ بِسَبَبِ ضيقِ الوَقْتِ.,I apologized for not attending because of time pressure.,msa,work,normal
-cd8d5c09,طَلَبَ الطَّبيبُ مِنّي تَحْليلَ دَمٍ شامِلًا.,The doctor asked me for a comprehensive blood test.,msa,health,normal
 e3dae5d8,كانَ الخَبَرُ صَدْمَةً كَبيرَةً لِلْعائِلَةِ.,The news was a big shock to the family.,msa,emotions,normal
-ee7e48bc,نَصَحَني الطَّبيبُ بِتَقْليلِ القَهْوَةِ مَساءً.,The doctor advised me to reduce coffee in the evening.,msa,health,normal
-76dad366,أُضيفُ الزَّنْجَبيلَ إِلى الشّايِ في الشِّتاءِ.,I add ginger to the tea in winter.,msa,daily_life,normal
-5e294dea,كَبِدُ الدَّجاجِ وَسَبانِخ,Chicken liver and spinach,msa,food,normal
-aad27a61,لِلْمَشْيِ فَوائِدُ كَثيرَةٌ لِلْقَلْبِ.,Walking has many benefits for the heart.,msa,health,normal
 c0422ea0,كَيْفَ تَطْبُخينَ هَذا الطَّبَقَ اللَّذيذَ؟,How do you cook this delicious dish?,msa,food,normal
-d58be3ef,أَضَعُ قَليلًا مِنَ الخَلِّ عَلى السَّلَطَةِ.,I put a little vinegar on the salad.,msa,food,normal
-64e14173,يَحْتوي عَلى الحَديدِ,Contains iron,msa,food,normal
-df4a2d0e,يَتَكَوَّنُ الطَّبَقُ مِنَ الأَرُزِّ وَالعَدَسِ.,The dish consists of rice and lentils.,msa,food,normal
-77cf9e52,المِصْرِيّونَ مَعْروفونَ بِحُبِّهِمْ لِلنُّكْتَةِ.,Egyptians are known for their love of jokes.,msa,people,normal
-1a5aab89,أَبْطِئْ قَليلًا، الطَّريقُ زَلِقٌ اليَوْمَ.,"Slow down a little, the road is slippery today.",msa,leisure,normal
-26db0e42,نَشْتَري الطَّعْمِيَّةَ مِنَ المَحَلِّ القَريبِ صَباحًا.,We buy falafel from the nearby shop in the morning.,msa,daily_life,normal
 77148f44,أَبْحَرَ القارِبُ الصَّغيرُ نَحْوَ الجَزيرَةِ.,The small boat sailed toward the island.,msa,travel,normal
-e42ae971,الكُشَرِيُّ أَكْلَةٌ مِصْرِيَّةٌ شَعْبِيَّةٌ وَرَخيصَةٌ.,Koshari is a popular and cheap Egyptian dish.,msa,food,normal
-81352afe,أَكَلَتْ زَوْجَتي الفولَ عَلى الغَداءِ.,My wife ate fava beans at lunch.,msa,food,normal
-6c636ca0,المانْجا المِصْرِيَّةُ حُلْوَةٌ جِدًّا في الصَّيْفِ.,Egyptian mango is very sweet in summer.,msa,food,normal
-338123f2,جَرَّبْتُ الجَوافَةَ في مِصْرَ.,I tried guava in Egypt.,msa,food,normal
-d2c1f300,شايُ الكَرْكَديهِ مَشْروبٌ مُهَدِّئٌ.,Hibiscus tea is a calming drink.,msa,food,normal
-fbf12faa,نُفْطِرُ عَلى التَّمْرِ وَالماءِ في رَمَضانَ.,We break our fast with dates and water in Ramadan.,msa,culture,normal
-069e70c3,بابا غَنّوج يُؤْكَلُ مَعَ الخُبْزِ السّاخِنِ.,Baba ghanoush is eaten with hot bread.,msa,food,normal
-41461073,التَّبّولَةُ سَلَطَةٌ خَفيفَةٌ مِنَ البَقْدونِسِ وَالبُرْغُلِ.,Tabbouleh is a light salad of parsley and bulgur.,msa,food,normal
-35099843,الفَتّوشُ يَحْتوي عَلى خُبْزٍ مُحَمَّصٍ وَخُضارٍ.,Fattoush contains toasted bread and vegetables.,msa,food,normal
 a4d25675,تَزَوَّجْتُ امْرَأَةً رائِعَةً.,I married a wonderful woman.,msa,family,normal
-ee0a7d6e,يَحْتَفِلُ المَسيحِيّونَ بِعيدِ الميلادِ في كانونَ الأَوَّلِ.,Christians celebrate Christmas in December.,msa,culture,normal
-c26fdaed,وُلِدَ المَسيحُ عَلَيْهِ السَّلامُ في بَيْتَ لَحْمَ.,"Christ, peace be upon him, was born in Bethlehem.",msa,culture,normal
-56d0ae01,عيدٌ مُبارَكٌ لَكُمْ وَلِعائِلَتِكُمْ.,A blessed Eid to you and your family.,msa,culture,normal
-c6f959f5,صَلّى المُسْلِمونَ صَلاةَ العيدِ في السّاحَةِ.,The Muslims prayed the Eid prayer in the square.,msa,culture,normal
+56d0ae01,عيدٌ مُبارَكٌ لَكُمْ وَلِعائِلَتِكُمْ.,A blessed Eid to you and your family.,msa,greetings,normal
 18317f63,وَضَعَ الكِتابَ عَلى الطّاوِلَةِ وَخَرَجَ.,He put the book on the table and left.,msa,leisure,normal
-bef475cd,سافَرْنا بَرًّا مِنْ عَمّانَ إِلى دِمَشْقَ.,We traveled by land from Amman to Damascus.,msa,travel,normal
-9217dfa0,حَضَرْنا عُرْسًا كَبيرًا في القَرْيَةِ أَمْسِ.,We attended a big wedding in the village yesterday.,msa,family,normal
-9bb6d7f0,قَرَأْتُ مَقالًا مُثيرًا لِلاهْتِمامِ عَنِ التّاريخِ.,I read an interesting article about history.,msa,culture,normal
-372d4e39,مُعَقَّدٌ بِالنِّسْبَةِ لي لِلْحَديثِ عَنْهُ,It's complicated for me to talk about,msa,culture,normal
+372d4e39,مُعَقَّدٌ بِالنِّسْبَةِ لي لِلْحَديثِ عَنْهُ,It's complicated for me to talk about,msa,culture,high
 0ea680fd,مُسْتَوايَ في العَرَبِيَّةِ يَتَحَسَّنُ شَيْئًا فَشَيْئًا.,My level in Arabic is improving little by little.,msa,language,normal
-d8e79be3,لِهَذا السَّبَبِ تَعَرَّفْتُ عَلَيْهِ,For this reason I got to know him,msa,people,normal
 fb1c34ab,أَشْياءُ مُشْتَرَكَةٌ لِلْحَديثِ عَنْها,Common things to talk about,msa,culture,normal
 1a538272,النّاسُ لا يَتَوَقَّعونَ أَنّي أَتَكَلَّمُ العَرَبِيَّةَ.,People don't expect that I speak Arabic.,msa,language,normal
-59196b36,أَجَبْتُهُ بِصِدْقٍ عَنْ كُلِّ أَسْئِلَتِهِ.,I answered him honestly about all his questions.,msa,people,normal
-d70de5e0,الأَهَمُّ أَنْ نَبْقى أَصْحابًا مَهْما حَدَثَ.,The most important thing is to stay friends no matter what.,msa,people,normal
+59196b36,أَجَبْتُهُ بِصِدْقٍ عَنْ كُلِّ أَسْئِلَتِهِ.,I answered all his questions honestly.,msa,people,normal
 cb6a9a81,القِراءَةُ اليَوْمِيَّةُ تُوَسِّعُ مَعْرِفَةَ الإِنْسانِ.,Daily reading widens a person's knowledge.,msa,culture,normal
-eff8d894,سافَرَ في الدَّرَجَةِ الأولى لِأَوَّلِ مَرَّةٍ.,He traveled in first class for the first time.,msa,travel,normal
-02316648,تَذْكِرَةُ الدَّرَجَةِ الثّانِيَةِ أَرْخَصُ بِكَثيرٍ.,A second-class ticket is much cheaper.,msa,travel,normal
-4a4cc001,لاحَظْتُ تَحَسُّنًا واضِحًا في لُغَتِكَ.,I noticed a clear improvement in your language.,msa,language,normal
-b9e550fe,أَعْطاني المُعَلِّمُ نَصائِحَ مُفيدَةً لِلدِّراسَةِ.,The teacher gave me useful advice for studying.,msa,culture,normal
+b9e550fe,أَعْطاني المُعَلِّمُ نَصائِحَ مُفيدَةً لِلدِّراسَةِ.,The teacher gave me useful advice for studying.,msa,language,normal
 c9c26555,أَنا في البَيْتِ كَالعادَةِ,I am at home as usual,msa,daily_life,normal
-7d3bca6f,الجَوُّ مُشْمِسٌ وَدافِئٌ، لِنَخْرُجْ لِلتَّنَزُّهِ.,"The weather is sunny and warm, let's go out for a walk.",msa,leisure,normal
-78dba13d,نَتَناوَلُ العَشاءَ مَعًا كُلَّ لَيْلَةِ جُمُعَةٍ.,We have dinner together every Friday night.,msa,family,normal
-345d26d9,أَغادِرُ في السّاعَةِ التّاسِعَةِ.,I leave at nine o'clock.,msa,daily_life,normal
-ab6eb697,يَلْعَبُ الأَطْفالُ بِطائِرَةٍ وَرَقِيَّةٍ عَلى الشّاطِئِ.,The children play with a paper kite on the beach.,msa,leisure,normal
 41e39ef7,كانَتِ اللُّعْبَةُ مُمْتِعَةً وَمُثيرَةً حَتّى النِّهايَةِ.,The game was fun and exciting until the end.,msa,leisure,normal
 cff0bcd0,أَشْعُرُ بِضَغْطٍ كَبيرٍ في العَمَلِ هَذا الشَّهْرَ.,I feel a lot of pressure at work this month.,msa,work,normal
-c3aa0da4,لَدَيْكِ الكَثيرُ مِنَ الدُّروسِ,You have a lot of lessons,msa,leisure,normal
+c3aa0da4,لَدَيْكِ الكَثيرُ مِنَ الدُّروسِ,You have a lot of lessons,msa,daily_life,normal
 3786ea6b,شَعَرْتُ بِالإِرْهاقِ بَعْدَ يَوْمِ عَمَلٍ طَويلٍ.,I felt exhausted after a long workday.,msa,work,normal
 b6908bf3,مُرْهَق,Exhausted,msa,emotions,normal
-5dcf24ab,الاسْتِمْرارِيَّةُ أَهَمُّ مِنَ السُّرْعَةِ في التَّعَلُّمِ.,Continuity is more important than speed in learning.,msa,work,normal
-69ca825d,التَّدْريسُ مِهْنَةٌ تَحْتاجُ إِلى صَبْرٍ كَبيرٍ.,Teaching is a profession that needs great patience.,msa,work,normal
-5211311f,المَوْضوعُ مُعَقَّدٌ وَيَحْتاجُ إِلى وَقْتٍ لِفَهْمِهِ.,The topic is complicated and needs time to understand.,msa,emotions,normal
+5dcf24ab,الاسْتِمْرارِيَّةُ أَهَمُّ مِنَ السُّرْعَةِ في التَّعَلُّمِ.,Continuity is more important than speed in learning.,msa,language,normal
 cf22ead4,زُرْنا والِدَ زَوْجَتي,We visited my wife's father,msa,family,normal
 593ec1bd,خَمْسونَ كيلومِتْرًا,Fifty kilometers,msa,travel,normal
-e302ce1b,المَطارُ يَبْعُدُ ساعَةً بِالسَّيّارَةِ عَنِ البَيْتِ.,The airport is an hour by car from home.,msa,travel,normal
-1cde2e0c,تَحَسَّنَتْ صِحَّةُ أُمّي كَثيرًا بَعْدَ العَمَلِيَّةِ.,My mother's health improved a lot after the operation.,msa,health,normal
 d359bdbc,بِالتَّمارينِ المُنْتَظِمَةِ سَتُصْبِحُ أَقْوى.,With regular exercise you will become stronger.,msa,health,normal
 c9809172,نَتَمَشّى في المُنْتَزَهِ كُلَّ مَساءٍ.,We walk in the park every evening.,msa,leisure,normal
-7f1c5bab,يَلْعَبُ الأَطْفالُ في الحَديقَةِ العامَّةِ بَعْدَ المَدْرَسَةِ.,The children play in the public garden after school.,msa,family,normal
 c018ff35,شَعَرْتُ بِضَعْفٍ بَعْدَ أَيّامٍ مِنَ المَرَضِ.,I felt weak after days of illness.,msa,health,normal
-0c716de9,كانَتْ أَوَّلَ مَرَّةٍ يَزورُ الحَديقَةَ مُنْذُ شَهْرَيْنِ,It was the first time he visited the park in two months,msa,leisure,normal
-f0b8497f,قُمْنا بِزِيارَةِ لَهْوٍ إِلى المَدينَةِ القَديمَةِ.,We made a leisure visit to the old city.,msa,leisure,normal
-52f0a53d,أَنا شَخْصٌ هادِئٌ لا أُحِبُّ الضَّجيجَ.,I am a calm person who dislikes noise.,msa,emotions,normal
 8bc72dc7,لا أَتَكَلَّمُ كَثيرًا.,I don't talk much.,msa,emotions,normal
-55908ceb,كِلاهُما يُشاهِدانِ المُبارَياتِ مَعًا كُلَّ سَبْتٍ.,Both of them watch the matches together every Saturday.,msa,leisure,normal
-ecbe6223,غَدًا عُطْلَةٌ رَسْمِيَّةٌ بِمُناسَبَةِ العيدِ.,Tomorrow is an official holiday for the Eid.,msa,culture,normal
-e543c3f8,لا أَرْتَدي مَلابِسَ رَسْمِيَّةً حَتّى في الاجْتِماعاتِ المُهِمَّةِ.,I don't even wear formal clothes in important meetings.,msa,work,normal
-51f47edf,لا أُحِبُّ الحَديثَ في السِّياسَةِ مَعَ الغُرَباءِ.,I don't like talking politics with strangers.,msa,people,normal
-044b2226,أَتَوَقَّفُ عَنِ العَمَلِ في السّاعَةِ الخامِسَةِ مَساءً.,I stop working at five in the evening.,msa,work,normal
 9b6c2cd6,آخُذُ اسْتِراحَةً مِنَ العَمَلِ,I take a break from work,msa,work,normal
-23a41d61,أَجْلِسُ في الطَّبيعَةِ لِأُريحَ ذِهْني.,I sit in nature to rest my mind.,msa,leisure,normal
 77789cdb,الحَياةُ الرِّيفِيَّةُ أَهْدَأُ مِنْ حَياةِ المُدُنِ.,Rural life is calmer than city life.,msa,leisure,normal
-9b111462,الأَمْواجُ عالِيَةٌ اليَوْمَ، فَالسِّباحَةُ خَطِرَةٌ.,"The waves are high today, so swimming is dangerous.",msa,leisure,normal
 86b695de,نَرى قُوَّةَ الخالِقِ في جَمالِ الطَّبيعَةِ.,We see the power of the Creator in the beauty of nature.,msa,culture,normal
 cd7e35a6,أَحَبُّ الأَعْمَالِ إِلَى اللهِ أَدْوَمُهَا وَإِنْ قَلَّ,"The most beloved deeds to Allah are those done consistently, even if small",msa,culture,normal
-b0533902,مِنَ العَقَبَةِ إِلى شَرْمِ الشَّيْخِ بِالقارِبِ,From Aqaba to Sharm el-Sheikh by boat,msa,travel,normal
-f1e46cad,سَنَتَقابَلُ في شَرْمِ الشَّيْخِ,We will meet in Sharm el-Sheikh,msa,travel,normal
-f4daee1f,سَأَكونُ في شَرْمِ الشَّيْخِ يَوْمَيْنِ فَقَطْ,I will be in Sharm el-Sheikh for only two days,msa,travel,normal
-0b84aeb8,بَعْدَ ذَلِكَ سَأَذْهَبُ إِلى دَهَبَ,After that I will go to Dahab,msa,travel,normal
-5ef2b2a6,أُريدُ أَنْ أَتَجَوَّلَ حَوْلَ المَدينَةِ القَديمَةِ,I want to wander around the old city,msa,travel,normal
 bf22f72a,أُريدُ أَنْ أَكْتَشِفَ الثَّقافَةَ,I want to discover the culture,msa,culture,normal
 f0b88028,هَلْ تُحِبُّ السِّباحَةَ؟,Do you like swimming?,msa,leisure,normal
 dbb6bb81,سَنَسْبَحُ أَمامَ الفُنْدُقِ,We will swim in front of the hotel,msa,leisure,normal
@@ -262,11 +104,9 @@ b001377b,هَلْ يوجَدُ شاطِئٌ خاصٌّ؟,Is there a private beac
 2a01e5cc,مارَسْتُ اللَّهْجَةَ المِصْرِيَّةَ,I practised the Egyptian dialect,msa,language,normal
 53dd0b03,يَجِبُ عَلَيْكَ الغَوْصُ,You must go diving,msa,leisure,normal
 ff65e35b,الغَوْصُ لَيْسَ مُناسِبًا لِلأَطْفالِ,Diving is not suitable for children,msa,leisure,normal
-8310e1a4,سَنَفْعَلُ إِنْ شاءَ اللهُ,We will do it God willing,msa,leisure,normal
-90039be0,أَنا أَكْتَشِفُ، أَنا أَتَجَوَّلُ,I explore / I wander,msa,travel,normal
+8310e1a4,سَنَفْعَلُ إِنْ شاءَ اللهُ,We will do it God willing,msa,smalltalk,normal
 7cd4356c,أَنا جاهِزٌ لِلسَّفَرِ,I'm ready to travel,msa,travel,normal
 9483e9c3,أُريدُ أَنْ أُمارِسَ اللَّهْجَةَ المِصْرِيَّةَ,I want to practise the Egyptian dialect,msa,language,normal
-30e9db21,أَتَمَنّى أَنْ تَسْتَعْمِلَ هَذِهِ الكَلِماتِ في الزِّيارَةِ,I hope you use these words on the visit,msa,travel,normal
 365c0264,أَتَمَنّى لَكَ إِجازَةً سَعيدَةً,I wish you a happy holiday,msa,greetings,normal
 dfd496d8,شُكْرًا عَلى الدَّرْسِ,Thank you for the lesson,msa,greetings,normal
 ae4f86e5,أَيْنَ الشّاطِئُ الخاصُّ بِالفُنْدُقِ؟,Where is the hotel's private beach?,msa,travel,normal
@@ -279,54 +119,24 @@ ae4f86e5,أَيْنَ الشّاطِئُ الخاصُّ بِالفُنْدُقِ
 740a4547,الماءُ الدّافِئُ مُريحٌ لِلْجِسْمِ,Warm water is comfortable for the body,msa,leisure,normal
 b94d01a3,السِّباحَةُ في الماءِ البارِدِ مُنْعِشَةٌ,Cold water swimming is invigorating,msa,leisure,normal
 5f041816,المَرْجانُ في البَحْرِ الأَحْمَرِ جَميلٌ,The coral in the Red Sea is beautiful,msa,leisure,normal
-239a6bf3,السنوركلينج نَشاطٌ مُمْتِعٌ في الإِجازَةِ,Snorkelling is a fun activity on vacation,msa,leisure,normal
 ea1ab5db,الفِنْجانُ عَلى الطّاوِلَةِ فارِغٌ,The cup on the table is empty,msa,food,normal
 f01468f0,شُكْراً لَكَ، إِلى اللِّقاءِ!,"Thank you, goodbye!",msa,greetings,normal
 8c0a76c9,أَيْنَ المَطْبَخُ في هٰذا البَيْتِ؟,Where is the kitchen in this house?,msa,daily_life,normal
 056c9a80,ما رَقْمُ الهاتِفِ الخاصُّ بِكَ؟,What is your phone number?,msa,daily_life,normal
-f1f5f5bf,القِطارُ يَصِلُ في السّاعَةِ الثّالِثَةِ,The train arrives at three o'clock,msa,travel,normal
-a81ee49c,الطّائِرَةُ تُقْلِعُ بَعْدَ عَشْرِ دَقائِقَ,The plane takes off in ten minutes,msa,travel,normal
-8c1db032,التَّجَوُّلُ في المَدينَةِ القَديمَةِ مُمْتِعٌ,Strolling in the old city is enjoyable,msa,travel,normal
-63e1a9fb,هٰذِهِ جَوْلَةٌ جَميلَةٌ في المَتْحَفِ,This is a nice tour of the museum,msa,travel,normal
-5e635ddf,أَدْرُسُ اللُّغَةَ مُنْذُ سَنَتَيْنِ,I have been studying the language for two years,msa,language,normal
 08686465,أَنا شَخْصٌ بَيْنَ جِنْسِيَّتَيْنِ,I am a person between two nationalities,msa,people,normal
-bfc8a4d9,وُلِدْتُ في إِنْجِلْتِرا وَأَعيشُ هُنا، وَوالِدي مِنَ العِراقِ,"I was born in England and live here, and my father is from Iraq",msa,family,normal
 a08eed1a,مُنْذُ الوِلادَةِ عِشْتُ حَياةً إِنْجِليزِيَّةً,Since birth I have lived an English life,msa,culture,normal
 08b7c376,لَيْسَتْ هِوايَةً، إِنَّها واجِبي,It is not a hobby; it is my duty.,msa,emotions,normal
-3f22630e,أُحِبُّ الثَّقافَةَ العَرَبِيَّةَ وَأَحْلُمُ بِالسَّفَرِ,I love Arab culture and dream of travel,msa,culture,normal
-894f7b52,الكَلامُ السَّريعُ سَهْلٌ، تَقولُ فيهِ ما تَشاءُ؛ أَمّا الكِتابَةُ فَأَصْعَبُ,Quick speech is easy — you say what you want; but writing is harder,msa,culture,normal
-cf2c83c5,مُنْذُ الطُّفولَةِ سَمِعْتُ صَوْتَ اللُّغَةِ مِنْ والِدي وَمِنَ الرّاديو,Since childhood I heard the sound of the language from my father and the radio,msa,culture,normal
-374f438d,كانَ والِدي يَسْتَمِعُ إِلى الأَغاني التَّقْليدِيَّةِ وَيُشاهِدُ التِّلْفازَ العَرَبِيَّ,My father used to listen to traditional songs and watch Arabic television,msa,family,normal
-730e12cd,وَمَرَّةً أَعْطاني الهاتِفَ فَسَمِعْتُ جَدَّتي وَلَمْ أَفْهَمْ شَيْئاً,Once he handed me the phone and I heard my grandmother but understood nothing,msa,language,normal
-676a0ee5,كُنْتُ أُريدُ أَنْ أَتَحَدَّثَ مَعَ جَدَّتي وَأَنْ أَفْهَمَ هٰذِهِ اللُّغَةَ,I wanted to talk with my grandmother and understand this language,msa,language,normal
-ca00ddfe,كَبِرْتُ في مَدينَةٍ صَغيرَةٍ تَقْليدِيَّةٍ لَيْسَ فيها أَشْخاصٌ عَرَبٌ,"I grew up in a small, traditional town with no Arab people",msa,culture,normal
-7054c0aa,وَلَمْ نَكُنْ نَتَحَدَّثُ العَرَبِيَّةَ في المَنْزِلِ بِسَبَبِ والِدَتي,We didn't speak Arabic at home because of my mother,msa,language,normal
-e3629892,كانَ هُناكَ نَقْصٌ في الفَهْمِ حَقّاً,There was truly a lack of understanding,msa,emotions,normal
-3d3f84df,أَظُنُّني قَرَّرْتُ أَنْ أَبْقى إِنْجِليزِيّاً,I think I decided to stay English,msa,culture,normal
-f09a56df,كانَ لَدَيَّ فُضولٌ تِجاهَ الثَّقافَةِ وَالدّينِ وَالحَياةِ في الدُّوَلِ العَرَبِيَّةِ,"I had curiosity about the culture, religion, and life in Arab countries",msa,culture,normal
-c6c22c02,كانَ لَدَيَّ أَسْئِلَةٌ كَثيرَةٌ سَأَلْتُها لِوالِدي,I had many questions which I asked my father,msa,family,normal
-663673c6,وَحينَ جِئْتُ كانَ عَلَيَّ أَنْ أَنْدَمِجَ في المُجْتَمَعِ وَأَنْ أَعيشَ حَياةً بِريطانِيَّةً,When I came I had to integrate into society and live a British life,msa,people,normal
 59981b63,أَنْتِ تَفْهَمينَني جَيِّداً,You understand me well,msa,emotions,normal
-5a94e1b9,الأَطْفالُ يَتَعَلَّمونَ جَيِّداً عِنْدَما تَكونُ الدِّراسَةُ مُمْتِعَةً,Children learn well when study is enjoyable,msa,leisure,normal
 42e8f341,كُلُّ شَخْصٍ يَخْتَلِفُ,Everyone is different,msa,people,normal
-2104193f,إِنْ شاءَ اللهُ نَلْتَقي يَوْمَ الخَميسِ القادِمِ,God willing we'll meet next Thursday,msa,greetings,normal
-aa9be8e3,كُلَّ عامٍ وَأَنْتَ بِخَيْرٍ، وَأَراكَ قَريباً,"May you be well always, and see you soon",msa,greetings,normal
 71209cd0,أَنا الآنَ مَشْغولٌ بِالأَعْمالِ,I'm busy with work now,msa,work,normal
 f4839747,أُساعِدُهُمْ بِقَدْرِ اسْتِطاعَتي,I help them as much as I can,msa,people,normal
-0411943c,حالِيّاً خَطَرَتْ عَلى عَقْلي فِكْرَةٌ,Just now an idea occurred to my mind,msa,emotions,normal
+0411943c,حالِيّاً خَطَرَتْ عَلى عَقْلي فِكْرَةٌ,An idea has come to mind (حالِيّاً = currently),msa,emotions,normal
 05765e3c,أَنا أَصْلي عَرَبِيٌّ,My origin is Arab,msa,culture,normal
 ba138369,أَحْياناً أَشْعُرُ أَنَّ الدَّمَ عَرَبِيٌّ,Sometimes I feel the blood is Arab,msa,culture,normal
 b5f91e4b,هٰذا جُزْءٌ مِنّي,This is a part of me,msa,emotions,normal
 4f18071b,أَنْتَ أَبٌ، صَحيحٌ؟,"You are a father, correct?",msa,family,normal
-9e21918a,أَعْتَقِدُ أَنَّ اللُّغَةَ العَرَبِيَّةَ شَيْءٌ مُهِمٌّ جِدّاً لي,I think the Arabic language is something very important to me,msa,language,normal
-12b0a5b3,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ واجِبٌ عَلَيْكَ وَلَيْسَ هِوايَةً,"Learning Arabic is a duty upon you, not a hobby",msa,language,normal
 9eeddec3,هَلْ لَدَيْكَ إِخْوَةٌ وَأَخَواتٌ؟,Do you have brothers and sisters?,msa,family,normal
 f912fc72,لَدَيَّ أَخٌ واحِدٌ,I have one brother,msa,family,normal
-c34c0f16,عائِلَتُنا مِنَ الشَّرْقِ الأَوْسَطِ,Our family is from the Middle East,msa,family,normal
-03462bab,نَسينا صِلَتَنا بِأَقارِبِنا في الشَّرْقِ الأَوْسَطِ,We forgot our bond with our relatives in the Middle East,msa,family,normal
-b6fbb434,أَحْياناً أَشْعُرُ أَنَّني ضائِعٌ، أَنا بِلا انْتِماءٍ,"Sometimes I feel that I am lost, that I have no belonging",msa,emotions,normal
-fad8bf36,أَيْنَ أَنْتَمي؟ أَشْعُرُ أَنّي أَنْتَمي إِلَيْهِ,Where do I belong? I feel that I belong to it,msa,emotions,normal
-07217e87,هٰذا الشُّعورُ طَبيعِيٌّ عِنْدَ أَيِّ شَخْصٍ وُلِدَ ابْناً لِثَقافَةٍ أُخْرى,This feeling is natural in anyone born a child of another culture,msa,culture,normal
 2f6eedea,سَأَكونُ رَجُلاً ذا ثَقافَتَيْنِ,I will be a man with two cultures,msa,culture,normal
 21ae532c,أَشْعُرُ أَنَّني أَعيشُ في عالَمَيْنِ مُخْتَلِفَيْنِ,I feel that I live in two different worlds,msa,emotions,normal
 9b08ff75,تَعَلُّمُ اللُّغَةِ العَرَبِيَّةِ يَحْتاجُ وَقْتاً أَطْوَلَ,Learning Arabic needs a longer time,msa,language,normal
@@ -336,54 +146,29 @@ d88a943f,اللَّهْجَةُ المِصْرِيَّةُ غَريبَةٌ عَ
 38ea457c,أَتَمَنّى لَكَ يَوْماً سَعيداً,I wish you a happy day,msa,greetings,normal
 1c42ced3,إِلى اللِّقاءِ، مَعَ السَّلامَةِ,"Goodbye, take care",msa,greetings,normal
 c3a65f88,كُنْتُ مَريضاً قَليلاً,I was a little sick,msa,health,normal
-04760a89,لا أَعْرِفُ السَّبَبَ — رُبَّما اخْتِلافُ الماءِ أَوِ الطَّعامِ,I don't know the reason — maybe the difference in water or food,msa,health,normal
-a8211558,كُنّا مَرْضى لِفَتْرَةٍ طَويلَةٍ، حَوالَيْ أُسْبوعٍ,"We were sick for a long time, about a week",msa,health,normal
-51833e9f,كُلَّ يَوْمٍ لَحْمٌ مَشْوِيٌّ، خُضْرَواتٌ مَشْوِيَّةٌ، سَلَطَةٌ مِصْرِيَّةٌ، سَمَكٌ,"Every day grilled meat, grilled vegetables, Egyptian salad, fish",msa,food,normal
-730a0e8b,اشْتَرِ مِياهاً مَعْدِنِيَّةً غالِيَةً مِنَ المارْكِت وَاشْرَبْها,Buy expensive mineral water from the market and drink it,msa,health,normal
 4108a2ff,تَعَلَّمْتُ كَلِماتٍ أَكْثَرَ في اللَّهْجَةِ,I learned more words in the dialect,msa,language,normal
-1c656bd5,حَتّى في مِصْرَ تَكَلَّمْتُ كَثيراً مَعَ النّاسِ بِالعَرَبِيَّةِ,Even in Egypt I spoke a lot with people in Arabic,msa,language,normal
-a399890e,حاوَلْتُ أَنْ أَتَكَلَّمَ بِاللَّهْجَةِ المِصْرِيَّةِ لٰكِنْ كانَ عَلَيَّ أَنْ أَتَحَدَّثَ بَعْضَ الفُصْحى,I tried to speak in the Egyptian dialect but had to speak some Fusha,msa,language,normal
-ab6f9a90,النّاسُ دائِماً يَفْهَمونَكَ لٰكِنْ لا يَسْتَطيعونَ الإِجابَةَ، لِأَنَّهُمْ غَيْرُ مُتَعَوِّدينَ,"People always understand you but can't answer, because they aren't used to it",msa,language,normal
-1861c938,الفُصْحى جَميلَةٌ، لٰكِنْ إِذا أَرَدْتَ أَنْ تَتَواصَلَ مَعَ النّاسِ فَرُبَّما تَخْتارُ لَهْجَةً,"Fusha is beautiful, but if you want to communicate with people, perhaps choose a dialect",msa,language,normal
-11bbf8af,الغَوْصُ في رَأْيي أَفْضَلُ شَيْءٍ في شَرْمَ,"Diving, in my opinion, is the best thing in Sharm",msa,leisure,normal
-0571a2c1,نَزَلْنا إِلى البَحْرِ، أَنا وَعائِلَتي، وَرَأَيْنا تَحْتَ الماءِ جَنَّةً,"We went down into the sea, my family and I, and saw a paradise underwater",msa,leisure,normal
 d2a79fd0,اكْتَشَفْنا عالَماً مُخْتَلِفاً,We discovered a different world,msa,leisure,normal
-27daca3f,الماءُ دافِئٌ، لَمْ أَحْتَجْ بَدْلَةَ غَطْسٍ,"The water is warm, I didn't need a diving suit",msa,leisure,normal
-6e75392f,وَأَخَذْنا رِحْلَةً بِالمَرْكَبِ — كانَتْ رائِعَةً,We took a boat trip — it was wonderful,msa,leisure,normal
+6e75392f,وَأَخَذْنا رِحْلَةً بِالمَرْكَبِ — كانَتْ رائِعَةً,We took a boat trip — it was wonderful,msa,sightseeing,normal
 102a2fa4,كانَتْ أَسْماكاً بِأَحْجامٍ مُخْتَلِفَةٍ وَأَلْوانٍ كَثيرَةٍ,They were fish of different sizes and many colors,msa,leisure,normal
 2af7d6e1,مَعَ السْنوركِل أَشْعُرُ بِحُرِّيَّةٍ,With the snorkel I feel free,msa,leisure,normal
-65cf9e35,ذَهَبْتُ مِنَ الأُرْدُنِّ إِلى مِصْرَ بِالقارِبِ، لَيْسَ بِالطّائِرَةِ,"I went from Jordan to Egypt by boat, not by plane",msa,travel,normal
-f8d91663,رِحْلَةٌ طَويلَةٌ: حافِلَتانِ وَقارِبٌ,A long trip: two buses and a boat,msa,travel,normal
-bf626f5a,بَقينا سِتَّةَ أَيّامٍ: أَرْبَعَةً في دهب وَيَوْمَيْنِ في شَرْمَ,We stayed six days: four in Dahab and two in Sharm,msa,travel,normal
-abb3410d,وَاشْتَرَيْتُ هَدايا لِعائِلَتي، لِأَنَّ القُطْنَ مَشْهورٌ جِدّاً في مِصْرَ,"I bought gifts for my family, because cotton is very famous in Egypt",msa,travel,normal
-1e8e8387,وَبَقيتُ بِجانِبِ البَحْرِ أَسْتَرْخي,I stayed beside the sea relaxing,msa,leisure,normal
 9fe59d8d,شُكْراً جَزيلاً لِمُساعَدَتِكِ، حَقّاً,"Thank you very much for your help, truly",msa,greetings,normal
-54c1a19a,سَلامٌ لِلْعائِلَةِ وَلِلْأَطْفالِ، وَأَراكَ الأُسْبوعَ القادِمَ,"Greetings to the family and the children, and I'll see you next week",msa,greetings,normal
 5f6075d5,لَقَدْ خَرَجْتُ لِلتَّوِّ,I've just left.,msa,leisure,normal
-ee0e1490,كانوا يَجْتَمِعونَ لِيَتَسامَروا,They used to meet to socialise.,msa,people,normal
 3db73e13,ما زالَ المَكانُ مُهِمّاً,The place is still important.,msa,leisure,normal
 0aae5643,أَسْتَطيعُ أَنْ أَسْمَعَ غِناءَ الطُّيورِ,I can hear the birdsong.,msa,leisure,normal
-f85e0d16,أَنْوي أَنْ أَمْشِيَ إلى نِهايَةِ الشّارِعِ,I plan to walk to the end of the street.,msa,leisure,normal
 ef16c9ab,كانَ البَيْتُ العامُّ مُهِمّاً لِلْمُجْتَمَعِ,The pub was important to the community.,msa,people,normal
 6c8ed988,هٰذِهِ رِحْلَةٌ طَوِيلَةٌ,This is a long journey.,msa,travel,normal
 e6f827e0,أُرِيدُ مَزِيدًا مِنَ العِبَارَاتِ,I want more phrases.,msa,language,normal
-4d3de6c7,لَدَيَّ شَيْءٌ لِنُنَاقِشَهُ,I have something for us to discuss.,msa,work,normal
+4d3de6c7,لَدَيَّ شَيْءٌ لِنُنَاقِشَهُ,I have something for us to discuss.,msa,work,high
 57602b4e,هٰذَا حَدَثَ لِابْنِي,This happened to my son.,msa,family,normal
 e4091988,رَجَعَ ابْنِي إِلَى المَنْزِلِ لِلتَّوِّ,My son has just come home.,msa,family,normal
-faa4e008,رَجَعَ مِنْ رِحْلَةِ تَخْيِيمٍ,He came back from a camping trip.,msa,leisure,normal
 122b2c00,كَانَ مُتَّسِخًا جِدًّا وَمُتْعَبًا,He was very dirty and tired.,msa,emotions,normal
-040b5281,كَانَ عِيدُ مِيلَادِهِ قَبْلَ يَوْمَيْنِ,It was his birthday two days ago.,msa,family,normal
 21e2eeaa,كَانَ بَعِيدًا عَنَّا,He was far away from us.,msa,family,normal
 0ec134f9,لَمْ نَسْتَطِعْ أَنْ نَتَوَاصَلَ مَعَهُ,We couldn't contact him.,msa,family,normal
 800040aa,لَمْ يَكُنْ لَدَيْهِ هَاتِفٌ,He didn't have a phone.,msa,family,normal
 57755edc,لَمْ يَسْتَطِعْ أَنْ يَتَّصِلَ بِنَا,He couldn't call us.,msa,family,normal
 07a266ee,اِشْتَقْنَا إِلَيْهِ,We missed him.,msa,emotions,normal
-54a58f4c,اِشْتَقْنَا إِلَيْهِ وَلَمْ نَسْتَطِعْ أَنْ نَتَوَاصَلَ مَعَهُ,We missed him and couldn't contact him.,msa,emotions,normal
 cbb7edcb,لَمْ تَكُنْ هُنَاكَ طَرِيقَةٌ أُخْرَى,There was no other way.,msa,emotions,normal
 d03d78c0,سَأُغَادِرُ الآنَ,I'm leaving now.,msa,travel,normal
-60d7c7bf,مَزِيدٌ مِنَ الوَقْتِ,More time.,msa,leisure,normal
-f82166f5,مَزِيدٌ مِنَ المَعْلُومَاتِ,More information.,msa,work,normal
-0fda98a7,مَزِيدٌ مِنَ العِبَارَاتِ,More phrases.,msa,language,normal
 750013a0,حَدَثَ لِي,It happened to me.,msa,emotions,normal
 a26fe39e,حَدَثَ لَهَا,It happened to her.,msa,emotions,normal
 237dd03c,حَدَثَ لِابْنِي,It happened to my son.,msa,family,normal
@@ -395,142 +180,78 @@ b5a0465a,اِشْتَقْنَا إِلَيْهِمْ,We missed them.,msa,emotion
 2982ffb8,لَمْ نَسْتَطِعْ أَنْ نَرَاهُ,We couldn't see him.,msa,family,normal
 85400ab1,لَمْ نَسْتَطِعْ أَنْ نَزُورَهُ,We couldn't visit him.,msa,family,normal
 3ffff6ce,كان والدي يتحدث مع جدتي.,My father used to speak to my grandmother.,msa,family,normal
-265159a7,أحيانًا كان يناولني الهاتف.,Sometimes he would hand me the phone.,msa,family,normal
-f81de177,وكنت أتحدث مع جدتي.,I would speak to my grandmother.,msa,family,normal
-f1dde12c,كان والدي يترجم بيني وبين جدتي.,My father would translate between me and my grandmother.,msa,family,normal
+265159a7,أحيانًا كان يناولني الهاتف.,Sometimes he used to hand me the phone.,msa,family,normal
+f81de177,كُنْتُ أَتَحَدَّثُ مَعَ جَدَّتِي.,I used to talk with my grandmother.,msa,family,normal
+f1dde12c,كان والدي يترجم بيني وبين جدتي.,My father used to translate between me and my grandmother.,msa,family,normal
 1a37e101,كنا نشاهد الأخبار على التلفاز.,We used to watch the news on television.,msa,daily_life,normal
 1226770d,كنا نستمع إلى الأغاني العربية الجميلة.,We used to listen to beautiful Arabic songs.,msa,culture,normal
 5a752458,كنا نستمع إلى ترتيل القرآن الكريم.,We used to listen to the recitation of the Holy Qur'an.,msa,culture,normal
 5a2eede4,كنا نشاهد الطواف حول الكعبة.,We used to watch the circumambulation around the Kaaba.,msa,culture,normal
-612cc24a,وعبر كل ذلك، كنت أستمع إلى أصوات اللغة.,"Through all of that, I was listening to the sounds of the language.",msa,language,normal
-36443844,لم أفهم شيئًا، لكن أذني اعتادت على أصوات اللغة.,"I didn't understand anything, but my ears became accustomed to the sounds of the language.",msa,language,normal
-c0b82cea,منذ الولادة وخلال طفولتي، كنت أتحدث الإنجليزية.,"Since birth and throughout my childhood, I spoke English.",msa,language,normal
-2bc7339a,وبسبب أن والدتي كانت إنجليزية، كنا نتحدث الإنجليزية في المنزل.,"Because my mother was English, we spoke English at home.",msa,language,normal
-73cf3502,ولذلك لم أتعلم اللغة العربية حتى الآن.,Therefore I didn't learn Arabic until now.,msa,language,normal
 7bcad6b2,مَوْضُوعُ هٰذَا الْمَشْرُوعِ عَنِّي.,The topic of this project is about me.,msa,work,normal
 0cd4b4a2,يَجِبُ أَنْ أَتَحَدَّثَ عَنْ نَفْسِي.,I have to talk about myself.,msa,work,normal
 5a51c938,إِنَّهَا قِصَّةُ حَيَاتِي.,It's the story of my life.,msa,people,normal
-ef52c2e4,مُنْذُ الطُّفُولَةِ، كَانَ لَدَيَّ فُضُولٌ حَوْلَ الثَّقَافَةِ الْعَرَبِيَّةِ.,"Since childhood, I was curious about Arabic culture.",msa,culture,normal
-3c1e8c62,كَانَ لَدَيَّ فُضُولٌ بِسَبَبِ أَصْلِ وَالِدِي.,I was curious because of my father's background.,msa,culture,normal
 d3793383,وَالِدِي عِرَاقِيٌّ.,My father is Iraqi.,msa,family,normal
 8b63d9e5,كُنْتُ أَسْمَعُ اللُّغَةَ الْعَرَبِيَّةَ مِنْ وَالِدِي.,I used to hear the Arabic language from my father.,msa,language,normal
 4fadf750,كَانَ يَسْتَمِعُ إِلَى تِلَاوَةِ الْقُرْآنِ الْكَرِيمِ.,He used to listen to Qur'an recitation.,msa,culture,normal
 8b40f87b,كَانَ يُشَاهِدُ الْأَخْبَارَ بِاللُّغَةِ الْعَرَبِيَّةِ.,He used to watch the Arabic news.,msa,daily_life,normal
-9bfb02a2,كُنْتُ أَسْمَعُهُ عِنْدَمَا كَانَ يَتَحَدَّثُ مَعَ أَقَارِبِنَا عَبْرَ الْهَاتِفِ.,I used to hear him when he spoke to our relatives on the phone.,msa,family,normal
 25926932,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً.,I used to ask him many questions.,msa,family,normal
-19c9edb0,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً عَنِ الدِّينِ.,I asked him many questions about religion.,msa,culture,normal
-a844e371,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً عَنِ الثَّقَافَةِ الْعَرَبِيَّةِ.,I asked him many questions about Arab culture.,msa,culture,normal
 eb912cca,كُنْتُ أَحْضُرُ مَدْرَسَةً مَسِيحِيَّةً.,I attended a Christian school.,msa,culture,normal
-7c0b4dbf,وَفِيهَا كُنَّا نَتَعَلَّمُ عَنْ عِيسَى عَلَيْهِ السَّلَامُ.,There we learned about Jesus.,msa,culture,normal
 c1783d10,هل يمكننا أن نناقش هذا؟,Can we discuss this?,msa,work,normal
-3a611f13,هل يمكننا أن نناقش هذا الموضوع؟,Can we discuss this topic?,msa,work,normal
 69fdaee1,دعنا نُكْمِل.,Let's continue.,msa,work,normal
 6b9fe3b8,كَرِّرِ السُّؤالَ.,Repeat the question.,msa,work,normal
-66ec5fd4,أَعِدِ السُّؤالَ مَرَّةً أُخْرَى.,Repeat the question again.,msa,work,normal
-12641d83,نصفُ عائلتي إنجليزي، والنصفُ الآخر عراقي.,Half of my family is English and the other half is Iraqi.,msa,family,normal
-5c32ad9a,جاء والدي إلى بريطانيا منذ فترةٍ طويلةٍ.,My father came to Britain a long time ago.,msa,family,normal
-7fd1b875,جاء ليدرس الطِّبَّ.,He came to study medicine.,msa,work,normal
+66ec5fd4,أَعِدِ السُّؤالَ مَرَّةً أُخْرَى.,Repeat the question again.,msa,language,normal
 bb9a2f83,أصبح طبيبًا.,He became a doctor.,msa,work,normal
 0b8a8aa0,أصبح طبيبًا رائعًا.,He became an excellent doctor.,msa,work,normal
-9ecf1eef,لم يُخَطِّطْ لِلْبَقاءِ في بريطانيا.,He didn't plan to stay in Britain.,msa,family,normal
 772ea962,أراد أن يعود.,He wanted to return.,msa,family,normal
 a525bbf0,أراد أن يعود إلى بلده.,He wanted to return to his home country.,msa,family,normal
-7b4d6263,تَقابَلا في المُستشفى.,They met in the hospital.,msa,family,normal
 c57a84e7,تَعارَفا.,They got to know each other.,msa,family,normal
 ee38578c,وَقَعا في الحُبِّ.,They fell in love.,msa,family,normal
-7542c9df,تعارفا ثم وقعَا في الحُبِّ.,They got to know each other and fell in love.,msa,family,normal
 4ed0e790,نُسِجَ الحُبُّ بينهما.,Love was woven between them.,msa,family,normal
 3c5d27fd,جمعَ القدرُ بينهما.,Fate brought them together.,msa,family,normal
 0bdcd22f,شاءَ القدرُ أن يلتقيا.,Fate willed that they should meet.,msa,family,normal
-99b73ab5,بدأت قصةُ حُبِّهما في المُستشفى.,Their love story began in the hospital.,msa,family,normal
-6ba07753,أَوَدُّ أَنْ أَتَحَدَّثَ عَنْ مَوْضُوعِ الدَّرْسِ الماضِي.,I would like to talk about the topic from the last lesson.,msa,work,normal
-e83d600e,أَخَذَنِي إِلَى مَنْزِلِ صَدِيقِهِ.,He took me to his friend's house.,msa,people,normal
-6815ed53,طِفْلَا هٰذَا الرَّجُلِ وُلِدَا فِي المَمْلَكَةِ المُتَّحِدَةِ، مِثْلِي.,"This man's two children were born in the United Kingdom, like me.",msa,family,normal
-199a069c,وَالِدَتُهُمَا إِنْجِلِيزِيَّةٌ، وَوَالِدُهُمَا مِنَ الشَّرْقِ الأَوْسَطِ.,"Their mother is English, and their father is from the Middle East.",msa,family,normal
-26a175bf,أَرَادَ وَالِدُهُمَا أَنْ يُعَلِّمَهُمَا اللُّغَةَ العَرَبِيَّةَ وَالثَّقَافَةَ العَرَبِيَّةَ.,Their father wanted to teach them the Arabic language and Arab culture.,msa,culture,normal
 2114e53b,جَاءَ رَجُلٌ مُتَدَيِّنٌ.,A devout man came.,msa,culture,normal
 8c2ed3f5,أَعْطَانَا دَرْسًا بِالعَرَبِيَّةِ.,He gave us a lesson in Arabic.,msa,language,normal
-1745b72b,كَانَ يُعَلِّمُنَا أَسْمَاءَ أَجْزَاءِ الجِسْمِ.,He was teaching us the names of the parts of the body.,msa,health,normal
-f61a9511,كَانَ يَلْبَسُ مَلَابِسَ سَوْدَاءَ فَقَطْ، وَكَانَتْ لَهُ لِحْيَةٌ كَبِيرَةٌ.,"He wore only black clothes, and he had a big beard.",msa,people,normal
 a6d34ca1,شَعَرْتُ بِالخَوْفِ مِنْهُ.,I felt afraid of him.,msa,emotions,normal
-c7dcc482,قُلْتُ لِوَالِدِي: لَا أُرِيدُ أَنْ أَتَعَلَّمَ العَرَبِيَّةَ.,I said to my father: I don't want to learn Arabic.,msa,language,normal
-46796019,لَدَيَّ مَا يَكْفِينِي مِنَ الدُّرُوسِ.,I've had enough lessons.,msa,work,normal
-397e2769,لَدَيَّ مَا يَكْفِينِي مِنَ الدِّرَاسَةِ.,I've had enough studying.,msa,work,normal
-4f8e8e5b,الفُرَصُ وَالإِمْكانِيّاتُ لَمْ تَكُنْ مُتاحَةً أَوْ مُتَوَفِّرَةً كَما الآنَ.,The opportunities and possibilities weren't available as they are now.,msa,daily_life,normal
-73baf633,تَطَوَّرَتِ التِّكْنولوجْيا كَثيرًا في آخِرِ ثَلاثينَ سَنَةً.,Technology has developed a lot in the last thirty years.,msa,daily_life,normal
 ce185113,اَلرَّقَمُ المَطْلوبُ حالِيًّا لَيْسَ مُتاحًا.,The number you have dialled is currently unavailable.,msa,daily_life,normal
-7fdd1445,هَلْ هذا الهاتِفُ مُتَوَفِّرٌ في الأَسْواقِ؟,Is this phone available in the shops?,msa,daily_life,normal
 760b3940,هَلْ أَنْتَ مُتَفَرِّغٌ؟,Are you free / available (as a person)?,msa,daily_life,normal
 255895eb,منذ فترةٍ طويلةٍ,A long time ago,msa,family,normal
 46acfda6,جَلَسَتْ مَعَنا امْرَأَةٌ أوكْرانِيَّةٌ في بَيْتِنا.,A Ukrainian woman stayed with us in our house.,msa,people,normal
-b2d79dfe,كانَ عُمْري سِتًّا وَعِشْرينَ سَنَةً.,I was twenty-six years old.,msa,people,normal
 2a925a96,حَصَلْنا عَلى التَّأْشيرَةِ.,We got the visa.,msa,travel,normal
-7f481c16,سافَرْنا بَرًّا مِنَ الأُرْدُنِّ إِلى العِراقِ.,We travelled overland from Jordan to Iraq.,msa,travel,normal
-5c2255ff,كانَتْ رِحْلَةً مُتْعِبَةً لكِنَّنا كُنّا مُتَحَمِّسَيْنِ.,"It was a tiring journey, but we were excited.",msa,travel,normal
 e819ec85,لَمْ نَسْتَطِعْ أَنْ نُسافِرَ بِالطّائِرَةِ.,We couldn't travel by plane.,msa,travel,normal
-94ec24fe,كانَ يَجِبُ أَنْ نَذْهَبَ إِلى الأُرْدُنِّ.,We had to go to Jordan.,msa,travel,normal
 4fb31b16,في طفولتي,In my childhood,msa,family,normal
 eb7da4a7,خلال طفولتي,Throughout my childhood,msa,family,normal
 beb8aa6e,منذ الولادة,Since birth,msa,family,normal
 1545c605,ذَاتَ يَوْمٍ سَأَلْتُهُ...,One day I asked him...,msa,family,high
 b618faeb,أَجَابَنِي وَقَالَ...,He answered me and said...,msa,family,high
 867d0ccb,منذ طفولتي,Since my childhood,msa,family,normal
-315752a0,كانَ أَفْرادُ العائِلَةِ يَأْتونَ وَيَذْهَبونَ كُلَّ يَوْمٍ لِلزِّيارَةِ.,Family members would come and go every day to visit.,msa,family,normal
-780a4683,لَدَيْنا الكَثيرُ مِنْ أَبْناءِ العَمِّ وَبَناتِ العَمِّ.,We have lots of cousins.,msa,family,normal
-f1605e6b,سَكَنّا في بَيْتِ جَدَّتي رَحِمَها اللهُ.,"We stayed in my grandmother's house, God rest her soul.",msa,family,normal
+315752a0,كانَ أَفْرادُ العائِلَةِ يَأْتونَ وَيَذْهَبونَ كُلَّ يَوْمٍ لِلزِّيارَةِ.,Family members used to come and go every day to visit.,msa,family,normal
 23e47ce1,العائِلَةُ العَرَبِيَّةُ كَبيرَةٌ جِدًّا.,The Arab family is very big.,msa,family,normal
-dad37d09,سَأَلْتُ والِدي لكِنَّهُ كانَ مَشْغولًا.,"I asked my father, but he was busy.",msa,family,normal
 2b1b7d00,شَعَرْتُ أَنَّني جُزْءٌ مِنْ شَيْءٍ كَبيرٍ.,I felt I was part of something big.,msa,emotions,normal
 5478c10f,كُنّا مُتَحَمِّسَيْنِ، أَنا وَأَخي.,"We were excited, my brother and I.",msa,emotions,normal
 f2aa93b7,كانَتْ صَدْمَةً ثَقافِيَّةً لي.,It was a culture shock for me.,msa,emotions,normal
 bb9a65aa,عِنْدَمَا نَزَلَ الْقُرْآنُ...,When the Qur'an was revealed...,msa,culture,normal
-51b31723,وَلِذٰلِكَ لَحْمُ الْخِنْزِيرِ مُحَرَّمٌ فِي الْقُرْآنِ.,"Therefore, pork is forbidden in the Qur'an.",msa,culture,normal
 eeda8d1f,فِي الْإِنْجِيلِ يُقَالُ...,In the Gospel it says...,msa,culture,normal
 77d5a918,رَحِمَها اللهُ.,God rest her soul.,msa,culture,normal
-35f381b5,تَخْتَلِفُ عَنْ إِنْجِلْتِرا.,It's different from England.,msa,culture,normal
-9726db55,كَانَ هُنَاكَ مَرَضٌ بَيْنَ الْخَنَازِيرِ.,At that time there was disease among pigs.,msa,health,normal
-5ac0c8c6,دَعَتْهُ الحُكومَةُ العِراقِيَّةُ إِلى مُؤْتَمَرٍ.,The Iraqi government invited him to a conference.,msa,work,normal
+9726db55,كَانَ هُنَاكَ مَرَضٌ بَيْنَ الْخَنَازِيرِ.,There was a disease among the pigs.,msa,health,normal
 78e40c10,لَمْ أَعْرِفْ نُقْطَةَ البِدايَةِ.,I didn't know the starting point.,msa,language,normal
 cbe268a0,لَمْ أَسْتَطِعْ أَنْ أَبْدَأَ بِتَعَلُّمِ اللُّغَةِ.,I couldn't begin learning the language.,msa,language,normal
 58d8e762,عادَتْ لِيَ الرَّغْبَةُ مُجَدَّدًا.,The desire came back to me again.,msa,language,normal
 d9164300,كان لديَّ اهتمامٌ بـ...,I have been interested in...,msa,language,high
 429cbb0e,كان لديَّ فضولٌ حول...,I was curious about...,msa,language,high
-c837c0c1,رَغْبَتي في تَعَلُّمِ العَرَبِيَّةِ بَدَأَتْ تَتَلاشى.,My desire to learn Arabic began to fade.,msa,language,normal
 2ac7ae2b,حاوَلْتُ أَنْ أَسْتَخْدِمَها.,I tried to use them.,msa,language,normal
 1dcba544,بَعْضُهُمْ لَمْ يَسْتَطِعْ أَنْ يَتَحَدَّثَ بِالإِنْجْليزِيَّةِ.,Some of them couldn't speak English.,msa,language,normal
 173b2f3f,لَمْ أَعْرِفْ مِنْ أَيْنَ أَبْدَأُ.,I didn't know where to begin.,msa,language,normal
-15bf5d1a,عِنْدَما رَجَعْنا لَمْ أَجِدْ طَريقًا لِتَعَلُّمِ اللُّغَةِ.,"When we returned, I didn't find a way to learn the language.",msa,language,normal
-8807647d,اللُّغَةُ العَرَبِيَّةُ مُخْتَلِفَةٌ جِدًّا عَنِ اللُّغاتِ الأورُوبِّيَّةِ.,Arabic is very different from European languages.,msa,language,normal
 14f92d1d,اِحْتَجْتُ إِلى مُساعَدَةٍ.,I needed help.,msa,emotions,normal
-af7b5b9c,إِذا اسْتَطَعْتَ أَنْ تَتَعَلَّمَ لُغَةً أَجْنَبِيَّةً مِثْلَ الرّوسِيَّةِ، فَلِمَ لا تَتَعَلَّمُ لُغَتَكَ الأُمَّ؟,"If you could learn a foreign language like Russian, why not learn your mother tongue?",msa,language,normal
-46523188,اِسْتَصْعَبْتُ تَعَلُّمَ العَرَبِيَّةِ وَظَنَنْتُهُ شَيْئًا مُسْتَحيلًا,I found learning Arabic difficult and thought it impossible,msa,language,normal
-46e3c331,قُلْتُ لِنَفْسِي: أَسْتَطِيعُ أَنْ أُخَصِّصَ وَقْتًا لِدِرَاسَةِ العَرَبِيَّةِ.,I said to myself: I can set aside time for studying Arabic.,msa,language,normal
 56079506,يَجِبُ أَنْ أَكْتَسِبَ عَادَاتٍ جَيِّدَةً.,I must acquire good habits.,msa,daily_life,normal
 64b05595,الأَطْفَالُ يَكْتَسِبُونَ العَادَاتِ وَالتَّقَالِيدَ مِنَ الأَهْلِ.,Children acquire habits and traditions from the family.,msa,culture,normal
-a77c566d,وَأَنَا أَنْتَظِرُ الحَافِلَةَ، لَدَيَّ وَقْتُ فَرَاغٍ.,"While I'm waiting for the bus, I have free time.",msa,leisure,normal
-41edd4ec,عِنْدَمَا أَجْمَعُ هٰذَا الوَقْتَ، لَرُبَّمَا يَكُونُ سَاعَةً.,"When I add up this time, it might be an hour.",msa,daily_life,normal
 588d85c6,يَجِبُ عَلَيَّ أَنْ أَسْتَغِلَّ هٰذَا الوَقْتَ.,I must make the most of this time.,msa,daily_life,normal
-225d4e3a,كُنْتُ أُضَيِّعُ الكَثِيرَ مِنَ الوَقْتِ فِي الهَاتِفِ.,I used to waste a lot of time on my phone.,msa,daily_life,normal
-f7cc2e9d,وَعَدْتُ نَفْسِي: سَأَتَعَلَّمُ هٰذِهِ اللُّغَةَ.,I promised myself: I will learn this language.,msa,language,normal
 9f43eb89,وَهٰكَذَا كَانَتْ نِهَايَةُ البِدَايَةِ.,And so it was the end of the beginning.,msa,language,normal
-d69ec025,وَجَدْتُ صُعُوبَةً فِي إِيجَادِ مَصَادِرَ تَعْلِيمِيَّةٍ جَيِّدَةٍ.,I found it hard to find good learning resources.,msa,language,normal
-9967d3ef,كُنْتُ أَسْتَخْدِمُ الكُرُوتَ التَّعْلِيمِيَّةَ لِحِفْظِ الكَلِمَاتِ الجَدِيدَةِ.,I used flashcards to memorise new words.,msa,language,normal
-e6a0a763,وَجَدْتُ قَنَوَاتٍ عَلَى اليُوتْيُوب وَكُنْتُ أُكَرِّرُ الجُمَلَ مِرَارًا وَتَكْرَارًا.,I found YouTube channels and repeated the sentences over and over.,msa,language,normal
-2772191f,كُنْتُ أُقَلِّدُ مِثْلَ البَبَّغَاءِ، كَمَا يَتَعَلَّمُ الأَطْفَالُ.,"I imitated like a parrot, the way children learn.",msa,language,normal
-5c331f27,كُنْتُ أُبْطِئُ سُرْعَةَ الفِيدْيُو وَأُعِيدُ المَقْطَعَ.,I'd slow the video speed and replay the clip.,msa,language,normal
 6d526fc3,تَعَوَّدْتُ عَلَى الاِسْتِمَاعِ اليَوْمِيِّ.,I got used to daily listening.,msa,language,normal
-849b9298,أُذُنِي مُتَعَوِّدَةٌ عَلَى أَصْوَاتِ الفُصْحَى.,My ear is accustomed to the sounds of Fusha.,msa,language,normal
-00dfb172,كُنْتُ أُبْطِئُ السُّرْعَةَ لِأَجْعَلَ أُذُنِي تَتَعَوَّدُ عَلَى أَصْوَاتِ اللُّغَةِ.,I slowed the speed to get my ear accustomed to the sounds of the language.,msa,language,normal
 4a157df6,كُنْتُ أَسْتَطِيعُ أَنْ أَصِفَ شَيْئًا بَسِيطًا فَقَطْ.,I could only describe simple things.,msa,language,normal
-769b7597,كَانَ لَدَيَّ مُشْكِلَةٌ فِي مَهَارَةِ الاِسْتِمَاعِ وَفِي الفَهْمِ.,I had a problem with listening and comprehension.,msa,language,normal
 4695322c,شَعَرْتُ أَنَّنِي عَلِقْتُ فِي مُسْتَوًى مَا.,I felt stuck at a certain level.,msa,language,normal
 f1e24ea4,شَعَرْتُ أَنَّنِي بِحَاجَةٍ لِتَوْجِيهٍ مِنْ مُعَلِّمٍ.,I felt I needed guidance from a teacher.,msa,language,normal
-cc0e8313,ثَمَانُونَ بِالمِئَةِ مِنْ تَعَلُّمِي كَانَ جُهْدًا ذَاتِيًّا.,Eighty percent of my learning was self-directed effort.,msa,language,normal
 662190b2,سَآخُذُ هٰذَا بِعَيْنِ الاِعْتِبَارِ.,I'll take this into consideration.,msa,daily_life,normal
-1a31603a,كُنْتُ مُهْتَمًّا بِالثَّقَافَةِ العَرَبِيَّةِ مُنْذُ طُفُولَتِي.,I'd been interested in Arab culture since my childhood.,msa,culture,normal
 a98b0a0f,اِهْتَمَمْتُ بِتَعَلُّمِ اللُّغَاتِ قَبْلَ العَرَبِيَّةِ.,I took an interest in learning languages before Arabic.,msa,language,normal
-6a51581a,اِلْتَقَيا لِأَوَّلِ مَرَّةٍ في المُسْتَشْفى.,They met for the first time in the hospital.,msa,family,normal
-532bd33c,شاءَ القَدَرُ أَنْ يَلْتَقِيا لِأَوَّلِ مَرَّةٍ في المُسْتَشْفى.,Fate willed that they meet for the first time in the hospital.,msa,family,normal
 715fb294,تَعَوَّدْتُ عَلَى...,I became accustomed to...,msa,language,high
 5655c052,اِهْتَمَمْتُ بِـ...,I took an interest in...,msa,language,high
 f38e1bc7,كُنْتُ مُهْتَمًّا بِـ...,I had been interested in...,msa,language,high
@@ -547,93 +268,39 @@ b6e9a07d,يَجِبُ أَنْ أَكْتَسِبَ...,I must acquire...,msa,dai
 31e60ec6,لَمْ نَسْتَطِعْ أَنْ...,We couldn't...,msa,family,high
 f33576a4,فَقَدَ جَدِّي حَيَاتَهُ مُبَكِّرًا.,My grandfather lost his life early.,msa,family,normal
 df6e857e,قَامَتْ جَدَّتِي بِتَرْبِيَةِ عَائِلَةٍ كَبِيرَةٍ بِنَفْسِهَا.,My grandmother raised a large family by herself.,msa,family,normal
-aeaf6335,كَانَتْ وَظِيفَةُ جَدِّي حِمَايَةَ المَلِكِ فَيْصَل.,My grandfather's job was protecting King Faisal.,msa,family,normal
-59bc1b65,كَانَ المَلِكُ فَيْصَل أَخًا لِمَلِكِ الأُرْدُنِّ.,King Faisal was brother to the King of Jordan.,msa,culture,normal
-b741bcab,قَبْلَ سُقُوطِ صَدَّام حُسَيْن لَمْ تَكُنْ هُنَاكَ مُشْكِلَةٌ طَائِفِيَّةٌ.,Before the fall of Saddam Hussein there was no sectarian problem.,msa,culture,normal
 f73e4086,أَرَدْتُ أَنْ أَلْتَقِطَ الصُّورَةَ.,I wanted to take the photo.,msa,daily_life,normal
-a7c6ebc8,سَأَلْتُ أَبِي مَتَى التُقِطَتِ الصُّورَةُ لَكِنَّهُ لَمْ يُجيبنِي بَعْدُ.,I asked my father when the photo was taken but he hasn't answered me yet.,msa,family,normal
 e8579b94,فِي حِوَارٍ سَابِقٍ أَخْبَرَنِي أَبِي هَذِهِ القِصَّةَ.,In a previous conversation my father told me this story.,msa,family,normal
-2a6bd6f7,كَانَ أَبِي يُحِبُّهَا كَثِيرًا وَيَشْتَاقُ إِلَيْهَا كَثِيرًا.,My father loved her a lot and misses her a lot.,msa,emotions,normal
 8eb378f9,كَانَتْ لَدَيَّ صَدْمَةٌ ثَقَافِيَّةٌ.,I had a culture shock.,msa,culture,normal
 39167b92,عَيْنَايَ كَانَتَا مَبْهُورَتَيْنِ.,My eyes were dazzled.,msa,emotions,normal
-a8c45d55,رَجَعَ أَوْلَادُهَا إِلَى بَغْدَادَ لِلْعَيْشِ مَعَ جَدَّتِي.,Her children returned to Baghdad to live with my grandmother.,msa,family,normal
-43687310,هَذِهِ التَّجْرِبَةُ شَكَّلَتْ سَبَبًا قَوِيًّا لِتَعَلُّمِ اللُّغَةِ العَرَبِيَّةِ.,This experience formed a strong reason for learning Arabic.,msa,language,normal
 23cf1a7b,كَانَتْ جَدَّتِي مَرْكَزَ العَائِلَةِ.,My grandmother was the centre of the family.,msa,family,normal
-d2048c1a,يَقَعُ بَيْتُ جَدَّتِي فِي حَارَةٍ رَاقِيَةٍ.,My grandmother's house is in an upscale neighbourhood.,msa,family,normal
-b0cf578a,كَانَتِ العَائِلَةُ تَعِيشُ فِي بَيْتٍ مُكَوَّنٍ مِنْ طَابِقَيْنِ.,The family lived in a two-storey house.,msa,family,normal
-708bf9c2,كَانَتْ جَدَّتِي تَطْبُخُ عَلَى الأَرْضِ وَلَدَيْهَا فُرْنٌ صَغِيرٌ.,My grandmother cooked on the ground and had a small oven.,msa,food,normal
-8c420401,كَانَتْ كُلُّ نِسَاءِ العَائِلَةِ يَجْلِسْنَ فِي المَطْبَخِ خِلَالَ النَّهَارِ.,All the women of the family would sit in the kitchen during the day.,msa,family,normal
+8c420401,كَانَتْ كُلُّ نِسَاءِ العَائِلَةِ يَجْلِسْنَ فِي المَطْبَخِ خِلَالَ النَّهَارِ.,All the women of the family used to sit in the kitchen during the day.,msa,family,normal
 ed1bd533,كُنَّ يُدَخِّنَّ السَّجَائِرَ خِلَالَ اليَوْمِ.,They (f.) used to smoke cigarettes during the day.,msa,daily_life,normal
-60d9cd68,كَانَ المُجْتَمَعُ تَقْلِيدِيًّا مُحَافِظًا.,The society was traditional and conservative.,msa,culture,normal
-cdb9eaa6,تُوجَدُ صُوَرٌ نَمْطِيَّةٌ كَثِيرَةٌ عَنِ العِرَاقِ.,There are many stereotypes about Iraq.,msa,people,normal
+60d9cd68,كَانَ المُجْتَمَعُ تَقْلِيدِيًّا مُحَافِظًا.,The society was traditional and conservative.,msa,people,normal
 f0814119,عَائِلَةُ وَالِدِي سُنِّيَّةٌ.,My father's family is Sunni.,msa,culture,normal
-36ee5861,لَيْسَ لَدَيْنَا أَشْجَارُ نَخِيلٍ فِي بَرِيطَانِيَا — لَدَيْنَا أَشْجَارُ تُفَّاحٍ وَكُمَّثْرَى.,We don't have palm trees in Britain — we have apple and pear trees.,msa,leisure,normal
-a0da1d1f,أَوَّلُ مَرَّةٍ رَأَيْتُ فِيهَا أَشْجَارَ الزَّيْتُونِ وَالنَّخِيلِ وَاللَّيْمُونِ كَانَتْ فِي العِرَاقِ.,"The first time I saw olive, palm and lemon trees was in Iraq.",msa,leisure,normal
-8bf2de4d,هَذِهِ صُورَةٌ مِنْ حَفْلَةِ زِفَافِ جَدِّي وَجَدَّتِي.,This is a photo from my grandparents' wedding.,msa,family,normal
-4c2de654,كَانَ عُمْرُهَا سِتًّا وَعِشْرِينَ سَنَةً.,She was twenty-six years old.,msa,family,normal
-9210d3f7,عِنْدَمَا فَقَدَ جَدِّي حَيَاتَهُ كَانَ عُمْرُ أَبِي ثَلَاثَ سَنَوَاتٍ.,"When my grandfather lost his life, my father was only three years old.",msa,family,normal
-6eb9f0b5,كَانَتْ تَرْتَدِي قَمِيصًا عَلَيْهِ زُهُورٌ.,She was wearing a shirt with flowers on it.,msa,family,normal
-458250df,عِنْدَمَا يَعِيشُ الإِنْسَانُ خَارِجَ بَلَدِهِ يَشْتَاقُ إِلَى كُلِّ شَيْءٍ.,"When a person lives outside his country, he misses everything.",msa,emotions,normal
-b61879ae,هَذِهِ مَعْلُومَةٌ جَاءَتْ بِالصُّدْفَةِ.,This is a piece of information that came by chance.,msa,daily_life,normal
 fa320163,أَرْسَلْتُ لَكِ الصُّورَةَ عَلَى البَرِيدِ.,I sent you (f.) the photo by email.,msa,daily_life,normal
-97eef018,يَجِبُ عَلَيْنَا أَنْ نَفْهَمَ التَّارِيخَ لِكَيْ نَفْهَمَ اللُّغَةَ.,We must understand the history to understand the language.,msa,language,normal
-aa451fa5,كَانَتْ بِلَادُ الشَّامِ تَحْتَ الاِحْتِلَالِ العُثْمَانِيِّ.,The Levant was under Ottoman occupation.,msa,history,normal
-10370118,فِي ذَلِكَ الوَقْتِ لَمْ يَكُنْ هُنَاكَ عِرَاقٌ وَلَا سُورِيَا — كَانَتْ مِنْطَقَةً وَاحِدَةً.,At that time there was no Iraq or Syria — it was one region.,msa,culture,normal
-bc399750,قَبْلَ انْتِهَاءِ الإِمْبَرَاطُورِيَّةِ العُثْمَانِيَّةِ كَانَتْ هُنَاكَ ثَوْرَةٌ نَقُولُ عَنْهَا الثَّوْرَةَ العَرَبِيَّةَ الكُبْرَى.,Before the end of the Ottoman Empire there was a revolt we call the Great Arab Revolt.,msa,history,normal
 c83b2196,جَاءَ قَائِدُ الثَّوْرَةِ مِنَ الحِجَازِ.,The revolt's leader came from the Hijaz.,msa,history,normal
-c415f14f,خَرَجَ وَالِدُ جَدَّتِي مِنْ تُرْكِيَا بِسَبَبِ الحَرْبِ العَالَمِيَّةِ الأُولَى.,My grandmother's father left Turkey because of WWI.,msa,culture,normal
-8711c2ab,بِسَبَبِ العُثْمَانِيِّينَ يُوجَدُ فِي اللَّهْجَةِ العِرَاقِيَّةِ الكَثِيرُ مِنَ الكَلِمَاتِ التُّرْكِيَّةِ وَالفَارِسِيَّةِ.,"Because of the Ottomans, the Iraqi dialect has many Turkish and Persian words.",msa,history,normal
-1cc2df3e,كَانَ هُنَاكَ أَشْجَارُ فَاكِهَةٍ وَأَشْجَارُ نَخِيلٍ.,There were fruit trees and palm trees.,msa,leisure,normal
-3d89a93d,تُوجَدُ فِي العِرَاقِ مَذَاهِبُ مُخْتَلِفَةٌ.,There are different sects in Iraq.,msa,culture,normal
 ddf200d2,كَانَ جَدِّي عَسْكَرِيًّا.,My grandfather was a military man.,msa,family,normal
 8dd9253e,عَمِلَ جَدِّي فِي الجَيْشِ.,My grandfather worked in the army.,msa,work,normal
 39ff5383,لَدَيَّ صُورَةٌ أُخْرَى مِنْ ذَلِكَ اليَوْمِ.,I have another photo from that day.,msa,daily_life,normal
-d5a8c1da,فَقَدَتْ عَمَّتِي حَيَاتَهَا مُبَكِّرًا، رَحِمَهَا اللهُ.,"My aunt lost her life early, God rest her.",msa,family,normal
 23de973c,هَلْ لَدَيْكَ أَعْمَامٌ وَعَمَّاتٌ؟,Do you have paternal uncles and aunts?,msa,family,normal
 950b3e24,لَيْسَ لَدَيْنَا...,We don't have...,msa,daily_life,high
 ced10c26,كَانَ عُمْرُهُ...,He was ... years old...,msa,people,high
 e7a1f695,يَجِبُ عَلَيْنَا أَنْ...,We must...,msa,daily_life,high
 27817dd2,هَلْ تُرِيدُ أَنْ تُشَارِكَ العَرْضَ التَّقْدِيمِيَّ عَلَى الشَّاشَةِ؟,Do you want to share the presentation on the screen?,msa,language,normal
 eddf0471,سَأُرِيكَ الخَرِيطَةَ.,I'll show you the map.,msa,language,normal
-684e17b2,نَحْنُ مُتَحَمِّسُونَ بِسَبَبِ العُطْلَةِ.,We're excited because of the holiday.,msa,emotions,normal
-0989cc46,أَنْتَ حَمَّسْتَنِي — كَانَ المَوْضُوعُ شَيِّقًا.,You got me excited — the topic was fascinating.,msa,emotions,normal
-4dbba66c,كَانَتِ الإِمْبَرَاطُورِيَّةُ مَوْجُودَةً لِفَتْرَةٍ طَوِيلَةٍ.,The empire existed for a long time.,msa,history,normal
-39656bf2,تَمْتَدُّ المِنْطَقَةُ مِنْ فِيينَّا شَرْقًا إِلَى بَغْدَادَ.,The region stretches from Vienna east to Baghdad.,msa,history,normal
 cd607130,اِمْتَدَّ مِنْ ... إِلَى ...,extended / stretched from ... to ...,msa,travel,high
-dd84f2d8,كُنْتُ مَبْهُورًا عِنْدَمَا رَأَيْتُ الخَرِيطَةَ.,I was dazzled when I saw the map.,msa,emotions,normal
-51f83172,هَذَا بِنَاءٌ ضَخْمٌ.,This is a huge building.,msa,culture,normal
-77a5117b,لَمْ تَكُنِ الإِمْبَرَاطُورِيَّةُ خِيَارًا.,The empire wasn't a choice.,msa,history,normal
-83426510,لَا يُوجَدُ تَارِيخٌ نَقِيٌّ مِئَةً بِالمِئَةِ.,There's no 100% pure history.,msa,culture,normal
+51f83172,هَذَا بِنَاءٌ ضَخْمٌ.,This is a huge building.,msa,sightseeing,normal
 6e06e669,لَا يُوجَدُ ...,There's no ... / ... doesn't exist,msa,daily_life,high
-2766aba4,يَعْتَقِدُ كَثِيرٌ مِنَ العَرَبِ أَنَّ الإِمْبَرَاطُورِيَّةَ كَانَتْ سَبَبًا فِي تَرَاجُعِهِمْ.,Many Arabs believe the empire was a cause of their decline.,msa,history,normal
 e54c9e25,كَانَ سَبَبًا فِي ...,was a cause of ...,msa,daily_life,high
-37f837b4,فِي زَمَنِ العَبَّاسِيِّينَ وَالأُمَوِيِّينَ كَانَتِ الدُّوَلُ العَرَبِيَّةُ مُتَقَدِّمَةً جِدًّا فِي العُلُومِ وَالطِّبِّ وَالعِمَارَةِ.,"In the Abbasid and Umayyad eras the Arab states were very advanced in sciences, medicine and architecture.",msa,history,normal
-5e03dd68,لَمْ نُحَقِّقْ إِنْجَازًا وَلَمْ نَتَقَدَّمْ.,We achieved nothing and didn't advance.,msa,culture,normal
-d2948318,لِلثَّوْرَةِ العَرَبِيَّةِ الكُبْرَى أَسْبَابٌ.,The Great Arab Revolt has causes.,msa,history,normal
-98b554b8,كَانَتْ سِيَاسَةُ التَّتْرِيكِ وَالظُّلْمُ وَالقَوْمِيَّةُ العَرَبِيَّةُ مِنْ أَسْبَابِ الثَّوْرَةِ.,"Turkification policy, oppression, and Arab nationalism were among the revolt's causes.",msa,history,normal
-257631dd,قَتَلُوا المُفَكِّرِينَ وَالعُلَمَاءَ وَالأُدَبَاءَ فِي السَّاحَاتِ.,"They killed the intellectuals, scholars and writers in the public squares.",msa,culture,normal
-a6423829,بَدَأَ هَذَا الشُّعُورُ يَنْمُو مَعَ الوَقْتِ.,This feeling began to grow over time.,msa,emotions,normal
 30fa6c5e,بَدَأَ ... يَنْمُو,... began to grow,msa,daily_life,high
-6af5b64c,الحِجَازُ مِنْطَقَةٌ فِي السُّعُودِيَّةِ فِيهَا مَكَّةُ وَالمَدِينَةُ المُنَوَّرَةُ وَجُدَّةُ.,"The Hijaz is a region in Saudi Arabia containing Mecca, Medina and Jeddah.",msa,travel,normal
-bc8b7d7c,تَقَعُ جُدَّةُ عَلَى البَحْرِ الأَحْمَرِ.,Jeddah lies on the Red Sea.,msa,travel,normal
 f3a6ec53,قَاتَلَ أَبْنَاؤُهُ مَعَهُ فِي المَعْرَكَةِ.,His sons fought alongside him in battle.,msa,history,normal
 0faf4413,سَاعَدَتْهُمَا بَرِيطَانْيَا فِي الحَرْبِ.,Britain helped the two of them in the war.,msa,history,normal
-5012120d,دَخَلَتِ الإِمْبَرَاطُورِيَّةُ الحَرْبَ بِجَانِبِ أَلْمَانْيَا.,The empire entered the war on Germany's side.,msa,history,normal
 18f90afa,خَسِرُوا الحَرْبَ.,They lost the war.,msa,history,normal
-43fb5b96,فِي الفَتْرَةِ الأَخِيرَةِ مِنَ الحُكْمِ كَانُوا يَهْتَمُّونَ بِبِنَاءِ القُصُورِ وَالحَدَائِقِ.,In the final period of the rule they were preoccupied with building palaces and gardens.,msa,history,normal
 719d319d,كَانَ هُنَاكَ بَذَخٌ كَبِيرٌ.,There was great extravagance.,msa,culture,normal
 5c41c210,خَرَجَ السُّلْطَانُ الأَخِيرُ مِنَ القَصْرِ.,The last sultan left the palace.,msa,history,normal
-36a59787,كُنَّا نُخَبِّئُ القَمْحَ وَالذَّهَبَ لِكَيْ لَا يَأْخُذُوهَا.,We used to hide the wheat and the gold so they wouldn't take them.,msa,culture,normal
-3e39e718,هُنَاكَ رِوَايَتَانِ حَوْلَ اكْتِشَافِ القَهْوَةِ.,There are two accounts of coffee's discovery.,msa,food,normal
-678e169d,جَلَبُوا القَهْوَةَ مِنَ اليَمَنِ إِلَى إِسْطَنْبُولَ.,They brought coffee from Yemen to Istanbul.,msa,food,normal
-7cd68d0c,انْتَقَلَتِ القَهْوَةُ إِلَى أُورُوبَّا عَبْرَ البُنْدُقِيَّةِ.,Coffee travelled to Europe via Venice.,msa,food,normal
-ba8c5bed,هَذَا يَدُلُّ عَلَى مَكَانَةِ القَهْوَةِ.,This shows coffee's standing.,msa,food,normal
 46852bbb,هَذَا يَدُلُّ عَلَى ...,This shows / indicates ...,msa,daily_life,high
-ddeb97bf,هُنَاكَ عَادَاتٌ وَتَقَالِيدُ لِشُرْبِ القَهْوَةِ.,There are customs and traditions for drinking coffee.,msa,food,normal
-763a8b19,بِالمُقَارَنَةِ مَعَ بَرِيطَانْيَا كَانَ عِنْدَنَا سَلَامٌ لِفَتْرَةٍ طَوِيلَةٍ.,"By comparison with Britain, we had peace for a long period.",msa,culture,normal
 a0c72cd1,بِالمُقَارَنَةِ مَعَ ...,By comparison with ...,msa,daily_life,high
 c0fedc14,لَمْ نُحَقِّقْ إِنْجَازًا.,We achieved nothing.,msa,work,normal
-9bc3b9c8,نَقِيٌّ مِئَةً بِالمِئَةِ.,100% pure.,msa,daily_life,high
 975e063d,لَمْ تَكُنْ خِيَارًا.,It wasn't a choice.,msa,daily_life,normal
 b28f4a4f,لَمْ يَكُنْ خِيَارًا.,It wasn't a choice (masc.).,msa,daily_life,normal
 ce7a6947,كُنْتُ مَبْهُورًا.,I was dazzled.,msa,emotions,normal
@@ -660,11 +327,8 @@ ba79e58c,لِـ … أَسْبَابٌ,There are reasons/causes for …,msa,hist
 d0ba68c8,دَخَلَتْ … بِجَانِبِ …,… entered / took …'s side,msa,history,high
 32778ec7,كَانُوا يَهْتَمُّونَ بِـ …,was/were preoccupied with / concerned with …,msa,history,high
 539c9f73,قَامَ ... بِالمُسَاهَمَةِ بِشَكْلٍ كَبِيرٍ فِي ...,X contributed greatly to Y,msa,history,high
-f0abd5f1,اِكْتَشَفْتُ مَوْضُوعًا مُهِمًّا فِي التَّارِيخِ.,I discovered an important topic in history.,msa,history,normal
 fd2bddb6,قَسَّمَهَا إِلَى أَجْزَاءٍ صَغِيرَةٍ.,It divided it into small parts.,msa,language,normal
 000b0357,تَقَدَّمُوا فِي جَمِيعِ المَجَالَاتِ.,They advanced in all fields.,msa,history,normal
-3e4a683e,قَامَ وَالِدِي بِالمُسَاهَمَةِ فِي دِرَاسَتِي لِلُّغَةِ العَرَبِيَّةِ.,My father contributed to my study of Arabic.,msa,family,normal
-f7df7226,هُوَ مَسْؤُولٌ عَنِ التَّقَدُّمِ.,He is responsible for the progress.,msa,history,normal
 3322027e,اِحْتِرَامُ العَائِلَةِ,Respect for the family,msa,history,normal
 1b83247d,الجُمْلَةُ مُعَقَّدَةٌ قَلِيلًا.,The sentence is a little complex.,msa,language,normal
 4b23e63b,يَجِبُ أَنْ تَكُونَ صَحِيحَةً.,It must be correct.,msa,language,normal
@@ -685,25 +349,16 @@ a26f4ba2,طَرِيقَةٌ لِـ ...,a way to ...,msa,language,high
 ac22dccb,أَقُومُ بِـ ...,I go about ... / I carry out ...,msa,language,high
 21b548ae,أَقُومُ بِإِنْشَاءِ كُرُوتٍ تَعْلِيمِيَّةٍ,I make flashcards,msa,language,normal
 1810e111,الكَلِمَاتُ تَتَكَرَّرُ,the words repeat,msa,language,normal
-e07cc4a0,عِنْدَمَا نَتَحَدَّثُ عَنِ التَّارِيخِ وَالمُدُنِ القَدِيمَةِ الكَلِمَاتُ تَتَكَرَّرُ,when we talk about history and old cities the words repeat,msa,language,normal
 2f63350c,غَيْرُ مَأْلُوفٍ,unfamiliar / not commonplace,msa,language,normal
 51005433,تَشْتَهِرُ بِـ ...,it is famous for ...,msa,culture,high
 882b56a1,تَشْتَهِرُ بِوُجُودِ ...,it is famous for having ...,msa,culture,high
 cf2ae623,يَشْتَهِرُونَ بِأَنَّهُمْ ...,they are well known for being ...,msa,history,high
-11dd4527,تَشْتَهِرُ بِوُجُودِ نَافُورَةٍ وَسَاحَةٍ فِي وَسَطِ المَنْزِلِ,it is famous for having a fountain and a courtyard in the middle of the house,msa,culture,normal
-780b61f6,تَشْتَهِرُ بِأَشْجَارِ البُرْتُقَالِ وَاللَّيْمُونِ وَالياسَمِينِ,it is famous for orange lemon and jasmine trees,msa,culture,normal
-666c53a1,يَشْتَهِرُونَ بِأَنَّهُمْ أَقْوِيَاءُ,they are well known for being strong,msa,history,normal
 d4061f7e,كَانَتْ مَرْكَزًا لِـ ...,it was a centre for ...,msa,history,high
-8b2cad79,كَانَتْ بَغْدَادُ مَرْكَزًا لِلتِّجَارَةِ وَالصِّنَاعَةِ وَالأَدَبِ,Baghdad was a centre for trade industry and literature,msa,history,normal
 dce8ed86,أُسِّسَتْ فِي عَهْدِ ...,it was founded in the era of ...,msa,history,high
-9636ed97,أُسِّسَتْ فِي عَهْدِ الخَلِيفَةِ العَبَّاسِيِّ هَارُونَ الرَّشِيدِ,it was founded in the era of the Abbasid Caliph Harun al-Rashid,msa,history,normal
-a9d9d2b0,أَوَّلُ دَارٍ عِلْمِيَّةٍ أُقِيمَتْ فِي العَصْرِ الذَّهَبِيِّ لِلْإِسْلَامِ,the first scholarly institution established in the Islamic Golden Age,msa,history,normal
 57abc542,مَكْتَبَةٌ مَلِيئَةٌ بِالكُتُبِ,a library full of books,msa,history,normal
-e9e068ea,تَتَحَدَّثُ عَنِ الطِّبِّ وَالنُّجُومِ وَالهَنْدَسَةِ وَالأَدَبِ,they deal with medicine astronomy engineering and literature,msa,history,normal
 6f355bcf,كُتُبٌ نَادِرَةٌ,rare books,msa,history,normal
 03065a96,كَانَتْ شَيْئًا خَاصًّا,it was something special,msa,history,normal
 23999067,سَاهَمَ ... فِي ...,... contributed to ...,msa,history,high
-449f116e,سَاهَمَ الأَنْدَلُسُ فِي حُقُولٍ مُخْتَلِفَةٍ فِي الطِّبِّ وَالهَنْدَسَةِ وَالفَلَكِ,al-Andalus contributed in different fields in medicine engineering and astronomy,msa,history,normal
 69c3f6eb,قَامُوا بِالمُسَاهَمَةِ فِي مَجَالَاتٍ مُخْتَلِفَةٍ,they contributed in different fields,msa,history,normal
 ab02a177,كَانَتْ حَضَارَةً مُتَقَدِّمَةً مُتَطَوِّرَةً,it was an advanced developed civilisation,msa,history,normal
 0f020b96,لَدَيْهَا تَارِيخٌ غَنِيٌّ,it has a rich history,msa,history,normal
@@ -715,3 +370,618 @@ e50c405f,يَغْمِسُ ... فِي ...,dips ... in ...,msa,food,high
 c704a8f4,أَنْوَاعُ بِسْكُوِيتٍ تَقْلِيدِيَّةٌ,traditional kinds of biscuit,msa,food,normal
 b6e578bb,لَيْسَ وَقْتًا مُحَدَّدًا,it isn't a specific time,msa,daily_life,normal
 f77120d5,سَأَبْقَى هُنَا بِضْعَ أَيَّامٍ,I will stay here a few days,msa,travel,normal
+aec959ac,إِمْبَرَاطُورِيَّة,empire (n.),msa,history,normal
+d816de42,تَرَاجُع,decline (n.),msa,history,normal
+0132440e,آسِفٌ عَلَى …,Sorry for …,msa,smalltalk,high
+9e4a2998,تَأَخُّر,"lateness, delay (n.)",msa,smalltalk,normal
+d1bad103,زِحَام,"traffic, crowding (n.)",msa,smalltalk,normal
+e2caed93,فَظِيع,terrible (adj.),msa,smalltalk,normal
+f05f7aa1,أَبْطَأَ,slowed down (v.),msa,travel,normal
+be5f0645,زَلِق,slippery (adj.),msa,travel,normal
+5f2f3b43,مَوْج,waves (n.),msa,beach_and_vendors,normal
+6e9a41f5,خَطِر,dangerous (adj.),msa,beach_and_vendors,normal
+32873557,لِنَخْرُجْ لِـ …,Let's go out for …,msa,leisure,high
+b31c127c,مُشْمِس,sunny (adj.),msa,leisure,normal
+86bcafdc,دَافِئ,warm (adj.),msa,leisure,normal
+7e7d5987,وُلِدْتُ فِي …,I was born in …,msa,family,high
+8b2416e8,وَالِدِي مِنَ …,My father is from …,msa,family,high
+9a4a2876,أَمَّا … فَـ …,"As for …, (then) …",msa,language,high
+e4489cca,تَقُولُ فِيهِ مَا تَشَاءُ,You say whatever you want in it,msa,language,normal
+93005074,كَانَ … يَسْتَمِعُ إِلَى …,… used to listen to …,msa,family,high
+dfe22944,أُغْنِيَة,song (n.),msa,family,normal
+e1d39b18,وَمَرَّةً …,"And once, …",msa,language,high
+0c99181d,كَبِرْتُ فِي …,I grew up in …,msa,family,high
+7feda3f6,… لَيْسَ فِيهَا …,… with no … in it,msa,family,high
+3cbb4619,تِجَاهَ,"towards, regarding (prep.)",msa,language,normal
+6475e309,حِينَ جِئْتُ …,"When I came, …",msa,people,high
+5852a93b,كَانَ عَلَيَّ أَنْ …,I had to …,msa,people,high
+dd0968e1,اِنْدَمَجَ,integrated (v.),msa,people,normal
+1b3022ff,أَحْيَانًا أَشْعُرُ أَنَّنِي …,Sometimes I feel that I …,msa,emotions,high
+b4b9c16d,ضَائِع,lost (adj.),msa,emotions,normal
+15f2382c,اِنْتِمَاء,belonging (n.),msa,emotions,normal
+7a7de17d,لَا أَعْرِفُ السَّبَبَ,I don't know the reason,msa,smalltalk,normal
+820c1c62,رُبَّمَا …,Maybe …,msa,smalltalk,high
+1b7e9cba,اِخْتِلَاف,difference (n.),msa,health,normal
+575e2a34,خُضْرَوَات,vegetables (n.),msa,food,normal
+8f376c8f,مِيَاه مَعْدِنِيَّة,mineral water (n.),msa,food,normal
+1ea56ecf,لَا يَسْتَطِيعُونَ …,They can't …,msa,language,high
+fd23380b,لِأَنَّهُمْ غَيْرُ …,because they aren't …,msa,language,high
+deaa71f3,إِجَابَة,answer (n.),msa,language,normal
+e82d0afe,إِذَا أَرَدْتَ أَنْ … فَـ …,"If you want to …, then …",msa,language,high
+0462850d,نَزَلْنَا إِلَى …,We went down into …,msa,leisure,high
+878a05bb,…، أَنَا وَعَائِلَتِي,"…, my family and I",msa,family,high
+bfda838a,لَمْ أَحْتَجْ …,I didn't need …,msa,leisure,high
+06a06d3a,بَدْلَة غَطْس,diving suit (n.),msa,beach_and_vendors,normal
+e373bdf0,بَقِينَا …,We stayed …,msa,travel,high
+7439e4ce,اِشْتَرَيْتُ هَدَايَا لِـ …,I bought gifts for …,msa,shopping,high
+87e5fd28,… مَشْهُورٌ جِدًّا فِي …,… is very famous in …,msa,shopping,high
+99a8b75a,قُطْن,cotton (n.),msa,shopping,normal
+3b838a9b,كُلَّ عَامٍ وَأَنْتَ بِخَيْرٍ,Many happy returns (lit. every year may you be well),msa,greetings,normal
+00583a0b,أَرَاكَ قَرِيبًا,See you soon,msa,greetings,normal
+b7106ef3,أُحَاوِلُ أَنْ …,I try to …,msa,health,high
+c73971c4,أُقَلِّلُ مِنَ …,I'm cutting down on …,msa,health,high
+37006686,…، خَاصَّةً فِي …,"…, especially in …",msa,leisure,high
+cacbb0e0,مِنَ الضَّرُورِيِّ أَنْ …,It is necessary to …,msa,work,high
+122113ca,عِنْدَمَا وَصَلْتُ …,"When I arrived, …",msa,language,high
+bcb50006,بَحْثًا عَنْ …,in search of …,msa,family,high
+5fc3c6d2,كَمْ مِنَ الوَقْتِ …؟,How long …?,msa,work,high
+746ddf39,أَعْتَقِدُ أَنَّكَ عَلَى حَقٍّ فِي …,I think you are right about …,msa,work,high
+5fac3357,… أَفْضَلُ مِمَّا كَانَ …,… is better than it was …,msa,smalltalk,high
+5b2c68be,أَنَا مُتَّفِقٌ مَعَكَ تَمَامًا فِي …,I completely agree with you on …,msa,smalltalk,high
+6e4fab7e,كَانَتْ أَوَّلَ مَرَّةٍ … مُنْذُ …,It was the first time … in …,msa,leisure,high
+c9b553c8,لَا أُحِبُّ الحَدِيثَ فِي …,I don't like talking about …,msa,people,high
+1222e614,أَتَمَنَّى أَنْ …,I hope that …,msa,travel,high
+5402d8a9,لَيْسَتْ …، إِنَّهَا …,It isn't …; it is …,msa,emotions,high
+87f2607b,مُنْذُ الطُّفُولَةِ …,"Since childhood, …",msa,language,high
+9155aff3,كُنْتُ أُرِيدُ أَنْ …,I wanted to …,msa,language,high
+4b93e276,…، صَحِيحٌ؟,"…, right?",msa,family,high
+e967a6cf,أَعْتَقِدُ أَنَّ …,I think that …,msa,language,high
+bb09011a,… شَيْءٌ مُهِمٌّ جِدًّا لِي,… is something very important to me,msa,language,high
+c105d450,هٰذَا الشُّعُورُ طَبِيعِيٌّ عِنْدَ …,This feeling is natural in …,msa,emotions,high
+70bd0fbd,حَوَالَيْ …,"about, approximately …",msa,health,high
+47eba96f,حَتَّى فِي …,even in …,msa,language,high
+b205d185,… فِي رَأْيِي أَفْضَلُ شَيْءٍ فِي …,"… is, in my opinion, the best thing in …",msa,leisure,high
+6959b2a8,سَلامٌ لِـ …,Greetings to …,msa,greetings,normal
+d9eacc27,أَراكَ الأُسْبوعَ القادِمَ,See you next week,msa,greetings,normal
+e5feb5c0,عَبْرَ كُلِّ ذَلِكَ، …,"Through all of that, …",msa,language,high
+c008758d,كُنْتُ أَسْتَمِعُ إِلَى …,I used to listen to …,msa,language,high
+b9092c35,أَصْوَات,sounds (n. pl.),msa,language,normal
+16838783,لَمْ أَفْهَمْ شَيْئًا,I didn't understand anything,msa,language,normal
+bd3b124d,اِعْتَادَتْ أُذُنِي عَلَى …,My ear got used to …,msa,language,high
+df96c074,بِسَبَبِ أَنَّ …، …,"Because …, …",msa,language,high
+8bfdec62,كُنَّا نَتَحَدَّثُ … فِي المَنْزِلِ,We spoke … at home,msa,language,high
+b7ca3f55,وَلِذَلِكَ …,And so … / That's why …,msa,language,high
+d50c15f9,كُنْتُ أَسْمَعُهُ عِنْدَمَا …,I used to hear him when …,msa,family,high
+48523250,كَانَ يَتَحَدَّثُ مَعَ … عَبْرَ الْهَاتِفِ,He used to talk with … on the phone,msa,family,high
+ff351910,أَقَارِب,relatives (n. pl.),msa,family,normal
+03a003f0,كُنْتُ أَسْأَلُهُ أَسْئِلَةً كَثِيرَةً عَنْ …,I used to ask him lots of questions about …,msa,family,high
+167b3fb9,كُنَّا نَتَعَلَّمُ عَنْ …,We used to learn about …,msa,language,high
+3a03698e,أَوَدُّ أَنْ أَتَحَدَّثَ عَنْ …,I would like to talk about …,msa,language,high
+f3d6ff76,كَانَ يَلْبَسُ …,He used to wear …,msa,people,high
+9956a4a3,كَانَتْ لَهُ …,He had …,msa,people,high
+d6183a87,مَلَابِس,clothes (n. pl.),msa,people,normal
+2be6de99,لِحْيَة,beard,msa,people,normal
+545ca87b,لَا أُرِيدُ أَنْ …,I don't want to …,msa,language,high
+95acda8f,… لَمْ تَكُنْ مُتاحَةً كَما الآنَ,… weren't available as they are now,msa,daily_life,high
+7579dab1,فُرَص,opportunities (n. pl.),msa,daily_life,normal
+9f2c93be,إِمْكانِيّات,"possibilities, means (n. pl.)",msa,daily_life,normal
+21b47d6d,مُتَوَفِّرَة,"available (adj., f.)",msa,daily_life,normal
+c07b53d3,فِي آخِرِ … سَنَةً,in the last … years,msa,daily_life,high
+876f70ad,لَمْ أَجِدْ طَريقًا لِـ …,I didn't find a way to …,msa,language,high
+3b110708,… مُخْتَلِفَةٌ جِدًّا عَنِ …,… is very different from …,msa,language,high
+34103c68,إِذا اسْتَطَعْتَ أَنْ …، فَلِمَ لا …؟,"If you could …, why not …?",msa,language,high
+87df300a,لُغَة أَجْنَبِيَّة,foreign language,msa,language,normal
+f4a9a09c,اللُّغَة الأُمّ,mother tongue,msa,language,normal
+50d226fd,أَسْتَطِيعُ أَنْ …,I can …,msa,language,high
+fd5c6e78,وَأَنَا …، …,"While I …, …",msa,daily_life,high
+902a46e0,حَافِلَة,bus,msa,daily_life,normal
+4921569a,وَقْت فَرَاغ,free time,msa,leisure,normal
+be05e71c,لَرُبَّمَا يَكُونُ …,it might be …,msa,daily_life,high
+f1ba88a4,عِنْدَمَا أَجْمَعُ …,when I add up …,msa,daily_life,high
+7bfc0672,كُنْتُ أُضَيِّعُ الكَثِيرَ مِنَ الوَقْتِ فِي …,I used to waste a lot of time on …,msa,daily_life,high
+3aa4ddfc,كُنْتُ أَسْتَخْدِمُ … لِـ …,I used to use … to …,msa,language,high
+3c2f8424,كُنْتُ أُكَرِّرُ … مِرَارًا وَتَكْرَارًا,I used to repeat … over and over,msa,language,high
+eb1922dc,قَنَوَات,channels (n. pl.),msa,language,normal
+729baa09,جُمَل,sentences (n. pl.),msa,language,normal
+612e4bfe,كُنْتُ أُبْطِئُ السُّرْعَةَ,I used to slow the speed down,msa,language,normal
+b258c19b,لِأَجْعَلَ أُذُنِي تَتَعَوَّدُ عَلَى …,to get my ear used to …,msa,language,high
+e03ac504,كُنْتُ أَسْتَطِيعُ أَنْ … فَقَطْ,I could only …,msa,language,high
+6784448a,كَانَ لَدَيَّ مُشْكِلَةٌ فِي …,I had a problem with …,msa,language,high
+3de769fb,مَهَارَة الاِسْتِمَاع,listening skill,msa,language,normal
+5faa39f9,فَهْم,"comprehension, understanding (n.)",msa,language,normal
+403094d2,… بِالمِئَةِ مِنْ …,… percent of …,msa,language,high
+bd18afbc,شاءَ القَدَرُ أَنْ …,Fate willed that …,msa,family,high
+c04df3e0,قَبْلَ سُقُوطِ …,Before the fall of …,msa,people,high
+11b742b8,لَمْ تَكُنْ هُنَاكَ …,There was no …,msa,people,high
+16acd788,طَائِفِيَّة,"sectarian (adj., f.)",msa,people,normal
+c7be56b1,سَأَلْتُ أَبِي مَتَى …,I asked my father when …,msa,family,high
+e4269f13,لَكِنَّهُ لَمْ … بَعْدُ,but he hasn't … yet,msa,family,high
+4d3e8af1,فِي حِوَارٍ سَابِقٍ …,In a previous conversation …,msa,family,high
+09721723,يَشْتَاقُ إِلَى …,misses / longs for …,msa,emotions,high
+83df3c9c,… شَكَّلَتْ سَبَبًا قَوِيًّا لِـ …,… was a strong reason for …,msa,language,high
+23c74bd0,… مُكَوَّنٍ مِنْ …,… made up of …,msa,family,high
+9751a867,كَانَتْ جَدَّتِي تَطْبُخُ عَلَى الأَرْضِ,My grandmother used to cook on the ground,msa,food,normal
+00577716,فُرْن,oven,msa,food,normal
+5aac4dc1,نَخِيل,palm trees (n. coll.),msa,leisure,normal
+6aca3a54,تُفَّاح,apples (n. coll.),msa,leisure,normal
+f6479cd4,كُمَّثْرَى,pears (n. coll.),msa,leisure,normal
+ea2c3486,أَوَّلُ مَرَّةٍ رَأَيْتُ فِيهَا … كَانَتْ فِي …,The first time I saw … was in …,msa,leisure,high
+a6845f5e,زَيْتُون,olives (n. coll.),msa,leisure,normal
+fa303d3a,لَيْمُون,lemons (n. coll.),msa,leisure,normal
+59021b3f,هَذِهِ صُورَةٌ مِنْ …,This is a photo from …,msa,family,high
+d155351c,حَفْلَة زِفَاف,wedding (party),msa,family,normal
+3979b5f1,فَقَدَ … حَيَاتَهُ,… lost his life,msa,family,high
+40f1997c,يَجِبُ عَلَيْنَا أَنْ … لِكَيْ …,We must … in order to …,msa,language,high
+40398db2,فِي ذَلِكَ الوَقْتِ …,At that time …,msa,history,high
+ec33d935,لَمْ يَكُنْ هُنَاكَ … وَلَا …,There was no … nor …,msa,history,high
+18642ae3,كَانَتْ مِنْطَقَةً وَاحِدَةً,It was one region,msa,history,normal
+707d77ef,قَبْلَ انْتِهَاءِ …,Before the end of …,msa,history,high
+82a361d0,كَانَتْ هُنَاكَ …,There was …,msa,history,high
+dc20a514,ثَوْرَة,"revolt, revolution (n.)",msa,history,normal
+550aa126,لَهْجَة,dialect,msa,language,normal
+b71b8600,هَلْ تُرِيدُ أَنْ …؟,Do you want to …?,msa,language,high
+7a12e9d1,عَرْض تَقْدِيمِيّ,presentation (n.),msa,language,normal
+4d4ea2f5,أَنْتَ حَمَّسْتَنِي,You got me excited,msa,emotions,normal
+b71c334c,كَانَ المَوْضُوعُ شَيِّقًا,The topic was fascinating,msa,emotions,normal
+1caeb0af,فِي زَمَنِ …,In the time of …,msa,history,high
+62d731a5,عُلُوم,sciences (n. pl.),msa,history,normal
+cbe44ea1,طِبّ,medicine (the field),msa,history,normal
+9c66c07a,عِمَارَة,architecture,msa,history,normal
+b71d002f,تَتْرِيك,Turkification,msa,history,normal
+c40ffada,ظُلْم,"oppression, injustice (n.)",msa,history,normal
+1f4a3d10,قَوْمِيَّة,nationalism,msa,history,normal
+0340bb11,… مِنْطَقَةٌ فِي … فِيهَا …,… is a region in … containing …,msa,history,high
+4221d193,مِنْطَقَة,"region, area",msa,history,normal
+0b86b6c3,فِي الفَتْرَةِ الأَخِيرَةِ مِنَ …,In the final period of …,msa,history,high
+0f5a8b17,حُكْم,"rule, reign (n.)",msa,history,normal
+4c58c7fe,قُصُور,palaces (n. pl.),msa,history,normal
+6f308029,حَدَائِق,gardens (n. pl.),msa,history,normal
+ef5c73f5,… لِكَيْ لَا …,… so that … not …,msa,daily_life,high
+f9e37087,عِنْدَمَا نَتَحَدَّثُ عَنْ …,When we talk about …,msa,language,high
+d5cd331a,نَافُورَة,fountain,msa,culture,normal
+aae3eb2b,سَاحَة,courtyard,msa,culture,normal
+de7a3b14,فِي وَسَطِ …,in the middle of …,msa,culture,high
+71d98ea0,خَلِيفَة,caliph,msa,history,normal
+aa15d3b4,العَصْر الذَّهَبِيّ,golden age,msa,history,normal
+00e86276,حُقُول,fields (n. pl.),msa,history,normal
+d329ffc0,هَنْدَسَة,engineering,msa,history,normal
+3e59fe10,فَلَك,astronomy,msa,history,normal
+9e6c0dd9,أَتَّبِعُ نِظامًا غِذائِيًّا صِحِّيًّا مُنْذُ …,I have been following a healthy diet for …,msa,health,normal
+66dedfd2,أَتَجَنَّبُ نَوْعًا مُعَيَّنًا مِنَ …,I avoid a certain kind of …,msa,health,normal
+d87ff02c,الطَّعام الدَّسِم,fatty food,msa,food,normal
+93b3cf67,فِي الماضِي كُنْتُ … كَثيرًا,In the past I used to … a lot,msa,leisure,normal
+51601151,كُرَة القَدَم,football,msa,leisure,normal
+e86b2d61,كَثَّرْتُ مِنْ أَكْلِ … بَعْدَ مَرَضي,I started eating more … after my illness,msa,health,normal
+f2ccfe04,خُضار,vegetables,msa,food,normal
+9ca64e63,… لِأُحافِظَ عَلى صِحَّتي,… to look after my health,msa,health,normal
+321153fe,سُكَّر,sugar,msa,food,normal
+2d87013b,أَتَحَكَّمُ بِكَمِّيَّةِ …,I control the amount of …,msa,health,normal
+0ce80f31,… الَّتي آكُلُها,… (f.) that I eat,msa,food,normal
+68bfb778,كَمِّيَّة,"amount, quantity",msa,health,normal
+fe14029b,أُحافِظُ عَلى وَزْني بِـ …,I keep my weight down with …,msa,health,normal
+de24da34,وَزْن,weight,msa,health,normal
+69f01aa8,رِياضَة,"sport, exercise",msa,health,normal
+d14b9b72,الطَّعام الصِّحِّيّ,healthy food,msa,health,normal
+a517957d,أَنا مُتَعَوِّدٌ عَلى …,I'm used to …,msa,daily_life,normal
+e1ee537c,الاسْتيقاظ مُبَكِّرًا,waking up early,msa,daily_life,normal
+c068762d,لا أَشْرَبُ الكُحُولَ,I don't drink alcohol.,msa,culture,normal
+d748a6e6,… لِأَسْبابٍ …,… for … reasons,msa,culture,high
+d6526205,صِحِّيّ,"health (adj.), healthy",msa,health,normal
+c4ca40fe,دينِيّ,religious,msa,culture,normal
+4d6affae,مِلْح,salt,msa,food,normal
+c6ce9e2c,هَذِهِ الأَيّامَ,these days,msa,daily_life,normal
+00b4e93e,أَقَمْتُ في الفُنْدُقِ … فَقَطْ,I stayed at the hotel for only …,msa,hotel,normal
+fc61b638,… هُنا أَرْخَصُ مِنْ …,… here are cheaper than …,msa,money,normal
+a6599223,سَيّارَة أُجْرَة,taxi,msa,taxis,normal
+f75bb095,احْتَجْتُ إِلى …,I needed …,msa,travel,normal
+1c912995,تَأْشيرَة,visa,msa,travel,normal
+35fc4d84,لِدُخولِ البِلادِ,to enter the country,msa,travel,normal
+749bb80c,ذَهَبْنا إِلى … في عُطْلَةِ نِهايَةِ الأُسْبوعِ,We went to … over the weekend,msa,leisure,normal
+0a5cae66,شاطِئ,beach,msa,beach_and_vendors,normal
+9517d780,أَعْطَيْناهُ بَقْشيشًا,We gave him a tip.,msa,dining,normal
+21dd15a5,… لِأَنَّهُ ساعَدَنا كَثيرًا,… because he helped us a lot,msa,people,normal
+11560523,بَقْشيش,"tip (n.), gratuity",msa,dining,normal
+9adf255c,تَرَكَتِ … انْطِباعًا جَميلًا في نَفْسي,… left a beautiful impression on me,msa,emotions,normal
+ce8e3e22,انْطِباع,impression,msa,emotions,normal
+23ae6d61,… يُبْهِرُ كُلَّ زائِرٍ,… amazes every visitor,msa,sightseeing,normal
+723cd9ce,مِعْمار,architecture,msa,sightseeing,normal
+6fac4e80,أَحْتاجُ كوبَ قَهْوَةٍ في الصَّباحِ,I need a cup of coffee in the morning.,msa,daily_life,normal
+a5f9f63b,… لِأَسْتَيْقِظَ,… to wake up,msa,daily_life,normal
+4e945043,… تُشْبِهُ الجَنَّةَ,… (f.) is like paradise,msa,leisure,normal
+d2275a8a,حَديقَة,"garden, park",msa,leisure,normal
+84b3ade3,أُفَضِّلُ … عَلى …,I prefer … to …,msa,food,high
+da34df5b,سَمَك,fish,msa,food,normal
+cef3ed33,طازَج,fresh,msa,food,normal
+16f670c1,مُجَمَّد,frozen,msa,food,normal
+b9a026f8,جَرَّبْتُ … بِضْعَ مَرّاتٍ,I've tried … a few times,msa,food,normal
+d1621ca8,مَحار,oysters,msa,food,normal
+5e233603,تَحْتَوي عَلى …,"(it, f.) contains …",msa,food,normal
+cf0a6052,بُروتين,protein,msa,food,normal
+26d96142,غَنِيَّةٌ بِـ …,(f.) rich in …,msa,food,normal
+193f6472,الدُّهون الصِّحِّيَّة,healthy fats,msa,food,normal
+5301d981,أَخي أَصْغَرُ مِنّي بِـ …,My brother is … younger than me,msa,family,normal
+e4ae798f,والِدي دَرَسَ … في …,My father studied … in …,msa,family,normal
+796efa6e,أُحِبُّ …,I love …,msa,emotions,normal
+a5eb2750,كُوسا,"courgettes, zucchini",msa,food,normal
+27210a29,مَحْشِيّ,stuffed (adj.),msa,food,normal
+20bdc824,أَرُزّ,rice,msa,food,normal
+c86dcd25,لَحْم,meat,msa,food,normal
+e14265ab,طَلَبْنا … مَعَ …,We ordered … with …,msa,dining,normal
+7a9d363b,دَجاج مَشْوِيّ,grilled chicken,msa,dining,normal
+117a165c,عَصَرْتُ … حَبّاتٍ,I squeezed … (pieces of fruit),msa,food,normal
+1622d9a7,حَبَّة,"a piece, one (of fruit)",msa,food,normal
+d8514148,قِراءَة,reading (n.),msa,leisure,normal
+d9cc4bbf,شِتاء,winter,msa,leisure,normal
+06eb29bb,اِلْتَقَيْنا في …,We met at …,msa,people,normal
+b64242c8,… لِتَناوُلِ الغَداءِ,… for lunch,msa,food,normal
+b7b547ab,اخْتَرْتُ فيلْمًا كوميدِيًّا,I chose a comedy film.,msa,leisure,normal
+f1f9ba61,… لِنُشاهِدَهُ مَعًا,… for us to watch together,msa,leisure,normal
+f6409ff0,الجَميعُ حَضَرَ … في الوَقْتِ المُحَدَّدِ,Everyone attended … on time,msa,work,normal
+0359de32,اجْتِماع,meeting,msa,work,normal
+af976a58,سَأَحْكي لَكَ عَنِ … بِالتَّفْصيلِ,I'll tell you about … in detail,msa,language,high
+463d6871,يُحَرَّمُ عَلى المُسْلِمينَ …,Muslims are forbidden …,msa,culture,normal
+14c3d391,لَحْم الخِنْزير,pork,msa,culture,normal
+24b6af36,يَبْدَأُ المَطَرُ عادَةً في …,Rain usually starts in …,msa,leisure,normal
+bc3f6fbe,كانُون الأَوَّل,December (Levantine name),msa,leisure,normal
+b879559f,الجَوُّ بارِدٌ جِدًّا في …,The weather is very cold in …,msa,leisure,normal
+e51e7934,كانُون الثّاني,January (Levantine name),msa,leisure,normal
+c33d246f,الجِبالُ مُحيطَةٌ بِـ … مِنْ كُلِّ جِهَةٍ,The mountains surround … on every side,msa,leisure,normal
+aa7018ae,… في الجِهَةِ المُقابِلَةِ لِـ …,… is on the side opposite …,msa,directions,normal
+12f9b40b,نَسْكُنُ جَنوبَ … قُرْبَ …,We live south of … near …,msa,daily_life,normal
+160b0e56,الطَّريق السَّريع,motorway,msa,travel,normal
+e75e1c23,… مُفيدٌ جِدًّا لِلصِّحَّةِ,… is very good for your health,msa,health,normal
+a99111f9,مَشْي,walking (n.),msa,health,normal
+40962394,… أَجْمَلُ الفُصولِ في رَأْيي,"… is the most beautiful season, in my opinion",msa,leisure,normal
+f61cf308,خَريف,autumn,msa,leisure,normal
+8e2093e0,تَأْتي الحافِلَةُ كُلَّ … تَقْريبًا,The bus comes roughly every …,msa,travel,normal
+a0d9fdf5,… القادِمَةُ مِنَ …,… (f.) coming from …,msa,leisure,normal
+43c24b4b,… تَجْلِبُ المَطَرَ في …,… brings rain in …,msa,leisure,normal
+ec490cc4,رِيح,wind,msa,leisure,normal
+0bfbecca,في … تَنَوُّعٌ ثَقافِيٌّ كَبيرٌ,In … there is great cultural diversity,msa,culture,normal
+9ae673a9,مَشْروع,project,msa,work,normal
+48ec49e4,وَصَلَني … مِنَ …,I received … from …,msa,work,normal
+5aa5f590,بَريد عاجِل,urgent email,msa,work,normal
+68e69e07,شَعَرْتُ بِالمَلَلِ في …,I felt bored in …,msa,emotions,normal
+0a17c100,يَرْوي جَدّي لَنا …,My grandfather tells us …,msa,family,normal
+cce6ea0e,تَعَرَّفْنا عَلى … في الرِّحْلَةِ,We got to know … on the trip,msa,travel,normal
+a82fdcf7,سائِح,tourist,msa,travel,normal
+01b149a1,جِنْسِيَّة,nationality,msa,travel,normal
+3f60f07c,أَزْعَجَني … طَوالَ اللَّيْلِ,… annoyed me all night,msa,emotions,normal
+b12688be,ضَجيج,noise,msa,daily_life,normal
+23184fdb,اشْتَرَيْتُ تِذْكارًا صَغيرًا لِـ …,I bought a small souvenir for …,msa,shopping,normal
+a4a2a3d7,تِذْكار,souvenir,msa,shopping,normal
+d53dd9f5,حَصَلْتُ عَلى خَصْمٍ جَيِّدٍ عَلى …,I got a good discount on …,msa,shopping,normal
+7a2b3773,تَذْكِرَة الطّائِرَة,plane ticket,msa,travel,normal
+73e9b5fc,في بَريطانِيا عادَةً نَقْضي إِجازَتَنا في …,In the UK we usually take our holiday in …,msa,leisure,normal
+923a0051,وَصَلْنا إِلى … عَبْرَ …,We reached … via …,msa,travel,normal
+1835eca7,طَريق جَبَلِيّ,mountain road,msa,travel,normal
+a9bf79dc,كانَتْ تَجْرِبَةً مُمَيَّزَةً,It was a special experience.,msa,emotions,normal
+407362fc,… لَنْ أَنْساها,… (f.) that I won't forget,msa,emotions,normal
+227a3463,كانَتِ الأَجْواءُ رائِعَةً في …,The atmosphere was wonderful at …,msa,leisure,normal
+ad55e4ee,… أَوَّلَ شَيْءٍ في الصَّباحِ,… first thing in the morning,msa,daily_life,normal
+6a25374a,فِنْجان قَهْوَة,a cup of coffee,msa,food,normal
+1c22ca91,بِطَريقَةٍ ما …,"Somehow, …",msa,language,high
+3beddd50,نَجَحْنا في حَلِّ المُشْكِلَةِ,We managed to solve the problem.,msa,work,normal
+1d6b4463,التَّعَلُّمُ أَسْهَلُ,Learning is easier.,msa,language,normal
+4118ae18,… عِنْدَما تَكونُ مُسْتَمْتِعًا,… when you're enjoying it,msa,language,normal
+0708f4ee,نَقْضي العُطْلَةَ في …,We spend the holiday in …,msa,leisure,normal
+7326cdda,رِيف,countryside,msa,leisure,normal
+2220f110,بَعيدًا عَنِ المَدينَةِ,away from the city,msa,leisure,normal
+636f28f0,شَعَرْتُ بِحُزْنٍ عَميقٍ,I felt deep sadness.,msa,emotions,normal
+66820d23,… عِنْدَ سَماعِ …,… on hearing …,msa,emotions,normal
+5b127bca,حَقَّقْتُ حُلْمي بَعْدَ …,I achieved my dream after …,msa,work,normal
+0a49ebc5,قَدَّمْتُ عَرْضًا قَصيرًا أَمامَ …,I gave a short presentation to …,msa,work,normal
+aa19e945,خَطَرَ بِخاطِري أَنْ …,It crossed my mind to …,msa,emotions,normal
+d6c9446a,أُحِبُّ … في وَقْتِ فَراغي,I like … in my spare time,msa,leisure,normal
+2543acad,تَسَلُّق الصُّخور,rock climbing,msa,leisure,normal
+f1fe9596,أَصْبَحْتُ … بَعْدَ تَخَرُّجي بِـ …,I became … [a period] after graduating,msa,work,normal
+21e4f962,مُهَنْدِس,engineer,msa,work,normal
+f138d5e3,… صَعْبٌ لَكِنَّهُ مُفيدٌ,… is hard but useful,msa,language,high
+0c7d5a46,تَقَبُّل النَّقْد,accepting criticism,msa,work,normal
+481a173f,وَجَّهَ إِلَيَّ انْتِقادًا بَنّاءً حَوْلَ …,He gave me constructive criticism about …,msa,work,normal
+566b1ff6,تَنْتَشِرُ … في …,… (f.) are found all over …,msa,culture,normal
+1a8fae6c,اسْتَقْبَلْنا ضَيْفًا عَزيزًا مِنَ …,We welcomed a dear guest from …,msa,people,normal
+8b4dc684,خَطَرَتْ لي فِكْرَةٌ رائِعَةٌ لِـ …,A great idea for … occurred to me,msa,work,normal
+12639e5a,نادِرًا ما …,Rarely … / I rarely …,msa,daily_life,normal
+10ef8b8e,أَصْرَرْتُ عَلى …,I insisted on …,msa,people,normal
+19873797,عَنْ طَريقِ …,"by way of …, via …",msa,language,high
+f4042d4f,رَغْمَ …,despite …,msa,language,high
+e3a1cd23,… بِشَغَفٍ كَبيرٍ,… with great passion,msa,language,normal
+ae793dbb,… قَبْلَ أَنْ يَبْدَأَ المَطَرُ,… before the rain starts,msa,leisure,normal
+8dfac8af,اللَّهْجَة المَحَلِّيَّة,the local dialect,msa,language,normal
+a6de4262,واجَهْتُ صُعوبَةً في …,I faced difficulty in …,msa,language,normal
+c188b669,لَمْ أَكُنْ أَفْهَمُ …,I didn't (used to) understand …,msa,language,normal
+92de1235,لَمْ تَكُنِ … كَما تَخَيَّلْتُها,… was not as I had imagined it (fem.),msa,travel,normal
+20a87f46,الجَميعُ ساعَدوا، حَتّى …,"Everyone helped, even …",msa,people,normal
+6cc2f1bc,وافَقْتُ عَلى … بِشَرْطٍ واحِدٍ,I agreed to … on one condition,msa,work,normal
+1e8b70e9,فَهِمْتُ … بِصُعوبَةٍ,I understood … with difficulty,msa,language,normal
+496716dd,بِسَبَبِ …,because of …,msa,language,high
+8f04b12a,سُرْعَة,speed (n.),msa,language,normal
+a0ab50c7,والِدي جاءَ مِنَ …,My father came from …,msa,family,normal
+be000798,حَياة أَفْضَل,a better life,msa,people,normal
+8dbc2dfd,… مَعْروفٌ لِلْجَميعِ,… is known to everyone,msa,people,high
+4f91dbc1,كَرَم,generosity,msa,people,normal
+059a5a45,فَريقُنا يَجْتَمِعُ كُلَّ …,Our team meets every …,msa,work,normal
+b06393b5,فَريق,team,msa,work,normal
+563d4e0c,عِنْدي سُؤالٌ واحِدٌ,I have one question,msa,work,high
+ae0eadf2,قَبْلَ أَنْ …,before …,msa,work,normal
+8e55b4c1,أَقَمْنا في … لَيْلَةً واحِدَةً,We stayed in … for one night,msa,travel,normal
+c66b0842,مُخَيَّم صَحْراوِيّ,desert camp,msa,travel,normal
+5b6c07e1,… هِيَ أَجْمَلُ الأَوْقاتِ,… are the best of times,msa,family,normal
+01b5e89b,جَلْسَة,"gathering, sitting (n.)",msa,family,normal
+1cf9f882,كانَتْ … تَرْتَدي … دائِمًا,… always used to wear …,msa,family,normal
+7687898e,عَباءَة,"abaya, cloak",msa,culture,normal
+6c6d92c9,اشْتَرى … مِنَ السّوقِ القَديمِ,He bought … from the old market,msa,shopping,normal
+69350664,ثَوْب تَقْليدِيّ,traditional garment,msa,culture,normal
+40eab97e,طَريقَةُ العَيْشِ في … بَسيطَةٌ وَهادِئَةٌ,The way of life in … is simple and quiet,msa,daily_life,normal
+f0fe129a,نَزورُ … في كُلِّ صَيْفٍ,We visit … every summer,msa,family,normal
+9feedd46,مَزْرَعَة,farm,msa,family,normal
+15b391a9,أَمامَنا … خِياراتٍ لِحَلِّ المُشْكِلَةِ,We have … options to solve the problem,msa,work,high
+027dc736,يَبْدَأُ … في نِهايَةِ …,… begins at the end of …,msa,daily_life,normal
+929f7531,التَّوْقيت الشِّتَوِيّ,"winter time, standard time",msa,daily_life,normal
+fc61c1c2,نَحْنُ مُخْتَلِفانِ في الرَّأْيِ,We differ in opinion (dual),msa,people,high
+619ba512,… لَكِنَّنا …,"…, but we …",msa,people,normal
+38a6fd0a,أُفَضِّلُ أَنْ …,I prefer to …,msa,travel,high
+e9a84ebb,مُسْبَقًا,in advance (adv.),msa,travel,normal
+6fad33d5,أُخَطِّطُ لِرِحْلَةٍ طَويلَةٍ إِلى …,I'm planning a long trip to …,msa,travel,normal
+59021bcd,سَنُسافِرُ إِلى … قَريبًا إِنْ شاءَ اللهُ,"We will travel to … soon, God willing",msa,travel,normal
+91dbbb70,… الطّازَجَةُ أَلَذُّ مِنَ الجاهِزَةِ,Fresh … is tastier than ready-made (fem.),msa,food,normal
+8da6ed89,طَعْمِيَّة,falafel (Egyptian),msa,food,normal
+a76d51b4,اعْتَذَرْتُ عَنِ الحُضورِ بِسَبَبِ …,I apologised for not attending because of …,msa,work,normal
+baf5ae35,ضِيق الوَقْت,"lack of time, time pressure",msa,work,normal
+11708977,طَلَبَ الطَّبيبُ مِنّي …,The doctor asked me for …,msa,health,normal
+4a277412,تَحْليل دَم,blood test,msa,health,normal
+2e80f173,نَصَحَني الطَّبيبُ بِـ…,The doctor advised me to …,msa,health,normal
+00c29709,أُضيفُ … إِلى …,I add … to …,msa,food,normal
+e30751f7,زَنْجَبيل,ginger,msa,food,normal
+feebbea2,كَبِد الدَّجاج,chicken liver,msa,food,normal
+97c38eb3,سَبانِخ,spinach,msa,food,normal
+ae7deab7,لِـ… فَوائِدُ كَثيرَةٌ,… has many benefits,msa,health,high
+348bd2c2,أَضَعُ قَليلًا مِنَ … عَلى …,I put a little … on …,msa,food,normal
+367285f1,خَلّ,vinegar,msa,food,normal
+dbe54e4c,يَحْتوي عَلى …,contains …,msa,food,normal
+751333d0,حَديد,iron (n.),msa,food,normal
+bad678d2,يَتَكَوَّنُ … مِنَ …,… consists of …,msa,food,normal
+eab112fc,عَدَس,lentils,msa,food,normal
+d95d6f25,… مَعْروفونَ بِـ…,… are known for …,msa,people,high
+4b03adfc,نُكْتَة,joke,msa,people,normal
+7e1ec864,نَشْتَري … مِنَ المَحَلِّ القَريبِ,We buy … from the nearby shop,msa,daily_life,normal
+534cb1f6,… أَكْلَةٌ مِصْرِيَّةٌ شَعْبِيَّةٌ,… is a popular Egyptian dish,msa,food,normal
+f279843f,كُشَرِيّ,koshari,msa,food,normal
+6659df3a,أَكَلَتْ زَوْجَتي … عَلى الغَداءِ,My wife ate … at lunch,msa,food,normal
+1182c275,فُول,fava beans (ful),msa,food,normal
+4f92bc1c,… حُلْوَةٌ جِدًّا في الصَّيْفِ,… is very sweet in summer (fem.),msa,food,normal
+58ddc18f,مانْجا,mango,msa,food,normal
+a487e591,جَرَّبْتُ … في …,I tried … in …,msa,food,normal
+9b65453a,جَوافَة,guava,msa,food,normal
+b6d78d31,… مَشْروبٌ مُهَدِّئٌ,… is a calming drink,msa,food,normal
+4a857c9e,كَرْكَديه,hibiscus,msa,food,normal
+bedf698a,نُفْطِرُ عَلى … في رَمَضانَ,We break our fast with … in Ramadan,msa,culture,normal
+d3936feb,تَمْر,dates (fruit),msa,food,normal
+678c7c0f,… يُؤْكَلُ مَعَ …,… is eaten with …,msa,food,normal
+80d1c3be,بابا غَنّوج,baba ghanoush,msa,food,normal
+e5ac196b,… سَلَطَةٌ خَفيفَةٌ مِنَ …,… is a light salad of …,msa,food,normal
+77388aee,تَبّولَة,tabbouleh,msa,food,normal
+e0731691,بَقْدونِس,parsley,msa,food,normal
+f0993588,بُرْغُل,bulgur,msa,food,normal
+d870f956,فَتّوش,fattoush,msa,food,normal
+53316310,خُبْز مُحَمَّص,toasted bread,msa,food,normal
+26aa7e38,يَحْتَفِلُ … بِـ…,… celebrate …,msa,culture,normal
+e28f94f0,عيد المِيلاد,Christmas,msa,culture,normal
+8dffe3e4,وُلِدَ … في …,… was born in …,msa,history,normal
+0654c637,عَلَيْهِ السَّلامُ,peace be upon him,msa,culture,normal
+2837c0c4,صَلّى المُسْلِمونَ صَلاةَ العيدِ في …,The Muslims prayed the Eid prayer in …,msa,culture,normal
+949c60a3,حَضَرْنا عُرْسًا كَبيرًا في …,We attended a big wedding in …,msa,family,normal
+01aa38e7,عُرْس,wedding,msa,family,normal
+89e66e03,قَرَأْتُ مَقالًا مُثيرًا لِلاهْتِمامِ عَنِ …,I read an interesting article about …,msa,culture,normal
+cba5a53d,لِهَذا السَّبَبِ …,"For this reason, …",msa,people,high
+3cd611b3,تَعَرَّفْتُ عَلَيْهِ,I got to know him,msa,people,normal
+65d5c89c,الأَهَمُّ أَنْ …,The most important thing is to …,msa,people,high
+bd86f08c,… مَهْما حَدَثَ,… no matter what,msa,people,high
+5556f73f,… لِأَوَّلِ مَرَّةٍ,… for the first time,msa,travel,normal
+72d93e8b,الدَّرَجَة الأُولى,first class,msa,travel,normal
+8541185b,… أَرْخَصُ بِكَثيرٍ,… is much cheaper,msa,travel,normal
+0dc4aed4,الدَّرَجَة الثّانِيَة,second class,msa,travel,normal
+047f578c,تَذْكِرَة,ticket,msa,travel,normal
+6de96091,لاحَظْتُ تَحَسُّنًا واضِحًا في …,I noticed a clear improvement in …,msa,language,normal
+a6a8b014,نَتَناوَلُ العَشاءَ مَعًا كُلَّ …,We have dinner together every …,msa,family,normal
+65d7feb5,أُغادِرُ في السّاعَةِ …,I leave at … o'clock,msa,daily_life,normal
+08cb6d8b,يَلْعَبُ الأَطْفالُ بِـ…,The children play with …,msa,leisure,normal
+3cc293e2,طائِرَة وَرَقِيَّة,kite,msa,leisure,normal
+a053d4aa,يَلْعَبُ الأَطْفالُ في … بَعْدَ المَدْرَسَةِ,The children play in … after school,msa,family,normal
+060f71bb,الحَديقَة العامَّة,the public park,msa,leisure,normal
+90ac42c0,… مِهْنَةٌ تَحْتاجُ إِلى …,… is a profession that needs …,msa,work,normal
+c66cb524,تَدْريس,teaching (n.),msa,work,normal
+b040e556,المَوْضوعُ مُعَقَّدٌ,The topic is complicated,msa,emotions,high
+c6d597d7,يَحْتاجُ إِلى وَقْتٍ لِفَهْمِهِ,It needs time to understand,msa,emotions,normal
+bcc3954f,… يَبْعُدُ … بِالسَّيّارَةِ عَنِ …,… is … by car from …,msa,travel,normal
+23537fda,مَطار,airport,msa,travel,normal
+f6358fd0,تَحَسَّنَتْ صِحَّةُ … كَثيرًا بَعْدَ …,…'s health improved a lot after …,msa,health,normal
+937fedf4,عَمَلِيَّة,operation (surgery),msa,health,normal
+f5fa9fc6,مَسْأَلَة,"matter, issue (n.)",msa,work,normal
+199ef786,… أَهَمُّ مِنَ …,… is more important than …,msa,language,high
+fe1da64d,المَدينَة القَديمَة,the old city (n. phrase),msa,sightseeing,normal
+29e2edb8,قُمْنا بِزِيارَةِ لَهْوٍ إِلى …,We made a leisure visit to …,msa,leisure,normal
+183d47ff,أَنا شَخْصٌ …,I am a … person,msa,emotions,normal
+29cea2b2,لا أُحِبُّ …,I don't like …,msa,emotions,normal
+367a72bf,هادِئ,"calm, quiet (adj.)",msa,emotions,normal
+db3a5bca,كِلاهُما يُشاهِدانِ المُبارَياتِ مَعًا كُلَّ …,Both of them watch the matches together every …,msa,leisure,normal
+4b33000d,غَدًا عُطْلَةٌ رَسْمِيَّةٌ بِمُناسَبَةِ …,Tomorrow is an official holiday for (the occasion of) …,msa,culture,normal
+c60decc5,لا أَرْتَدي مَلابِسَ رَسْمِيَّةً,I don't wear formal clothes,msa,work,normal
+d9ae2a1b,سِياسَة,politics (n.),msa,people,normal
+81b0d8f1,غَريب,stranger (n.); strange (adj.),msa,people,normal
+7eb886f6,أَتَوَقَّفُ عَنِ العَمَلِ في السّاعَةِ … مَساءً,I stop working at … in the evening,msa,work,normal
+3695669f,أَجْلِسُ في الطَّبيعَةِ,I sit in nature,msa,leisure,normal
+22170277,… لِأُريحَ ذِهْني,… to rest my mind,msa,leisure,normal
+d6038654,ذَهَبْتُ مِنَ … إِلى …,I went from … to …,msa,travel,normal
+d2950b15,بِالقارِبِ، لَيْسَ بِالطّائِرَةِ,"by boat, not by plane",msa,travel,normal
+9ea3b1c9,سَنَتَقابَلُ في …,We will meet in …,msa,travel,normal
+51a0576a,سَأَكونُ في … يَوْمَيْنِ فَقَطْ,I will be in … for only two days,msa,travel,normal
+dbfd853f,بَعْدَ ذَلِكَ …,"After that, …",msa,travel,high
+9ba863db,سَأَذْهَبُ إِلى …,I will go to …,msa,travel,normal
+0c48551b,أُريدُ أَنْ أَتَجَوَّلَ حَوْلَ …,I want to wander around …,msa,travel,normal
+f81fde0c,اسْتَعْمَلَ,"used (v.), to use",msa,language,normal
+6e846c35,زِيارَة,visit (n.),msa,travel,normal
+f9f54721,… نَشاطٌ مُمْتِعٌ في الإِجازَةِ,… is a fun activity on holiday,msa,leisure,normal
+dac01dd3,القِطارُ يَصِلُ في السّاعَةِ …,The train arrives at … o'clock,msa,travel,normal
+12b31915,الطّائِرَةُ تُقْلِعُ بَعْدَ … دَقائِقَ,The plane takes off in … minutes,msa,travel,normal
+ad70a718,التَّجَوُّلُ في … مُمْتِعٌ,Strolling in … is enjoyable,msa,travel,normal
+e010818b,هٰذِهِ جَوْلَةٌ جَميلَةٌ في …,This is a nice tour of …,msa,sightseeing,normal
+7c1f310f,مَتْحَف,museum (n.),msa,sightseeing,normal
+45d69cd8,أَدْرُسُ اللُّغَةَ مُنْذُ …,I have been studying the language for …,msa,language,normal
+0dca76d8,أُحِبُّ الثَّقافَةَ العَرَبِيَّةَ,I love Arab culture,msa,culture,normal
+3a76a730,أَحْلُمُ بِـ …,I dream of …,msa,emotions,normal
+b0d9b481,سَمِعْتُ صَوْتَ اللُّغَةِ مِنْ …,I heard the sound of the language from …,msa,language,normal
+9c60e4ec,لَمْ نَكُنْ نَتَحَدَّثُ … في المَنْزِلِ,We didn't speak … at home,msa,language,normal
+5e7b189b,كانَ هُناكَ نَقْصٌ في …,There was a lack of …,msa,emotions,high
+c244302b,أَظُنُّني …,I think I …,msa,emotions,high
+6f1de74e,قَرَّرْتُ أَنْ …,I decided to …,msa,culture,normal
+31acce13,كانَ لَدَيَّ أَسْئِلَةٌ كَثيرَةٌ,I had many questions,msa,family,normal
+038556cf,الأَطْفالُ يَتَعَلَّمونَ جَيِّداً,Children learn well,msa,language,normal
+6b61520e,عِنْدَما تَكونُ … مُمْتِعَةً,when … is enjoyable,msa,language,normal
+2a275a9d,إِنْ شاءَ اللهُ نَلْتَقي يَوْمَ … القادِمِ,God willing we'll meet next …,msa,greetings,normal
+4094aea2,… بِقَدْرِ اسْتِطاعَتي,… as much as I can,msa,people,high
+743ce45d,… واجِبٌ عَلَيْكَ وَلَيْسَ هِوايَةً,"… is a duty upon you, not a hobby",msa,language,normal
+d98eefb4,الشَّرْق الأَوْسَط,the Middle East,msa,family,normal
+68c04df7,عائِلَتُنا مِنَ …,Our family is from …,msa,family,normal
+057c471c,نَسينا صِلَتَنا بِأَقارِبِنا في …,We forgot our bond with our relatives in …,msa,family,normal
+d610e3bc,صِلَة,"bond, connection (n.)",msa,family,normal
+c89a56a0,أَيْنَ أَنْتَمي؟,Where do I belong?,msa,emotions,normal
+1bb42d77,أَشْعُرُ أَنّي أَنْتَمي إِلَيْهِ,I feel that I belong to it,msa,emotions,normal
+5dc211fd,… وُلِدَ ابْناً لِثَقافَةٍ أُخْرى,… born a child of another culture,msa,emotions,normal
+cf362a0c,كُنّا مَرْضى لِفَتْرَةٍ طَويلَةٍ,We were sick for a long time,msa,health,normal
+237d5b29,تَكَلَّمْتُ كَثيراً مَعَ النّاسِ بِالعَرَبِيَّةِ,I spoke a lot with people in Arabic,msa,language,normal
+7009bc56,غَوْص,diving (n.),msa,leisure,normal
+ca11a15d,قارِب,boat (n.),msa,travel,normal
+73a3dfb8,بَقيتُ بِجانِبِ … أَسْتَرْخي,I stayed beside … relaxing,msa,leisure,normal
+40e7800f,كانوا يَجْتَمِعونَ,They used to meet,msa,people,normal
+ca0f54fa,… لِيَتَسامَروا,… to socialise (spend the evening chatting),msa,people,normal
+2c43de1d,أَنْوي أَنْ …,I intend to …,msa,leisure,normal
+8a7f5de4,إلى نِهايَةِ …,to the end of …,msa,directions,normal
+2ba29b78,كانَ … مُهِمّاً لِلْمُجْتَمَعِ,… was important to the community,msa,people,high
+a35a8498,رَجَعَ مِنْ رِحْلَةِ …,He came back from a … trip,msa,leisure,normal
+956839ef,تَخْييم,camping (n.),msa,leisure,normal
+af1ee908,كَانَ عِيدُ مِيلَادِهِ قَبْلَ …,His birthday was … ago,msa,family,normal
+8d46fdc8,مَزِيدٌ مِنَ …,more …,msa,daily_life,normal
+6d145016,مَعْلُومَة,piece of information (n.),msa,work,normal
+d8dfa632,عِبَارَة,"phrase, expression (n.)",msa,language,normal
+d6a2a933,كُنْتُ أَتَحَدَّثُ …,I used to speak …,msa,language,normal
+cbe244f8,لَمْ أَتَعَلَّمْ … حَتَّى الآنَ,I still haven't learned … (until now),msa,language,normal
+afd41124,أَصْل,"origin, background (n.)",msa,family,normal
+8c6a8f88,دِين,religion (n.),msa,culture,normal
+d3ff6f53,هَلْ يُمْكِنُنَا أَنْ …؟,Can we …?,msa,language,high
+302e75ed,نِصْفُ عَائِلَتِي …، وَالنِّصْفُ الآخَرُ …,"Half of my family is …, and the other half …",msa,family,normal
+c6f08a35,جَاءَ لِيَدْرُسَ …,He came to study …,msa,family,normal
+56ab48c1,بَقَاء,"staying, remaining (n.)",msa,family,normal
+2a3ed0e3,تَقابَلا في …,They (two) met in/at …,msa,family,normal
+ec26c2f2,مُسْتَشْفَى,hospital (n.),msa,health,normal
+551775b8,بَدَأَتْ قِصَّةُ حُبِّهِمَا فِي …,Their love story began in …,msa,family,normal
+b3541742,الدَّرْس المَاضِي,the last lesson,msa,language,normal
+0783aa06,أَخَذَنِي إِلَى …,He took me to …,msa,people,normal
+15d1e80c,… وُلِدَا فِي …، مِثْلِي,"… (two) were born in …, like me",msa,family,normal
+f3d6123c,طِفْل,child (n.),msa,family,normal
+962c9c52,وَالِدَتُهُمَا …، وَوَالِدُهُمَا مِنَ …,"Their mother is …, and their father is from …",msa,family,normal
+80510a56,أَرَادَ … أَنْ يُعَلِّمَهُمَا …,… wanted to teach them (two) …,msa,language,normal
+45ddf74b,كَانَ يُعَلِّمُنَا …,He used to teach us …,msa,language,normal
+45bf085c,أَجْزَاء الجِسْم,parts of the body,msa,health,normal
+7301479a,قُلْتُ لِوَالِدِي: …,I said to my father: …,msa,family,normal
+a80c0731,لَدَيَّ مَا يَكْفِينِي مِنَ …,I've had enough (of) …,msa,language,normal
+719b615c,تَطَوَّرَتِ … كَثيرًا,… has developed a lot,msa,daily_life,normal
+e591c012,تِكْنولوجْيا,technology (n.),msa,daily_life,normal
+c3aa7003,هَلْ … مُتَوَفِّرٌ في الأَسْواقِ؟,Is … available in the shops?,msa,shopping,normal
+1f60d221,كانَ عُمْري … سَنَةً,I was … years old,msa,people,normal
+a9c111b5,كانَتْ رِحْلَةً مُتْعِبَةً.,It was a tiring journey.,msa,travel,normal
+f4520548,… لكِنَّنا كُنّا مُتَحَمِّسَيْنِ,… but we (two) were excited,msa,emotions,normal
+b849dc36,كانَ يَجِبُ أَنْ …,It was necessary to … / (we) had to …,msa,daily_life,high
+37a556a5,لَدَيْنا الكَثيرُ مِنْ …,We have lots of …,msa,family,normal
+f52fe9a0,اِبْن العَمّ,(paternal) cousin (m.),msa,family,normal
+7172c854,بِنْت العَمّ,(paternal) cousin (f.),msa,family,normal
+0db65a62,سَكَنّا في …,We lived / stayed in …,msa,family,normal
+d78b200e,… لكِنَّهُ كانَ مَشْغولًا,… but he was busy,msa,family,normal
+8dd01eed,… مُحَرَّمٌ فِي الْقُرْآنِ,… is forbidden in the Qur'an,msa,culture,normal
+5084fac7,تَخْتَلِفُ عَنْ …,It (f.) differs from …,msa,culture,high
+789176c7,دَعَتْهُ … إِلى …,… invited him to …,msa,work,normal
+4f138cc6,حُكومَة,government (n.),msa,people,normal
+6ad4fbd3,مُؤْتَمَر,conference (n.),msa,work,normal
+911adc7b,رَغْبَتي في … بَدَأَتْ تَتَلاشى,My desire to … began to fade,msa,language,normal
+6877adba,عِنْدَما رَجَعْنا …,"When we returned, …",msa,travel,normal
+296922e8,اِسْتَصْعَبْتُ …,I found … difficult,msa,language,normal
+e1b5cb0b,… وَظَنَنْتُهُ شَيْئًا مُسْتَحيلًا,… and I thought it impossible,msa,language,normal
+63919673,مَصْدَر تَعْلِيمِيّ,learning resource (n.),msa,language,normal
+1f0eac97,كَرْت تَعْلِيمِيّ,flashcard (n.),msa,language,normal
+44f1d2fa,حِفْظ,"memorisation, learning by heart (n.)",msa,language,normal
+1f9ac5ac,كُنْتُ أُقَلِّدُ مِثْلَ البَبَّغَاءِ,I used to imitate like a parrot,msa,language,normal
+6aaf73bd,…، كَمَا يَتَعَلَّمُ الأَطْفَالُ,"…, the way children learn",msa,language,normal
+99fbf5a9,كُنْتُ أُبْطِئُ سُرْعَةَ الفِيدْيُو,I'd slow down the video,msa,language,normal
+44625b81,… وَأُعِيدُ المَقْطَعَ,… and replay the clip,msa,language,normal
+b500c220,أُذُنِي مُتَعَوِّدَةٌ عَلَى …,My ear is used to …,msa,language,normal
+24119289,جُهْد ذَاتِيّ,self-directed effort (n.),msa,language,normal
+dc412a44,سَآخُذُ … بِعَيْنِ الاِعْتِبَارِ,I'll take … into consideration,msa,work,high
+fcf33a9d,اِلْتَقَيا لِأَوَّلِ مَرَّةٍ في …,They met for the first time in …,msa,family,normal
+6c2b493b,كَانَتْ وَظِيفَةُ جَدِّي …,My grandfather's job was …,msa,family,normal
+52f44052,حِمَايَة,protection (n.),msa,family,normal
+e602cd07,كَانَ … أَخًا لِـ …,… was a brother to …,msa,family,normal
+23abe7ea,مَلِك,king (n.),msa,history,normal
+802df9a3,كَانَ أَبِي يُحِبُّهَا كَثِيرًا,My father loved her very much,msa,family,normal
+798807ef,رَجَعَ … إِلَى …,… returned to …,msa,family,normal
+6c0f9da1,لِلْعَيْشِ مَعَ …,to live with …,msa,family,normal
+e92b8fea,تَجْرِبَة,experience (n.),msa,emotions,normal
+a37e85de,يَقَعُ … فِي …,… is located in …,msa,directions,normal
+74eb3c34,حَارَة رَاقِيَة,upscale neighbourhood,msa,daily_life,normal
+9d38d9ff,كَانَتِ العَائِلَةُ تَعِيشُ فِي …,The family lived in …,msa,family,normal
+4235ce7b,طَابِق,"storey, floor (n.)",msa,daily_life,normal
+8ff9435a,كَانَ عُمْرُهَا … سَنَةً,She was … years old,msa,family,normal
+0ee997d8,عِنْدَمَا …، …,"When …, …",msa,family,high
+d03ab938,كَانَ عُمْرُ أَبِي …,My father was … (years old),msa,family,normal
+5178e2b7,كَانَتْ تَرْتَدِي …,She was wearing …,msa,family,normal
+2155968e,قَمِيصًا عَلَيْهِ …,a shirt with … on it,msa,shopping,normal
+027fc24b,قَمِيص,shirt (n.),msa,shopping,normal
+5002fb81,زَهْرَة,flower (n.),msa,leisure,normal
+0b1d738c,يَعِيشُ الإِنْسَانُ خَارِجَ بَلَدِهِ,A person lives outside his country,msa,people,normal
+f54c2c2a,بِالصُّدْفَة,by chance,msa,daily_life,normal
+7774c1df,خَرَجَ … مِنْ …,… left …,msa,family,normal
+cad21741,الحَرْب العَالَمِيَّة الأُولَى,the First World War,msa,history,normal
+b87ba8ba,الكَثِيرُ مِنَ …,a lot of …,msa,language,normal
+b51c893d,كَانَ هُنَاكَ …,There was / were …,msa,leisure,high
+265a38d4,شَجَرَة,tree (n.),msa,leisure,normal
+9038b1d4,فَاكِهَة,fruit (n.),msa,food,normal
+075e3ecf,تُوجَدُ فِي … مَذَاهِبُ مُخْتَلِفَةٌ,There are different sects in …,msa,culture,normal
+7909cc8a,فَقَدَتْ … حَيَاتَهَا,… lost her life,msa,family,normal
+1de91c96,نَحْنُ مُتَحَمِّسُونَ بِسَبَبِ …,We're excited because of …,msa,emotions,normal
+3333cb53,عُطْلَة,holiday (n.),msa,leisure,normal
+fd1b6f86,عِنْدَمَا رَأَيْتُ …,When I saw …,msa,emotions,normal
+af0e9c57,خَرِيطَة,map (n.),msa,language,normal
+37a39266,… مِئَةً بِالمِئَةِ,"… 100%, completely …",msa,daily_life,high
+6bf618c1,نَقِيّ,pure (adj.),msa,culture,normal
+92418065,الثَّوْرَة العَرَبِيَّة الكُبْرَى,the Great Arab Revolt,msa,history,normal
+35416caf,قَتَلُوا … فِي السَّاحَاتِ,They killed … in the public squares,msa,history,normal
+aaeb9059,مُفَكِّر,"thinker, intellectual (n.)",msa,history,normal
+a79c5dc7,عَالِم,"scholar, scientist (n.)",msa,history,normal
+ec5d4e02,أَدِيب,"writer, man of letters (n.)",msa,history,normal
+b705db5f,مَعَ الوَقْت,over time,msa,emotions,normal
+9d737879,تَقَعُ … عَلَى …,… lies on …,msa,travel,normal
+c451969f,كُنَّا نُخَبِّئُ …,We used to hide …,msa,history,normal
+7cbb4095,قَمْح,wheat (n.),msa,food,normal
+0b74b49d,ذَهَب,gold (n.),msa,money,normal
+0dd16818,هُنَاكَ رِوَايَتَانِ حَوْلَ …,There are two accounts of …,msa,history,high
+5e637fa1,اِكْتِشَاف,discovery (n.),msa,history,normal
+4e4ee974,جَلَبُوا … مِنَ … إِلَى …,They brought … from … to …,msa,history,normal
+051e8d9b,انْتَقَلَتْ … إِلَى … عَبْرَ …,… spread to … via …,msa,history,normal
+7da4a09a,مَكَانَة,"standing, status (n.)",msa,culture,normal
+12c97af8,هُنَاكَ عَادَاتٌ وَتَقَالِيدُ لِـ …,There are customs and traditions for …,msa,culture,normal
+fa8fc951,كَانَ عِنْدَنَا … لِفَتْرَةٍ طَوِيلَةٍ,We had … for a long time,msa,history,normal
+fa1b9e59,اِكْتَشَفْتُ مَوْضُوعًا مُهِمًّا فِي …,I discovered an important topic in …,msa,language,normal
+b3fefe4f,قَامَ … بِالمُسَاهَمَةِ فِي …,… contributed to …,msa,family,normal
+1ba58186,… مَسْؤُولٌ عَنِ …,… is responsible for …,msa,history,high
+fef6798c,تَقَدُّم,progress (n.),msa,history,normal
+a5d51868,بُرْتُقَال,oranges (n. coll.),msa,leisure,normal
+1de33dc1,يَاسَمِين,jasmine (n.),msa,leisure,normal
+dcc9e35d,قَوِيّ,strong (adj.),msa,people,normal
+ceabde31,تِجَارَة,trade (n.),msa,history,normal
+9ed0e1fb,صِنَاعَة,industry (n.),msa,history,normal
+7568c0fa,أَدَب,literature (n.),msa,history,normal
+1d309ed6,أَوَّلُ … أُقِيمَتْ فِي …,the first … established in …,msa,history,normal
+0cabb954,دَار عِلْمِيَّة,scholarly institution,msa,history,normal
+a50bc373,تَتَحَدَّثُ عَنِ …,It deals with / talks about …,msa,history,normal
+75ef1334,نَجْم,star (n.),msa,leisure,normal
+daa2fece,الثَّقَافَة العَرَبِيَّة,Arab culture,msa,culture,normal
