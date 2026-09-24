@@ -74,6 +74,13 @@ removes are all in README under *Output* and *Anki workflow*.
 
   Worth doing before any synthesis parameter is added, not after. Adding `speed`
   first and the key second means paying for the rebuild twice.
+- **Images on word cards.** Decomposing sentences leaves plain vocabulary, a
+  word used many ways with no sentence to hold it. An image beside the word, on
+  top of the existing audio, gives it something to stick to: a card for smoking
+  shows someone smoking, and a family photo is the best image when one fits.
+  Personal photos live outside this repo, which is public. Needs an optional
+  image reference on `Chunk`, the media file bundled like audio in
+  `generate_anki.py`, and a card-template slot. Wanted; not started.
 
 ## Done
 
