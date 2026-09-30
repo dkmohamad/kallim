@@ -21,6 +21,7 @@ section break. Page order is audio order — the whole point is following along.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 from dataclasses import dataclass
@@ -39,19 +40,32 @@ if TYPE_CHECKING:
     from elevenlabs.client import ElevenLabs
     from pydub import AudioSegment
 
-__all__ = ["Line", "Marker", "Script", "run"]
+__all__ = [
+    "GAP_MS",
+    "SECTION_GAP_MS",
+    "Cue",
+    "Line",
+    "Marker",
+    "Script",
+    "clip_lengths",
+    "layout",
+    "run",
+    "stitch",
+    "synthesise",
+    "to_vtt",
+]
 
 # Between turns. Long enough to hear the handover, short enough that the track
 # still sounds like a conversation rather than a drill.
 GAP_MS = 700
 SECTION_GAP_MS = 1600
 
-BLOCK = re.compile(r"^###\s+\*\*(?P<speaker>[^:*]+):\*\*\s*(?P<arabic>.+)$")
-SECTION = re.compile(r"^##\s+(?!#)(?P<title>.+)$")
-GLOSS = re.compile(r"^\*(?P<text>.+)\*$")
+_BLOCK = re.compile(r"^###\s+\*\*(?P<speaker>[^:*]+):\*\*\s*(?P<arabic>.+)$")
+_SECTION = re.compile(r"^##\s+(?!#)(?P<title>.+)$")
+_GLOSS = re.compile(r"^\*(?P<text>.+)\*$")
 # A bracketed aside marks something the lesson left unresolved or unclear. It is
 # written on the page for the reader and must never reach the audio as speech.
-BRACKETED = re.compile(r"\[[^\]]*\]")
+_BRACKETED = re.compile(r"\[[^\]]*\]")
 
 
 @dataclass(frozen=True, slots=True)
@@ -115,18 +129,18 @@ class Script:
 
         for raw in path.read_text(encoding="utf-8").splitlines():
             line = raw.strip()
-            if section := SECTION.match(line):
+            if section := _SECTION.match(line):
                 blocks.append(Marker(section.group("title").strip()))
                 continue
-            if block := BLOCK.match(line):
+            if block := _BLOCK.match(line):
                 if pending:
                     raise ValueError(f"block with no English gloss: {pending[1][:40]}")
                 speaker = Speaker.from_label(block.group("speaker").strip())
                 pending = (speaker, block.group("arabic").strip())
                 continue
-            if pending and (gloss := GLOSS.match(line)):
+            if pending and (gloss := _GLOSS.match(line)):
                 speaker, arabic = pending
-                if not BRACKETED.search(arabic):  # gaps never become dead air
+                if not _BRACKETED.search(arabic):  # gaps never become dead air
                     blocks.append(Line(speaker, arabic, gloss.group("text").strip()))
                 pending = None
 
@@ -222,28 +236,102 @@ def synthesise(
     return clips
 
 
-def stitch(script: Script, clips: list[PlayableAudio]) -> PlayableAudio:
-    """Lay the clips out in page order with a gap between turns.
+@dataclass(frozen=True, slots=True)
+class Cue:
+    """Where one line sits in the finished track, and the section it falls in.
 
-    The gap goes *before* each turn rather than after, so the track never ends
-    on silence. One layout only: it is slow and clear enough to shadow against
-    directly, so there is no repeat-pause variant.
+    ``n`` numbers the spoken lines 1..N in page order, as the ``.txt``
+    transcript does; ``layout`` is the only thing that assigns it.
+    """
+
+    n: int
+    start_ms: int
+    end_ms: int
+    line: Line
+    section: str | None
+
+
+def layout(script: Script, lengths_ms: list[int]) -> list[Cue]:
+    """Place each line on the track's timeline, given its clip length.
+
+    The one definition of the gaps: ``stitch`` builds the audio from this and
+    ``to_vtt`` the cue timings, so the two cannot drift apart. The gap goes
+    *before* each turn rather than after, so the track never ends on silence,
+    and a section break adds its gap on top of the ordinary turn gap.
+
+    Raises:
+        ValueError: If there is not exactly one length per spoken line, which
+            would otherwise shift every later line against its audio.
+    """
+    if len(lengths_ms) != len(script.lines):
+        raise ValueError(
+            f"{len(lengths_ms)} clip lengths for {len(script.lines)} spoken lines"
+        )
+    cues: list[Cue] = []
+    lengths = iter(lengths_ms)
+    position, extra, section = 0, 0, None
+    for block in script.blocks:
+        if isinstance(block, Marker):
+            section = block.title
+            extra += SECTION_GAP_MS if cues else 0
+            continue
+        start = position + extra + (GAP_MS if cues else 0)
+        position = start + next(lengths)
+        cues.append(Cue(len(cues) + 1, start, position, block, section))
+        extra = 0
+    return cues
+
+
+def stitch(cues: list[Cue], clips: list[PlayableAudio]) -> PlayableAudio:
+    """Lay each clip at its cue's start, with silence filling the gaps.
+
+    One layout only: it is slow and clear enough to shadow against directly, so
+    there is no repeat-pause variant.
+
+    Raises:
+        ValueError: If a cue starts before the audio so far ends, which would
+            place its clip late and put the audio out of step with the VTT.
     """
     from pydub import AudioSegment
 
     track = AudioSegment.empty()
-    remaining = iter(clips)
-    started = False
-    for block in script.blocks:
-        if isinstance(block, Marker):
-            if started:
-                track += AudioSegment.silent(duration=SECTION_GAP_MS)
-            continue
-        if started:
-            track += AudioSegment.silent(duration=GAP_MS)
-        track += cast("AudioSegment", next(remaining))
-        started = True
+    for cue, clip in zip(cues, clips, strict=True):
+        if cue.start_ms < len(track):
+            raise ValueError(f"cue {cue.n} starts before the previous clip ends")
+        track += AudioSegment.silent(duration=cue.start_ms - len(track))
+        track += cast("AudioSegment", clip)
     return cast(PlayableAudio, track)
+
+
+def clip_lengths(clips: list[PlayableAudio]) -> list[int]:
+    """Each clip's length in milliseconds, the input ``layout`` needs."""
+    return [len(cast("AudioSegment", clip)) for clip in clips]
+
+
+def to_vtt(cues: list[Cue]) -> str:
+    """A WebVTT file of metadata cues, one per line, for the web player.
+
+    Each payload is a single line of JSON rather than subtitle text: the browser
+    renders nothing itself, and fields can be added without changing the format.
+    Every ``>`` in a payload is written as the JSON escape ``\\u003e``, so a
+    gloss such as "yes --> no" can never contain the ``-->`` that would end
+    the cue early; any JSON parser reads it back as ``>``.
+    """
+    out = ["WEBVTT", ""]
+    for cue in cues:
+        payload = json.dumps(
+            {
+                "n": cue.n,
+                "speaker": cue.line.speaker.value,
+                "label": cue.line.speaker.label,
+                "section": cue.section,
+                "ar": cue.line.arabic,
+                "en": cue.line.english,
+            },
+            ensure_ascii=False,
+        ).replace(">", "\\u003e")
+        out += [f"{_timestamp(cue.start_ms)} --> {_timestamp(cue.end_ms)}", payload, ""]
+    return "\n".join(out)
 
 
 def run(args: argparse.Namespace) -> str:
@@ -260,15 +348,17 @@ def run(args: argparse.Namespace) -> str:
 
     synth = ElevenLabsSynthesiser(_client(), voice_map(Speaker))
     clips = synthesise(script.lines, synth, cache, force=args.force)
-    track = stitch(script, clips)
+    cues = layout(script, clip_lengths(clips))
+    track = stitch(cues, clips)
 
     run_dir = make_run_dir()
-    mp3, txt = run_dir / f"{script.name}.mp3", run_dir / f"{script.name}.txt"
+    mp3, txt, vtt = (run_dir / f"{script.name}.{ext}" for ext in ("mp3", "txt", "vtt"))
     _export(track, mp3)
     txt.write_text(script.transcript(), encoding="utf-8")
+    vtt.write_text(to_vtt(cues), encoding="utf-8")
 
     secs = _duration_seconds(track)
-    return f"Written:\n  {mp3}  ({secs // 60}m {secs % 60:02d}s)\n  {txt}"
+    return f"Written:\n  {mp3}  ({secs // 60}m {secs % 60:02d}s)\n  {txt}\n  {vtt}"
 
 
 def _client() -> ElevenLabs:
@@ -286,3 +376,11 @@ def _export(track: PlayableAudio, path: Path) -> None:
 def _duration_seconds(track: PlayableAudio) -> int:
     """The track's length in whole seconds."""
     return len(cast("AudioSegment", track)) // 1000
+
+
+def _timestamp(ms: int) -> str:
+    """``HH:MM:SS.mmm``, as WebVTT requires."""
+    secs, ms = divmod(ms, 1000)
+    mins, secs = divmod(secs, 60)
+    hours, mins = divmod(mins, 60)
+    return f"{hours:02d}:{mins:02d}:{secs:02d}.{ms:03d}"
