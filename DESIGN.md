@@ -27,7 +27,7 @@ notes in Drive/Docs/GitHub, recordings. No single source of truth. This is a
 |-------------|-----------------------------------------|------------------------------------|
 | **Capture** | Scrappy inbox. Frictionless dumping.     | Notion page, Doc, voice note, etc. |
 | **Store**   | Structured single source of truth.      | `chunks.csv` (version-controlled)  |
-| **Study**   | Downstream render targets. Disposable.  | Anki deck, MP3 audio, podcast CI   |
+| **Study**   | Downstream render targets. Disposable.  | Anki deck, MP3 audio, web player   |
 
 Trying to make one system do all three is what felt unwieldy.
 
@@ -199,8 +199,10 @@ audio/
 
 ## Render targets
 
-Three of these consume the chunk bank; the fourth, lesson scripts, comes from a
-different source and is listed here because it shares the audio machinery.
+Shadowing audio, Anki and the podcast consume the chunk bank. Lesson scripts
+come from a different source and are listed here because they share the audio
+machinery, and [the web player](#4-web-shadowing-player-player-spike) renders a
+lesson script's output.
 
 ### 1. Shadowing audio
 
@@ -237,9 +239,35 @@ but the two outputs are independent and are not derived from each other.
   so a script's credit cost is its Arabic character count.
 - Cached in `audio-scripts/`, deliberately apart from `audio/`: `prune` deletes
   anything in `audio/` that no chunk produces, which would be every script clip.
-- Output: `output/<run>/<name>.mp3` + a numbered transcript 1:1 with the page.
+- Output: `output/<run>/<name>.mp3` + a numbered transcript 1:1 with the page
+  + `<name>.vtt`. The VTT holds one metadata cue per turn with a single-line
+  JSON payload (`n`, `speaker`, `label`, `section`, `ar`, `en`), for
+  [the web player](#4-web-shadowing-player-player-spike). Its timings are exact rather than aligned: `layout()`
+  places every clip and gap, and `stitch()` builds the audio from that same
+  layout, so the cues and the track cannot disagree. The only offset is MP3
+  encoder padding of a few tens of ms at the end.
 
-### 4. Podcast-style CI (future)
+### 4. Web shadowing player (`player/`, spike)
+
+A lesson script's `.mp3` and `.vtt` rendered as a web page: the current line
+large, Arabic above English, the transcript beneath, with tap-to-seek, replay
+and loop. It is a render target like the others, so it lives here and reads
+kallim's output rather than a copy kept in another repo.
+
+- A Next.js + MDX app with its own `package.json` in `player/`; uv stays the
+  toolchain for everything else. Running, deploying and adding a lesson are in
+  [player/README.md](player/README.md).
+- A lesson is one slug naming an MDX page (notes around a `<Player />`) and the
+  `.mp3` and `.vtt` pair from one `output/` run. The slug is the file name and
+  nothing else states it.
+- The player reads only the VTT format above. It fetches and parses it and
+  polls `currentTime`; it uses no `<track>` element.
+- Committed, including the lesson audio and notes. The repo is public, and
+  that is accepted for this content: the scripts are distilled and name no
+  one. Raw transcripts and recordings stay local: `.gitignore` excludes
+  `transcripts/` and `output/`.
+
+### 5. Podcast-style CI (future)
 
 Passive listening — comprehensible input with scaffolding. The bank is a
 to-learn pile, so the podcast generates *around* the chunks with settled
@@ -375,6 +403,7 @@ kallim/
 │   └── tags.py          # the topic registry, rendered
 ├── audio/               # cached bank MP3s (content-addressed; prune walks this)
 ├── audio-scripts/       # cached script MP3s (prune never walks this)
+├── player/              # web shadowing player (Next.js + MDX, own package.json)
 ├── output/              # all generated artefacts
 │   └── YYYYMMDD_HHMMSS/ # one flat dir per run (MP3s, transcripts, .apkg, log)
 └── .venv/               # virtual environment

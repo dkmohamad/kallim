@@ -10,6 +10,9 @@ Manage the environment with uv (the venv lives at `.venv/`):
 - Add a dependency: `uv add <package>` (`uv add --dev <package>` for tooling)
 - Never call `pip` directly or edit `requirements*.txt`; `pyproject.toml` and
   `uv.lock` are the source of truth.
+- `player/` is the one exception: a Next.js app with its own `package.json` and
+  npm toolchain, described in [player/README.md](player/README.md). The pre-push
+  hook does not check it.
 
 ## Commits
 

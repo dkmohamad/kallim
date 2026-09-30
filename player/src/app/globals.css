@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans-latin);
+  --font-arabic: var(--font-naskh), "Amiri", serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Fully vowelled Arabic: tall line boxes and a little vertical padding so
+   tashkeel above and below the letters is never clipped. As a utility it sorts
+   after text-* sizes, so its line-height wins over theirs, which is intended. */
+@utility ar {
+  line-height: 2.1;
+  padding-block: 0.15em;
+}

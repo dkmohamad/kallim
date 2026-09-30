@@ -8,6 +8,9 @@ decks, and transcripts from a structured vocabulary bank (`chunks.csv`).
 - **Shadowing audio** — English phrase, pause, Arabic phrase, pause. Grouped
   by topic into section MP3s for car/walk listening.
 - **Anki decks** — Flashcards with audio. English on front, Arabic on back.
+- **Shadowing player** (`player/`, spike) — A web page that plays a rendered
+  lesson script with its lines in sync. A Next.js app with
+  [its own README](player/README.md).
 - **Multi-register** — Supports Egyptian, MSA, and Iraqi Arabic with separate
   ElevenLabs voices per register.
 
@@ -59,7 +62,9 @@ kallim anki
 # Text-only Anki cards (no API calls)
 kallim anki --no-audio
 
-# Render a distilled lesson script to a two-voice MP3 (dry run shows the cost)
+# Render a distilled lesson script to a two-voice MP3 (dry run shows the cost).
+# --render writes <name>.mp3, a numbered <name>.txt, and <name>.vtt: exact cue
+# timings with a JSON payload per line, for a web shadowing player.
 kallim script scratch/damascus.md
 kallim script scratch/damascus.md --render
 
