@@ -108,7 +108,7 @@ class ElevenLabsSynthesiser:
     def __call__(self, speech: Speech) -> PlayableAudio:
         from pydub import AudioSegment
 
-        audio_bytes = self._tts(speech.text, self._voice_map[speech.voice])
+        audio_bytes = self._tts(speech.spoken, self._voice_map[speech.voice])
         seg = self._normalize(
             AudioSegment.from_file(io.BytesIO(audio_bytes), format="mp3")
         )

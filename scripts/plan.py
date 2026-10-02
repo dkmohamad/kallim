@@ -55,7 +55,7 @@ class SynthPlan:
     @property
     def chars(self) -> int:
         """Characters to synthesise == credits billed (1 credit/char)."""
-        return sum(len(utt.text) for utt in self.to_synth)
+        return sum(len(utt.spoken) for utt in self.to_synth)
 
 
 def plan_synthesis(chunks: Chunks, cache: AudioCache, *, force: bool) -> SynthPlan:
@@ -84,7 +84,7 @@ def plan_synthesis(chunks: Chunks, cache: AudioCache, *, force: bool) -> SynthPl
                     planned.add(utt.key)
                     to_synth.append(utt)
                     sec_count += 1
-                    sec_chars += len(utt.text)
+                    sec_chars += len(utt.spoken)
         by_section.append(SectionPlan(section, sec_count, sec_chars))
     return SynthPlan(total, to_synth, by_section)
 

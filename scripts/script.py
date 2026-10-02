@@ -32,7 +32,7 @@ from dotenv import load_dotenv
 from .audio import ElevenLabsSynthesiser, get_quota, voice_map
 from .cache import AudioCache, needs_synth
 from .config import SCRIPT_AUDIO_DIR, TTS_MODEL_ID
-from .model import PlayableAudio, Speaker, Synthesiser
+from .model import PlayableAudio, Speaker, Synthesiser, spoken_text
 from .utils import content_hash, make_run_dir
 
 if TYPE_CHECKING:
@@ -79,9 +79,14 @@ class Line:
         return self.speaker
 
     @property
+    def spoken(self) -> str:
+        """The words the voice says (see ``spoken_text``)."""
+        return spoken_text(self.arabic)
+
+    @property
     def key(self) -> str:
-        """Content hash identifying this line (and its cached audio)."""
-        return content_hash(f"{self.speaker}\n{self.arabic}")
+        """Content hash identifying this line's audio, from what is said."""
+        return content_hash(f"{self.speaker}\n{self.spoken}")
 
 
 @dataclass(frozen=True, slots=True)
@@ -147,7 +152,7 @@ class Script:
     @property
     def characters(self) -> int:
         """Arabic characters across every turn — the credit cost of a full run."""
-        return sum(len(line.arabic) for line in self.lines)
+        return sum(len(line.spoken) for line in self.lines)
 
     def transcript(self) -> str:
         """A numbered transcript, 1:1 with the page, for following along."""
@@ -167,12 +172,12 @@ class Script:
     def report(self, cache: AudioCache, *, force: bool) -> str:
         """The dry-run summary: what would be synthesised, and what it costs."""
         due = [ln for ln in self.lines if needs_synth(ln, cache, force=force)]
-        chars = sum(len(ln.arabic) for ln in due)
+        chars = sum(len(ln.spoken) for ln in due)
 
         tally: dict[Speaker, tuple[int, int]] = {}
         for ln in self.lines:
             n, c = tally.get(ln.speaker, (0, 0))
-            tally[ln.speaker] = (n + 1, c + len(ln.arabic))
+            tally[ln.speaker] = (n + 1, c + len(ln.spoken))
 
         out = [
             f"Script:   {self.name}",

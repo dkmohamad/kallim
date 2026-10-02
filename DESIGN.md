@@ -190,6 +190,19 @@ file is correct by construction, so a missing one is simply synthesised again,
 and only text that changed is ever re-billed. Shadowing audio and Anki resolve
 the same chunk to the same clips.
 
+### What the voice says
+
+A line's text is what you read; the voice says its *spoken* form
+(`spoken_text` in [scripts/model.py](scripts/model.py)). A bracketed note is
+left unsaid when it is for the reader: a memory aid such as `(lit. every year
+may you be well)`, a note holding Arabic, or grammar labels such as `(n.)` or
+`(adj.)`. A note that changes which Arabic is right is said, because the prompt
+needs it: `(female)`, `(f.)`, `(reply)`, `(two)`. A mixed note keeps only its
+cues. Transcripts and Anki cards always show the full text.
+
+The cache key hashes the spoken form, so editing an unsaid note re-bills
+nothing, and a line with no notes keys exactly as it would without this rule.
+
 ### Audio processing
 
 - Normalise to −20 dBFS (loudness equalisation).

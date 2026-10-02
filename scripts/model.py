@@ -30,7 +30,45 @@ __all__ = [
     "TOPICS",
     "Utterance",
     "VocabEntry",
+    "spoken_text",
 ]
+
+
+# A bracketed note in a line's text. Some are for the reader and some are cues
+# the listener needs, so ``spoken_text`` decides which, note by note.
+_NOTE = re.compile(r"\s*\(([^()]*)\)")
+# Grammar labels: true of the word, but not something to hear.
+_LABELS = frozenset({"n.", "v.", "adj.", "adv.", "prep.", "pl.", "coll.", "phrase"})
+_ARABIC_LETTER = re.compile(r"[\u0621-\u064A]")
+
+
+def spoken_text(text: str) -> str:
+    """The words a voice says for ``text``: its reader's notes left unsaid.
+
+    A bracketed note is dropped when it is a memory aid (``(lit. …)``), when it
+    holds Arabic (an English voice cannot say it), or when it is only grammar
+    labels (``(n.)``, ``(adj.)``, ``(n. pl.)``). Every other note is kept,
+    because it is a cue that changes which Arabic is right: ``(female)``,
+    ``(f.)``, ``(reply)``, ``(two)``. A mixed note keeps only its cues, so
+    ``(adj., f.)`` is said as ``(f.)``. The written text keeps every note.
+    """
+
+    def voice(match: re.Match[str]) -> str:
+        note = match[1].strip()
+        if note.lower().startswith(("lit.", "literally")) or _ARABIC_LETTER.search(
+            note
+        ):
+            return ""
+        tokens = [t for t in re.split(r"[,\s]+", note) if t]
+        cues = [t for t in tokens if t.lower() not in _LABELS]
+        if len(cues) == len(tokens):
+            return match[0]
+        return f" ({', '.join(cues)})" if cues else ""
+
+    # The pattern takes the space before a note with it, so dropping one leaves
+    # the rest of the line exactly as written.
+    said = _NOTE.sub(voice, text).strip()
+    return said or text
 
 
 class PlayableAudio(Protocol):
@@ -58,7 +96,12 @@ class Speech(Protocol):
 
     @property
     def text(self) -> str:
-        """The words to be spoken."""
+        """The text as written, notes and all."""
+        ...
+
+    @property
+    def spoken(self) -> str:
+        """The words the voice says: ``text`` less its reader's notes."""
         ...
 
     @property
@@ -218,9 +261,18 @@ class Utterance:
         return self.register
 
     @property
+    def spoken(self) -> str:
+        """The words the voice says (see ``spoken_text``)."""
+        return spoken_text(self.text)
+
+    @property
     def key(self) -> str:
-        """Content hash identifying this utterance (and its cached audio)."""
-        return content_hash(f"{self.register}\n{self.text}")
+        """Content hash identifying this utterance's audio.
+
+        It hashes what is *said*, so editing a note the voice never says
+        re-bills nothing, and text with no notes keys exactly as it always has.
+        """
+        return content_hash(f"{self.register}\n{self.spoken}")
 
 
 @dataclass(frozen=True, slots=True)

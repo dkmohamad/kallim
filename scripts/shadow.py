@@ -89,7 +89,7 @@ def report(source: Source, *, force: bool) -> str:
     """The dry-run summary: what would be synthesised, and what it costs."""
     pairs = list(source.transcript.pairs)
     due = _to_synth(source, force=force)
-    chars = sum(len(u.text) for u in due)
+    chars = sum(len(u.spoken) for u in due)
     out = [
         f"Shadow:   {source.name}  ({source.transcript.title})",
         f"Lines:    {len(pairs)} in {len(source.transcript.sections)} section(s)",

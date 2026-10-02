@@ -107,6 +107,10 @@ id in `.env`, the model, or any voice setting, so changing one of those needs
 `--force`. [DESIGN.md](DESIGN.md#speech-rate) has the detail. It
 also covers speech rate, which nothing in this repo sets.
 
+Bracketed notes in a row's text that are for the reader, such as `(lit. …)`
+or `(n.)`, are shown but not said; cues such as `(female)` are said.
+[DESIGN.md](DESIGN.md#what-the-voice-says) has the rule.
+
 Removing or editing a row leaves orphaned clips. `uv run kallim prune` lists
 them and `--apply` deletes them. Anki cards for deleted rows are **not** removed
 this way; see [Removing vocabulary](#removing-vocabulary).
