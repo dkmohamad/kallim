@@ -161,6 +161,8 @@ uncorrected slip you fixed — those are your edits, not hers.
   almost always a half-written block.
 - The gloss is the next line wrapped in single asterisks, so **do not put a bold
   line directly under a turn** — `**note**` matches too and is taken as the gloss.
+- **Numbers go in words, never digits.** The rule is in
+  [extract-vocab](../extract-vocab/SKILL.md).
 - `H2` is a section marker: a longer gap, no speech.
 - A turn whose **Arabic** contains `[...]` is dropped from the audio *and* from
   the transcript — it survives only on the Notion page. It still needs its gloss;

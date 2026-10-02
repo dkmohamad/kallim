@@ -6,7 +6,8 @@ decks, and transcripts from a structured vocabulary bank (`chunks.csv`).
 ## What it does
 
 - **Shadowing audio** — English phrase, pause, Arabic phrase, pause. Grouped
-  by topic into section MP3s for car/walk listening.
+  by topic into section MP3s for car/walk listening. The `shadow-text` skill
+  makes the same kind of track from a piece of reading material.
 - **Anki decks** — Flashcards with audio. English on front, Arabic on back.
 - **Shadowing player** (`player/`, spike) — A web page that plays a rendered
   lesson script with its lines in sync. A Next.js app with
@@ -165,6 +166,9 @@ explicitly with `--input egyptian.csv`.
 orphaned. Pruning against `chunks.csv` alone would report all 780 Egyptian
 files as deletable.
 
+Clips rendered from any other CSV, such as a `shadow-text` scratch file, are in
+neither bank, so `prune --apply` deletes them and re-rendering re-bills them.
+
 ## Adding vocabulary
 
 The vocab pipeline mines **authentic** Arabic — a teacher's own phrases or
@@ -273,4 +277,5 @@ The project includes [Claude Code](https://claude.com/claude-code) skills in
 | **review-chunks** | `/review-chunks --topic history` | Audits a slice of a bank for the judgement `kallim lint` can't reach — drifted topic, unearned priority, a gloss that doesn't match the Arabic, reusable frames trapped inside topic-bound sentences, and cards too long to learn in a few reps, decomposed into frames and words. Dispatches the `chunk-review` agent, which proposes with reasons and never edits a bank. |
 | **distil-due** | `/distil-due` | Checks whether a recorded lesson is waiting to be distilled and hands the newest one to `distil-lesson`. Answers in one line when there is nothing new. A session-start hook nudges when it has been a few days. |
 | **distil-lesson** | `/distil-lesson <recording>` | Turns one recorded lesson into a shadowable two-voice script page plus vocab candidates, in a single pass over the **raw** transcript. `kallim script` renders the page to audio; the candidates go through the same `harvest` → review-the-diff pipeline as extract-vocab. |
+| **shadow-text** | `/shadow-text <notion url \| file>` | Turns Arabic reading material into a shadowing MP3 that, unlike distil-lesson's, plays English then Arabic. Writes a short-line transcript to `scratch/` and stops; nothing is spent until that is approved, then `kallim generate --input` renders it. |
 | **commit** | `/commit [message]` | Runs pyright type checks, stages files explicitly, shows the diff for approval, then commits. |
