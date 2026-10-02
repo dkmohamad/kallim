@@ -148,6 +148,13 @@ slug — it needs a line in `TOPICS` first. Which topic is under current study i
 a syllabus question, not a property of the registry, so the listing does not
 mark one.
 
+**Numbers in words, never digits.** Every Arabic field ends up as speech, and
+the voice misreads digits (`٧٦٢` or `762`); a year can come out in the wrong
+order. Write the number as it is said, with its case, e.g. `عَامَ سَبْعِمِئَةٍ
+وَاثْنَيْنِ وَسِتِّينَ` (hundreds, then units, then tens). Spell it `مِئَة`, not
+`مِائَة`, because the voice may sound the silent alif aloud. The English side
+may keep digits. The rule applies to all voiced Arabic.
+
 **Register fidelity.** Egyptian rows keep their colloquial forms verbatim
 (`عايز`, `بكام`, `ما ينفعش`). Never convert dialect to Fusha: in a dialect
 lesson the dialect *is* the target, not an error.
