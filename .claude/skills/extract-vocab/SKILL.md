@@ -4,9 +4,10 @@ description: >-
   Mine authentic Arabic chunks from a **cleaned** Notion lesson transcript, the
   Arabic Scratchpad, or a text file into chunks.csv — via a Sonnet first-pass
   agent plus the deterministic `kallim harvest` command. Vocab only: it does not
-  produce a script or audio. For a recording that has no cleaned transcript, or
-  when a shadowable script is also wanted, use `distil-lesson` instead — that
-  one reads the raw transcript and harvests vocab in the same pass.
+  produce audio. For a recording that has no cleaned transcript, or when a
+  lesson conversation to listen to is also wanted, use `distil-lesson` instead —
+  that one reads the raw transcript and harvests vocab in the same pass. For
+  English-then-Arabic audio to shadow, use `shadow`.
 user-invocable: true
 argument-hint: "<cleaned recording title|date|url> | scratchpad | <file path>"
 allowed-tools:
@@ -66,7 +67,12 @@ First, fetch the current topic registry (see **Topic** below) so the sub-agent
 files against the live registry, not a copy.
 
 Dispatch a `Task` sub-agent with `model: sonnet`, passing the fetched source
-text, that tag menu, and the extraction rules. Ask it to **write
+text, that tag menu, the extraction rules below, and two sections copied
+verbatim from where they are owned: **Rules for Arabic content** in
+[DESIGN.md](../../../DESIGN.md#rules-for-arabic-content), and **4. Priority**
+in the [chunk-review rubric](../../agents/chunk-review.md#4-priority).
+Copy them rather than paraphrase, so the sub-agent and the reviewer apply the
+same words. Ask it to **write
 `scratch/vocab_pairs.csv`** (columns
 `arabic,english,register,topic,priority`, **no `id`**) and to **return
 only a short count summary** — this keeps the long transcript out of the main
@@ -98,18 +104,16 @@ anything doubtful rather than pass it through.
 | `english` | Reuse the transcript's italic gloss if present, else translate |
 | `register` | **Per phrase:** `egyptian` for Egyptian colloquial, `msa` for Fusha, `iraqi` for Iraqi — one lesson mixes registers, so decide line by line |
 | `topic` | What it is about. Must be a topic `kallim tags` lists — an unregistered one is rejected. If the source is a genuinely new dossier, say so in the summary rather than coining a slug |
-| `priority` | `high` only for frames and discourse operators (see below); everything else `normal` (may be omitted — it defaults). **Egyptian rows are always `normal`** — that bank is for reception, not drilling, so `high` is an MSA concern | |
+| `priority` | Per the rubric's Priority section passed in: `high` only for frames and discourse operators (see below); everything else `normal` (may be omitted — it defaults) | |
 
 **Emit the frames, not just the sentences.** This is the highest-value thing the
 extraction does, and the easiest to get wrong.
 
 The bank runs heavy on content sentences and thin on the connective layer:
-discourse operators against 26% topic-bound content sentences, with most core
-operators — `فِي الوَاقِعِ`, `بِصَرَاحَةٍ`, `عَلَى سَبِيلِ المِثَالِ`,
-`مِنْ نَاحِيَةٍ أُخْرَى` — appearing **zero** times. It diagnosed the cause as this
-brief: *the extractor selects for things that look like sentences, and the
-highest-leverage material in any language does not look like a sentence.* The
-material is in the lessons; it was being discarded.
+core operators such as `فِي الوَاقِعِ`, `بِصَرَاحَةٍ`, `عَلَى سَبِيلِ المِثَالِ` and
+`مِنْ نَاحِيَةٍ أُخْرَى` are scarce. Extraction naturally selects for things that
+look like sentences, and the highest-leverage material in any language does not
+look like a sentence. It is in the lessons; take it.
 
 So, alongside the sentences:
 
@@ -127,37 +131,25 @@ So, alongside the sentences:
   "I have been interested in...". Emit a frame once even if several sentences
   share it; dedup guards a re-run.
 
-**What `high` means, precisely.** That a chunk is *structurally* high-leverage
-for building an argument — a frame, a connector, a stance marker. It is a fact
-about the chunk, true whether or not David knows it yet. It does **not** mean
-"he needs to learn this": that is learning state, it lives as a flag in Anki,
-and per `DESIGN.md` it must never enter the CSV. A full sentence is essentially
-never `high`.
+**What `high` means** is the rubric's Priority section, passed in verbatim. It
+is a fact about the chunk, never learning state: whether David knows it yet
+lives as a flag in Anki and never enters the CSV.
 
 **Topic.** One registered slug. Fetch the registry live so this skill can never
-drift from the code — the hardcoded tag table that used to live here drifted and
-mis-tagged a run, which is why it was removed:
+drift from the code; a copied table goes stale the moment a topic is added:
 
 ```bash
 uv run kallim tags
 ```
 
-Source of truth: `TOPICS` in `scripts/model.py`; harvest rejects anything else,
+Source of truth: `TOPICS` in [model.py](../../../scripts/model.py); harvest rejects anything else,
 so if the source really is a new dossier, report it rather than inventing a
 slug — it needs a line in `TOPICS` first. Which topic is under current study is
 a syllabus question, not a property of the registry, so the listing does not
 mark one.
 
-**Numbers in words, never digits.** Every Arabic field ends up as speech, and
-the voice misreads digits (`٧٦٢` or `762`); a year can come out in the wrong
-order. Write the number as it is said, with its case, e.g. `عَامَ سَبْعِمِئَةٍ
-وَاثْنَيْنِ وَسِتِّينَ` (hundreds, then units, then tens). Spell it `مِئَة`, not
-`مِائَة`, because the voice may sound the silent alif aloud. The English side
-may keep digits. The rule applies to all voiced Arabic.
-
-**Register fidelity.** Egyptian rows keep their colloquial forms verbatim
-(`عايز`, `بكام`, `ما ينفعش`). Never convert dialect to Fusha: in a dialect
-lesson the dialect *is* the target, not an error.
+**Numbers in words, and dialect kept as dialect,** per the shared rules passed
+in. Every Arabic field ends up as speech.
 
 ### 3. Harvest — dedup, id, validate, append, lint
 

@@ -18,7 +18,7 @@ from .chunks import Chunks, Section
 from .config import TTS_MODEL_ID
 from .model import Utterance
 
-__all__ = ["SectionPlan", "SynthPlan", "plan_synthesis", "render"]
+__all__ = ["SectionPlan", "SynthPlan", "plan_synthesis", "quota_lines", "render"]
 
 
 @dataclass(frozen=True, slots=True)
@@ -125,7 +125,7 @@ def render(
         f"Characters:    {plan.chars:,}   "
         f"≈ {plan.chars:,} credits ({TTS_MODEL_ID}, 1 credit/char)",
     ]
-    parts += _quota_lines(quota, plan.chars)
+    parts += quota_lines(quota, plan.chars)
     parts.append("\nBy section (utterances → chars):")
     parts += [
         f"  {sec.label:<28} {sec.to_synth_count:>4} → {sec.chars:,}"
@@ -135,7 +135,7 @@ def render(
     return "\n".join(parts)
 
 
-def _quota_lines(quota: Quota | None, needed: int) -> list[str]:
+def quota_lines(quota: Quota | None, needed: int) -> list[str]:
     """The live-quota line (or an unavailable note), plus an over-quota warning."""
     if quota is None:
         return ["\nQuota: unavailable (offline / no API key)"]

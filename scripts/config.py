@@ -11,6 +11,7 @@ __all__ = [
     "PROJECT_ROOT",
     "SCRATCH_DIR",
     "SCRIPT_AUDIO_DIR",
+    "SHADOW_AUDIO_DIR",
     "TTS_MODEL_ID",
     "VOCAB_PAIRS_CSV",
 ]
@@ -42,6 +43,10 @@ BANK_CSVS = (CHUNKS_CSV, EGYPTIAN_CSV)
 # script clip living there would be read as an orphan and deleted on the next
 # ``prune --apply``. A separate directory is never walked by prune.
 SCRIPT_AUDIO_DIR = PROJECT_ROOT / "audio-scripts"
+
+# Reading-material shadowing clips, kept apart from AUDIO_DIR for the same
+# reason: their lines are in no bank, so prune would delete them all.
+SHADOW_AUDIO_DIR = PROJECT_ROOT / "audio-shadow"
 
 # Where an extraction skill drops its candidates. `kallim harvest` reads this,
 # dedups, ids and validates, and appends straight into a bank — there is no

@@ -7,7 +7,7 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import generate, generate_anki, harvest, lint, prune, script, tags
+from scripts import generate, generate_anki, harvest, lint, prune, script, shadow, tags
 from scripts.config import CHUNKS_CSV
 
 __all__ = ["main"]
@@ -95,6 +95,38 @@ def main() -> None:
         help="Re-synthesise every turn even when the cached clip exists",
     )
     scr.set_defaults(func=script.run)
+
+    shd = sub.add_parser(
+        "shadow",
+        help="Render English-then-Arabic shadowing audio from a transcript or a topic",
+    )
+    src = shd.add_mutually_exclusive_group(required=True)
+    src.add_argument(
+        "transcript",
+        nargs="?",
+        help="An approved reading-material transcript, <slug>-transcript.md",
+    )
+    src.add_argument("--topic", help="Shadow one topic of a bank instead")
+    shd.add_argument(
+        "--input", "-i", default=str(CHUNKS_CSV), help="The bank --topic reads from"
+    )
+    shd.add_argument(
+        "--pause",
+        type=float,
+        default=2.5,
+        help="Gap after each English and each Arabic clip, in seconds",
+    )
+    shd.add_argument(
+        "--render",
+        action="store_true",
+        help="Actually synthesise and stitch (default is a dry run with costs)",
+    )
+    shd.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-synthesise every clip even when it is cached",
+    )
+    shd.set_defaults(func=shadow.run)
 
     voices = sub.add_parser("voices", help="List available ElevenLabs voices")
     voices.set_defaults(func=generate.list_installed_voices)

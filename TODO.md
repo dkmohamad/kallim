@@ -32,6 +32,13 @@ removes are all in README under *Output* and *Anki workflow*.
 
 ## Backlog
 
+- **The web player, parked on the `shadowing-player` branch.** A Next.js page
+  that plays a lesson conversation with its lines in sync (line timings come
+  from a VTT that the branch's `kallim script` also writes). It works and is
+  tested, but reading the Notion transcript while the audio plays covers the
+  need with nothing to maintain. Revisit only if that stops being enough, for
+  example when listening on the phone needs tap-to-replay a single line.
+
 - **An `examples` field.** Ellipsis frames stay the drillable row, and the
   sentence a frame was lifted from rides along on the Anki card back. Settled
   during the 2026-09 history repointing and not built, so a frame and its parent
@@ -57,10 +64,7 @@ removes are all in README under *Output* and *Anki workflow*.
   `content_hash(voice + text)` and nothing else — not the model, not the output
   format, not any voice setting, and not even the voice *id* (it hashes the
   register or speaker *name*, so swapping `ELEVENLABS_VOICE_MSA` in `.env`
-  changes nothing). Anything that alters the bytes but not the text therefore
-  leaves every cached clip in place and silently wrong: you change a setting,
-  nothing regenerates, and you conclude it had no effect. README currently warns
-  about the voice-id case and `--force` is the only escape.
+  changes nothing); why that matters is in DESIGN under *Speech rate*.
 
   The fix is to include everything that determines the audio — model id, output
   format, resolved voice id and any voice settings — in the hashed string.

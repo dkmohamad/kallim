@@ -49,7 +49,7 @@ def run(args: argparse.Namespace) -> str | None:
         )
 
         # Always write the transcript
-        (run_dir / f"{prefix}.txt").write_text(section.transcript(), encoding="utf-8")
+        (run_dir / f"{prefix}.md").write_text(section.transcript(), encoding="utf-8")
 
         # Synthesise/load each utterance's audio, then stitch the section
         clips: list[PlayableAudio] = []

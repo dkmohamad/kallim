@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .model import Chunk, Register
+from .transcript import Transcript
 from .utils import normalize_arabic, read_csv_rows
 
 __all__ = ["Chunks", "Section"]
@@ -42,13 +43,9 @@ class Section:
         return f"{index:02d}_{self.topic}_{self.register}"
 
     def transcript(self) -> str:
-        """The section transcript: a title then numbered english/arabic pairs."""
+        """The section transcript, in the one shadowing layout."""
         title = self.label.replace("_", " ").title()
-        lines = [f"=== {title} ===\n"]
-        for idx, chunk in enumerate(self.chunks, 1):
-            lines.append(f"{idx}. {chunk.english.text}")
-            lines.append(f"   {chunk.arabic.text}\n")
-        return "\n".join(lines)
+        return Transcript.of_chunks(title, self.chunks).render()
 
 
 class Chunks(Collection[Chunk]):

@@ -4,9 +4,10 @@ description: >-
   Turn a raw ASR lesson transcript in the Notion Recordings database into a
   cleaned, vocalised, bilingual transcript that can be read instead of
   relistened to — and write it back to the Notion page. This is what
-  `extract-vocab` requires as input. It does not produce a shadowable script or
-  audio; for that, and for vocab harvested from the repair points, use
-  `distil-lesson`, which reads the raw transcript instead.
+  `extract-vocab` requires as input. It produces no audio; for a lesson
+  conversation to listen to, and vocab from the repair points, use
+  `distil-lesson`, which reads the raw transcript instead. For audio to shadow,
+  use `shadow`.
 user-invocable: true
 argument-hint: "<recording title|date|url>"
 allowed-tools:
@@ -20,16 +21,13 @@ allowed-tools:
 
 A raw recording page carries machine ASR: unvowelled, unpunctuated, speakers
 labelled `SPEAKER S1` / `SPEAKER S2`, and no English. Unreadable as a study
-artefact. This turns one into a transcript worth reading — and `extract-vocab`
-refuses to run on anything else.
+artefact. This turns one into a transcript worth reading — and
+[extract-vocab](../extract-vocab/SKILL.md) refuses to run on anything else.
 
-## Which skill you want
-
-| Want | Use |
-|---|---|
-| A readable bilingual record of a lesson | this one |
-| Vocab from a cleaned transcript | `extract-vocab` |
-| A shadowable Arabic dialogue + audio, and vocab from the repair points | `distil-lesson` (reads the **raw** transcript) |
+Which skill fits which job is in the README's
+[What do you want to do?](../../../README.md#what-do-you-want-to-do) table.
+The rules every piece of Arabic content follows are in
+[DESIGN.md](../../../DESIGN.md#rules-for-arabic-content).
 
 Cleaning and distilling are different jobs on the same recording, and they read
 different sources on purpose. Cleaning merges a learner's broken attempts into
@@ -49,16 +47,11 @@ lesson, stop and say so.
 
 ### 2. Establish who is speaking — from content, not labels
 
-**Diarisation swaps the speakers.** It has happened on a real lesson, and every
-downstream judgement inherits the error: the student's broken attempts get
-attributed to the teacher and mined as authentic.
-
-Verify from the content. The student is the one being corrected. Feminine
-address forms directed at the teacher (`تفهمينني`) confirm which voice is hers.
-Only then assign labels.
-
-**Name the teacher by role, never by name** — `**المعلِّمة:**`. Her name must not
-appear in the transcript, the filename, or anything written back to Notion.
+Diarisation can swap the speakers, and every downstream judgement inherits the
+error: the student's broken attempts get attributed to the teacher and mined as
+authentic. Verify from the content, per the shared rules. Feminine address forms
+directed at the teacher (`تفهمينني`) confirm which voice is hers. Only then
+assign labels: `**المعلِّمة:**` and `**ديفيد:**`.
 
 ### 3. Write the cleaned transcript
 
@@ -94,9 +87,8 @@ To this format:
   sentences. That is the point of cleaning.
 - Mark anything unrecoverable `[غير واضح]`. **Never invent** to fill a gap.
 
-**Dialect stays dialect.** In an Egyptian lesson keep `عايز`, `بكام`, `ما ينفعش`
-verbatim with Egyptian vocalisation — the dialect *is* the learning target
-there, not an error to correct into Fuṣḥā.
+Dialect stays dialect, per the shared rules: an Egyptian lesson keeps its
+Egyptian vocalisation.
 
 Write it to `transcripts/YYYY-MM-DD-slug.md`. **That directory is gitignored**:
 the transcripts are private lesson content and this repo is public.
@@ -129,8 +121,6 @@ audio block untouched.
 
 ## Guardrails
 
-- **Never name the teacher** in any output.
 - **Never invent Arabic** to smooth a gap — mark it unclear.
-- **Never Fuṣḥā-fy dialect** in a dialect lesson.
 - **Never `replace_content` a page with an audio block.**
 - **Never commit `transcripts/`.** The repo is public.

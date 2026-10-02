@@ -15,5 +15,8 @@ transcripts/
 # Script audio cache — kept out of audio/ so `prune` never sees it.
 audio-scripts/
 
+# Reading-material shadowing cache — kept out of audio/ for the same reason.
+audio-shadow/
+
 # Dev-only npm layer (husky + the shared commit gate). uv is the toolchain.
 node_modules/

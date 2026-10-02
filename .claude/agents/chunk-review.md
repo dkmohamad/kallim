@@ -136,7 +136,7 @@ be harvested; say so when you propose one.
 
 **There is no tag column, and no per-era topics.** All of the Arab and Islamic
 past is one topic, `history`. Do not propose splitting it into dossiers; the
-optional era tag in the `TODO.md` backlog is where that question lives.
+optional era tag in the [TODO.md](../../TODO.md) backlog is where that question lives.
 
 ## 4. Priority
 
@@ -177,9 +177,9 @@ Flag it. **Do not fix it.** See the guardrails.
 ## 7. Register fidelity
 
 `egyptian.csv` is a frozen bank whose job is *reception* — songs, media, a future
-trip — not production. Egyptian rows keep their colloquial forms verbatim
-(`عايز`, `بكام`, `ما ينفعش`). **Never propose Fuṣḥā-fying Egyptian**: the dialect
-is the learning target there, not an error.
+trip — not production. Dialect stays dialect, per the
+[shared rules](../../DESIGN.md#rules-for-arabic-content): **never propose
+Fuṣḥā-fying Egyptian**.
 
 MSA rows should not drift into dialect, and should not drift up into stiff
 news-bulletin register either. The target is spoken Fuṣḥā.

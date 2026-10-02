@@ -1,12 +1,13 @@
 ---
 name: distil-lesson
 description: >-
-  Turn one recorded Arabic lesson into a shadowable script — a readable
-  Arabic-only dialogue page in Notion plus a two-voice MP3 — and harvest the
-  repair points as vocab candidates in the same pass. Reads the **RAW**
-  transcript from the Notion Recordings database, never the cleaned one. For
-  vocab alone from an already-cleaned transcript, the Scratchpad or a text
-  file, use `extract-vocab` instead — this one always produces a script.
+  Turn one recorded Arabic lesson into a lesson conversation for listening — a
+  readable Arabic-only dialogue page in Notion plus a two-voice MP3 — and
+  harvest the repair points as vocab candidates in the same pass. Reads the
+  **RAW** transcript from the Notion Recordings database, never the cleaned
+  one. For vocab alone from an already-cleaned transcript, the Scratchpad or a
+  text file, use `extract-vocab` instead — this one always produces a
+  conversation. For English-then-Arabic audio to shadow, use `shadow`.
 user-invocable: true
 argument-hint: "<recording title|date|url>"
 allowed-tools:
@@ -26,9 +27,15 @@ allowed-tools:
 # Distil Lesson Skill
 
 A recorded lesson is 50–80 minutes of hesitation, code-switching and repair.
-Unlistenable as it stands — which is why 24 of 26 recorded lessons sit unplayed. This turns
-one into **8–15 minutes of clean Arabic you can shadow**, and harvests the
-vocabulary in the same pass.
+Unlistenable as it stands, which is why most recorded lessons sit unplayed. This turns
+one into **8–15 minutes of clean Arabic conversation to listen to**, and harvests
+the vocabulary in the same pass. It is Arabic only, in two voices. Shadowing
+audio, English then Arabic, is a different output: see
+[shadow](../shadow/SKILL.md).
+
+The rules every piece of voiced Arabic follows are in
+[DESIGN.md](../../../DESIGN.md#rules-for-arabic-content); the ones below are
+specific to distilling a lesson.
 
 ## The rule that shapes everything
 
@@ -43,9 +50,9 @@ chunks in the lesson.
 So: one pass over the raw, three outputs. Not two passes.
 
 A cleaned transcript is also **not a neutral copy** — it is a set of judgements
-someone already made. In one lesson the cleaned version resolved a wobbling poem
-attribution to a single poet; the raw shows the teacher naming a different one.
-Distilling from the clean version inherits those calls invisibly.
+someone already made. It can resolve a wobbling attribution to one named source
+where the raw shows the teacher naming another, and distilling from it inherits
+that call invisibly.
 
 ## Steps
 
@@ -60,8 +67,8 @@ Query the Recordings data source
 page with `include_transcript: true`.
 
 The raw transcript is `SPEAKER S1:` / `SPEAKER S2:`, unvowelled, with ASR
-errors. **Verify who is who from the content, not the labels** — diarisation
-swaps them sometimes. The student is the one being corrected.
+errors. Verify who is who from the content, per the shared rules: the student
+is the one being corrected.
 
 Expect junk: ASR bleed from unrelated recordings, mangled proper nouns
 (`جزار قباني` for `نزار قبّاني`), and stray English. Ignore it.
@@ -128,8 +135,8 @@ where she slipped. Her Arabic is the evidence; do not improve it.
 (`كَبِير فِي السِّنّ` → `عَرِيقَة`) is worth hearing in the script, not just in
 the harvest.
 
-**Never name the teacher.** She is `المعلِّمة` in the speaker label and
-`يَا أُسْتَاذَة` in address. Never her real name, anywhere, in any output.
+**The teacher is never named**, per the shared rules: `المعلِّمة` in the
+speaker label, `يَا أُسْتَاذَة` in address.
 
 **Flag what the lesson did not settle.** A disputed etymology, a wobbling
 attribution, a fact that sounded uncertain: leave it out of the script and note
@@ -161,8 +168,7 @@ uncorrected slip you fixed — those are your edits, not hers.
   almost always a half-written block.
 - The gloss is the next line wrapped in single asterisks, so **do not put a bold
   line directly under a turn** — `**note**` matches too and is taken as the gloss.
-- **Numbers go in words, never digits.** The rule is in
-  [extract-vocab](../extract-vocab/SKILL.md).
+- **Numbers go in words, never digits**, per the shared rules.
 - `H2` is a section marker: a longer gap, no speech.
 - A turn whose **Arabic** contains `[...]` is dropped from the audio *and* from
   the transcript — it survives only on the Notion page. It still needs its gloss;
@@ -190,8 +196,8 @@ would exceed it). **Report that before spending.** Expect 6–8k characters for 
 50-minute lesson, and 10–15 minutes of audio.
 
 Because the cache is keyed on speaker + text, editing one turn on the page
-re-bills only that turn. **`--force` exists and defeats that** — it re-synthesises
-every turn at full cost. Do not use it to fix a page edit.
+re-bills only that turn, so a page edit never needs `--force` (see the shared
+rules).
 
 `--render` writes `output/<timestamp>/<stem>.mp3` and a numbered `.txt`
 transcript, where `<stem>` is the markdown filename. The two voices are
@@ -213,11 +219,12 @@ staged copy afterwards.
 ## Guardrails
 
 Each of these carries its own negation, so the list cannot be inverted by
-renaming the heading above it — which is exactly what happened once.
+renaming the heading above it.
 
 - **Never distil from a cleaned transcript.** See the top of this file.
 - **Never name the teacher** in any output: page, script, audio, candidates,
-  notes, filenames.
+  notes, filenames (see [DESIGN.md](../../../DESIGN.md#rules-for-arabic-content);
+  repeated here because this skill handles her words directly).
 - **Never assert a fact the lesson left open**, and never silently resolve a
   contradiction — note it at the foot of the page instead.
 - **Never harvest chunks from the finished script.** The script is a listening
@@ -226,8 +233,6 @@ renaming the heading above it — which is exactly what happened once.
 - **Never commit.** The harvest lands in `chunks.csv` uncommitted and stops
   there; the diff is Dave's to read. Reporting a commit you did not make is
   worse than not committing.
-- **Never use `--force` on `kallim script`.** It re-bills every turn at full
-  cost, defeating the per-turn caching that makes a page edit cheap.
 
 ## Known costs
 
