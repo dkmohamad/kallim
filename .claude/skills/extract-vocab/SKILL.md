@@ -45,11 +45,11 @@ Follow these steps in order. Do NOT skip or reorder steps.
 
 ### 1. Resolve and fetch the source
 
-- **`scratchpad`** → `notion-fetch` page
-  `374d9af2-a639-817a-adca-ec8bf4b66aa5`.
+- **`scratchpad`** → `notion-fetch` the Arabic Scratchpad
+  (id in CLAUDE.local.md).
 - **A recording** → `notion-fetch` the page directly if given a URL,
   otherwise `notion-query-data-sources` the Recordings data source
-  `collection://f409a1e9-2eb6-47df-be16-3e29ac2da44d` to find it by
+  (id in CLAUDE.local.md) to find it by
   title/date, then fetch it with `include_transcript: true`.
 
   **Fail-fast — cleaned transcripts only.** The extractor needs a cleaned

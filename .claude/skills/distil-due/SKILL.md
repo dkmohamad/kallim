@@ -39,8 +39,7 @@ cache; step 3 is what actually prevents repeat work.
 
 ### 2. Find the candidates
 
-Query the Recordings data source
-`collection://f409a1e9-2eb6-47df-be16-3e29ac2da44d`:
+Query the Recordings data source (id in CLAUDE.local.md):
 
 ```sql
 SELECT date(`date:Date:start`) AS d, Title, Duration, id
@@ -55,7 +54,7 @@ title names Arabic. Drop anything whose id is already in the ledger.
 ### 3. Confirm against Notion before doing anything
 
 For the newest survivor, check the Arabic hub
-(`374d9af2-a639-81ea-b3cc-f9a9656cb3f0`) for a script page already citing that
+(id in CLAUDE.local.md) for a script page already citing that
 recording in its `**المصدر:**` line.
 
 **This is the real guard, not the ledger.** The ledger is local and losable; a

@@ -62,8 +62,7 @@ Follow these in order. Do NOT skip or reorder.
 
 `$ARGUMENTS` names one lesson by title, date, or Notion URL. If empty, ask.
 
-Query the Recordings data source
-`collection://f409a1e9-2eb6-47df-be16-3e29ac2da44d` to find it, then fetch the
+Query the Recordings data source (id in CLAUDE.local.md) to find it, then fetch the
 page with `include_transcript: true`.
 
 The raw transcript is `SPEAKER S1:` / `SPEAKER S2:`, unvowelled, with ASR
@@ -179,7 +178,7 @@ uncorrected slip you fixed — those are your edits, not hers.
 - Page order is audio order. No reordering — that is what "follow along" means.
 
 Write it to `scratch/<slug>.md` **and** create the Notion page under the Arabic
-hub (`374d9af2-a639-81ea-b3cc-f9a9656cb3f0`) with the same content.
+hub (id in CLAUDE.local.md) with the same content.
 
 ### 5. Voice it
 

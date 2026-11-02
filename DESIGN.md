@@ -1,9 +1,8 @@
 # Kallim — Design Spec
 
-Versioned spec for the personal Arabic learning tool. Derived from the
-[Notion design doc](https://app.notion.com/p/371d9af2a63981f3b43ff3ee1cf014ba).
-How to *use* it is in [README.md](README.md); this file says why it is shaped
-the way it is.
+Versioned spec for the personal Arabic learning tool, derived from a private
+design doc. How to *use* it is in [README.md](README.md); this file says why it
+is shaped the way it is.
 
 ---
 

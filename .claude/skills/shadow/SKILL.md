@@ -148,7 +148,7 @@ command's output; report any.
   `YYYY-MM-DD-<slug>.mp3`, staging it the way
   [distil-lesson](../distil-lesson/SKILL.md) step 5 describes.
 - **Transcript:** create a Notion page under the Arabic hub
-  (`374d9af2-a639-81ea-b3cc-f9a9656cb3f0`) titled `Shadowing — <Title>`. Its
+  (id in CLAUDE.local.md) titled `Shadowing — <Title>`. Its
   first line is `**Audio:** <link>`, then the rendered `<slug>.md` without its
   `#` title line (the title is the page's). Copy the rest unchanged: the tab
   before each Arabic line is what nests it under its English in Notion.

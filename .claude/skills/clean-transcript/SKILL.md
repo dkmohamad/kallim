@@ -39,7 +39,7 @@ broken attempt is the signal `distil-lesson` exists to catch.
 ### 1. Find the recording
 
 `$ARGUMENTS` names one lesson by title, date or URL. Query the Recordings data
-source `collection://f409a1e9-2eb6-47df-be16-3e29ac2da44d`, then fetch with
+source (id in CLAUDE.local.md), then fetch with
 `include_transcript: true`.
 
 The database holds coaching and debugging sessions too. If it is not an Arabic

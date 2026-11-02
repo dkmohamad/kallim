@@ -3,6 +3,10 @@
 How Claude behaves in an Arabic session (the modes, tashkīl, corrections,
 Notion writes) is [RULES.md](RULES.md), which the claude.ai project also syncs.
 
+The skills' Notion page and data-source ids live in an untracked
+`CLAUDE.local.md`, under "Notion ids": the Recordings data source, the Arabic
+hub and the Arabic Scratchpad. Create it on a new clone.
+
 ## Environment
 
 Manage the environment with uv (the venv lives at `.venv/`):
