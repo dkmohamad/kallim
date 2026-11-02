@@ -26,8 +26,12 @@ import re
 from collections.abc import Iterable, Iterator, Sequence
 from dataclasses import dataclass
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from .model import Chunk, Register, Utterance
+
+if TYPE_CHECKING:
+    from .chunks import Section
 
 __all__ = ["Pair", "Transcript", "TranscriptSection"]
 
@@ -82,6 +86,17 @@ class Transcript:
     def of_chunks(cls, title: str, chunks: Iterable[Chunk]) -> Transcript:
         """A one-section transcript of bank chunks, in bank order."""
         return cls(title, [TranscriptSection(None, [Pair.of(c) for c in chunks])])
+
+    @classmethod
+    def of_sections(cls, title: str, sections: Iterable[Section]) -> Transcript:
+        """A transcript of bank sections, each under its own heading, in order."""
+        return cls(
+            title,
+            [
+                TranscriptSection(s.title, [Pair.of(c) for c in s.chunks])
+                for s in sections
+            ],
+        )
 
     @classmethod
     def parse(cls, path: Path, register: Register = Register.MSA) -> Transcript:

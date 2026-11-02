@@ -10,6 +10,7 @@ cards to drill, and a structured chunk bank (`chunks.csv`) behind them.
 |---|---|---|
 | Shadow something I'm reading (YouTube, podcast, a text) | `/shadow <notion url \| file \| pasted text>` | An English → pause → Arabic MP3, and its transcript as a Notion page |
 | Shadow a topic from my chunk library | `/shadow --topic <topic>` | The same, from the bank's rows on that topic |
+| Shadow what I'm learning in Anki | `/shadow --anki` | The same, from the cards in learning or a young review, refreshed in place on Drive |
 | Listen to a lesson as a clean conversation | `/distil-lesson <recording>`, or `/distil-due` to pick the newest | An Arabic-only two-voice MP3 and a Notion page, plus vocab candidates from the lesson's corrections |
 | Read a lesson instead of relistening to it | `/clean-transcript <recording>` | A cleaned bilingual transcript, written back to Notion |
 | Grow or check the chunk bank | `/extract-vocab <source>`, `/review-chunks` | New rows in `chunks.csv`, uncommitted, for you to review |
@@ -49,6 +50,7 @@ What those hooks run, and why uv stays the toolchain, is in
 # Shadowing audio, English → pause → Arabic (dry run unless --render)
 uv run kallim shadow scratch/baghdad-transcript.md   # an approved transcript
 uv run kallim shadow --topic dining --render         # one bank topic, for real
+uv run kallim shadow --anki                          # the cards being learned in Anki
 
 # Every topic at once, one MP3 each (for a long listen)
 uv run kallim generate                        # every topic in chunks.csv
@@ -249,7 +251,7 @@ The skills live in `.claude/skills/`. Which one to reach for is the table at
 
 | Skill | Invocation | What it does |
 |-------|------------|--------------|
-| **shadow** | `/shadow <source>` or `/shadow --topic <topic>` | Makes English → pause → Arabic shadowing audio from reading material or a bank topic, and publishes its transcript to Notion. Reading material stops for your approval of a short-line transcript before anything is spent. |
+| **shadow** | `/shadow <source>`, `/shadow --topic <topic>` or `/shadow --anki` | Makes English → pause → Arabic shadowing audio from reading material, a bank topic or the cards being learned in Anki, and publishes its transcript to Notion. Reading material stops for your approval of a short-line transcript before anything is spent. |
 | **distil-lesson** | `/distil-lesson <recording>` | Turns one recorded lesson into an Arabic-only two-voice conversation page and MP3, and harvests vocab candidates from its corrections, in one pass over the **raw** transcript. |
 | **distil-due** | `/distil-due` | Checks whether a recorded lesson is waiting and hands the newest to `distil-lesson`. Answers in one line when there is nothing new; a session-start hook nudges after a few days. |
 | **clean-transcript** | `/clean-transcript <recording>` | Turns a raw lesson transcript into a cleaned, vocalised, bilingual one and writes it back to Notion. `extract-vocab` reads these. |

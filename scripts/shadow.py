@@ -1,18 +1,20 @@
 """Kallim — render English-then-Arabic shadowing audio from one source.
 
-A source is either an approved reading-material transcript (written by the
-``shadow`` skill from a YouTube or podcast transcript or any text) or one topic
-of a bank. Both come out the same way: ``<name>.mp3``, English, pause, Arabic,
-pause, line by line, and ``<name>.md``, the transcript in the one layout
-(``scripts.transcript``), ready to publish.
+A source is an approved reading-material transcript (written by the ``shadow``
+skill from a YouTube or podcast transcript or any text), one topic of a bank, or
+the bank chunks being learned in Anki (``scripts.anki_progress``). All come out
+the same way: ``<name>.mp3``, English, pause, Arabic, pause, line by line, and
+``<name>.md``, the transcript in the one layout (``scripts.transcript``), ready
+to publish.
 
 Dry run by default, like ``script``: the cost is reported and nothing is spent
 until ``--render``.
 
 Reading-material clips are cached in ``audio-shadow/``, apart from the banks'
 ``audio/``: ``prune`` deletes every clip in ``audio/`` that no bank row
-produces, which would be every reading-material line. A topic's clips are bank
-clips, so they share the bank cache and are usually already there.
+produces, which would be every reading-material line. A topic's clips, and the
+Anki source's, are bank clips, so they share the bank cache and are usually
+already there.
 """
 
 from __future__ import annotations
@@ -26,9 +28,10 @@ from typing import TYPE_CHECKING, cast
 
 from dotenv import load_dotenv
 
+from . import anki_progress
 from .audio import get_quota, make_synthesiser, stitch
 from .cache import AudioCache, Codec, needs_synth
-from .chunks import Chunks
+from .chunks import Chunks, heading
 from .config import AUDIO_DIR, SHADOW_AUDIO_DIR, TTS_MODEL_ID
 from .model import ContentBlockedError, PlayableAudio, Synthesiser, Utterance
 from .plan import quota_lines
@@ -38,13 +41,26 @@ from .utils import make_run_dir
 if TYPE_CHECKING:
     from pydub import AudioSegment
 
-__all__ = ["Source", "render_pairs", "report", "run"]
+__all__ = [
+    "ANKI_TRACK_NAME",
+    "ANKI_TRACK_TITLE",
+    "Source",
+    "render_pairs",
+    "report",
+    "run",
+]
 
 logger = logging.getLogger(__name__)
 
 # A reading-material transcript is named <slug>-transcript.md; its outputs are
 # named <slug>.
 _TRANSCRIPT_SUFFIX = "-transcript"
+
+# The Anki track's output name and transcript title. A contract with the
+# ``shadow`` skill, which refreshes ``<name>.mp3`` on Drive and the Notion page
+# titled from the transcript in place rather than publishing a new one each run.
+ANKI_TRACK_NAME = "learning"
+ANKI_TRACK_TITLE = "What I'm Learning"
 
 
 @dataclass(frozen=True, slots=True)
@@ -69,8 +85,23 @@ class Source:
             ValueError: If no row in the bank carries the topic.
         """
         chunks = Chunks.load(bank).section(topic)
-        title = topic.replace("_", " ").title()
-        return cls(topic, Transcript.of_chunks(title, chunks), AudioCache(AUDIO_DIR))
+        transcript = Transcript.of_chunks(heading(topic), chunks)
+        return cls(topic, transcript, AudioCache(AUDIO_DIR))
+
+    @classmethod
+    def from_anki(cls, bank: Path, collection: Path, max_ivl: int) -> Source:
+        """The bank chunks being learned in Anki, a section per topic and register.
+
+        Raises:
+            ValueError: If no Kallim card is in learning or a young review.
+        """
+        chunks = anki_progress.learning(Chunks.load(bank), collection, max_ivl)
+        if not chunks:
+            raise ValueError(
+                f"no Kallim cards in learning in {collection}: sync desktop Anki first?"
+            )
+        transcript = Transcript.of_sections(ANKI_TRACK_TITLE, chunks.sections())
+        return cls(ANKI_TRACK_NAME, transcript, AudioCache(AUDIO_DIR))
 
 
 def _to_synth(source: Source, *, force: bool) -> list[Utterance]:
@@ -129,12 +160,15 @@ def run(args: argparse.Namespace) -> str:
     """Render a shadowing source to audio (dry run unless ``--render``)."""
     load_dotenv()
     try:
-        source = (
-            Source.from_topic(args.topic, Path(args.input))
-            if args.topic
-            else Source.from_transcript(Path(args.transcript))
-        )
-    except ValueError as exc:
+        if args.anki:
+            source = Source.from_anki(
+                Path(args.input), Path(args.collection), args.max_ivl
+            )
+        elif args.topic:
+            source = Source.from_topic(args.topic, Path(args.input))
+        else:
+            source = Source.from_transcript(Path(args.transcript))
+    except (ValueError, FileNotFoundError) as exc:
         sys.exit(f"Error: {exc}")
 
     if not args.render:

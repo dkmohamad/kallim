@@ -7,10 +7,23 @@ via ``set_defaults(func=...)``; ``main`` parses and calls ``args.func(args)``.
 
 import argparse
 
-from scripts import generate, generate_anki, harvest, lint, prune, script, shadow, tags
-from scripts.config import CHUNKS_CSV
+from scripts import (
+    generate,
+    generate_anki,
+    harvest,
+    lint,
+    prune,
+    script,
+    shadow,
+    tags,
+)
+from scripts.config import CHUNKS_CSV, anki_collection
 
 __all__ = ["main"]
+
+# A review card counts as still being learned until its interval passes this
+# many days. Past it the card is settled, and shadowing it adds little.
+_ANKI_MAX_IVL = 21
 
 
 def main() -> None:
@@ -107,8 +120,27 @@ def main() -> None:
         help="An approved reading-material transcript, <slug>-transcript.md",
     )
     src.add_argument("--topic", help="Shadow one topic of a bank instead")
+    src.add_argument(
+        "--anki",
+        action="store_true",
+        help="Shadow the bank chunks being learned in Anki instead",
+    )
     shd.add_argument(
-        "--input", "-i", default=str(CHUNKS_CSV), help="The bank --topic reads from"
+        "--input",
+        "-i",
+        default=str(CHUNKS_CSV),
+        help="The bank --topic and --anki read from",
+    )
+    shd.add_argument(
+        "--collection",
+        default=str(anki_collection()),
+        help="Only with --anki: the collection to read (sync desktop Anki first)",
+    )
+    shd.add_argument(
+        "--max-ivl",
+        type=int,
+        default=_ANKI_MAX_IVL,
+        help="Only with --anki: days of interval past which a card is learned",
     )
     shd.add_argument(
         "--pause",

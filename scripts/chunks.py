@@ -17,7 +17,12 @@ from .model import Chunk, Register
 from .transcript import Transcript
 from .utils import normalize_arabic, read_csv_rows
 
-__all__ = ["Chunks", "Section"]
+__all__ = ["Chunks", "Section", "heading"]
+
+
+def heading(slug: str) -> str:
+    """A slug as a transcript heading, e.g. ``daily_life`` -> ``Daily Life``."""
+    return slug.replace("_", " ").title()
 
 
 @dataclass(frozen=True, slots=True)
@@ -38,14 +43,18 @@ class Section:
         """Human label for the section, e.g. ``greetings (egyptian)``."""
         return f"{self.topic} ({self.register})"
 
+    @property
+    def title(self) -> str:
+        """The section's transcript heading, e.g. ``Greetings (Egyptian)``."""
+        return heading(self.label)
+
     def slug(self, index: int) -> str:
         """Filename stem for this section's outputs, e.g. ``03_dining_egyptian``."""
         return f"{index:02d}_{self.topic}_{self.register}"
 
     def transcript(self) -> str:
         """The section transcript, in the one shadowing layout."""
-        title = self.label.replace("_", " ").title()
-        return Transcript.of_chunks(title, self.chunks).render()
+        return Transcript.of_chunks(self.title, self.chunks).render()
 
 
 class Chunks(Collection[Chunk]):

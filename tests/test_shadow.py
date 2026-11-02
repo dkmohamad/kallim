@@ -23,7 +23,13 @@ from scripts.model import (
     Speech,
     Utterance,
 )
-from scripts.shadow import Source, render_pairs, report
+from scripts.shadow import (
+    ANKI_TRACK_NAME,
+    ANKI_TRACK_TITLE,
+    Source,
+    render_pairs,
+    report,
+)
 from scripts.transcript import Pair, Transcript
 
 TRANSCRIPT = """# Baghdad
@@ -180,3 +186,38 @@ def test_pair_of_a_chunk_is_english_then_arabic() -> None:
         "greetings",
     )
     assert Pair.of(chunk).utterances == (chunk.english, chunk.arabic)
+
+
+def _write_bank(path: Path, chunks: Chunks) -> Path:
+    header = "id,arabic,english,register,topic,priority"
+    rows = [",".join(c.to_row()) for c in chunks]
+    path.write_text("\n".join([header, *rows]) + "\n", encoding="utf-8")
+    return path
+
+
+def test_from_anki_should_section_by_topic_and_register_on_the_bank_cache(
+    tmp_path: Path, anki_bank: Chunks, anki_collection: Path
+) -> None:
+    """Sections follow first-seen order and the clips are bank clips, so cached.
+
+    The name and title are the contract the skill refreshes the track by.
+    """
+    bank = _write_bank(tmp_path / "bank.csv", anki_bank)
+    source = Source.from_anki(bank, anki_collection, max_ivl=21)
+    assert source.name == ANKI_TRACK_NAME
+    assert source.transcript.title == ANKI_TRACK_TITLE
+    titles = [s.title for s in source.transcript.sections]
+    assert titles == ["Greetings (Msa)", "Food (Msa)"]
+    english = [p.english.text for p in source.transcript.pairs]
+    assert english == ["learning", "young", "relearning"]
+    assert source.cache.path("x").parent == AUDIO_DIR
+
+
+def test_from_anki_should_refuse_an_empty_selection(
+    tmp_path: Path, anki_bank: Chunks, anki_collection: Path
+) -> None:
+    """An empty track usually means an unsynced desktop, so it says to sync."""
+    unseen = Chunks(c for c in anki_bank if c.id == "new")
+    bank = _write_bank(tmp_path / "bank.csv", unseen)
+    with pytest.raises(ValueError, match="sync desktop Anki first"):
+        Source.from_anki(bank, anki_collection, max_ivl=21)

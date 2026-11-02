@@ -3,15 +3,16 @@ name: shadow
 description: >-
   Make an English-then-Arabic shadowing MP3 and publish its transcript to
   Notion. The source is either reading material (a YouTube or podcast
-  transcript, a Notion page, a file, or pasted text) or one topic from the
-  chunk library (`--topic <slug>`). Each line plays English, a pause, then
+  transcript, a Notion page, a file, or pasted text), one topic from the
+  chunk library (`--topic <slug>`), or the bank cards being learned in Anki
+  (`--anki`). Each line plays English, a pause, then
   Arabic. Reading material is first written as a short-line transcript in
   `scratch/` for review, and nothing is spent on ElevenLabs until it is
   approved. Use it whenever English-then-Arabic audio to shadow is wanted. A
   recorded lesson becomes an Arabic-only conversation through `distil-lesson`
   instead, and new vocab goes into the bank through `extract-vocab`.
 user-invocable: true
-argument-hint: "<notion url | file path | pasted text> | --topic <slug>"
+argument-hint: "<notion url | file path | pasted text> | --topic <slug> | --anki"
 allowed-tools:
   - Read
   - Write
@@ -22,19 +23,23 @@ allowed-tools:
   - mcp__claude_ai_Notion__notion-fetch
   - mcp__claude_ai_Notion__notion-create-pages
   - mcp__personal__personal_drive_upload
+  - mcp__personal__personal_drive_replace
+  - mcp__personal__personal_drive_search
+  - mcp__claude_ai_Notion__notion-update-page
 ---
 
 # Shadow Skill
 
 Shadowing in kallim always means one layout: English, a pause, Arabic, a pause,
 line by line, rendered by `kallim shadow`. This skill makes that track from
-either of two sources and ends the same way for both: one MP3 on Drive and one
+any of three sources and ends the same way for all: one MP3 on Drive and one
 transcript page in Notion that you read while you listen.
 
 | Source | Argument | Where the lines come from |
 |---|---|---|
 | Reading material | a Notion URL, a file path, or pasted text | written by this skill and approved by you (steps 1–2) |
 | The chunk library | `--topic <slug>` | rows of `chunks.csv` with that topic, already reviewed |
+| What is being learned in Anki | `--anki` | rows whose Kallim cards are in learning or a review under 21 days (`--max-ivl`), one section per topic and register |
 
 The rules every piece of voiced Arabic follows (numbers in words, never naming
 the teacher, the dry-run gate, never `--force`) are in
@@ -49,6 +54,9 @@ Follow these in order. Step 2 ends in a hard stop for reading material.
 
 - **`--topic <slug>`:** check the slug against `uv run kallim tags`, and go
   straight to step 3. The chunks are already in the bank and already reviewed.
+- **`--anki`:** ask the user to open desktop Anki and let it sync from AnkiWeb
+  first. Reviews happen on the phone, and the command reads the desktop
+  collection, so without a sync it reads stale progress. Then go to step 3.
 - **Otherwise** the argument is a Notion URL, a file path or the pasted text
   itself. Fetch a page with `notion-fetch`, or `Read` a file. If it is empty,
   ask. A YouTube or podcast transcript is reading material like any other.
@@ -112,6 +120,7 @@ so re-read it before going on.
 ```bash
 uv run kallim shadow scratch/<slug>-transcript.md   # reading material
 uv run kallim shadow --topic <slug>                 # a chunk topic
+uv run kallim shadow --anki                         # what Anki is teaching
 ```
 
 Without `--render` it spends nothing. It parses the transcript strictly and
@@ -120,8 +129,8 @@ layout, English and Arabic the wrong way round, a numbered line with no Arabic
 beneath it, a digit in the Arabic. Fix the transcript and run it again.
 
 **Report** the line count, the clips already cached, the characters and the
-credits, then ask before rendering. A topic is usually cached already, so it
-often costs nothing.
+credits, then ask before rendering. A topic or the Anki track is usually cached
+already, so it often costs nothing.
 
 `--pause` (default 2.5 s) is the gap after each English and each Arabic clip,
 which suits lines of about six words; the user may ask for longer.
@@ -143,6 +152,13 @@ command's output; report any.
   first line is `**Audio:** <link>`, then the rendered `<slug>.md` without its
   `#` title line (the title is the page's). Copy the rest unchanged: the tab
   before each Arabic line is what nests it under its English in Notion.
+- **`--anki` is one rolling track, refreshed in place.** Search
+  `Arabic/kallim/shadowing` for `learning.mp3`. If it exists, overwrite it with
+  the Drive replace tool, so the link on the phone stays the same; upload it
+  under that name only the first time. Likewise update the existing
+  `Shadowing — <Title>` page (`notion-update-page`) rather than creating
+  another. The name and title are fixed in `scripts/shadow.py`
+  (`ANKI_TRACK_NAME`, `ANKI_TRACK_TITLE`), so they match on every run.
 - **Report:** the page link, the duration, the credits spent, and any line
   that was left out.
 

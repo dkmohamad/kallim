@@ -14,6 +14,7 @@ __all__ = [
     "SHADOW_AUDIO_DIR",
     "TTS_MODEL_ID",
     "VOCAB_PAIRS_CSV",
+    "anki_collection",
 ]
 
 # The ElevenLabs model every utterance is synthesised with. It bills one credit
@@ -53,3 +54,12 @@ SHADOW_AUDIO_DIR = PROJECT_ROOT / "audio-shadow"
 # staging CSV between the two, because git already distinguishes the rows that
 # have changed from the rows that are committed.
 VOCAB_PAIRS_CSV = SCRATCH_DIR / "vocab_pairs.csv"
+
+
+def anki_collection() -> Path:
+    """Desktop Anki's collection for its default profile on Linux.
+
+    A function, not a constant, so the home directory is read when a command
+    needs it rather than whenever this module is imported.
+    """
+    return Path.home() / ".local/share/Anki2/User 1/collection.anki2"

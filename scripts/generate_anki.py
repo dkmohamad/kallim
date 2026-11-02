@@ -14,7 +14,7 @@ from .command import dry_run_report, scoped_chunks
 from .model import Chunk, Utterance
 from .utils import make_run_dir, setup_logging
 
-__all__ = ["make_model", "run"]
+__all__ = ["make_model", "note_guid", "run"]
 
 logger = logging.getLogger(__name__)
 
@@ -134,6 +134,15 @@ def _sound_ref(cache: AudioCache, utt: Utterance) -> tuple[str, Path | None]:
     return f"[sound:{path.name}]", path
 
 
+def note_guid(chunk: Chunk) -> str:
+    """The Anki note GUID for a chunk.
+
+    Derived from the chunk id alone, so a re-run updates the note in place and
+    ``anki_progress`` can map a note in the collection back to its bank row.
+    """
+    return genanki.guid_for(chunk.id)
+
+
 def _note(
     chunk: Chunk, model: genanki.Model, en_sound: str, ar_sound: str
 ) -> genanki.Note:
@@ -152,5 +161,5 @@ def _note(
             f"register::{chunk.arabic.register}",
             f"priority::{chunk.priority}",
         ],
-        guid=genanki.guid_for(chunk.id),
+        guid=note_guid(chunk),
     )
