@@ -1,5 +1,8 @@
 # Kallim Project Instructions
 
+How Claude behaves in an Arabic session (the modes, tashkīl, corrections,
+Notion writes) is [RULES.md](RULES.md), which the claude.ai project also syncs.
+
 ## Environment
 
 Manage the environment with uv (the venv lives at `.venv/`):

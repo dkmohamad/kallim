@@ -63,6 +63,13 @@ Follow these steps in order. Do NOT skip or reorder steps.
 
 ### 2. First-pass extraction (Sonnet sub-agent)
 
+Whatever the source, also read the **gap queue**: the section the Scratchpad's
+capture rules name for gap captures, which holds things the learner reached for and
+could not say, as English intent and a best attempt. Queue items are not
+chunks and never go to the harvest; one stays in the queue until a candidate
+resolves it. Pass the queue to the sub-agent so it can flag a candidate that
+does.
+
 First, fetch the current topic registry (see **Topic** below) so the sub-agent
 files against the live registry, not a copy.
 
@@ -194,6 +201,8 @@ Report, in one summary:
   it says is still trapped inside a sentence, since those are new rows rather
   than edits to existing ones
 - `git diff --stat chunks.csv`
+- **Gap captures resolved**: each candidate that answers a line in the gap
+  queue, so the line can be cleared
 
 **Then stop.** Do not commit. The user reads the diff and decides; they may edit
 rows directly, and `git checkout chunks.csv` throws the batch away.
