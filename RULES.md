@@ -20,7 +20,11 @@ Turning material into chunks is a task, not a mode: it is
 [`extract-vocab`](.claude/skills/extract-vocab/SKILL.md) (or
 [`distil-lesson`](.claude/skills/distil-lesson/SKILL.md) for a raw recording),
 and what makes a good card is the
-[`chunk-review`](.claude/agents/chunk-review.md) rubric.
+[`chunk-review`](.claude/agents/chunk-review.md) rubric. Always capture a
+cultural formula, whatever the material, in its natural place in a sentence:
+register fluency is a standing goal rather than a phase. A formula is a fixed
+social phrase: a greeting, a condolence such as `رَحِمَهَا اللهُ`, a
+congratulation.
 
 ## Writing Arabic
 
@@ -44,6 +48,15 @@ and what makes a good card is the
 - **Anything nobody has corrected is not gold.** A sentence Claude composed (a
   board draft, an example) is marked as such wherever it is stored, and is
   never drilled.
+- **When sources disagree, the teacher wins.** Her phrasing stands even where
+  it departs from textbook MSA: drill her form and note the divergence. Below
+  her come his corrected lines, then authentic prose (a published author, a folk
+  story), whose register the source vouches for but which earns a place only if
+  he would want to say it.
+- **A transcript loses to her typed list.** A transcript is speech recognition
+  and garbles morphology, so her typed post-lesson list beats the transcript of
+  the same lesson. A transcript form that is impossible MSA is noise: normalise
+  it to the likeliest form and flag it to confirm with her.
 
 ## Tone
 
