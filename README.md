@@ -258,5 +258,5 @@ The skills live in `.claude/skills/`. Which one to reach for is the table at
 | **extract-vocab** | `/extract-vocab <source>` | Mines authentic chunks from a cleaned transcript, the Scratchpad or a text file, then `kallim harvest` appends them to `chunks.csv`, uncommitted. |
 | **review-chunks** | `/review-chunks --topic history` | Audits a slice of a bank for what `kallim lint` can't judge: drifted topic, unearned priority, a gloss that doesn't match, frames trapped in sentences, cards too long to drill. Proposes with reasons; never edits a bank. |
 
-Commits go through the `casomoltd:commit` plugin skill, not a skill in this
-repo.
+Commits follow the public commit policy in `@casomoltd/tooling` (`docs/commit.md`),
+and this repo's hooks enforce it.

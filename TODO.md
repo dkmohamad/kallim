@@ -11,6 +11,18 @@ removes are all in README under *Output* and *Anki workflow*.
 
 ## Open
 
+- **Gates that refuse a bad commit, as the shared policy promises.** The
+  README now points contributors at `@casomoltd/tooling`'s public
+  `docs/commit.md`, which says a commit that fails lint, breaks a test or
+  carries a malformed message is refused. Here only `commit-msg` (commitlint)
+  and `pre-push` (ruff, ruff format, pyright, pytest) run: there is no
+  `pre-commit` hook, so a failing commit lands and is caught only at push, and
+  there is no CI workflow as a backstop. Add `.husky/pre-commit` running the
+  same uv suite as `pre-push`, and a `.github/workflows/ci.yml` that runs it on
+  push. Also: `@casomoltd/tooling` is pinned at `^0.28.0` against 0.49.x
+  upstream; bump it so `commitlint` uses the current house rules. Raised
+  9 Nov 2026 from the workspace session that made the policy public.
+
 - **Lazy-dispatch in `cli.py`.** `pydub` and `elevenlabs` are already fully
   deferred (`audio.py`, `cache.py`, `script.py` lazy-import them, `PLC0415`
   per-file-ignored for exactly that). What remains is `cli.py` importing every
